@@ -1,0 +1,859 @@
+<?xml  version="1.0" encoding="UTF-8"?>
+<xh:html xmlns:xh="http://www.w3.org/1999/xhtml" xmlns:xf="http://www.w3.org/2002/xforms" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xxi="http://orbeon.org/oxf/xml/xinclude" xmlns:xxf="http://orbeon.org/oxf/xml/xforms" xmlns:exf="http://www.exforms.org/exf/1-0" xmlns:fr="http://orbeon.org/oxf/xml/form-runner" xmlns:saxon="http://saxon.sf.net/" xmlns:sql="http://orbeon.org/oxf/xml/sql" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:fb="http://orbeon.org/oxf/xml/form-builder">
+<xh:head>
+<xh:title>Scotland's Global Connections Survey 2015</xh:title>
+<xf:model id="fr-form-model" xxf:expose-xpath-types="true">
+<!--
+ Main instance
+-->
+<xf:instance id="fr-form-instance" xxf:exclude-result-prefixes="#all">
+<GlobalConnectionsSurvey2015>
+<Introduction>
+<HeaderFormIntro>
+</HeaderFormIntro>
+<URN>
+</URN>
+<HeaderHelpline>
+</HeaderHelpline>
+</Introduction>
+<CompanyDetails>
+<HeaderCompanyAddress>
+</HeaderCompanyAddress>
+<BlankPlaceholder1>
+</BlankPlaceholder1>
+<ContactName>
+</ContactName>
+<TelephoneNumber>
+</TelephoneNumber>
+<CompanyName>
+</CompanyName>
+<EmailAddress>
+</EmailAddress>
+<BuildingName>
+</BuildingName>
+<Website>
+</Website>
+<BuildingNumber>
+</BuildingNumber>
+<BlankPlaceholder2>
+</BlankPlaceholder2>
+<Locality>
+</Locality>
+<BlankPlaceholder3>
+</BlankPlaceholder3>
+<Town>
+</Town>
+<BlankPlaceholder4>
+</BlankPlaceholder4>
+<County>
+</County>
+<BlankPlaceholder5>
+</BlankPlaceholder5>
+<Postcode>
+</Postcode>
+<BlankPlaceholder6>
+</BlankPlaceholder6>
+<HeaderHQInfo>
+</HeaderHQInfo>
+<BlankPlaceholder7>
+</BlankPlaceholder7>
+<HQCountry>scotland</HQCountry>
+<OtherCountryCode label="">
+</OtherCountryCode>
+<HeaderMainBusinessActivities>
+</HeaderMainBusinessActivities>
+<HeaderNumberOfEmployees>
+</HeaderNumberOfEmployees>
+<MainBusinessActivities>
+</MainBusinessActivities>
+<ScottishEmployeeCount>
+</ScottishEmployeeCount>
+</CompanyDetails>
+<SalesAndExports>
+<HeaderSalesAndGoodsTotals>
+</HeaderSalesAndGoodsTotals>
+<SubHeaderGoods>
+</SubHeaderGoods>
+<TotalGoodsSold>
+</TotalGoodsSold>
+<SubHeaderServices>
+</SubHeaderServices>
+<TotalServicesSold>
+</TotalServicesSold>
+<SubHeaderGoodsServicesTotal>
+</SubHeaderGoodsServicesTotal>
+<TotalSold>
+</TotalSold>
+<HeaderPercentageSales>
+</HeaderPercentageSales>
+</SalesAndExports>
+</GlobalConnectionsSurvey2015>
+</xf:instance>
+<!--
+ Bindings
+-->
+<xf:bind id="fr-form-binds" ref="instance('fr-form-instance')">
+<xf:bind id="Introduction-bind" ref="Introduction" name="Introduction">
+<xf:bind id="HeaderFormIntro-bind" ref="HeaderFormIntro" name="HeaderFormIntro">
+</xf:bind>
+<xf:bind id="URN-bind" ref="URN" name="URN" required="true()" type="xs:integer">
+<xf:constraint id="validation-43-validation" value="xxf:max-length(11)">
+</xf:constraint>
+<xf:constraint id="validation-44-validation" value="xxf:min-length(11)">
+</xf:constraint>
+</xf:bind>
+<xf:bind id="HeaderHelpline-bind" ref="HeaderHelpline" name="HeaderHelpline">
+</xf:bind>
+</xf:bind>
+<xf:bind id="CompanyDetails-bind" name="CompanyDetails" ref="CompanyDetails">
+<xf:bind id="HeaderCompanyAddress-bind" ref="HeaderCompanyAddress" name="HeaderCompanyAddress">
+</xf:bind>
+<xf:bind id="BlankPlaceholder1-bind" ref="BlankPlaceholder1" name="BlankPlaceholder1">
+</xf:bind>
+<xf:bind id="ContactName-bind" ref="ContactName" name="ContactName" required="true()">
+</xf:bind>
+<xf:bind id="TelephoneNumber-bind" ref="TelephoneNumber" name="TelephoneNumber" required="true()">
+</xf:bind>
+<xf:bind id="CompanyName-bind" ref="CompanyName" name="CompanyName" required="true()">
+</xf:bind>
+<xf:bind id="EmailAddress-bind" ref="EmailAddress" name="EmailAddress" required="true()" type="xf:email">
+</xf:bind>
+<xf:bind id="BuildingName-bind" ref="BuildingName" name="BuildingName">
+</xf:bind>
+<xf:bind id="Website-bind" ref="Website" name="Website" required="true()">
+</xf:bind>
+<xf:bind id="BuildingNumber-bind" ref="BuildingNumber" name="BuildingNumber" required="true()">
+</xf:bind>
+<xf:bind id="BlankPlaceholder2-bind" ref="BlankPlaceholder2" name="BlankPlaceholder2">
+</xf:bind>
+<xf:bind id="Locality-bind" ref="Locality" name="Locality">
+</xf:bind>
+<xf:bind id="BlankPlaceholder3-bind" ref="BlankPlaceholder3" name="BlankPlaceholder3">
+</xf:bind>
+<xf:bind id="Town-bind" ref="Town" name="Town" required="true()">
+</xf:bind>
+<xf:bind id="BlankPlaceholder4-bind" ref="BlankPlaceholder4" name="BlankPlaceholder4">
+</xf:bind>
+<xf:bind id="County-bind" ref="County" name="County" required="true()">
+</xf:bind>
+<xf:bind id="BlankPlaceholder5-bind" ref="BlankPlaceholder5" name="BlankPlaceholder5">
+</xf:bind>
+<xf:bind id="Postcode-bind" ref="Postcode" name="Postcode" required="true()">
+</xf:bind>
+<xf:bind id="BlankPlaceholder6-bind" ref="BlankPlaceholder6" name="BlankPlaceholder6">
+</xf:bind>
+<xf:bind id="HeaderHQInfo-bind" ref="HeaderHQInfo" name="HeaderHQInfo">
+</xf:bind>
+<xf:bind id="BlankPlaceholder7-bind" ref="BlankPlaceholder7" name="BlankPlaceholder7">
+</xf:bind>
+<xf:bind id="HQCountry-bind" ref="HQCountry" name="HQCountry" required="true()">
+</xf:bind>
+<xf:bind id="OtherCountryCode-bind" ref="OtherCountryCode" name="OtherCountryCode">
+</xf:bind>
+<xf:bind id="HeaderMainBusinessActivities-bind" ref="HeaderMainBusinessActivities" name="HeaderMainBusinessActivities">
+</xf:bind>
+<xf:bind id="HeaderNumberOfEmployees-bind" ref="HeaderNumberOfEmployees" name="HeaderNumberOfEmployees">
+</xf:bind>
+<xf:bind id="MainBusinessActivities-bind" ref="MainBusinessActivities" name="MainBusinessActivities" required="true()">
+</xf:bind>
+<xf:bind id="ScottishEmployeeCount-bind" ref="ScottishEmployeeCount" name="ScottishEmployeeCount" type="xs:decimal" required="true()">
+</xf:bind>
+</xf:bind>
+<xf:bind id="SalesAndExports-bind" ref="SalesAndExports" name="SalesAndExports">
+<xf:bind id="HeaderSalesAndGoodsTotals-bind" ref="HeaderSalesAndGoodsTotals" name="HeaderSalesAndGoodsTotals">
+</xf:bind>
+<xf:bind id="SubHeaderGoods-bind" ref="SubHeaderGoods" name="SubHeaderGoods">
+</xf:bind>
+<xf:bind id="SubHeaderServices-bind" ref="SubHeaderServices" name="SubHeaderServices">
+</xf:bind>
+<xf:bind id="SubHeaderGoodsServicesTotal-bind" ref="SubHeaderGoodsServicesTotal" name="SubHeaderGoodsServicesTotal">
+</xf:bind>
+<xf:bind id="TotalGoodsSold-bind" ref="TotalGoodsSold" name="TotalGoodsSold" type="xs:decimal" required="true()">
+</xf:bind>
+<xf:bind id="TotalServicesSold-bind" ref="TotalServicesSold" name="TotalServicesSold" type="xs:decimal" required="true()">
+</xf:bind>
+<xf:bind id="TotalSold-bind" ref="TotalSold" name="TotalSold" type="xf:decimal" readonly="true()" calculate="//TotalGoodsSold + //TotalServicesSold" xxf:default="0">
+</xf:bind>
+<xf:bind id="HeaderPercentageSales-bind" ref="HeaderPercentageSales" name="HeaderPercentageSales">
+</xf:bind>
+</xf:bind>
+</xf:bind>
+<!--
+ Metadata
+-->
+<xf:instance xxf:readonly="true" id="fr-form-metadata" xxf:exclude-result-prefixes="#all">
+<metadata>
+<application-name>ScottishGovernment</application-name>
+<form-name>GlobalConnectionsSurvey2015</form-name>
+<title xml:lang="en">Scotland's Global Connections Survey 2015</title>
+<description xml:lang="en">A questionnaire for businesses to submit information on doing business in Scotland.</description>
+<singleton>false</singleton>
+</metadata>
+</xf:instance>
+<!--
+ Attachments
+-->
+<xf:instance id="fr-form-attachments" xxf:exclude-result-prefixes="#all">
+<attachments>
+<css mediatype="text/css" filename="" size="">
+</css>
+<pdf mediatype="application/pdf" filename="" size="">
+</pdf>
+</attachments>
+</xf:instance>
+<!--
+ All form resources
+-->
+<!--
+ Don't make readonly by default in case a service modifies the resources
+-->
+<xf:instance id="fr-form-resources" xxf:readonly="false" xxf:exclude-result-prefixes="#all">
+<resources>
+<resource xml:lang="en">
+<HeaderSalesAndGoodsTotals>
+<text><div><strong>5 Please give the total sales of good and services from the Scottish branches of your company in 2015, to the nearest £1,000</strong></div></text>
+</HeaderSalesAndGoodsTotals>
+<SubHeaderGoods>
+<text><div> </div>
+<div><strong>Goods</strong></div></text>
+</SubHeaderGoods>
+<TotalGoodsSold>
+<label>
+</label>
+<hint>
+</hint>
+</TotalGoodsSold>
+<SubHeaderServices>
+<text><div> </div>
+<div><strong>    + Services</strong></div></text>
+</SubHeaderServices>
+<TotalServicesSold>
+<label>
+</label>
+<hint>
+</hint>
+</TotalServicesSold>
+<SubHeaderGoodsServicesTotal>
+<text><div> </div>
+<div><strong>     =   Total</strong></div></text>
+</SubHeaderGoodsServicesTotal>
+<TotalSold>
+<label>
+</label>
+<hint>
+</hint>
+</TotalSold>
+<HeaderPercentageSales>
+<text><div><strong>6 What percentage of your sales in 2015 (as reported in Q5) were to customers in the following locations?</strong></div></text>
+</HeaderPercentageSales>
+<HeaderCompanyAddress>
+<text><div><strong>1 Please enter your address details in the boxes below</strong></div></text>
+</HeaderCompanyAddress>
+<BlankPlaceholder1>
+<text xmlns:xxbl="http://orbeon.org/oxf/xml/xbl" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:oxf="http://www.orbeon.com/oxf/processors" xmlns:p="http://www.orbeon.com/oxf/pipeline" xmlns:xbl="http://www.w3.org/ns/xbl">
+</text>
+</BlankPlaceholder1>
+<ContactName>
+<label>Contact name</label>
+<hint>
+</hint>
+</ContactName>
+<TelephoneNumber>
+<label>Telephone number</label>
+<hint>
+</hint>
+</TelephoneNumber>
+<CompanyName>
+<label>Company name</label>
+<hint>
+</hint>
+</CompanyName>
+<EmailAddress>
+<label>Email address</label>
+<hint>
+</hint>
+</EmailAddress>
+<BuildingName>
+<label>Building Name</label>
+<hint>
+</hint>
+</BuildingName>
+<Website>
+<label>Website</label>
+<hint>
+</hint>
+</Website>
+<BuildingNumber>
+<label>Building Number</label>
+<hint>
+</hint>
+</BuildingNumber>
+<BlankPlaceholder2>
+<text xmlns:xxbl="http://orbeon.org/oxf/xml/xbl" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:oxf="http://www.orbeon.com/oxf/processors" xmlns:p="http://www.orbeon.com/oxf/pipeline" xmlns:xbl="http://www.w3.org/ns/xbl">
+</text>
+</BlankPlaceholder2>
+<Locality>
+<label>Locality</label>
+<hint>
+</hint>
+</Locality>
+<BlankPlaceholder3>
+<text xmlns:xxbl="http://orbeon.org/oxf/xml/xbl" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:oxf="http://www.orbeon.com/oxf/processors" xmlns:p="http://www.orbeon.com/oxf/pipeline" xmlns:xbl="http://www.w3.org/ns/xbl">
+</text>
+</BlankPlaceholder3>
+<Town>
+<label>Town</label>
+<hint>
+</hint>
+</Town>
+<BlankPlaceholder4>
+<text xmlns:xxbl="http://orbeon.org/oxf/xml/xbl" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:oxf="http://www.orbeon.com/oxf/processors" xmlns:p="http://www.orbeon.com/oxf/pipeline" xmlns:xbl="http://www.w3.org/ns/xbl">
+</text>
+</BlankPlaceholder4>
+<County>
+<label>County</label>
+<hint>
+</hint>
+</County>
+<BlankPlaceholder5>
+<text xmlns:xxbl="http://orbeon.org/oxf/xml/xbl" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:oxf="http://www.orbeon.com/oxf/processors" xmlns:p="http://www.orbeon.com/oxf/pipeline" xmlns:xbl="http://www.w3.org/ns/xbl">
+</text>
+</BlankPlaceholder5>
+<Postcode>
+<label>Postcode</label>
+<hint>
+</hint>
+</Postcode>
+<BlankPlaceholder6>
+<text xmlns:xxbl="http://orbeon.org/oxf/xml/xbl" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:oxf="http://www.orbeon.com/oxf/processors" xmlns:p="http://www.orbeon.com/oxf/pipeline" xmlns:xbl="http://www.w3.org/ns/xbl">
+</text>
+</BlankPlaceholder6>
+<HeaderHQInfo>
+<text><div><strong>2 Headquarters information</strong></div></text>
+</HeaderHQInfo>
+<BlankPlaceholder7>
+<text xmlns:xxbl="http://orbeon.org/oxf/xml/xbl" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:oxf="http://www.orbeon.com/oxf/processors" xmlns:p="http://www.orbeon.com/oxf/pipeline" xmlns:xbl="http://www.w3.org/ns/xbl">
+</text>
+</BlankPlaceholder7>
+<HQCountry>
+<label> Which country is your headquarters based in?</label>
+<hint>
+</hint>
+<item>
+<label>Scotland</label>
+<hint>
+</hint>
+<value>scotland</value>
+</item>
+<item>
+<label>Other - please specify</label>
+<hint>
+</hint>
+<value>other</value>
+</item>
+</HQCountry>
+<OtherCountryCode>
+<label>Other country name</label>
+<hint>
+</hint>
+</OtherCountryCode>
+<HeaderMainBusinessActivities>
+<text><div><strong>3 Main business activities</strong></div></text>
+</HeaderMainBusinessActivities>
+<HeaderNumberOfEmployees>
+<text><div><strong>4 Number of employees</strong></div></text>
+</HeaderNumberOfEmployees>
+<MainBusinessActivities>
+<label> Please describe in words the main business activity of your Scottish branch(es)/operation(s)</label>
+<hint>
+</hint>
+</MainBusinessActivities>
+<ScottishEmployeeCount>
+<label>How many people are employed at the Scottish branch(es)/operation(s) of your company?</label>
+<hint>Count all those persons who are on the payroll at the end of 2015. (including part time staff)</hint>
+</ScottishEmployeeCount>
+<HeaderFormIntro>
+<text><div>For guidance on completing the questionnaire please refer to guidance notes which can be found alongside this form on the same web page.</div></text>
+</HeaderFormIntro>
+<URN>
+<label>Please enter your Unique Reference Number in the space provided</label>
+<hint>Your unique reference number is an 11 digit number which can be found on the top left of the letter sent to you (below your address) or the bottom left of each page of the survey form sent to you.</hint>
+<help>This is where you can put explanatory text, as mentioned in the introduction note. I did not have this text to hand when creating this form definition. This field also supports HTML in addition to plain text, allowing a rich layout for the explanation.</help>
+</URN>
+<HeaderHelpline>
+<text><div>For any assistance, please phone the helpline on 0300 244 1320</div></text>
+</HeaderHelpline>
+<CompanyDetails>
+<label>Section 1: Company Details</label>
+</CompanyDetails>
+<SalesAndExports>
+<label>Section 2: Sales and exports</label>
+<help>
+</help>
+</SalesAndExports>
+<Introduction>
+<label>Introduction</label>
+<help>
+</help>
+</Introduction>
+</resource>
+</resources>
+</xf:instance>
+<!--
+ Utility instances for services
+-->
+<xf:instance id="fr-service-request-instance" xxf:exclude-result-prefixes="#all">
+<request>
+</request>
+</xf:instance>
+<xf:instance id="fr-service-response-instance" xxf:exclude-result-prefixes="#all">
+<response>
+</response>
+</xf:instance>
+</xf:model>
+</xh:head>
+<xh:body>
+<fr:view>
+<fr:body xmlns:xbl="http://www.w3.org/ns/xbl" xmlns:oxf="http://www.orbeon.com/oxf/processors" xmlns:p="http://www.orbeon.com/oxf/pipeline">
+<fr:section id="Introduction-control" bind="Introduction-bind">
+<xf:label ref="$form-resources/Introduction/label">
+</xf:label>
+<fr:grid>
+<xh:tr>
+<xh:td>
+<fr:explanation id="HeaderFormIntro-control" bind="HeaderFormIntro-bind" xmlns:xxbl="http://orbeon.org/oxf/xml/xbl" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+<xf:alert ref="$fr-resources/detail/labels/alert">
+</xf:alert>
+<fr:text ref="$form-resources/HeaderFormIntro/text" mediatype="text/html">
+</fr:text>
+</fr:explanation>
+</xh:td>
+</xh:tr>
+<xh:tr>
+<xh:td>
+<xf:input id="URN-control" bind="URN-bind" class="fr-summary fr-search">
+<xf:label ref="$form-resources/URN/label">
+</xf:label>
+<xf:hint ref="$form-resources/URN/hint">
+</xf:hint>
+<xf:help ref="$form-resources/URN/help">
+</xf:help>
+<xf:alert ref="$fr-resources/detail/labels/alert">
+</xf:alert>
+</xf:input>
+</xh:td>
+</xh:tr>
+<xh:tr>
+<xh:td>
+<fr:explanation id="HeaderHelpline-control" bind="HeaderHelpline-bind" xmlns:xxbl="http://orbeon.org/oxf/xml/xbl" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+<xf:alert ref="$fr-resources/detail/labels/alert">
+</xf:alert>
+<fr:text ref="$form-resources/HeaderHelpline/text" mediatype="text/html">
+</fr:text>
+</fr:explanation>
+</xh:td>
+</xh:tr>
+</fr:grid>
+</fr:section>
+<fr:section id="CompanyDetails-control" bind="CompanyDetails-bind">
+<xf:label ref="$form-resources/CompanyDetails/label">
+</xf:label>
+<fr:grid>
+<xh:tr>
+<xh:td>
+<fr:explanation id="HeaderCompanyAddress-control" bind="HeaderCompanyAddress-bind" xmlns:xxbl="http://orbeon.org/oxf/xml/xbl" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+<xf:alert ref="$fr-resources/detail/labels/alert">
+</xf:alert>
+<fr:text ref="$form-resources/HeaderCompanyAddress/text" mediatype="text/html">
+</fr:text>
+</fr:explanation>
+</xh:td>
+<xh:td>
+<fr:explanation id="BlankPlaceholder1-control" bind="BlankPlaceholder1-bind" xmlns:xxbl="http://orbeon.org/oxf/xml/xbl" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+<xf:alert ref="$fr-resources/detail/labels/alert">
+</xf:alert>
+<fr:text ref="$form-resources/BlankPlaceholder1/text" mediatype="text/html">
+</fr:text>
+</fr:explanation>
+</xh:td>
+</xh:tr>
+<xh:tr>
+<xh:td>
+<xf:input id="ContactName-control" bind="ContactName-bind">
+<xf:label ref="$form-resources/ContactName/label">
+</xf:label>
+<xf:hint ref="$form-resources/ContactName/hint">
+</xf:hint>
+<xf:alert ref="$fr-resources/detail/labels/alert">
+</xf:alert>
+</xf:input>
+</xh:td>
+<xh:td>
+<xf:input id="TelephoneNumber-control" bind="TelephoneNumber-bind">
+<xf:label ref="$form-resources/TelephoneNumber/label">
+</xf:label>
+<xf:hint ref="$form-resources/TelephoneNumber/hint">
+</xf:hint>
+<xf:alert ref="$fr-resources/detail/labels/alert">
+</xf:alert>
+</xf:input>
+</xh:td>
+</xh:tr>
+<xh:tr>
+<xh:td>
+<xf:input id="CompanyName-control" bind="CompanyName-bind">
+<xf:label ref="$form-resources/CompanyName/label">
+</xf:label>
+<xf:hint ref="$form-resources/CompanyName/hint">
+</xf:hint>
+<xf:alert ref="$fr-resources/detail/labels/alert">
+</xf:alert>
+</xf:input>
+</xh:td>
+<xh:td>
+<xf:input id="EmailAddress-control" bind="EmailAddress-bind">
+<xf:label ref="$form-resources/EmailAddress/label">
+</xf:label>
+<xf:hint ref="$form-resources/EmailAddress/hint">
+</xf:hint>
+<xf:alert ref="$fr-resources/detail/labels/alert">
+</xf:alert>
+</xf:input>
+</xh:td>
+</xh:tr>
+<xh:tr>
+<xh:td>
+<xf:input id="BuildingName-control" bind="BuildingName-bind" class="fr-summary">
+<xf:label ref="$form-resources/BuildingName/label">
+</xf:label>
+<xf:hint ref="$form-resources/BuildingName/hint">
+</xf:hint>
+<xf:alert ref="$fr-resources/detail/labels/alert">
+</xf:alert>
+</xf:input>
+</xh:td>
+<xh:td>
+<xf:input id="Website-control" bind="Website-bind">
+<xf:label ref="$form-resources/Website/label">
+</xf:label>
+<xf:hint ref="$form-resources/Website/hint">
+</xf:hint>
+<xf:alert ref="$fr-resources/detail/labels/alert">
+</xf:alert>
+</xf:input>
+</xh:td>
+</xh:tr>
+<xh:tr>
+<xh:td>
+<xf:input id="BuildingNumber-control" bind="BuildingNumber-bind" class="fr-summary">
+<xf:label ref="$form-resources/BuildingNumber/label">
+</xf:label>
+<xf:hint ref="$form-resources/BuildingNumber/hint">
+</xf:hint>
+<xf:alert ref="$fr-resources/detail/labels/alert">
+</xf:alert>
+</xf:input>
+</xh:td>
+<xh:td>
+<fr:explanation id="BlankPlaceholder2-control" bind="BlankPlaceholder2-bind" xmlns:xxbl="http://orbeon.org/oxf/xml/xbl" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+<xf:alert ref="$fr-resources/detail/labels/alert">
+</xf:alert>
+<fr:text ref="$form-resources/BlankPlaceholder2/text" mediatype="text/html">
+</fr:text>
+</fr:explanation>
+</xh:td>
+</xh:tr>
+<xh:tr>
+<xh:td>
+<xf:input id="Locality-control" bind="Locality-bind" class="fr-summary">
+<xf:label ref="$form-resources/Locality/label">
+</xf:label>
+<xf:hint ref="$form-resources/Locality/hint">
+</xf:hint>
+<xf:alert ref="$fr-resources/detail/labels/alert">
+</xf:alert>
+</xf:input>
+</xh:td>
+<xh:td>
+<fr:explanation id="BlankPlaceholder3-control" bind="BlankPlaceholder3-bind" xmlns:xxbl="http://orbeon.org/oxf/xml/xbl" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+<xf:alert ref="$fr-resources/detail/labels/alert">
+</xf:alert>
+<fr:text ref="$form-resources/BlankPlaceholder3/text" mediatype="text/html">
+</fr:text>
+</fr:explanation>
+</xh:td>
+</xh:tr>
+<xh:tr>
+<xh:td>
+<xf:input id="Town-control" bind="Town-bind" class="fr-summary">
+<xf:label ref="$form-resources/Town/label">
+</xf:label>
+<xf:hint ref="$form-resources/Town/hint">
+</xf:hint>
+<xf:alert ref="$fr-resources/detail/labels/alert">
+</xf:alert>
+</xf:input>
+</xh:td>
+<xh:td>
+<fr:explanation id="BlankPlaceholder4-control" bind="BlankPlaceholder4-bind" xmlns:xxbl="http://orbeon.org/oxf/xml/xbl" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+<xf:alert ref="$fr-resources/detail/labels/alert">
+</xf:alert>
+<fr:text ref="$form-resources/BlankPlaceholder4/text" mediatype="text/html">
+</fr:text>
+</fr:explanation>
+</xh:td>
+</xh:tr>
+<xh:tr>
+<xh:td>
+<xf:input id="County-control" bind="County-bind" class="fr-summary">
+<xf:label ref="$form-resources/County/label">
+</xf:label>
+<xf:hint ref="$form-resources/County/hint">
+</xf:hint>
+<xf:alert ref="$fr-resources/detail/labels/alert">
+</xf:alert>
+</xf:input>
+</xh:td>
+<xh:td>
+<fr:explanation id="BlankPlaceholder5-control" bind="BlankPlaceholder5-bind" xmlns:xxbl="http://orbeon.org/oxf/xml/xbl" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+<xf:alert ref="$fr-resources/detail/labels/alert">
+</xf:alert>
+<fr:text ref="$form-resources/BlankPlaceholder5/text" mediatype="text/html">
+</fr:text>
+</fr:explanation>
+</xh:td>
+</xh:tr>
+<xh:tr>
+<xh:td>
+<xf:input id="Postcode-control" bind="Postcode-bind" class="fr-summary">
+<xf:label ref="$form-resources/Postcode/label">
+</xf:label>
+<xf:hint ref="$form-resources/Postcode/hint">
+</xf:hint>
+<xf:alert ref="$fr-resources/detail/labels/alert">
+</xf:alert>
+</xf:input>
+</xh:td>
+<xh:td>
+<fr:explanation id="BlankPlaceholder6-control" bind="BlankPlaceholder6-bind" xmlns:xxbl="http://orbeon.org/oxf/xml/xbl" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+<xf:alert ref="$fr-resources/detail/labels/alert">
+</xf:alert>
+<fr:text ref="$form-resources/BlankPlaceholder6/text" mediatype="text/html">
+</fr:text>
+</fr:explanation>
+</xh:td>
+</xh:tr>
+<xh:tr>
+<xh:td>
+<fr:explanation id="HeaderHQInfo-control" bind="HeaderHQInfo-bind" xmlns:xxbl="http://orbeon.org/oxf/xml/xbl" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+<xf:alert ref="$fr-resources/detail/labels/alert">
+</xf:alert>
+<fr:text ref="$form-resources/HeaderHQInfo/text" mediatype="text/html">
+</fr:text>
+</fr:explanation>
+</xh:td>
+<xh:td>
+<fr:explanation id="BlankPlaceholder7-control" bind="BlankPlaceholder7-bind" xmlns:xxbl="http://orbeon.org/oxf/xml/xbl" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+<xf:alert ref="$fr-resources/detail/labels/alert">
+</xf:alert>
+<fr:text ref="$form-resources/BlankPlaceholder7/text" mediatype="text/html">
+</fr:text>
+</fr:explanation>
+</xh:td>
+</xh:tr>
+<xh:tr>
+<xh:td>
+<xf:select1 id="HQCountry-control" appearance="full" bind="HQCountry-bind" class="fr-summary">
+<xf:label ref="$form-resources/HQCountry/label">
+</xf:label>
+<xf:hint ref="$form-resources/HQCountry/hint">
+</xf:hint>
+<xf:alert ref="$fr-resources/detail/labels/alert">
+</xf:alert>
+<xf:itemset ref="$form-resources/HQCountry/item">
+<xf:label ref="label">
+</xf:label>
+<xf:value ref="value">
+</xf:value>
+<xf:hint ref="hint">
+</xf:hint>
+</xf:itemset>
+</xf:select1>
+</xh:td>
+<xh:td>
+<fr:autocomplete id="OtherCountryCode-control" labelref="@label" resource="" bind="OtherCountryCode-bind" class="fr-summary" xmlns:xxbl="http://orbeon.org/oxf/xml/xbl" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+<xf:label ref="$form-resources/OtherCountryCode/label">
+</xf:label>
+<xf:hint ref="$form-resources/OtherCountryCode/hint">
+</xf:hint>
+<xf:alert ref="$fr-resources/detail/labels/alert">
+</xf:alert>
+<!--
+ Itemset points to an empty nodeset until users set them in the control details dialog
+-->
+<xf:itemset ref="()">
+<xf:label ref="()">
+</xf:label>
+<xf:value ref="()">
+</xf:value>
+</xf:itemset>
+</fr:autocomplete>
+</xh:td>
+</xh:tr>
+<xh:tr>
+<xh:td>
+<fr:explanation id="HeaderMainBusinessActivities-control" bind="HeaderMainBusinessActivities-bind" xmlns:xxbl="http://orbeon.org/oxf/xml/xbl" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+<xf:alert ref="$fr-resources/detail/labels/alert">
+</xf:alert>
+<fr:text ref="$form-resources/HeaderMainBusinessActivities/text" mediatype="text/html">
+</fr:text>
+</fr:explanation>
+</xh:td>
+<xh:td>
+<fr:explanation id="HeaderNumberOfEmployees-control" bind="HeaderNumberOfEmployees-bind" xmlns:xxbl="http://orbeon.org/oxf/xml/xbl" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+<xf:alert ref="$fr-resources/detail/labels/alert">
+</xf:alert>
+<fr:text ref="$form-resources/HeaderNumberOfEmployees/text" mediatype="text/html">
+</fr:text>
+</fr:explanation>
+</xh:td>
+</xh:tr>
+<xh:tr>
+<xh:td>
+<xf:textarea id="MainBusinessActivities-control" bind="MainBusinessActivities-bind" class="fr-summary">
+<xf:label ref="$form-resources/MainBusinessActivities/label">
+</xf:label>
+<xf:hint ref="$form-resources/MainBusinessActivities/hint">
+</xf:hint>
+<xf:alert ref="$fr-resources/detail/labels/alert">
+</xf:alert>
+</xf:textarea>
+</xh:td>
+<xh:td>
+<fr:number id="ScottishEmployeeCount-control" bind="ScottishEmployeeCount-bind" class="fr-summary" xmlns="http://orbeon.org/oxf/xml/form-builder" xmlns:xxbl="http://orbeon.org/oxf/xml/xbl" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+<xf:label ref="$form-resources/ScottishEmployeeCount/label">
+</xf:label>
+<xf:hint ref="$form-resources/ScottishEmployeeCount/hint">
+</xf:hint>
+<xf:alert ref="$fr-resources/detail/labels/alert">
+</xf:alert>
+</fr:number>
+</xh:td>
+</xh:tr>
+</fr:grid>
+</fr:section>
+<fr:section id="SalesAndExports-control" bind="SalesAndExports-bind">
+<xf:label ref="$form-resources/SalesAndExports/label">
+</xf:label>
+<fr:grid>
+<xh:tr>
+<xh:td>
+<fr:explanation id="HeaderSalesAndGoodsTotals-control" bind="HeaderSalesAndGoodsTotals-bind" xmlns:xxbl="http://orbeon.org/oxf/xml/xbl" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+<xf:alert ref="$fr-resources/detail/labels/alert">
+</xf:alert>
+<fr:text ref="$form-resources/HeaderSalesAndGoodsTotals/text" mediatype="text/html">
+</fr:text>
+</fr:explanation>
+</xh:td>
+</xh:tr>
+</fr:grid>
+<fr:grid>
+<xh:tr>
+<xh:td>
+<fr:explanation id="SubHeaderGoods-control" bind="SubHeaderGoods-bind" xmlns:xxbl="http://orbeon.org/oxf/xml/xbl" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+<xf:alert ref="$fr-resources/detail/labels/alert">
+</xf:alert>
+<fr:text ref="$form-resources/SubHeaderGoods/text" mediatype="text/html">
+</fr:text>
+</fr:explanation>
+</xh:td>
+<xh:td>
+<fr:currency id="TotalGoodsSold-control" bind="TotalGoodsSold-bind" xmlns="http://orbeon.org/oxf/xml/form-builder" xmlns:xxbl="http://orbeon.org/oxf/xml/xbl">
+<xf:label ref="$form-resources/TotalGoodsSold/label">
+</xf:label>
+<xf:hint ref="$form-resources/TotalGoodsSold/hint">
+</xf:hint>
+<xf:alert ref="$fr-resources/detail/labels/alert">
+</xf:alert>
+</fr:currency>
+</xh:td>
+<xh:td>
+<fr:explanation id="SubHeaderServices-control" bind="SubHeaderServices-bind" xmlns:xxbl="http://orbeon.org/oxf/xml/xbl" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+<xf:alert ref="$fr-resources/detail/labels/alert">
+</xf:alert>
+<fr:text ref="$form-resources/SubHeaderServices/text" mediatype="text/html">
+</fr:text>
+</fr:explanation>
+</xh:td>
+<xh:td>
+<fr:currency id="TotalServicesSold-control" bind="TotalServicesSold-bind" xmlns="http://orbeon.org/oxf/xml/form-builder" xmlns:xxbl="http://orbeon.org/oxf/xml/xbl">
+<xf:label ref="$form-resources/TotalServicesSold/label">
+</xf:label>
+<xf:hint ref="$form-resources/TotalServicesSold/hint">
+</xf:hint>
+<xf:alert ref="$fr-resources/detail/labels/alert">
+</xf:alert>
+</fr:currency>
+</xh:td>
+<xh:td>
+<fr:explanation id="SubHeaderGoodsServicesTotal-control" bind="SubHeaderGoodsServicesTotal-bind" xmlns:xxbl="http://orbeon.org/oxf/xml/xbl" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+<xf:alert ref="$fr-resources/detail/labels/alert">
+</xf:alert>
+<fr:text ref="$form-resources/SubHeaderGoodsServicesTotal/text" mediatype="text/html">
+</fr:text>
+</fr:explanation>
+</xh:td>
+<xh:td>
+<fr:currency id="TotalSold-control" bind="TotalSold-bind" xmlns="http://orbeon.org/oxf/xml/form-builder" xmlns:xxbl="http://orbeon.org/oxf/xml/xbl">
+<xf:label ref="$form-resources/TotalSold/label">
+</xf:label>
+<xf:hint ref="$form-resources/TotalSold/hint">
+</xf:hint>
+<xf:alert ref="$fr-resources/detail/labels/alert">
+</xf:alert>
+</fr:currency>
+</xh:td>
+</xh:tr>
+</fr:grid>
+<fr:grid>
+<xh:tr>
+<xh:td>
+<fr:explanation id="HeaderPercentageSales-control" bind="HeaderPercentageSales-bind" xmlns:xxbl="http://orbeon.org/oxf/xml/xbl" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+<xf:alert ref="$fr-resources/detail/labels/alert">
+</xf:alert>
+<fr:text ref="$form-resources/HeaderPercentageSales/text" mediatype="text/html">
+</fr:text>
+</fr:explanation>
+</xh:td>
+</xh:tr>
+</fr:grid>
+<fr:grid>
+<xh:tr>
+<xh:td>
+</xh:td>
+<xh:td>
+</xh:td>
+<xh:td>
+</xh:td>
+<xh:td>
+</xh:td>
+<xh:td>
+</xh:td>
+<xh:td>
+</xh:td>
+</xh:tr>
+</fr:grid>
+</fr:section>
+</fr:body>
+</fr:view>
+</xh:body>
+<xh:div style="display:none;">
+</xh:div>
+<sem:triples xmlns:sem="http://marklogic.com/semantics">
+<sem:triple>
+<sem:subject>http://marklogic.com/orbeon-ml-api/ns/builder/orbeon/orbeon/builder/data/090be035491c76f212b74e8de2d304fc2df83366/data.xml</sem:subject>
+<sem:predicate>http://marklogic.com/orbeon-ml-api/ns/has-doc-uri</sem:predicate>
+<sem:object>/orbeon/orbeon/builder/data/090be035491c76f212b74e8de2d304fc2df83366/data.xml</sem:object>
+</sem:triple>
+</sem:triples>
+</xh:html>
