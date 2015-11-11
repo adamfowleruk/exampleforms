@@ -1,0 +1,99 @@
+/* Override section bars */
+.orbeon h2, .orbeon h3 {
+    background-color: #aa477e;
+    background-image: none;
+    background-repeat: no-repeat;
+ }
+
+/* Override section text */
+ .orbeon .xbl-fr-section .fr-section-title .fr-section-label a {
+    color: white;
+    display: block;
+}
+
+/* Set body and section background colour */
+body.orbeon, .orbeon .xbl-fr-section{
+	background-color: #cbe1c6;
+}
+
+/* Override border */
+.fr-border {
+    border: 1px solid black;
+}
+
+/* Override hints text*/
+.orbeon .xforms-hint-appearance-inline .xforms-hint {
+    color: #aa477e;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+/* Override topmost header*/
+.orbeon .navbar-inverse .navbar-inner .container h1 {
+    color: white;
+    font-size: 16px;
+    text-transform: uppercase;
+}
+
+/* Remove image and add Asterisk */
+.orbeon .fr-mode-new .xforms-required .xforms-label, .orbeon .fr-mode-edit .xforms-required .xforms-label, .orbeon .fr-mode-test .xforms-required .xforms-label, .orbeon .xforms-dialog .xforms-required .xforms-label {
+    background-image: none;
+    padding-left: 0px;
+}
+
+.orbeon .fr-mode-new .xforms-required.xforms-empty .xforms-label, .orbeon .fr-mode-edit .xforms-required.xforms-empty .xforms-label, .orbeon .fr-mode-test .xforms-required.xforms-empty .xforms-label, .orbeon .xforms-dialog .xforms-required.xforms-empty .xforms-label {
+    background-image: none;
+    padding-left: 0px;
+}
+
+.orbeon .fr-mode-new .xforms-required .xforms-label::before, .orbeon .fr-mode-edit .xforms-required .xforms-label::before, .orbeon .fr-mode-test .xforms-required .xforms-label::before, .orbeon .xforms-dialog .xforms-required .xforms-label::before {
+    color: #d00;
+    content: "*";
+    font-size: 18px;
+    font-weight: bold;
+}
+
+/* Format question numbers */
+.orbeon .fr-grid .question .xforms-label {
+	font-weight: bold;
+}
+
+.orbeon .fr-grid .question .xforms-label strong {
+	font-weight: bolder;
+	background-color: #aa477e;
+	color:white;
+	padding-top: 1px;
+	padding-bottom: 1px;
+	padding-left: 10px;
+	padding-right: 10px;
+	border: 1px solid black;
+	overflow: visible;
+}
+
+/* Format bullet lists */
+.orbeon ul {
+    list-style: none;
+}
+
+.orbeon ul li:before {
+    content: "\25C6 \0020";
+    color: #aa477e;
+    font-size: 18px;
+}
+
+/* Override to align help icon right */
+.orbeon .fr-grid .xforms-help {
+    float: right;
+}
+
+/* Custom class for bold labels */
+.orbeon .xforms-output.bold label,  .orbeon .xforms-input.bold label{
+    font-weight: bold;
+}
+
+/* Override checkbox alignment */
+.orbeon .xforms-input.xforms-type-boolean label {
+	float: left;
+    width: 90%;
+}
