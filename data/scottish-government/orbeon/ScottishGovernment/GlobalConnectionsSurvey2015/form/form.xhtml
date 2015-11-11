@@ -1,8 +1,8 @@
-<?xml  version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <xh:html xmlns:xh="http://www.w3.org/1999/xhtml" xmlns:xf="http://www.w3.org/2002/xforms" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xxi="http://orbeon.org/oxf/xml/xinclude" xmlns:xxf="http://orbeon.org/oxf/xml/xforms" xmlns:exf="http://www.exforms.org/exf/1-0" xmlns:fr="http://orbeon.org/oxf/xml/form-runner" xmlns:saxon="http://saxon.sf.net/" xmlns:sql="http://orbeon.org/oxf/xml/sql" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:fb="http://orbeon.org/oxf/xml/form-builder">
-<xh:head>
-<xh:title>Scotland's Global Connections Survey 2015</xh:title>
-<xf:model id="fr-form-model" xxf:expose-xpath-types="true">
+  <xh:head>
+    <xh:title>Scotland's Global Connections Survey 2015</xh:title>
+    <xf:model id="fr-form-model" xxf:expose-xpath-types="true">
 <!--
  Main instance
 -->
@@ -16,11 +16,9 @@
 <HeaderHelpline>
 </HeaderHelpline>
 </Introduction>
-<CompanyDetails>
-<HeaderCompanyAddress>
-</HeaderCompanyAddress>
-<BlankPlaceholder1>
-</BlankPlaceholder1>
+<CompanyDetails><HeaderAddress/>
+
+
 <ContactName>
 </ContactName>
 <TelephoneNumber>
@@ -52,41 +50,28 @@
 <Postcode>
 </Postcode>
 <BlankPlaceholder6>
-</BlankPlaceholder6>
-<HeaderHQInfo>
-</HeaderHQInfo>
-<BlankPlaceholder7>
-</BlankPlaceholder7>
+</BlankPlaceholder6><HQInfoText/>
+
+
 <HQCountry>scotland</HQCountry>
-<OtherCountryCode label="">
-</OtherCountryCode>
-<HeaderMainBusinessActivities>
-</HeaderMainBusinessActivities>
-<HeaderNumberOfEmployees>
-</HeaderNumberOfEmployees>
+<OtherCountryCode label=""/><BusinessActivityText/><NumberOfEmployeesText/>
+
+
 <MainBusinessActivities>
 </MainBusinessActivities>
 <ScottishEmployeeCount>
 </ScottishEmployeeCount>
 </CompanyDetails>
-<SalesAndExports>
-<HeaderSalesAndGoodsTotals>
-</HeaderSalesAndGoodsTotals>
-<SubHeaderGoods>
-</SubHeaderGoods>
-<TotalGoodsSold>
-</TotalGoodsSold>
-<SubHeaderServices>
-</SubHeaderServices>
-<TotalServicesSold>
-</TotalServicesSold>
-<SubHeaderGoodsServicesTotal>
-</SubHeaderGoodsServicesTotal>
-<TotalSold>
-</TotalSold>
-<HeaderPercentageSales>
-</HeaderPercentageSales>
-</SalesAndExports>
+<SalesAndExports><TotalSalesText/>
+
+
+<TotalGoodsSold/>
+
+<TotalServicesSold/>
+
+<TotalSold/><control-135/>
+<control-48/><ScotlandGoodsPercentage/><UKGoodsPercentage/><EUGoodsPercentage/><WorldGoodsPercentage/><control-46/><control-47/><ScotlandServicesPercentage/><UKServicesPercentage/><EUServicesPercentage/><WorldServicesPercentage/><control-52/><control-53/><control-54/><ScotlandTotalPercentage/><UKTotalPercentage/><EUTotalPercentage/><WorldTotalPercentage/><control-59/><control-57/><control-136/><grid-59><grid-59-iteration><ExportCountryName/><ExportCountryAmount/><ExportCountryPercentage/></grid-59-iteration></grid-59>
+</SalesAndExports><section-64><InternationalBarriersText/><BarriersProductsServicesUnsuitableFoExports>false</BarriersProductsServicesUnsuitableFoExports><BarriersLackOfResourcesOrManagementTime/><BarriersLackOfMarketInformation/><BarriersHighImportTariffsInTargetMarkets/><BarriersLanguageOrCulturalDifferences/><BarriersCurrencyExchangeRates/><BarriersExportDocumentation/><BarriersLegislationAndStandards/><BarriersExportCreditInsurance/><BarriersSettingCompetitivePrices/><BarriersExportFinance/><BarriersNoSpareProductionCapacity/><BarriersAccessToFinanceInGeneral/><BarriersAfterSalesService/><BarriersLackOfTrainedStaff/><BarriersLackOfInternationalEcommerceCapability/><BarriersTransportCosts/><BarriersNonTariffBarriers/><BarriersOther/><FromsOfAssistanceText/><AssistanceExportTraining/><AssistanceInternationalMarketing/><AssistanceExportDocumentation/><AssistanceInternationalMentoringOrPlacements/><AssistanceInternationalEcommerce/><AssistanceIntroductionToOverseasCustomers/><AssistanceDevelopingAnInternationalStrategy/><AssistanceIntroductionToAgentsOrDistributorsOrJVPartners/><AssistanceMarketResearch/><AssistanceInformationOnBusinessOpportunities/><AssistanceExhibitingAtTradeFairs/><AssistanceInformationOnWorldAidFundedBusiness/><AssistanceOverseasTradeMissions/><AssistanceStartUpFacilitiesOverseas/><AssistanceOther/><control-137/><grid-102><grid-102-iteration><ExportingHelpOrganisationName/></grid-102-iteration></grid-102></section-64><section-105><control-138/><grid-107><grid-107-iteration><FutureExportMarketCountryName/></grid-107-iteration></grid-107></section-105><section-110><control-139/><control-115/><grid-112><grid-112-iteration><CurrentRelationshipCountryName/><CurrentRelationshipNumberOfSubsiduaries/><CurrentRelationshipNumberOfAgencies/><CurrentRelationshipNumberOfJointVentures/><CurrentRelationshipNumberOfOther/></grid-112-iteration></grid-112><control-120/><grid-121><grid-121-iteration><PlannedRelationshipCountryName/><PlannedRelationshipNumberOfSubsiduaries/><PlannedRelationshipNumberOfAgencies/><PlannedRelationshipNumberOfJointVentures/><PlannedRelationshipNumberOfOther/></grid-121-iteration></grid-121></section-110><section-128><control-140/><control-141/><CostOfCompletingForm/><control-133/><QuestionnaireComments/></section-128>
 </GlobalConnectionsSurvey2015>
 </xf:instance>
 <!--
@@ -96,16 +81,18 @@
 <xf:bind ref="*:Introduction" id="Introduction-bind" name="Introduction">
 <xf:bind ref="*:HeaderFormIntro" id="HeaderFormIntro-bind" name="HeaderFormIntro">
 </xf:bind>
-<xf:bind ref="*:URN" id="URN-bind" name="URN" required="true()">
+<xf:bind ref="*:URN" id="URN-bind" name="URN" required="true()" type="xs:integer">
+<xf:constraint id="validation-43-validation" value="xxf:max-length(11)">
+</xf:constraint>
+<xf:constraint id="validation-44-validation" value="xxf:min-length(11)">
+</xf:constraint>
 </xf:bind>
 <xf:bind ref="*:HeaderHelpline" id="HeaderHelpline-bind" name="HeaderHelpline">
 </xf:bind>
 </xf:bind>
 <xf:bind ref="*:CompanyDetails" id="CompanyDetails-bind" name="CompanyDetails">
-<xf:bind ref="*:HeaderCompanyAddress" id="HeaderCompanyAddress-bind" name="HeaderCompanyAddress">
-</xf:bind>
-<xf:bind ref="*:BlankPlaceholder1" id="BlankPlaceholder1-bind" name="BlankPlaceholder1">
-</xf:bind>
+
+
 <xf:bind ref="*:ContactName" id="ContactName-bind" name="ContactName" required="true()">
 </xf:bind>
 <xf:bind ref="*:TelephoneNumber" id="TelephoneNumber-bind" name="TelephoneNumber" required="true()">
@@ -138,41 +125,32 @@
 </xf:bind>
 <xf:bind ref="*:BlankPlaceholder6" id="BlankPlaceholder6-bind" name="BlankPlaceholder6">
 </xf:bind>
-<xf:bind ref="*:HeaderHQInfo" id="HeaderHQInfo-bind" name="HeaderHQInfo">
-</xf:bind>
-<xf:bind ref="*:BlankPlaceholder7" id="BlankPlaceholder7-bind" name="BlankPlaceholder7">
-</xf:bind>
+
+
 <xf:bind ref="*:HQCountry" id="HQCountry-bind" name="HQCountry" required="true()">
 </xf:bind>
 <xf:bind ref="*:OtherCountryCode" id="OtherCountryCode-bind" name="OtherCountryCode">
 </xf:bind>
-<xf:bind ref="*:HeaderMainBusinessActivities" id="HeaderMainBusinessActivities-bind" name="HeaderMainBusinessActivities">
-</xf:bind>
-<xf:bind ref="*:HeaderNumberOfEmployees" id="HeaderNumberOfEmployees-bind" name="HeaderNumberOfEmployees">
-</xf:bind>
+
+
 <xf:bind ref="*:MainBusinessActivities" id="MainBusinessActivities-bind" name="MainBusinessActivities" required="true()">
 </xf:bind>
 <xf:bind ref="*:ScottishEmployeeCount" id="ScottishEmployeeCount-bind" name="ScottishEmployeeCount" type="xs:decimal" required="true()">
-</xf:bind>
+</xf:bind><xf:bind ref="*:HeaderAddress" id="HeaderAddress-bind" name="HeaderAddress"/><xf:bind ref="*:HQInfoText" id="HQInfoText-bind" name="HQInfoText"/><xf:bind ref="*:BusinessActivityText" id="BusinessActivityText-bind" name="BusinessActivityText"/><xf:bind ref="*:NumberOfEmployeesText" id="NumberOfEmployeesText-bind" name="NumberOfEmployeesText"/>
 </xf:bind>
 <xf:bind ref="*:SalesAndExports" id="SalesAndExports-bind" name="SalesAndExports">
-<xf:bind ref="*:HeaderSalesAndGoodsTotals" id="HeaderSalesAndGoodsTotals-bind" name="HeaderSalesAndGoodsTotals">
-</xf:bind>
-<xf:bind ref="*:SubHeaderGoods" id="SubHeaderGoods-bind" name="SubHeaderGoods">
-</xf:bind>
-<xf:bind ref="*:SubHeaderServices" id="SubHeaderServices-bind" name="SubHeaderServices">
-</xf:bind>
-<xf:bind ref="*:SubHeaderGoodsServicesTotal" id="SubHeaderGoodsServicesTotal-bind" name="SubHeaderGoodsServicesTotal">
-</xf:bind>
+
+
+
+
 <xf:bind ref="*:TotalGoodsSold" id="TotalGoodsSold-bind" name="TotalGoodsSold" type="xs:decimal" required="true()">
 </xf:bind>
 <xf:bind ref="*:TotalServicesSold" id="TotalServicesSold-bind" name="TotalServicesSold" type="xs:decimal" required="true()">
 </xf:bind>
 <xf:bind ref="*:TotalSold" id="TotalSold-bind" name="TotalSold" type="xf:decimal" readonly="true()" calculate="//TotalGoodsSold + //TotalServicesSold" xxf:default="0">
 </xf:bind>
-<xf:bind ref="*:HeaderPercentageSales" id="HeaderPercentageSales-bind" name="HeaderPercentageSales">
-</xf:bind>
-</xf:bind>
+<xf:bind ref="*:ScotlandGoodsPercentage" id="ScotlandGoodsPercentage-bind" name="ScotlandGoodsPercentage" type="xf:decimal"/><xf:bind ref="*:UKGoodsPercentage" id="UKGoodsPercentage-bind" name="UKGoodsPercentage" type="xf:decimal"/><xf:bind ref="*:EUGoodsPercentage" id="EUGoodsPercentage-bind" name="EUGoodsPercentage" type="xf:decimal"/><xf:bind ref="*:WorldGoodsPercentage" id="WorldGoodsPercentage-bind" name="WorldGoodsPercentage" type="xf:decimal"/><xf:bind ref="*:control-46" id="control-46-bind" name="control-46"/><xf:bind ref="*:control-47" id="control-47-bind" name="control-47"/><xf:bind ref="*:control-48" id="control-48-bind" name="control-48"/><xf:bind ref="*:ScotlandServicesPercentage" id="ScotlandServicesPercentage-bind" name="ScotlandServicesPercentage" type="xf:decimal"/><xf:bind ref="*:UKServicesPercentage" id="UKServicesPercentage-bind" name="UKServicesPercentage" type="xf:decimal"/><xf:bind ref="*:EUServicesPercentage" id="EUServicesPercentage-bind" name="EUServicesPercentage" type="xf:decimal"/><xf:bind ref="*:WorldServicesPercentage" id="WorldServicesPercentage-bind" name="WorldServicesPercentage" type="xf:decimal"/><xf:bind ref="*:control-52" id="control-52-bind" name="control-52"/><xf:bind ref="*:control-53" id="control-53-bind" name="control-53"/><xf:bind ref="*:control-54" id="control-54-bind" name="control-54"/><xf:bind ref="*:ScotlandTotalPercentage" id="ScotlandTotalPercentage-bind" name="ScotlandTotalPercentage" type="xf:decimal"/><xf:bind ref="*:UKTotalPercentage" id="UKTotalPercentage-bind" name="UKTotalPercentage" type="xf:decimal"/><xf:bind ref="*:EUTotalPercentage" id="EUTotalPercentage-bind" name="EUTotalPercentage" type="xf:decimal"/><xf:bind ref="*:WorldTotalPercentage" id="WorldTotalPercentage-bind" name="WorldTotalPercentage" type="xf:decimal"/><xf:bind ref="*:control-59" id="control-59-bind" name="control-59"/><xf:bind ref="*:control-57" id="control-57-bind" name="control-57"/><xf:bind ref="*:grid-59" id="grid-59-bind" name="grid-59"><xf:bind ref="*:grid-59-iteration" id="grid-59-iteration-bind" name="grid-59-iteration"><xf:bind ref="*:ExportCountryName" id="ExportCountryName-bind" name="ExportCountryName"/><xf:bind ref="*:ExportCountryAmount" id="ExportCountryAmount-bind" name="ExportCountryAmount" type="xf:decimal"/><xf:bind ref="*:ExportCountryPercentage" id="ExportCountryPercentage-bind" name="ExportCountryPercentage" type="xf:decimal"/></xf:bind></xf:bind><xf:bind ref="*:TotalSalesText" id="TotalSalesText-bind" name="TotalSalesText"/><xf:bind ref="*:control-135" id="control-135-bind" name="control-135"/><xf:bind ref="*:control-136" id="control-136-bind" name="control-136"/>
+</xf:bind><xf:bind ref="*:section-64" id="section-64-bind" name="section-64"><xf:bind ref="*:BarriersProductsServicesUnsuitableFoExports" id="BarriersProductsServicesUnsuitableFoExports-bind" name="BarriersProductsServicesUnsuitableFoExports" type="xf:boolean"/><xf:bind ref="*:BarriersLackOfMarketInformation" id="BarriersLackOfMarketInformation-bind" name="BarriersLackOfMarketInformation" type="xf:boolean"/><xf:bind ref="*:BarriersLanguageOrCulturalDifferences" id="BarriersLanguageOrCulturalDifferences-bind" name="BarriersLanguageOrCulturalDifferences" type="xf:boolean"/><xf:bind ref="*:BarriersExportDocumentation" id="BarriersExportDocumentation-bind" name="BarriersExportDocumentation" type="xf:boolean"/><xf:bind ref="*:BarriersExportCreditInsurance" id="BarriersExportCreditInsurance-bind" name="BarriersExportCreditInsurance" type="xf:boolean"/><xf:bind ref="*:BarriersExportFinance" id="BarriersExportFinance-bind" name="BarriersExportFinance" type="xf:boolean"/><xf:bind ref="*:BarriersAccessToFinanceInGeneral" id="BarriersAccessToFinanceInGeneral-bind" name="BarriersAccessToFinanceInGeneral" type="xf:boolean"/><xf:bind ref="*:BarriersLackOfResourcesOrManagementTime" id="BarriersLackOfResourcesOrManagementTime-bind" name="BarriersLackOfResourcesOrManagementTime" type="xf:boolean"/><xf:bind ref="*:BarriersHighImportTariffsInTargetMarkets" id="BarriersHighImportTariffsInTargetMarkets-bind" name="BarriersHighImportTariffsInTargetMarkets" type="xf:boolean"/><xf:bind ref="*:BarriersCurrencyExchangeRates" id="BarriersCurrencyExchangeRates-bind" name="BarriersCurrencyExchangeRates" type="xf:boolean"/><xf:bind ref="*:BarriersLegislationAndStandards" id="BarriersLegislationAndStandards-bind" name="BarriersLegislationAndStandards" type="xf:boolean"/><xf:bind ref="*:BarriersSettingCompetitivePrices" id="BarriersSettingCompetitivePrices-bind" name="BarriersSettingCompetitivePrices" type="xf:boolean"/><xf:bind ref="*:BarriersNoSpareProductionCapacity" id="BarriersNoSpareProductionCapacity-bind" name="BarriersNoSpareProductionCapacity" type="xf:boolean"/><xf:bind ref="*:BarriersAfterSalesService" id="BarriersAfterSalesService-bind" name="BarriersAfterSalesService" type="xf:boolean"/><xf:bind ref="*:BarriersLackOfTrainedStaff" id="BarriersLackOfTrainedStaff-bind" name="BarriersLackOfTrainedStaff" type="xf:boolean"/><xf:bind ref="*:BarriersLackOfInternationalEcommerceCapability" id="BarriersLackOfInternationalEcommerceCapability-bind" name="BarriersLackOfInternationalEcommerceCapability" type="xf:boolean"/><xf:bind ref="*:BarriersTransportCosts" id="BarriersTransportCosts-bind" name="BarriersTransportCosts" type="xf:boolean"/><xf:bind ref="*:BarriersNonTariffBarriers" id="BarriersNonTariffBarriers-bind" name="BarriersNonTariffBarriers" type="xf:boolean"/><xf:bind ref="*:BarriersOther" id="BarriersOther-bind" name="BarriersOther"/><xf:bind ref="*:AssistanceExportTraining" id="AssistanceExportTraining-bind" name="AssistanceExportTraining" type="xf:boolean"/><xf:bind ref="*:AssistanceInternationalMarketing" id="AssistanceInternationalMarketing-bind" name="AssistanceInternationalMarketing" type="xf:boolean"/><xf:bind ref="*:AssistanceExportDocumentation" id="AssistanceExportDocumentation-bind" name="AssistanceExportDocumentation" type="xf:boolean"/><xf:bind ref="*:AssistanceInternationalMentoringOrPlacements" id="AssistanceInternationalMentoringOrPlacements-bind" name="AssistanceInternationalMentoringOrPlacements" type="xf:boolean"/><xf:bind ref="*:AssistanceInternationalEcommerce" id="AssistanceInternationalEcommerce-bind" name="AssistanceInternationalEcommerce" type="xf:boolean"/><xf:bind ref="*:AssistanceIntroductionToOverseasCustomers" id="AssistanceIntroductionToOverseasCustomers-bind" name="AssistanceIntroductionToOverseasCustomers" type="xf:boolean"/><xf:bind ref="*:AssistanceDevelopingAnInternationalStrategy" id="AssistanceDevelopingAnInternationalStrategy-bind" name="AssistanceDevelopingAnInternationalStrategy" type="xf:boolean"/><xf:bind ref="*:AssistanceIntroductionToAgentsOrDistributorsOrJVPartners" id="AssistanceIntroductionToAgentsOrDistributorsOrJVPartners-bind" name="AssistanceIntroductionToAgentsOrDistributorsOrJVPartners" type="xf:boolean"/><xf:bind ref="*:AssistanceMarketResearch" id="AssistanceMarketResearch-bind" name="AssistanceMarketResearch" type="xf:boolean"/><xf:bind ref="*:AssistanceInformationOnBusinessOpportunities" id="AssistanceInformationOnBusinessOpportunities-bind" name="AssistanceInformationOnBusinessOpportunities" type="xf:boolean"/><xf:bind ref="*:AssistanceExhibitingAtTradeFairs" id="AssistanceExhibitingAtTradeFairs-bind" name="AssistanceExhibitingAtTradeFairs" type="xf:boolean"/><xf:bind ref="*:AssistanceInformationOnWorldAidFundedBusiness" id="AssistanceInformationOnWorldAidFundedBusiness-bind" name="AssistanceInformationOnWorldAidFundedBusiness" type="xf:boolean"/><xf:bind ref="*:AssistanceOverseasTradeMissions" id="AssistanceOverseasTradeMissions-bind" name="AssistanceOverseasTradeMissions" type="xf:boolean"/><xf:bind ref="*:AssistanceStartUpFacilitiesOverseas" id="AssistanceStartUpFacilitiesOverseas-bind" name="AssistanceStartUpFacilitiesOverseas" type="xf:boolean"/><xf:bind ref="*:AssistanceOther" id="AssistanceOther-bind" name="AssistanceOther"/><xf:bind ref="*:grid-102" id="grid-102-bind" name="grid-102"><xf:bind ref="*:grid-102-iteration" id="grid-102-iteration-bind" name="grid-102-iteration"><xf:bind ref="*:ExportingHelpOrganisationName" id="ExportingHelpOrganisationName-bind" name="ExportingHelpOrganisationName"/></xf:bind></xf:bind><xf:bind ref="*:InternationalBarriersText" id="InternationalBarriersText-bind" name="InternationalBarriersText"/><xf:bind ref="*:FromsOfAssistanceText" id="FromsOfAssistanceText-bind" name="FromsOfAssistanceText"/><xf:bind ref="*:control-137" id="control-137-bind" name="control-137"/></xf:bind><xf:bind ref="*:section-105" id="section-105-bind" name="section-105"><xf:bind ref="*:grid-107" id="grid-107-bind" name="grid-107"><xf:bind ref="*:grid-107-iteration" id="grid-107-iteration-bind" name="grid-107-iteration"><xf:bind ref="*:FutureExportMarketCountryName" id="FutureExportMarketCountryName-bind" name="FutureExportMarketCountryName"/></xf:bind></xf:bind><xf:bind ref="*:control-138" id="control-138-bind" name="control-138"/></xf:bind><xf:bind ref="*:section-110" id="section-110-bind" name="section-110"><xf:bind ref="*:grid-112" id="grid-112-bind" name="grid-112"><xf:bind ref="*:grid-112-iteration" id="grid-112-iteration-bind" name="grid-112-iteration"><xf:bind ref="*:CurrentRelationshipCountryName" id="CurrentRelationshipCountryName-bind" name="CurrentRelationshipCountryName"/><xf:bind ref="*:CurrentRelationshipNumberOfSubsiduaries" id="CurrentRelationshipNumberOfSubsiduaries-bind" name="CurrentRelationshipNumberOfSubsiduaries"/><xf:bind ref="*:CurrentRelationshipNumberOfAgencies" id="CurrentRelationshipNumberOfAgencies-bind" name="CurrentRelationshipNumberOfAgencies"/><xf:bind ref="*:CurrentRelationshipNumberOfJointVentures" id="CurrentRelationshipNumberOfJointVentures-bind" name="CurrentRelationshipNumberOfJointVentures"/><xf:bind ref="*:CurrentRelationshipNumberOfOther" id="CurrentRelationshipNumberOfOther-bind" name="CurrentRelationshipNumberOfOther"/></xf:bind></xf:bind><xf:bind ref="*:control-115" id="control-115-bind" name="control-115"/><xf:bind ref="*:control-120" id="control-120-bind" name="control-120"/><xf:bind ref="*:grid-121" id="grid-121-bind" name="grid-121"><xf:bind ref="*:grid-121-iteration" id="grid-121-iteration-bind" name="grid-121-iteration"><xf:bind ref="*:PlannedRelationshipCountryName" id="PlannedRelationshipCountryName-bind" name="PlannedRelationshipCountryName"/><xf:bind ref="*:PlannedRelationshipNumberOfSubsiduaries" id="PlannedRelationshipNumberOfSubsiduaries-bind" name="PlannedRelationshipNumberOfSubsiduaries"/><xf:bind ref="*:PlannedRelationshipNumberOfAgencies" id="PlannedRelationshipNumberOfAgencies-bind" name="PlannedRelationshipNumberOfAgencies"/><xf:bind ref="*:PlannedRelationshipNumberOfJointVentures" id="PlannedRelationshipNumberOfJointVentures-bind" name="PlannedRelationshipNumberOfJointVentures"/><xf:bind ref="*:PlannedRelationshipNumberOfOther" id="PlannedRelationshipNumberOfOther-bind" name="PlannedRelationshipNumberOfOther"/></xf:bind></xf:bind><xf:bind ref="*:control-139" id="control-139-bind" name="control-139"/></xf:bind><xf:bind ref="*:section-128" id="section-128-bind" name="section-128"><xf:bind ref="*:CostOfCompletingForm" id="CostOfCompletingForm-bind" name="CostOfCompletingForm" type="xf:decimal"/><xf:bind ref="*:QuestionnaireComments" id="QuestionnaireComments-bind" name="QuestionnaireComments"/><xf:bind ref="*:control-140" id="control-140-bind" name="control-140"/><xf:bind ref="*:control-141" id="control-141-bind" name="control-141"/><xf:bind ref="*:control-133" id="control-133-bind" name="control-133"/></xf:bind>
 </xf:bind>
 <!--
  Metadata
@@ -183,8 +161,8 @@
 <form-name>GlobalConnectionsSurvey2015</form-name>
 <title xml:lang="en">Scotland's Global Connections Survey 2015</title>
 <description xml:lang="en">A questionnaire for businesses to submit information on doing business in Scotland.</description>
-<singleton>false</singleton>
-</metadata>
+<singleton>true</singleton>
+<migration version="4.8.0">[{ "path": "(SalesAndExports)/(grid-59)", "iteration-name": "grid-59-iteration" },{ "path": "(section-64)/(grid-102)", "iteration-name": "grid-102-iteration" },{ "path": "(section-105)/(grid-107)", "iteration-name": "grid-107-iteration" },{ "path": "(section-110)/(grid-112)", "iteration-name": "grid-112-iteration" },{ "path": "(section-110)/(grid-121)", "iteration-name": "grid-121-iteration" }]</migration></metadata>
 </xf:instance>
 <!--
  Attachments
@@ -205,50 +183,51 @@
 -->
 <xf:instance id="fr-form-resources" xxf:readonly="false" xxf:exclude-result-prefixes="#all">
 <resources>
-<resource xml:lang="en">
-<HeaderSalesAndGoodsTotals>
-<text><div><strong>5 Please give the total sales of good and services from the Scottish branches of your company in 2015, to the nearest £1,000</strong></div></text>
-</HeaderSalesAndGoodsTotals>
-<SubHeaderGoods>
-<text><div> </div>
-<div><strong>Goods</strong></div></text>
-</SubHeaderGoods>
+<resource xml:lang="en"><control-140><label>&lt;strong&gt;13a&lt;/strong&gt; Could you please indicate how long this survey form has taken to complete?</label><hint/><help>Under the principles of the National Statistics Code of Practice, which is a statutory requirement covering all UK bodies that are responsible for official statistics, we have a duty to balance the needs of the users against the burden on providers. Principle 6 of the Code of Practice states the cost of complying with statistical surveys will be planned, managed and reported. More information can be obtained from the following link:-
+http://www.statisticsauthoritygov.uk/assessment/code-of-practice/index.html
+
+Given the diversity of businesses, the completion time and hence costs of this Survey will vary depending on whether your organisation exports or not. However, we have a duty to report on respondent burden, and this question is an attempt to measure this burden.</help></control-140><control-139><label>&lt;strong&gt;12&lt;/strong&gt; Please list the countries, if any, that your company has existing or planned relationships with, and state the number of each.</label><hint>&lt;li&gt;Answer only if your business headquarters are based in Scotland&lt;/li&gt;&lt;li&gt;If the information cannot be broken down into specific countries please provide the region totals&lt;/li&gt;&lt;li&gt;Refer to notes and attached country list for additional guidance&lt;/li&gt;</hint><help>&lt;div&gt;The following descriptions cover the types of overseas relationships/operations we are interested in:&lt;/div&gt;&lt;div&gt;&lt;strong&gt;Subsidiary:&lt;/strong&gt; wholly or partly owned by a parent company, i.e. the parent company would hold a controlling interest (i.e. more than 50% of the stock, shares or other equity).&lt;/div&gt;&lt;div&gt;&lt;strong&gt;Sales Office:&lt;/strong&gt; the representative’s or agents working address.&lt;/div&gt;&lt;div&gt;&lt;strong&gt;Joint venture:&lt;/strong&gt; the establishment of a new independent enterprise, with or without equity share. Typically a joint venture has its own distinct identity and separate operation procedures. Strategic Alliances and Franchises should be included in this category.&lt;/div&gt;&lt;div&gt;&lt;strong&gt;Other:&lt;/strong&gt; for example: technology licensing (a contract between independent firms to transfer novel technologies, rights or resources); R&amp;amp;D Alliances (agreements to undertake specific tasks which are generally terminated at the completion of these tasks); Outsourcing (generally involves a firm(s) agreeing that other firm(s) should carry out the production of its innovative goods or services); Value Chain Partnerships (are generally long term contracts, transfer of skills, managerial techniques &amp;amp; joint R&amp;amp;D).&lt;/div&gt;&lt;div&gt;&amp;nbsp;&lt;/div&gt;&lt;div&gt;&lt;strong&gt;Construction services&lt;/strong&gt; are included in exports if they relate to overseas contracts of less than one year which are managed from Scotland and where the employees carrying out the contract are normally based in Scotland.&lt;/div&gt;&lt;div&gt;&amp;nbsp;&lt;/div&gt;&lt;div&gt;&lt;strong&gt;Education:&lt;/strong&gt; Sales by educational institutions refers to income generated from fees, and any income generated from patents, research, copyrights, examinations etc. It should exclude the value of Government grants. Exports of education are fees from overseas students and any other income from outside the UK.&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;strong&gt;Financial Services:&lt;/strong&gt; Sales of bank and building society services are defined as net interest received plus charges (including all commissions and fees) and earnings on foreign exchange transactions. Fund management companies should count fees generated through investment management fees and fees generated from advisory and other related functions. Exports are fees from outwith the UK and are net of foreign expenses. Securities dealers should provide spread earnings (dealing profits less holding gains), with earnings from overseas being counted as exports. Insurance sales relate to insurance service charges i.e. premiums minus claims, for direct insurance such as health, property and transport insurance; exports of these refer to the relevant balances with overseas customers. Life insurance sales cover the underwriting services associated with long-term policies, and pension fund services include the service charges associated with pension schemes.&lt;/div&gt;&lt;div&gt;&amp;nbsp;&lt;/div&gt;&lt;div&gt;&lt;strong&gt;Health and Personal Services:&lt;/strong&gt; Provision of services such as health, dental or optician treatment, hairdressing, beauty and spa treatments etc. to non-residents count as exports of these services. Total sales include all fees received for provision of treatment. Only private fees and not resources provided by the NHS should be included. Hotels, restaurants and catering: it would be most helpful if you could estimate the percentage of your sales that come from customers who live outwith Scotland in question 6 if possible, even if you cannot supply the detailed information in question 7&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;strong&gt;Oil &amp;amp; Gas:&lt;/strong&gt; the value of sales of crude petroleum and natural gas should NOT be included on this return as these are classified as sales from the UK as a whole under National Accounting principles. The value of sales of service activities incidental to oil and gas extraction such as test drilling, test hole boring, pumping of wells, cementing of oil and gas well casings etc. should be included.&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;strong&gt;Retail:&lt;/strong&gt; Exports from retail include all sales to tourists and other visitors to Scotland, as well as online sales, shipped products and sales with reclaimable VAT. Although it may not be possible to identify all of these precisely , your best estimate of the percentage of sales to each area would be appreciated. Even if you cannot complete question 7, it would be most helpful if you could complete questions 5 and 6.&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;strong&gt;Transport Services:&lt;/strong&gt; Where your business provides transport of freight, the charges for this services are considered as your sales (the value of freight should not be included). If you are transporting exports from the UK overseas, the money earned from this service is considered as an export. Likewise, if you are transporting goods from Scotland to the rest of the UK, this counts as a sale of your service to the rest of the UK. Passenger transport services covers revenue from passenger tickets and expenditure in transit, and purchases of these by non-residents are exports. Please estimate these as best you can. Also included are transport charters with crew to non-residents. All payments received by Scottish airports, port authorities and other service companies from overseas airlines, ships or others are counted as exports. Rental of cars and other transport equipment to non-residents are exports.&lt;/div&gt;</help></control-139><control-138><label>&lt;strong&gt;11&lt;/strong&gt; Please list any countries or regions that you see as future export markets</label><hint>&lt;li&gt;Include all countries you are targeting in the next 12 months&lt;/li&gt;&lt;li&gt;Refer to the attached country list for additional guidance&lt;/li&gt;</hint></control-138><InternationalBarriersText><label>&lt;strong&gt;8&lt;/strong&gt; What barriers to future International business development exist for the Scottish branch(es)/operation(s) of your company?</label><hint>&lt;ul&gt;&lt;li&gt;Please tick all that apply&lt;/li&gt;&lt;/ul&gt;</hint></InternationalBarriersText><TotalSalesText><label>&lt;strong&gt;5&lt;/strong&gt; Please give the total sales of good and services from the Scottish branches of your company in 2015, to the nearest £1,000</label><hint>&lt;li&gt;Please refer to notes on particular service sectors&lt;/li&gt;</hint><help>Services sales are sales of intangible products. This should include receipts for the right to use franchises, copyrights, licences, patents, processes, techniques, designs, manufacturing rights, trademarks etc. (unless they have already been included in the contract price of goods) and royalties on printed matter and recordings.
+
+Figures should be given gross of indirect taxes, duties and levies (except VAT) invoiced to customers.
+
+Where sales involve a combination of goods and services that cannot be separately valued, please classify as either goods or services based on the majority of the value. If you have no information to provide goods and services separately, please provide a total sales figure only.</help></TotalSalesText><HeaderAddress><label>&lt;strong&gt;1&lt;/strong&gt; Please enter your address details in the boxes below</label><hint/></HeaderAddress><control-141><label>&lt;strong&gt;13b&lt;/strong&gt; Could you indicate the cost of completing this survey form to your business, to the nearest £?</label><hint/><help>Under the principles of the National Statistics Code of Practice, which is a statutory requirement covering all UK bodies that are responsible for official statistics, we have a duty to balance the needs of the users against the burden on providers. Principle 6 of the Code of Practice states the cost of complying with statistical surveys will be planned, managed and reported. More information can be obtained from the following link:-
+http://www.statisticsauthoritygov.uk/assessment/code-of-practice/index.html
+
+Given the diversity of businesses, the completion time and hence costs of this Survey will vary depending on whether your organisation exports or not. However, we have a duty to report on respondent burden, and this question is an attempt to measure this burden.</help></control-141><CostOfCompletingForm><label/><hint/></CostOfCompletingForm><control-133><label>&lt;strong&gt;14&lt;/strong&gt; We would welcome any comments you have regarding this questionnaire. Please use the space provided below.</label><hint/></control-133><QuestionnaireComments><label/><hint/></QuestionnaireComments><PlannedRelationshipCountryName><label>&lt;strong&gt;Country</label><hint/></PlannedRelationshipCountryName><PlannedRelationshipNumberOfSubsiduaries><label>&lt;strong&gt;Number of Subsidiaries</label><hint/></PlannedRelationshipNumberOfSubsiduaries><PlannedRelationshipNumberOfAgencies><label>&lt;strong&gt;Number of Sales Offices/ Agencies</label><hint/></PlannedRelationshipNumberOfAgencies><PlannedRelationshipNumberOfJointVentures><label>&lt;strong&gt;Number of Joint Ventures</label><hint/></PlannedRelationshipNumberOfJointVentures><PlannedRelationshipNumberOfOther><label>&lt;strong&gt;Number of Other Relationships</label><hint/></PlannedRelationshipNumberOfOther><control-120><label>Planned</label><hint/></control-120><CurrentRelationshipCountryName><label>&lt;strong&gt;Country&lt;/strong&gt;</label><hint/></CurrentRelationshipCountryName><CurrentRelationshipNumberOfSubsiduaries><label>&lt;strong&gt;Number of Subsidiaries</label><hint/></CurrentRelationshipNumberOfSubsiduaries><CurrentRelationshipNumberOfAgencies><label>&lt;strong&gt;Number of Sales Offices/ Agencies</label><hint/></CurrentRelationshipNumberOfAgencies><CurrentRelationshipNumberOfJointVentures><label>&lt;strong&gt;Number of Joint Ventures</label><hint/></CurrentRelationshipNumberOfJointVentures><CurrentRelationshipNumberOfOther><label>&lt;strong&gt;Number of Other Relationships</label><hint/></CurrentRelationshipNumberOfOther><control-115><label>Current</label><hint/></control-115><FutureExportMarketCountryName><label>&lt;strong&gt;Country&lt;/strong&gt;</label><hint/></FutureExportMarketCountryName><ExportingHelpOrganisationName><label>&lt;strong&gt;Organisation name&lt;/strong&gt;</label><hint/></ExportingHelpOrganisationName><BarriersProductsServicesUnsuitableFoExports><label>Products/services unsuitable for exports</label><hint/></BarriersProductsServicesUnsuitableFoExports><BarriersLackOfResourcesOrManagementTime><label>Lack of resources/management time</label><hint/></BarriersLackOfResourcesOrManagementTime><BarriersLackOfMarketInformation><label>Lack of market information</label><hint/></BarriersLackOfMarketInformation><BarriersHighImportTariffsInTargetMarkets><label>High import tariffs in target markets</label><hint/></BarriersHighImportTariffsInTargetMarkets><BarriersLanguageOrCulturalDifferences><label>Language/cultural differences</label><hint/></BarriersLanguageOrCulturalDifferences><BarriersCurrencyExchangeRates><label>Currency/exchange rates</label><hint/></BarriersCurrencyExchangeRates><BarriersExportDocumentation><label>Export documentation</label><hint/></BarriersExportDocumentation><BarriersLegislationAndStandards><label>Legislation and standards</label><hint/></BarriersLegislationAndStandards><BarriersExportCreditInsurance><label>Export Credit Insurance</label><hint/></BarriersExportCreditInsurance><BarriersSettingCompetitivePrices><label>Setting competitive prices</label><hint/></BarriersSettingCompetitivePrices><BarriersExportFinance><label>Export Finance</label><hint/></BarriersExportFinance><BarriersNoSpareProductionCapacity><label>No spare production capacity</label><hint/></BarriersNoSpareProductionCapacity><BarriersAccessToFinanceInGeneral><label>Access to finance in general</label><hint/></BarriersAccessToFinanceInGeneral><BarriersAfterSalesService><label>After sales service</label><hint/></BarriersAfterSalesService><BarriersLackOfTrainedStaff><label>Lack of trained staff</label><hint/></BarriersLackOfTrainedStaff><BarriersLackOfInternationalEcommerceCapability><label>Lack of international e-commerce capability</label><hint/></BarriersLackOfInternationalEcommerceCapability><BarriersTransportCosts><label>Transport costs</label><hint/></BarriersTransportCosts><BarriersNonTariffBarriers><label>Non Tariff barriers</label><hint/></BarriersNonTariffBarriers><BarriersOther><label>Other (please be as specific as possible)</label><hint/></BarriersOther><FromsOfAssistanceText><label>&lt;strong&gt;9&lt;/strong&gt; Which form(s) of assistance would encourage the Scottish branch(es)/operation(s) of your company to improve International performance?</label><hint/><help>World Aid Funded Business includes opportunities offered by the various multilateral development agencies including  the World Bank Group, European Commission, United Nations agencies and various regional development banks, also known as aid-funding agencies.</help></FromsOfAssistanceText><AssistanceExportTraining><label>Export Training</label><hint/></AssistanceExportTraining><AssistanceInternationalMarketing><label>International Marketing</label><hint/></AssistanceInternationalMarketing><AssistanceExportDocumentation><label>Export Documentation</label><hint/></AssistanceExportDocumentation><AssistanceInternationalMentoringOrPlacements><label>International Mentoring / Placements</label><hint/></AssistanceInternationalMentoringOrPlacements><AssistanceInternationalEcommerce><label>International E Commerce</label><hint/></AssistanceInternationalEcommerce><AssistanceIntroductionToOverseasCustomers><label>Introduction to Overseas Customers</label><hint/></AssistanceIntroductionToOverseasCustomers><AssistanceDevelopingAnInternationalStrategy><label>Developing an International Strategy</label><hint/></AssistanceDevelopingAnInternationalStrategy><AssistanceIntroductionToAgentsOrDistributorsOrJVPartners><label>Introduction to Agents / Distributors / JV partners</label><hint/></AssistanceIntroductionToAgentsOrDistributorsOrJVPartners><AssistanceMarketResearch><label>Market Research</label><hint/></AssistanceMarketResearch><AssistanceInformationOnBusinessOpportunities><label>Information on Business Opportunities</label><hint/></AssistanceInformationOnBusinessOpportunities><AssistanceExhibitingAtTradeFairs><label>Exhibiting at Trade Fairs</label><hint/></AssistanceExhibitingAtTradeFairs><AssistanceInformationOnWorldAidFundedBusiness><label>Information on World Aid Funded Business</label><hint/></AssistanceInformationOnWorldAidFundedBusiness><AssistanceOverseasTradeMissions><label>Overseas Trade Missions</label><hint/></AssistanceOverseasTradeMissions><AssistanceStartUpFacilitiesOverseas><label>Start Up Facilities Overseas</label><hint/></AssistanceStartUpFacilitiesOverseas><AssistanceOther><label>Other (please be as specific as possible)</label><hint/></AssistanceOther><control-137><label>&lt;strong&gt;10&lt;/strong&gt; If you needed help with exporting which organisations would you approach?</label><hint>&lt;ul&gt;&lt;li&gt;Please name the different organisations you would approach in the space below.&lt;/li&gt;&lt;/ul&gt;</hint></control-137><ExportCountryName><label>&lt;strong&gt;Country&lt;/strong&gt;</label><hint/></ExportCountryName><ExportCountryAmount><label>&lt;strong&gt;Amount&lt;/strong&gt;</label><hint/></ExportCountryAmount><ExportCountryPercentage><label>&lt;strong&gt;Percentage of Total Sales&lt;/strong&gt;</label><hint/></ExportCountryPercentage>
+
+
 <TotalGoodsSold>
-<label>
-</label>
+<label>Goods</label>
 <hint>
 </hint>
 </TotalGoodsSold>
-<SubHeaderServices>
-<text><div> </div>
-<div><strong>    + Services</strong></div></text>
-</SubHeaderServices>
+
 <TotalServicesSold>
-<label>
-</label>
+<label>+ Services</label>
 <hint>
 </hint>
 </TotalServicesSold>
-<SubHeaderGoodsServicesTotal>
-<text><div> </div>
-<div><strong>     =   Total</strong></div></text>
-</SubHeaderGoodsServicesTotal>
+
 <TotalSold>
-<label>
-</label>
+<label>= Total</label>
 <hint>
 </hint>
-</TotalSold>
-<HeaderPercentageSales>
-<text><div><strong>6 What percentage of your sales in 2015 (as reported in Q5) were to customers in the following locations?</strong></div></text>
-</HeaderPercentageSales>
-<HeaderCompanyAddress>
-<text><div><strong>1 Please enter your address details in the boxes below</strong></div></text>
-</HeaderCompanyAddress>
-<BlankPlaceholder1>
-<text xmlns:xxbl="http://orbeon.org/oxf/xml/xbl" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:oxf="http://www.orbeon.com/oxf/processors" xmlns:p="http://www.orbeon.com/oxf/pipeline" xmlns:xbl="http://www.w3.org/ns/xbl">
-</text>
-</BlankPlaceholder1>
+</TotalSold><control-135><label>&lt;strong&gt;6&lt;/strong&gt; What percentage of your sales in 2015 (as reported in Q5) were to customers in the following locations?</label><hint>&lt;li&gt;Refer to notes and attached country list for guidance&lt;/li&gt;</hint><help>Customers based in the rest of the UK are those that are not normally resident in Scotland. Direct transactions with companies and individuals in the rest of the UK, or sales to residents of another part of the UK while they are visiting Scotland are both counted. If you do not know exactly what proportion of your custom came from the rest of the UK please provide your best estimate. Exports to the UK continental shelf should be treated as exports to the Rest of the UK as this survey relates to onshore activities.
+
+If you cannot provide a breakdown of goods and services separately please provide a total sales breakdown.
+
+Customers based outside the UK are those that are not normally resident in the UK. So, for example, a resident of the USA visiting Scotland and using services would be considered as a customer based outside the UK. As far as possible please allocate sales of goods based on the delivery address, not invoice address if different.
+
+EU includes Republic of Ireland, and countries thatjoined the EU in 2004, 2007 and 2013 - see overleaf for the full list of EU members.</help></control-135>
+<control-48><label>Goods*</label><hint/></control-48><ScotlandGoodsPercentage><label>Scotland</label><hint/></ScotlandGoodsPercentage><UKGoodsPercentage><label>+ Rest of UK</label><hint/></UKGoodsPercentage><EUGoodsPercentage><label>+ Rest of EU</label><hint/></EUGoodsPercentage><WorldGoodsPercentage><label>+ Rest of World</label><hint/></WorldGoodsPercentage><control-46><label>= 100%</label><hint/></control-46><control-47><label>Services*</label><hint/></control-47><ScotlandServicesPercentage><label>Scotland</label><hint/></ScotlandServicesPercentage><UKServicesPercentage><label>+ Rest of UK</label><hint/></UKServicesPercentage><EUServicesPercentage><label>+ Rest of EU</label><hint/></EUServicesPercentage><WorldServicesPercentage><label>+ Rest of World</label><hint/></WorldServicesPercentage><control-52><label>= 100%</label><hint/></control-52><control-53><label>*If you cannot provide a breakdown of goods and services, please provide a total sales breakdown</label><hint/></control-53><control-54><label>Total</label><hint/></control-54><ScotlandTotalPercentage><label>Scotland</label><hint/></ScotlandTotalPercentage><UKTotalPercentage><label>+ Rest of UK</label><hint/></UKTotalPercentage><EUTotalPercentage><label>+ Rest of EU</label><hint/></EUTotalPercentage><WorldTotalPercentage><label>+ Rest of World</label><hint/></WorldTotalPercentage><control-59><label>= 100%</label><hint/></control-59><control-57><label>If you had no sales to customers outside the UK -&gt; Go to 8</label><hint/></control-57><control-136><label>&lt;strong&gt;7&lt;/strong&gt; Please list the countries where most of your non-UK customers are based, and the amount or percentage of your total sales that was accounted for by those customers (exports).</label><hint>&lt;ul&gt;&lt;li&gt;Values should exclude VAT and any overseas frieght costs and insurance ("Free on board basis")&lt;/li&gt;&lt;li&gt;If the information cannot be broken down into specific countries please provide the region totals&lt;/li&gt;&lt;li&gt;Refer to notes and attached country list for additional guidance&lt;/li&gt;&lt;/ul&gt;</hint><help>If you answered that you have customers based outside the UK, you should answer this question. Sales to these customers are counted as exports. Please specify the destination country, rather than the region, if you can.
+
+EXPORTS OF GOODS: the value of sales of products where the first destination is outwith the UK.
+
+EXPORTS OF SERVICES: the provision of services to customers not resident in the UK.
+
+Sales of goods or services to temporary visitors to Scotland should be included as exports. This includes, for example, all purchases made by tourists in shops, bars, restaurants, hotels, leisure facilities etc., fees received from overseas based students and charges to non-residents for other services such as transport, medical and dental fees, hairdressing etc. Where exact amounts are not available, your best estimates would be appreciated.</help></control-136>
+
+
 <ContactName>
 <label>Contact name</label>
 <hint>
@@ -323,14 +302,9 @@
 <BlankPlaceholder6>
 <text xmlns:xxbl="http://orbeon.org/oxf/xml/xbl" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:oxf="http://www.orbeon.com/oxf/processors" xmlns:p="http://www.orbeon.com/oxf/pipeline" xmlns:xbl="http://www.w3.org/ns/xbl">
 </text>
-</BlankPlaceholder6>
-<HeaderHQInfo>
-<text><div><strong>2 Headquarters information</strong></div></text>
-</HeaderHQInfo>
-<BlankPlaceholder7>
-<text xmlns:xxbl="http://orbeon.org/oxf/xml/xbl" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:oxf="http://www.orbeon.com/oxf/processors" xmlns:p="http://www.orbeon.com/oxf/pipeline" xmlns:xbl="http://www.w3.org/ns/xbl">
-</text>
-</BlankPlaceholder7>
+</BlankPlaceholder6><HQInfoText><label>&lt;strong&gt;2&lt;/strong&gt; Headquarters information</label><hint>&lt;ul&gt;&lt;li&gt;Refer to notes for additional guidance&lt;/li&gt;&lt;/ul&gt;</hint><help>If your company is based in Scotland or if the company is based elsewhere but has administrative offices with decision making autonomy relating to the Scottish operations then please tick the box. Otherwise, please tick 'Other' and specify where your company HQ is based.</help></HQInfoText>
+
+
 <HQCountry>
 <label> Which country is your headquarters based in?</label>
 <hint>
@@ -350,15 +324,10 @@
 </HQCountry>
 <OtherCountryCode>
 <label>Other country name</label>
-<hint>
-</hint>
-</OtherCountryCode>
-<HeaderMainBusinessActivities>
-<text><div><strong>3 Main business activities</strong></div></text>
-</HeaderMainBusinessActivities>
-<HeaderNumberOfEmployees>
-<text><div><strong>4 Number of employees</strong></div></text>
-</HeaderNumberOfEmployees>
+<hint/>
+</OtherCountryCode><BusinessActivityText><label>&lt;strong&gt;3&lt;/strong&gt; Main business activities</label><hint/></BusinessActivityText><NumberOfEmployeesText><label>&lt;strong&gt;4&lt;/strong&gt; Number of employees</label><hint/></NumberOfEmployeesText>
+
+
 <MainBusinessActivities>
 <label> Please describe in words the main business activity of your Scottish branch(es)/operation(s)</label>
 <hint>
@@ -366,7 +335,7 @@
 </MainBusinessActivities>
 <ScottishEmployeeCount>
 <label>How many people are employed at the Scottish branch(es)/operation(s) of your company?</label>
-<hint>Count all those persons who are on the payroll at the end of 2015. (including part time staff)</hint>
+<hint>&lt;ul&gt;&lt;li&gt;Count all those persons who are on the payroll at the end of 2015. (including part time staff)&lt;/li&gt;&lt;/ul&gt;</hint>
 </ScottishEmployeeCount>
 <HeaderFormIntro>
 <text><div>For guidance on completing the questionnaire please refer to guidance notes which can be found alongside this form on the same web page.</div></text>
@@ -386,7 +355,7 @@
 <label>Section 2: Sales and exports</label>
 <help>
 </help>
-</SalesAndExports>
+</SalesAndExports><section-64><label>Section 3: Barriers to International business</label><help/></section-64><section-105><label>Section 4: Future export destinations</label><help/></section-105><section-110><label>Section 5: Overseas relationships</label><help/></section-110><section-128><label>Section 6: Your comments</label><help/></section-128>
 <Introduction>
 <label>Introduction</label>
 <help>
@@ -405,10 +374,10 @@
 <xf:instance id="fr-service-response-instance" xxf:exclude-result-prefixes="#all">
 <response>
 </response>
-</xf:instance>
+</xf:instance><xf:instance xxf:readonly="true" xxf:exclude-result-prefixes="#all" id="grid-59-template"><grid-59-iteration xmlns="http://marklogic.com/orbeon-ml-api/ns"><ExportCountryName/><ExportCountryAmount/><ExportCountryPercentage/></grid-59-iteration></xf:instance><xf:instance xxf:readonly="true" xxf:exclude-result-prefixes="#all" id="grid-102-template"><grid-102-iteration xmlns="http://marklogic.com/orbeon-ml-api/ns"><ExportingHelpOrganisationName/></grid-102-iteration></xf:instance><xf:instance xxf:readonly="true" xxf:exclude-result-prefixes="#all" id="grid-107-template"><grid-107-iteration xmlns="http://marklogic.com/orbeon-ml-api/ns"><FutureExportMarketCountryName/></grid-107-iteration></xf:instance><xf:instance xxf:readonly="true" xxf:exclude-result-prefixes="#all" id="grid-112-template"><grid-112-iteration xmlns="http://marklogic.com/orbeon-ml-api/ns"><CurrentRelationshipCountryName/><CurrentRelationshipNumberOfSubsiduaries/><CurrentRelationshipNumberOfAgencies/><CurrentRelationshipNumberOfJointVentures/><CurrentRelationshipNumberOfOther/></grid-112-iteration></xf:instance><xf:instance xxf:readonly="true" xxf:exclude-result-prefixes="#all" id="grid-121-template"><grid-121-iteration xmlns="http://marklogic.com/orbeon-ml-api/ns"><PlannedRelationshipCountryName/><PlannedRelationshipNumberOfSubsiduaries/><PlannedRelationshipNumberOfAgencies/><PlannedRelationshipNumberOfJointVentures/><PlannedRelationshipNumberOfOther/></grid-121-iteration></xf:instance>
 </xf:model>
-</xh:head>
-<xh:body>
+  </xh:head>
+  <xh:body>
 <fr:view>
 <fr:body xmlns:oxf="http://www.orbeon.com/oxf/processors" xmlns:p="http://www.orbeon.com/oxf/pipeline" xmlns:xbl="http://www.w3.org/ns/xbl">
 <fr:section id="Introduction-control" bind="Introduction-bind">
@@ -416,7 +385,7 @@
 </xf:label>
 <fr:grid>
 <xh:tr>
-<xh:td>
+	      <xh:td>
 <fr:explanation id="HeaderFormIntro-control" bind="HeaderFormIntro-bind" xmlns:xxbl="http://orbeon.org/oxf/xml/xbl" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 <xf:alert ref="$fr-resources/detail/labels/alert">
 </xf:alert>
@@ -424,9 +393,9 @@
 </fr:text>
 </fr:explanation>
 </xh:td>
-</xh:tr>
+	    </xh:tr>
 <xh:tr>
-<xh:td>
+	      <xh:td>
 <xf:input id="URN-control" bind="URN-bind" class="fr-summary fr-search">
 <xf:label ref="$form-resources/URN/label">
 </xf:label>
@@ -438,9 +407,9 @@
 </xf:alert>
 </xf:input>
 </xh:td>
-</xh:tr>
+	    </xh:tr>
 <xh:tr>
-<xh:td>
+	      <xh:td>
 <fr:explanation id="HeaderHelpline-control" bind="HeaderHelpline-bind" xmlns:xxbl="http://orbeon.org/oxf/xml/xbl" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 <xf:alert ref="$fr-resources/detail/labels/alert">
 </xf:alert>
@@ -448,7 +417,7 @@
 </fr:text>
 </fr:explanation>
 </xh:td>
-</xh:tr>
+	    </xh:tr>
 </fr:grid>
 </fr:section>
 <fr:section id="CompanyDetails-control" bind="CompanyDetails-bind">
@@ -456,25 +425,20 @@
 </xf:label>
 <fr:grid>
 <xh:tr>
-<xh:td>
-<fr:explanation id="HeaderCompanyAddress-control" bind="HeaderCompanyAddress-bind" xmlns:xxbl="http://orbeon.org/oxf/xml/xbl" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
-<xf:alert ref="$fr-resources/detail/labels/alert">
-</xf:alert>
-<fr:text ref="$form-resources/HeaderCompanyAddress/text" mediatype="text/html">
-</fr:text>
-</fr:explanation>
+	      <xh:td><xf:output id="HeaderAddress-control" bind="HeaderAddress-bind" class="question">
+                        <xf:label ref="$form-resources/HeaderAddress/label" mediatype="text/html"/>
+                        <xf:hint ref="$form-resources/HeaderAddress/hint"/><xf:alert ref="$fr-resources/detail/labels/alert"/>
+                        
+                        
+                    </xf:output>
+
 </xh:td>
-<xh:td>
-<fr:explanation id="BlankPlaceholder1-control" bind="BlankPlaceholder1-bind" xmlns:xxbl="http://orbeon.org/oxf/xml/xbl" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
-<xf:alert ref="$fr-resources/detail/labels/alert">
-</xf:alert>
-<fr:text ref="$form-resources/BlankPlaceholder1/text" mediatype="text/html">
-</fr:text>
-</fr:explanation>
+	      <xh:td>
+
 </xh:td>
-</xh:tr>
+	    </xh:tr>
 <xh:tr>
-<xh:td>
+	      <xh:td>
 <xf:input id="ContactName-control" bind="ContactName-bind">
 <xf:label ref="$form-resources/ContactName/label">
 </xf:label>
@@ -484,7 +448,7 @@
 </xf:alert>
 </xf:input>
 </xh:td>
-<xh:td>
+	      <xh:td>
 <xf:input id="TelephoneNumber-control" bind="TelephoneNumber-bind">
 <xf:label ref="$form-resources/TelephoneNumber/label">
 </xf:label>
@@ -494,9 +458,9 @@
 </xf:alert>
 </xf:input>
 </xh:td>
-</xh:tr>
+	    </xh:tr>
 <xh:tr>
-<xh:td>
+	      <xh:td>
 <xf:input id="CompanyName-control" bind="CompanyName-bind">
 <xf:label ref="$form-resources/CompanyName/label">
 </xf:label>
@@ -506,7 +470,7 @@
 </xf:alert>
 </xf:input>
 </xh:td>
-<xh:td>
+	      <xh:td>
 <xf:input id="EmailAddress-control" bind="EmailAddress-bind">
 <xf:label ref="$form-resources/EmailAddress/label">
 </xf:label>
@@ -516,9 +480,9 @@
 </xf:alert>
 </xf:input>
 </xh:td>
-</xh:tr>
+	    </xh:tr>
 <xh:tr>
-<xh:td>
+	      <xh:td>
 <xf:input id="BuildingName-control" bind="BuildingName-bind" class="fr-summary">
 <xf:label ref="$form-resources/BuildingName/label">
 </xf:label>
@@ -528,7 +492,7 @@
 </xf:alert>
 </xf:input>
 </xh:td>
-<xh:td>
+	      <xh:td>
 <xf:input id="Website-control" bind="Website-bind">
 <xf:label ref="$form-resources/Website/label">
 </xf:label>
@@ -538,9 +502,9 @@
 </xf:alert>
 </xf:input>
 </xh:td>
-</xh:tr>
+	    </xh:tr>
 <xh:tr>
-<xh:td>
+	      <xh:td>
 <xf:input id="BuildingNumber-control" bind="BuildingNumber-bind" class="fr-summary">
 <xf:label ref="$form-resources/BuildingNumber/label">
 </xf:label>
@@ -550,7 +514,7 @@
 </xf:alert>
 </xf:input>
 </xh:td>
-<xh:td>
+	      <xh:td>
 <fr:explanation id="BlankPlaceholder2-control" bind="BlankPlaceholder2-bind" xmlns:xxbl="http://orbeon.org/oxf/xml/xbl" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 <xf:alert ref="$fr-resources/detail/labels/alert">
 </xf:alert>
@@ -558,9 +522,9 @@
 </fr:text>
 </fr:explanation>
 </xh:td>
-</xh:tr>
+	    </xh:tr>
 <xh:tr>
-<xh:td>
+	      <xh:td>
 <xf:input id="Locality-control" bind="Locality-bind" class="fr-summary">
 <xf:label ref="$form-resources/Locality/label">
 </xf:label>
@@ -570,7 +534,7 @@
 </xf:alert>
 </xf:input>
 </xh:td>
-<xh:td>
+	      <xh:td>
 <fr:explanation id="BlankPlaceholder3-control" bind="BlankPlaceholder3-bind" xmlns:xxbl="http://orbeon.org/oxf/xml/xbl" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 <xf:alert ref="$fr-resources/detail/labels/alert">
 </xf:alert>
@@ -578,9 +542,9 @@
 </fr:text>
 </fr:explanation>
 </xh:td>
-</xh:tr>
+	    </xh:tr>
 <xh:tr>
-<xh:td>
+	      <xh:td>
 <xf:input id="Town-control" bind="Town-bind" class="fr-summary">
 <xf:label ref="$form-resources/Town/label">
 </xf:label>
@@ -590,7 +554,7 @@
 </xf:alert>
 </xf:input>
 </xh:td>
-<xh:td>
+	      <xh:td>
 <fr:explanation id="BlankPlaceholder4-control" bind="BlankPlaceholder4-bind" xmlns:xxbl="http://orbeon.org/oxf/xml/xbl" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 <xf:alert ref="$fr-resources/detail/labels/alert">
 </xf:alert>
@@ -598,9 +562,9 @@
 </fr:text>
 </fr:explanation>
 </xh:td>
-</xh:tr>
+	    </xh:tr>
 <xh:tr>
-<xh:td>
+	      <xh:td>
 <xf:input id="County-control" bind="County-bind" class="fr-summary">
 <xf:label ref="$form-resources/County/label">
 </xf:label>
@@ -610,7 +574,7 @@
 </xf:alert>
 </xf:input>
 </xh:td>
-<xh:td>
+	      <xh:td>
 <fr:explanation id="BlankPlaceholder5-control" bind="BlankPlaceholder5-bind" xmlns:xxbl="http://orbeon.org/oxf/xml/xbl" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 <xf:alert ref="$fr-resources/detail/labels/alert">
 </xf:alert>
@@ -618,9 +582,9 @@
 </fr:text>
 </fr:explanation>
 </xh:td>
-</xh:tr>
+	    </xh:tr>
 <xh:tr>
-<xh:td>
+	      <xh:td>
 <xf:input id="Postcode-control" bind="Postcode-bind" class="fr-summary">
 <xf:label ref="$form-resources/Postcode/label">
 </xf:label>
@@ -630,7 +594,7 @@
 </xf:alert>
 </xf:input>
 </xh:td>
-<xh:td>
+	      <xh:td>
 <fr:explanation id="BlankPlaceholder6-control" bind="BlankPlaceholder6-bind" xmlns:xxbl="http://orbeon.org/oxf/xml/xbl" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 <xf:alert ref="$fr-resources/detail/labels/alert">
 </xf:alert>
@@ -638,34 +602,28 @@
 </fr:text>
 </fr:explanation>
 </xh:td>
-</xh:tr>
+	    </xh:tr>
 <xh:tr>
-<xh:td>
-<fr:explanation id="HeaderHQInfo-control" bind="HeaderHQInfo-bind" xmlns:xxbl="http://orbeon.org/oxf/xml/xbl" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
-<xf:alert ref="$fr-resources/detail/labels/alert">
-</xf:alert>
-<fr:text ref="$form-resources/HeaderHQInfo/text" mediatype="text/html">
-</fr:text>
-</fr:explanation>
+	      <xh:td><xf:output id="HQInfoText-control" bind="HQInfoText-bind" class="question">
+                        <xf:label ref="$form-resources/HQInfoText/label" mediatype="text/html"/>
+                        <xf:hint ref="$form-resources/HQInfoText/hint" mediatype="text/html"/><xf:help ref="$form-resources/HQInfoText/help"/><xf:alert ref="$fr-resources/detail/labels/alert"/>
+                        
+                        
+                    </xf:output>
+
 </xh:td>
-<xh:td>
-<fr:explanation id="BlankPlaceholder7-control" bind="BlankPlaceholder7-bind" xmlns:xxbl="http://orbeon.org/oxf/xml/xbl" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
-<xf:alert ref="$fr-resources/detail/labels/alert">
-</xf:alert>
-<fr:text ref="$form-resources/BlankPlaceholder7/text" mediatype="text/html">
-</fr:text>
-</fr:explanation>
+	      <xh:td>
+
 </xh:td>
-</xh:tr>
+	    </xh:tr>
 <xh:tr>
-<xh:td>
+	      <xh:td>
 <xf:select1 id="HQCountry-control" appearance="full" bind="HQCountry-bind" class="fr-summary">
 <xf:label ref="$form-resources/HQCountry/label">
 </xf:label>
 <xf:hint ref="$form-resources/HQCountry/hint">
-</xf:hint>
-<xf:alert ref="$fr-resources/detail/labels/alert">
-</xf:alert>
+</xf:hint><xf:alert ref="$fr-resources/detail/labels/alert"/>
+
 <xf:itemset ref="$form-resources/HQCountry/item">
 <xf:label ref="label">
 </xf:label>
@@ -676,14 +634,13 @@
 </xf:itemset>
 </xf:select1>
 </xh:td>
-<xh:td>
-<fr:autocomplete id="OtherCountryCode-control" labelref="@label" resource="" bind="OtherCountryCode-bind" class="fr-summary" xmlns:xxbl="http://orbeon.org/oxf/xml/xbl" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+	      <xh:td>
+<fr:autocomplete id="OtherCountryCode-control" labelref="@label" resource="" bind="OtherCountryCode-bind" xmlns:xxbl="http://orbeon.org/oxf/xml/xbl" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 <xf:label ref="$form-resources/OtherCountryCode/label">
 </xf:label>
 <xf:hint ref="$form-resources/OtherCountryCode/hint">
-</xf:hint>
-<xf:alert ref="$fr-resources/detail/labels/alert">
-</xf:alert>
+</xf:hint><xf:alert ref="$fr-resources/detail/labels/alert"/>
+
 <!--
  Itemset points to an empty nodeset until users set them in the control details dialog
 -->
@@ -695,27 +652,27 @@
 </xf:itemset>
 </fr:autocomplete>
 </xh:td>
-</xh:tr>
+	    </xh:tr>
 <xh:tr>
-<xh:td>
-<fr:explanation id="HeaderMainBusinessActivities-control" bind="HeaderMainBusinessActivities-bind" xmlns:xxbl="http://orbeon.org/oxf/xml/xbl" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
-<xf:alert ref="$fr-resources/detail/labels/alert">
-</xf:alert>
-<fr:text ref="$form-resources/HeaderMainBusinessActivities/text" mediatype="text/html">
-</fr:text>
-</fr:explanation>
+	      <xh:td><xf:output id="BusinessActivityText-control" bind="BusinessActivityText-bind" class="question">
+                        <xf:label ref="$form-resources/BusinessActivityText/label" mediatype="text/html"/>
+                        <xf:hint ref="$form-resources/BusinessActivityText/hint"/><xf:alert ref="$fr-resources/detail/labels/alert"/>
+                        
+                        
+                    </xf:output>
+
 </xh:td>
-<xh:td>
-<fr:explanation id="HeaderNumberOfEmployees-control" bind="HeaderNumberOfEmployees-bind" xmlns:xxbl="http://orbeon.org/oxf/xml/xbl" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
-<xf:alert ref="$fr-resources/detail/labels/alert">
-</xf:alert>
-<fr:text ref="$form-resources/HeaderNumberOfEmployees/text" mediatype="text/html">
-</fr:text>
-</fr:explanation>
+	      <xh:td><xf:output id="NumberOfEmployeesText-control" bind="NumberOfEmployeesText-bind" class="question">
+                        <xf:label ref="$form-resources/NumberOfEmployeesText/label" mediatype="text/html"/>
+                        <xf:hint ref="$form-resources/NumberOfEmployeesText/hint"/><xf:alert ref="$fr-resources/detail/labels/alert"/>
+                        
+                        
+                    </xf:output>
+
 </xh:td>
-</xh:tr>
+	    </xh:tr>
 <xh:tr>
-<xh:td>
+	      <xh:td>
 <xf:textarea id="MainBusinessActivities-control" bind="MainBusinessActivities-bind" class="fr-summary">
 <xf:label ref="$form-resources/MainBusinessActivities/label">
 </xf:label>
@@ -725,17 +682,17 @@
 </xf:alert>
 </xf:textarea>
 </xh:td>
-<xh:td>
+	      <xh:td>
 <fr:number id="ScottishEmployeeCount-control" bind="ScottishEmployeeCount-bind" class="fr-summary" xmlns="http://orbeon.org/oxf/xml/form-builder" xmlns:xxbl="http://orbeon.org/oxf/xml/xbl" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 <xf:label ref="$form-resources/ScottishEmployeeCount/label">
 </xf:label>
-<xf:hint ref="$form-resources/ScottishEmployeeCount/hint">
+<xf:hint ref="$form-resources/ScottishEmployeeCount/hint" mediatype="text/html">
 </xf:hint>
 <xf:alert ref="$fr-resources/detail/labels/alert">
 </xf:alert>
 </fr:number>
 </xh:td>
-</xh:tr>
+	    </xh:tr>
 </fr:grid>
 </fr:section>
 <fr:section id="SalesAndExports-control" bind="SalesAndExports-bind">
@@ -743,111 +700,673 @@
 </xf:label>
 <fr:grid>
 <xh:tr>
-<xh:td>
-<fr:explanation id="HeaderSalesAndGoodsTotals-control" bind="HeaderSalesAndGoodsTotals-bind" xmlns:xxbl="http://orbeon.org/oxf/xml/xbl" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
-<xf:alert ref="$fr-resources/detail/labels/alert">
-</xf:alert>
-<fr:text ref="$form-resources/HeaderSalesAndGoodsTotals/text" mediatype="text/html">
-</fr:text>
-</fr:explanation>
+	      <xh:td><xf:output id="TotalSalesText-control" bind="TotalSalesText-bind" class="question">
+                        <xf:label ref="$form-resources/TotalSalesText/label" mediatype="text/html"/>
+                        <xf:hint ref="$form-resources/TotalSalesText/hint" mediatype="text/html"/><xf:help ref="$form-resources/TotalSalesText/help"/><xf:alert ref="$fr-resources/detail/labels/alert"/>
+                        
+                        
+                    </xf:output>
+
 </xh:td>
-</xh:tr>
+	    </xh:tr>
 </fr:grid>
 <fr:grid>
 <xh:tr>
-<xh:td>
-<fr:explanation id="SubHeaderGoods-control" bind="SubHeaderGoods-bind" xmlns:xxbl="http://orbeon.org/oxf/xml/xbl" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
-<xf:alert ref="$fr-resources/detail/labels/alert">
-</xf:alert>
-<fr:text ref="$form-resources/SubHeaderGoods/text" mediatype="text/html">
-</fr:text>
-</fr:explanation>
-</xh:td>
-<xh:td>
+	      <xh:td>
 <fr:currency id="TotalGoodsSold-control" bind="TotalGoodsSold-bind" xmlns="http://orbeon.org/oxf/xml/form-builder" xmlns:xxbl="http://orbeon.org/oxf/xml/xbl">
 <xf:label ref="$form-resources/TotalGoodsSold/label">
 </xf:label>
 <xf:hint ref="$form-resources/TotalGoodsSold/hint">
-</xf:hint>
-<xf:alert ref="$fr-resources/detail/labels/alert">
-</xf:alert>
+</xf:hint><xf:alert ref="$fr-resources/detail/labels/alert"/>
+
 </fr:currency>
 </xh:td>
-<xh:td>
-<fr:explanation id="SubHeaderServices-control" bind="SubHeaderServices-bind" xmlns:xxbl="http://orbeon.org/oxf/xml/xbl" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
-<xf:alert ref="$fr-resources/detail/labels/alert">
-</xf:alert>
-<fr:text ref="$form-resources/SubHeaderServices/text" mediatype="text/html">
-</fr:text>
-</fr:explanation>
-</xh:td>
-<xh:td>
+	      <xh:td>
 <fr:currency id="TotalServicesSold-control" bind="TotalServicesSold-bind" xmlns="http://orbeon.org/oxf/xml/form-builder" xmlns:xxbl="http://orbeon.org/oxf/xml/xbl">
 <xf:label ref="$form-resources/TotalServicesSold/label">
 </xf:label>
 <xf:hint ref="$form-resources/TotalServicesSold/hint">
-</xf:hint>
-<xf:alert ref="$fr-resources/detail/labels/alert">
-</xf:alert>
+</xf:hint><xf:alert ref="$fr-resources/detail/labels/alert"/>
+
 </fr:currency>
 </xh:td>
-<xh:td>
-<fr:explanation id="SubHeaderGoodsServicesTotal-control" bind="SubHeaderGoodsServicesTotal-bind" xmlns:xxbl="http://orbeon.org/oxf/xml/xbl" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
-<xf:alert ref="$fr-resources/detail/labels/alert">
-</xf:alert>
-<fr:text ref="$form-resources/SubHeaderGoodsServicesTotal/text" mediatype="text/html">
-</fr:text>
-</fr:explanation>
-</xh:td>
-<xh:td>
+	      <xh:td>
 <fr:currency id="TotalSold-control" bind="TotalSold-bind" xmlns="http://orbeon.org/oxf/xml/form-builder" xmlns:xxbl="http://orbeon.org/oxf/xml/xbl">
 <xf:label ref="$form-resources/TotalSold/label">
 </xf:label>
 <xf:hint ref="$form-resources/TotalSold/hint">
-</xf:hint>
-<xf:alert ref="$fr-resources/detail/labels/alert">
-</xf:alert>
+</xf:hint><xf:alert ref="$fr-resources/detail/labels/alert"/>
+
 </fr:currency>
 </xh:td>
-</xh:tr>
+	    </xh:tr>
 </fr:grid>
 <fr:grid>
 <xh:tr>
-<xh:td>
-<fr:explanation id="HeaderPercentageSales-control" bind="HeaderPercentageSales-bind" xmlns:xxbl="http://orbeon.org/oxf/xml/xbl" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
-<xf:alert ref="$fr-resources/detail/labels/alert">
-</xf:alert>
-<fr:text ref="$form-resources/HeaderPercentageSales/text" mediatype="text/html">
-</fr:text>
-</fr:explanation>
+	      <xh:td><xf:output id="control-135-control" bind="control-135-bind" class="question">
+                        <xf:label ref="$form-resources/control-135/label" mediatype="text/html"/>
+                        <xf:hint ref="$form-resources/control-135/hint" mediatype="text/html"/><xf:help ref="$form-resources/control-135/help"/><xf:alert ref="$fr-resources/detail/labels/alert"/>
+                        
+                        
+                    </xf:output>
+
 </xh:td>
-</xh:tr>
+	    </xh:tr>
 </fr:grid>
 <fr:grid>
 <xh:tr>
-<xh:td>
+	      <xh:td><xf:output id="control-48-control" bind="control-48-bind" class="bold">
+                        <xf:label ref="$form-resources/control-48/label" mediatype="text/html"/>
+                        <xf:hint ref="$form-resources/control-48/hint"/><xf:alert ref="$fr-resources/detail/labels/alert"/>
+                        
+                        
+                    </xf:output></xh:td>
+	      <xh:td rowspan="1"/>
+	      <xh:td/>
+	      <xh:td/>
+	      <xh:td/>
+	    </xh:tr><xh:tr>
+	      <xh:td><fr:number id="ScotlandGoodsPercentage-control" bind="ScotlandGoodsPercentage-bind" xmlns="http://orbeon.org/oxf/xml/form-builder" xmlns:xxbl="http://orbeon.org/oxf/xml/xbl" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+                        <xf:label ref="$form-resources/ScotlandGoodsPercentage/label"/>
+                        <xf:hint ref="$form-resources/ScotlandGoodsPercentage/hint"/><xf:alert ref="$fr-resources/detail/labels/alert"/>
+                        
+                        
+                    </fr:number>
 </xh:td>
-<xh:td>
+	      <xh:td><fr:number id="UKGoodsPercentage-control" bind="UKGoodsPercentage-bind" xmlns="http://orbeon.org/oxf/xml/form-builder" xmlns:xxbl="http://orbeon.org/oxf/xml/xbl" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+                        <xf:label ref="$form-resources/UKGoodsPercentage/label"/>
+                        <xf:hint ref="$form-resources/UKGoodsPercentage/hint"/><xf:alert ref="$fr-resources/detail/labels/alert"/>
+                        
+                        
+                    </fr:number></xh:td>
+	      <xh:td><fr:number id="EUGoodsPercentage-control" bind="EUGoodsPercentage-bind" xmlns="http://orbeon.org/oxf/xml/form-builder" xmlns:xxbl="http://orbeon.org/oxf/xml/xbl" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+                        <xf:label ref="$form-resources/EUGoodsPercentage/label"/>
+                        <xf:hint ref="$form-resources/EUGoodsPercentage/hint"/><xf:alert ref="$fr-resources/detail/labels/alert"/>
+                        
+                        
+                    </fr:number>
 </xh:td>
-<xh:td>
+	      <xh:td><fr:number id="WorldGoodsPercentage-control" bind="WorldGoodsPercentage-bind" xmlns="http://orbeon.org/oxf/xml/form-builder" xmlns:xxbl="http://orbeon.org/oxf/xml/xbl" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+                        <xf:label ref="$form-resources/WorldGoodsPercentage/label"/>
+                        <xf:hint ref="$form-resources/WorldGoodsPercentage/hint"/><xf:alert ref="$fr-resources/detail/labels/alert"/>
+                        
+                        
+                    </fr:number>
 </xh:td>
-<xh:td>
+	      <xh:td><xf:output id="control-46-control" bind="control-46-bind" class="bold">
+                        <xf:label ref="$form-resources/control-46/label"/>
+                        <xf:hint ref="$form-resources/control-46/hint"/><xf:alert ref="$fr-resources/detail/labels/alert"/>
+                        
+                        
+                    </xf:output>
 </xh:td>
-<xh:td>
-</xh:td>
-<xh:td>
-</xh:td>
-</xh:tr>
-</fr:grid>
-</fr:section>
+	    </xh:tr><xh:tr>
+	      <xh:td><xf:output id="control-47-control" bind="control-47-bind" class="bold">
+                        <xf:label ref="$form-resources/control-47/label"/>
+                        <xf:hint ref="$form-resources/control-47/hint"/><xf:alert ref="$fr-resources/detail/labels/alert"/>
+                        
+                        
+                    </xf:output></xh:td>
+	      <xh:td/>
+	      <xh:td/>
+	      <xh:td/>
+	      <xh:td/>
+	    </xh:tr><xh:tr>
+	      <xh:td><fr:number id="ScotlandServicesPercentage-control" bind="ScotlandServicesPercentage-bind" xmlns="http://orbeon.org/oxf/xml/form-builder" xmlns:xxbl="http://orbeon.org/oxf/xml/xbl" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+                        <xf:label ref="$form-resources/ScotlandServicesPercentage/label"/>
+                        <xf:hint ref="$form-resources/ScotlandServicesPercentage/hint"/><xf:alert ref="$fr-resources/detail/labels/alert"/>
+                        
+                        
+                    </fr:number></xh:td>
+	      <xh:td><fr:number id="UKServicesPercentage-control" bind="UKServicesPercentage-bind" xmlns="http://orbeon.org/oxf/xml/form-builder" xmlns:xxbl="http://orbeon.org/oxf/xml/xbl" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+                        <xf:label ref="$form-resources/UKServicesPercentage/label"/>
+                        <xf:hint ref="$form-resources/UKServicesPercentage/hint"/><xf:alert ref="$fr-resources/detail/labels/alert"/>
+                        
+                        
+                    </fr:number></xh:td>
+	      <xh:td><fr:number id="EUServicesPercentage-control" bind="EUServicesPercentage-bind" xmlns="http://orbeon.org/oxf/xml/form-builder" xmlns:xxbl="http://orbeon.org/oxf/xml/xbl" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+                        <xf:label ref="$form-resources/EUServicesPercentage/label"/>
+                        <xf:hint ref="$form-resources/EUServicesPercentage/hint"/><xf:alert ref="$fr-resources/detail/labels/alert"/>
+                        
+                        
+                    </fr:number></xh:td>
+	      <xh:td><fr:number id="WorldServicesPercentage-control" bind="WorldServicesPercentage-bind" xmlns="http://orbeon.org/oxf/xml/form-builder" xmlns:xxbl="http://orbeon.org/oxf/xml/xbl" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+                        <xf:label ref="$form-resources/WorldServicesPercentage/label"/>
+                        <xf:hint ref="$form-resources/WorldServicesPercentage/hint"/><xf:alert ref="$fr-resources/detail/labels/alert"/>
+                        
+                        
+                    </fr:number></xh:td>
+	      <xh:td><xf:output id="control-52-control" bind="control-52-bind" class="bold">
+                        <xf:label ref="$form-resources/control-52/label"/>
+                        <xf:hint ref="$form-resources/control-52/hint"/><xf:alert ref="$fr-resources/detail/labels/alert"/>
+                        
+                        
+                    </xf:output></xh:td>
+	    </xh:tr>
+</fr:grid><fr:grid>
+                <xh:tr>
+	      <xh:td><xf:output id="control-53-control" bind="control-53-bind" class="bold">
+                        <xf:label ref="$form-resources/control-53/label" mediatype="text/html"/>
+                        <xf:hint ref="$form-resources/control-53/hint"/><xf:alert ref="$fr-resources/detail/labels/alert"/>
+                        
+                        
+                    </xf:output></xh:td>
+	    </xh:tr>
+            </fr:grid><fr:grid>
+                <xh:tr>
+	      <xh:td><xf:output id="control-54-control" bind="control-54-bind" class="bold">
+                        <xf:label ref="$form-resources/control-54/label"/>
+                        <xf:hint ref="$form-resources/control-54/hint"/><xf:alert ref="$fr-resources/detail/labels/alert"/>
+                        
+                        
+                    </xf:output></xh:td>
+	      <xh:td/>
+	      <xh:td/>
+	      <xh:td/>
+	      <xh:td/>
+	    </xh:tr><xh:tr>
+	      <xh:td><fr:number id="ScotlandTotalPercentage-control" bind="ScotlandTotalPercentage-bind" xmlns="http://orbeon.org/oxf/xml/form-builder" xmlns:xxbl="http://orbeon.org/oxf/xml/xbl" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+                        <xf:label ref="$form-resources/ScotlandTotalPercentage/label"/>
+                        <xf:hint ref="$form-resources/ScotlandTotalPercentage/hint"/><xf:alert ref="$fr-resources/detail/labels/alert"/>
+                        
+                        
+                    </fr:number></xh:td>
+	      <xh:td><fr:number id="UKTotalPercentage-control" bind="UKTotalPercentage-bind" xmlns="http://orbeon.org/oxf/xml/form-builder" xmlns:xxbl="http://orbeon.org/oxf/xml/xbl" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+                        <xf:label ref="$form-resources/UKTotalPercentage/label"/>
+                        <xf:hint ref="$form-resources/UKTotalPercentage/hint"/><xf:alert ref="$fr-resources/detail/labels/alert"/>
+                        
+                        
+                    </fr:number></xh:td>
+	      <xh:td><fr:number id="EUTotalPercentage-control" bind="EUTotalPercentage-bind" xmlns="http://orbeon.org/oxf/xml/form-builder" xmlns:xxbl="http://orbeon.org/oxf/xml/xbl" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+                        <xf:label ref="$form-resources/EUTotalPercentage/label"/>
+                        <xf:hint ref="$form-resources/EUTotalPercentage/hint"/><xf:alert ref="$fr-resources/detail/labels/alert"/>
+                        
+                        
+                    </fr:number></xh:td>
+	      <xh:td><fr:number id="WorldTotalPercentage-control" bind="WorldTotalPercentage-bind" xmlns="http://orbeon.org/oxf/xml/form-builder" xmlns:xxbl="http://orbeon.org/oxf/xml/xbl" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+                        <xf:label ref="$form-resources/WorldTotalPercentage/label"/>
+                        <xf:hint ref="$form-resources/WorldTotalPercentage/hint"/><xf:alert ref="$fr-resources/detail/labels/alert"/>
+                        
+                        
+                    </fr:number></xh:td>
+	      <xh:td><xf:output id="control-59-control" bind="control-59-bind" class="bold">
+                        <xf:label ref="$form-resources/control-59/label"/>
+                        <xf:hint ref="$form-resources/control-59/hint"/><xf:alert ref="$fr-resources/detail/labels/alert"/>
+                        
+                        
+                    </xf:output></xh:td>
+	    </xh:tr>
+            </fr:grid><fr:grid>
+                <xh:tr>
+	      <xh:td><xf:output id="control-57-control" bind="control-57-bind" class="bold">
+                        <xf:label ref="$form-resources/control-57/label"/>
+                        <xf:hint ref="$form-resources/control-57/hint"/><xf:alert ref="$fr-resources/detail/labels/alert"/>
+                        
+                        
+                    </xf:output></xh:td>
+	    </xh:tr>
+            </fr:grid><fr:grid>
+                <xh:tr>
+	      <xh:td><xf:output id="control-136-control" bind="control-136-bind" class="question">
+                        <xf:label ref="$form-resources/control-136/label" mediatype="text/html"/>
+                        <xf:hint ref="$form-resources/control-136/hint" mediatype="text/html"/><xf:help ref="$form-resources/control-136/help"/><xf:alert ref="$fr-resources/detail/labels/alert"/>
+                        
+                        
+                    </xf:output></xh:td>
+	    </xh:tr>
+            </fr:grid><fr:grid id="grid-59-grid" bind="grid-59-bind" repeat="content" template="instance('grid-59-template')" max="20">
+                <xh:tr>
+	      <xh:td><xf:input id="ExportCountryName-control" bind="ExportCountryName-bind">
+                        <xf:label ref="$form-resources/ExportCountryName/label" mediatype="text/html"/>
+                        <xf:hint ref="$form-resources/ExportCountryName/hint"/><xf:alert ref="$fr-resources/detail/labels/alert"/>
+                        
+                        
+                    </xf:input></xh:td>
+	      <xh:td><fr:currency id="ExportCountryAmount-control" bind="ExportCountryAmount-bind" xmlns="http://orbeon.org/oxf/xml/form-builder" xmlns:xxbl="http://orbeon.org/oxf/xml/xbl">
+                        <xf:label ref="$form-resources/ExportCountryAmount/label" mediatype="text/html"/>
+                        <xf:hint ref="$form-resources/ExportCountryAmount/hint"/><xf:alert ref="$fr-resources/detail/labels/alert"/>
+                        
+                        
+                    </fr:currency></xh:td>
+	      <xh:td><fr:number id="ExportCountryPercentage-control" bind="ExportCountryPercentage-bind" xmlns="http://orbeon.org/oxf/xml/form-builder" xmlns:xxbl="http://orbeon.org/oxf/xml/xbl" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+                        <xf:label ref="$form-resources/ExportCountryPercentage/label" mediatype="text/html"/>
+                        <xf:hint ref="$form-resources/ExportCountryPercentage/hint"/><xf:alert ref="$fr-resources/detail/labels/alert"/>
+                        
+                        
+                    </fr:number></xh:td>
+	    </xh:tr>
+            </fr:grid>
+</fr:section><fr:section id="section-64-control" bind="section-64-bind">
+                <xf:label ref="$form-resources/section-64/label"/><fr:grid>
+                        <xh:tr>
+	      <xh:td><xf:output id="InternationalBarriersText-control" bind="InternationalBarriersText-bind" class="question">
+                        <xf:label ref="$form-resources/InternationalBarriersText/label" mediatype="text/html"/>
+                        <xf:hint ref="$form-resources/InternationalBarriersText/hint" mediatype="text/html"/><xf:alert ref="$fr-resources/detail/labels/alert"/>
+                        
+                        
+                    </xf:output></xh:td>
+	    </xh:tr>
+                    </fr:grid><fr:grid>
+                <xh:tr>
+	      <xh:td><xf:input id="BarriersProductsServicesUnsuitableFoExports-control" bind="BarriersProductsServicesUnsuitableFoExports-bind">
+                        <xf:label ref="$form-resources/BarriersProductsServicesUnsuitableFoExports/label"/>
+                        <xf:hint ref="$form-resources/BarriersProductsServicesUnsuitableFoExports/hint"/><xf:alert ref="$fr-resources/detail/labels/alert"/>
+                        
+                        
+                    </xf:input></xh:td>
+	      <xh:td><xf:input id="BarriersLackOfResourcesOrManagementTime-control" bind="BarriersLackOfResourcesOrManagementTime-bind">
+                        <xf:label ref="$form-resources/BarriersLackOfResourcesOrManagementTime/label"/>
+                        <xf:hint ref="$form-resources/BarriersLackOfResourcesOrManagementTime/hint"/><xf:alert ref="$fr-resources/detail/labels/alert"/>
+                        
+                        
+                    </xf:input></xh:td>
+	    </xh:tr><xh:tr>
+	      <xh:td><xf:input id="BarriersLackOfMarketInformation-control" bind="BarriersLackOfMarketInformation-bind">
+                        <xf:label ref="$form-resources/BarriersLackOfMarketInformation/label"/>
+                        <xf:hint ref="$form-resources/BarriersLackOfMarketInformation/hint"/><xf:alert ref="$fr-resources/detail/labels/alert"/>
+                        
+                        
+                    </xf:input></xh:td>
+	      <xh:td><xf:input id="BarriersHighImportTariffsInTargetMarkets-control" bind="BarriersHighImportTariffsInTargetMarkets-bind">
+                        <xf:label ref="$form-resources/BarriersHighImportTariffsInTargetMarkets/label"/>
+                        <xf:hint ref="$form-resources/BarriersHighImportTariffsInTargetMarkets/hint"/><xf:alert ref="$fr-resources/detail/labels/alert"/>
+                        
+                        
+                    </xf:input></xh:td>
+	    </xh:tr><xh:tr>
+	      <xh:td><xf:input id="BarriersLanguageOrCulturalDifferences-control" bind="BarriersLanguageOrCulturalDifferences-bind">
+                        <xf:label ref="$form-resources/BarriersLanguageOrCulturalDifferences/label"/>
+                        <xf:hint ref="$form-resources/BarriersLanguageOrCulturalDifferences/hint"/><xf:alert ref="$fr-resources/detail/labels/alert"/>
+                        
+                        
+                    </xf:input></xh:td>
+	      <xh:td><xf:input id="BarriersCurrencyExchangeRates-control" bind="BarriersCurrencyExchangeRates-bind">
+                        <xf:label ref="$form-resources/BarriersCurrencyExchangeRates/label"/>
+                        <xf:hint ref="$form-resources/BarriersCurrencyExchangeRates/hint"/><xf:alert ref="$fr-resources/detail/labels/alert"/>
+                        
+                        
+                    </xf:input></xh:td>
+	    </xh:tr><xh:tr>
+	      <xh:td><xf:input id="BarriersExportDocumentation-control" bind="BarriersExportDocumentation-bind">
+                        <xf:label ref="$form-resources/BarriersExportDocumentation/label"/>
+                        <xf:hint ref="$form-resources/BarriersExportDocumentation/hint"/><xf:alert ref="$fr-resources/detail/labels/alert"/>
+                        
+                        
+                    </xf:input></xh:td>
+	      <xh:td><xf:input id="BarriersLegislationAndStandards-control" bind="BarriersLegislationAndStandards-bind">
+                        <xf:label ref="$form-resources/BarriersLegislationAndStandards/label"/>
+                        <xf:hint ref="$form-resources/BarriersLegislationAndStandards/hint"/><xf:alert ref="$fr-resources/detail/labels/alert"/>
+                        
+                        
+                    </xf:input></xh:td>
+	    </xh:tr><xh:tr>
+	      <xh:td><xf:input id="BarriersExportCreditInsurance-control" bind="BarriersExportCreditInsurance-bind">
+                        <xf:label ref="$form-resources/BarriersExportCreditInsurance/label"/>
+                        <xf:hint ref="$form-resources/BarriersExportCreditInsurance/hint"/><xf:alert ref="$fr-resources/detail/labels/alert"/>
+                        
+                        
+                    </xf:input></xh:td>
+	      <xh:td><xf:input id="BarriersSettingCompetitivePrices-control" bind="BarriersSettingCompetitivePrices-bind">
+                        <xf:label ref="$form-resources/BarriersSettingCompetitivePrices/label"/>
+                        <xf:hint ref="$form-resources/BarriersSettingCompetitivePrices/hint"/><xf:alert ref="$fr-resources/detail/labels/alert"/>
+                        
+                        
+                    </xf:input></xh:td>
+	    </xh:tr><xh:tr>
+	      <xh:td><xf:input id="BarriersExportFinance-control" bind="BarriersExportFinance-bind">
+                        <xf:label ref="$form-resources/BarriersExportFinance/label"/>
+                        <xf:hint ref="$form-resources/BarriersExportFinance/hint"/><xf:alert ref="$fr-resources/detail/labels/alert"/>
+                        
+                        
+                    </xf:input></xh:td>
+	      <xh:td rowspan="1"><xf:input id="BarriersNoSpareProductionCapacity-control" bind="BarriersNoSpareProductionCapacity-bind">
+                        <xf:label ref="$form-resources/BarriersNoSpareProductionCapacity/label"/>
+                        <xf:hint ref="$form-resources/BarriersNoSpareProductionCapacity/hint"/><xf:alert ref="$fr-resources/detail/labels/alert"/>
+                        
+                        
+                    </xf:input></xh:td>
+	    </xh:tr><xh:tr>
+	      <xh:td><xf:input id="BarriersAccessToFinanceInGeneral-control" bind="BarriersAccessToFinanceInGeneral-bind">
+                        <xf:label ref="$form-resources/BarriersAccessToFinanceInGeneral/label"/>
+                        <xf:hint ref="$form-resources/BarriersAccessToFinanceInGeneral/hint"/><xf:alert ref="$fr-resources/detail/labels/alert"/>
+                        
+                        
+                    </xf:input></xh:td>
+	      <xh:td><xf:input id="BarriersAfterSalesService-control" bind="BarriersAfterSalesService-bind">
+                        <xf:label ref="$form-resources/BarriersAfterSalesService/label"/>
+                        <xf:hint ref="$form-resources/BarriersAfterSalesService/hint"/><xf:alert ref="$fr-resources/detail/labels/alert"/>
+                        
+                        
+                    </xf:input></xh:td>
+	    </xh:tr><xh:tr>
+	      <xh:td><xf:input id="BarriersLackOfTrainedStaff-control" bind="BarriersLackOfTrainedStaff-bind">
+                        <xf:label ref="$form-resources/BarriersLackOfTrainedStaff/label"/>
+                        <xf:hint ref="$form-resources/BarriersLackOfTrainedStaff/hint"/><xf:alert ref="$fr-resources/detail/labels/alert"/>
+                        
+                        
+                    </xf:input></xh:td>
+	      <xh:td><xf:input id="BarriersLackOfInternationalEcommerceCapability-control" bind="BarriersLackOfInternationalEcommerceCapability-bind">
+                        <xf:label ref="$form-resources/BarriersLackOfInternationalEcommerceCapability/label"/>
+                        <xf:hint ref="$form-resources/BarriersLackOfInternationalEcommerceCapability/hint"/><xf:alert ref="$fr-resources/detail/labels/alert"/>
+                        
+                        
+                    </xf:input></xh:td>
+	    </xh:tr><xh:tr>
+	      <xh:td><xf:input id="BarriersTransportCosts-control" bind="BarriersTransportCosts-bind">
+                        <xf:label ref="$form-resources/BarriersTransportCosts/label"/>
+                        <xf:hint ref="$form-resources/BarriersTransportCosts/hint"/><xf:alert ref="$fr-resources/detail/labels/alert"/>
+                        
+                        
+                    </xf:input></xh:td>
+	      <xh:td><xf:input id="BarriersNonTariffBarriers-control" bind="BarriersNonTariffBarriers-bind">
+                        <xf:label ref="$form-resources/BarriersNonTariffBarriers/label"/>
+                        <xf:hint ref="$form-resources/BarriersNonTariffBarriers/hint"/><xf:alert ref="$fr-resources/detail/labels/alert"/>
+                        
+                        
+                    </xf:input></xh:td>
+	    </xh:tr>
+            </fr:grid><fr:grid>
+                <xh:tr>
+	      <xh:td><xf:textarea id="BarriersOther-control" bind="BarriersOther-bind">
+                        <xf:label ref="$form-resources/BarriersOther/label"/>
+                        <xf:hint ref="$form-resources/BarriersOther/hint"/><xf:alert ref="$fr-resources/detail/labels/alert"/>
+                        
+                        
+                    </xf:textarea></xh:td>
+	    </xh:tr>
+            </fr:grid><fr:grid>
+                <xh:tr>
+	      <xh:td><xf:output id="FromsOfAssistanceText-control" bind="FromsOfAssistanceText-bind" class="question">
+                        <xf:label ref="$form-resources/FromsOfAssistanceText/label" mediatype="text/html"/>
+                        <xf:hint ref="$form-resources/FromsOfAssistanceText/hint"/><xf:help ref="$form-resources/FromsOfAssistanceText/help"/><xf:alert ref="$fr-resources/detail/labels/alert"/>
+                        
+                        
+                    </xf:output></xh:td>
+	    </xh:tr>
+            </fr:grid><fr:grid>
+                <xh:tr>
+	      <xh:td><xf:input id="AssistanceExportTraining-control" bind="AssistanceExportTraining-bind">
+                        <xf:label ref="$form-resources/AssistanceExportTraining/label"/>
+                        <xf:hint ref="$form-resources/AssistanceExportTraining/hint"/><xf:alert ref="$fr-resources/detail/labels/alert"/>
+                        
+                        
+                    </xf:input></xh:td>
+	      <xh:td><xf:input id="AssistanceInternationalMarketing-control" bind="AssistanceInternationalMarketing-bind">
+                        <xf:label ref="$form-resources/AssistanceInternationalMarketing/label"/>
+                        <xf:hint ref="$form-resources/AssistanceInternationalMarketing/hint"/><xf:alert ref="$fr-resources/detail/labels/alert"/>
+                        
+                        
+                    </xf:input></xh:td>
+	    </xh:tr><xh:tr>
+	      <xh:td><xf:input id="AssistanceExportDocumentation-control" bind="AssistanceExportDocumentation-bind">
+                        <xf:label ref="$form-resources/AssistanceExportDocumentation/label"/>
+                        <xf:hint ref="$form-resources/AssistanceExportDocumentation/hint"/><xf:alert ref="$fr-resources/detail/labels/alert"/>
+                        
+                        
+                    </xf:input></xh:td>
+	      <xh:td><xf:input id="AssistanceInternationalMentoringOrPlacements-control" bind="AssistanceInternationalMentoringOrPlacements-bind">
+                        <xf:label ref="$form-resources/AssistanceInternationalMentoringOrPlacements/label"/>
+                        <xf:hint ref="$form-resources/AssistanceInternationalMentoringOrPlacements/hint"/><xf:alert ref="$fr-resources/detail/labels/alert"/>
+                        
+                        
+                    </xf:input></xh:td>
+	    </xh:tr><xh:tr>
+	      <xh:td><xf:input id="AssistanceInternationalEcommerce-control" bind="AssistanceInternationalEcommerce-bind">
+                        <xf:label ref="$form-resources/AssistanceInternationalEcommerce/label"/>
+                        <xf:hint ref="$form-resources/AssistanceInternationalEcommerce/hint"/><xf:alert ref="$fr-resources/detail/labels/alert"/>
+                        
+                        
+                    </xf:input></xh:td>
+	      <xh:td><xf:input id="AssistanceIntroductionToOverseasCustomers-control" bind="AssistanceIntroductionToOverseasCustomers-bind">
+                        <xf:label ref="$form-resources/AssistanceIntroductionToOverseasCustomers/label"/>
+                        <xf:hint ref="$form-resources/AssistanceIntroductionToOverseasCustomers/hint"/><xf:alert ref="$fr-resources/detail/labels/alert"/>
+                        
+                        
+                    </xf:input></xh:td>
+	    </xh:tr><xh:tr>
+	      <xh:td><xf:input id="AssistanceDevelopingAnInternationalStrategy-control" bind="AssistanceDevelopingAnInternationalStrategy-bind">
+                        <xf:label ref="$form-resources/AssistanceDevelopingAnInternationalStrategy/label"/>
+                        <xf:hint ref="$form-resources/AssistanceDevelopingAnInternationalStrategy/hint"/><xf:alert ref="$fr-resources/detail/labels/alert"/>
+                        
+                        
+                    </xf:input></xh:td>
+	      <xh:td><xf:input id="AssistanceIntroductionToAgentsOrDistributorsOrJVPartners-control" bind="AssistanceIntroductionToAgentsOrDistributorsOrJVPartners-bind">
+                        <xf:label ref="$form-resources/AssistanceIntroductionToAgentsOrDistributorsOrJVPartners/label"/>
+                        <xf:hint ref="$form-resources/AssistanceIntroductionToAgentsOrDistributorsOrJVPartners/hint"/><xf:alert ref="$fr-resources/detail/labels/alert"/>
+                        
+                        
+                    </xf:input></xh:td>
+	    </xh:tr><xh:tr>
+	      <xh:td><xf:input id="AssistanceMarketResearch-control" bind="AssistanceMarketResearch-bind">
+                        <xf:label ref="$form-resources/AssistanceMarketResearch/label"/>
+                        <xf:hint ref="$form-resources/AssistanceMarketResearch/hint"/><xf:alert ref="$fr-resources/detail/labels/alert"/>
+                        
+                        
+                    </xf:input></xh:td>
+	      <xh:td><xf:input id="AssistanceInformationOnBusinessOpportunities-control" bind="AssistanceInformationOnBusinessOpportunities-bind">
+                        <xf:label ref="$form-resources/AssistanceInformationOnBusinessOpportunities/label"/>
+                        <xf:hint ref="$form-resources/AssistanceInformationOnBusinessOpportunities/hint"/><xf:alert ref="$fr-resources/detail/labels/alert"/>
+                        
+                        
+                    </xf:input></xh:td>
+	    </xh:tr><xh:tr>
+	      <xh:td><xf:input id="AssistanceExhibitingAtTradeFairs-control" bind="AssistanceExhibitingAtTradeFairs-bind">
+                        <xf:label ref="$form-resources/AssistanceExhibitingAtTradeFairs/label"/>
+                        <xf:hint ref="$form-resources/AssistanceExhibitingAtTradeFairs/hint"/><xf:alert ref="$fr-resources/detail/labels/alert"/>
+                        
+                        
+                    </xf:input></xh:td>
+	      <xh:td><xf:input id="AssistanceInformationOnWorldAidFundedBusiness-control" bind="AssistanceInformationOnWorldAidFundedBusiness-bind">
+                        <xf:label ref="$form-resources/AssistanceInformationOnWorldAidFundedBusiness/label"/>
+                        <xf:hint ref="$form-resources/AssistanceInformationOnWorldAidFundedBusiness/hint"/><xf:alert ref="$fr-resources/detail/labels/alert"/>
+                        
+                        
+                    </xf:input></xh:td>
+	    </xh:tr><xh:tr>
+	      <xh:td><xf:input id="AssistanceOverseasTradeMissions-control" bind="AssistanceOverseasTradeMissions-bind">
+                        <xf:label ref="$form-resources/AssistanceOverseasTradeMissions/label"/>
+                        <xf:hint ref="$form-resources/AssistanceOverseasTradeMissions/hint"/><xf:alert ref="$fr-resources/detail/labels/alert"/>
+                        
+                        
+                    </xf:input></xh:td>
+	      <xh:td><xf:input id="AssistanceStartUpFacilitiesOverseas-control" bind="AssistanceStartUpFacilitiesOverseas-bind">
+                        <xf:label ref="$form-resources/AssistanceStartUpFacilitiesOverseas/label"/>
+                        <xf:hint ref="$form-resources/AssistanceStartUpFacilitiesOverseas/hint"/><xf:alert ref="$fr-resources/detail/labels/alert"/>
+                        
+                        
+                    </xf:input></xh:td>
+	    </xh:tr>
+            </fr:grid><fr:grid>
+                <xh:tr>
+	      <xh:td><xf:textarea id="AssistanceOther-control" bind="AssistanceOther-bind">
+                        <xf:label ref="$form-resources/AssistanceOther/label"/>
+                        <xf:hint ref="$form-resources/AssistanceOther/hint"/><xf:alert ref="$fr-resources/detail/labels/alert"/>
+                        
+                        
+                    </xf:textarea></xh:td>
+	    </xh:tr>
+            </fr:grid><fr:grid>
+                <xh:tr>
+	      <xh:td><xf:output id="control-137-control" bind="control-137-bind" class="question">
+                        <xf:label ref="$form-resources/control-137/label" mediatype="text/html"/>
+                        <xf:hint ref="$form-resources/control-137/hint" mediatype="text/html"/><xf:alert ref="$fr-resources/detail/labels/alert"/>
+                        
+                        
+                    </xf:output></xh:td>
+	    </xh:tr>
+            </fr:grid><fr:grid id="grid-102-grid" bind="grid-102-bind" repeat="content" min="1" template="instance('grid-102-template')">
+                <xh:tr>
+	      <xh:td><xf:input id="ExportingHelpOrganisationName-control" bind="ExportingHelpOrganisationName-bind">
+                        <xf:label ref="$form-resources/ExportingHelpOrganisationName/label" mediatype="text/html"/>
+                        <xf:hint ref="$form-resources/ExportingHelpOrganisationName/hint"/><xf:alert ref="$fr-resources/detail/labels/alert"/>
+                        
+                        
+                    </xf:input></xh:td>
+	    </xh:tr>
+            </fr:grid></fr:section><fr:section id="section-105-control" bind="section-105-bind">
+                <xf:label ref="$form-resources/section-105/label"/><fr:grid>
+                        <xh:tr>
+	      <xh:td><xf:output id="control-138-control" bind="control-138-bind" class="question">
+                        <xf:label ref="$form-resources/control-138/label" mediatype="text/html"/>
+                        <xf:hint ref="$form-resources/control-138/hint" mediatype="text/html"/><xf:alert ref="$fr-resources/detail/labels/alert"/>
+                        
+                        
+                    </xf:output></xh:td>
+	    </xh:tr>
+                    </fr:grid><fr:grid id="grid-107-grid" bind="grid-107-bind" repeat="content" min="1" template="instance('grid-107-template')">
+                <xh:tr>
+	      <xh:td><xf:input id="FutureExportMarketCountryName-control" bind="FutureExportMarketCountryName-bind" class="bold">
+                        <xf:label ref="$form-resources/FutureExportMarketCountryName/label" mediatype="text/html"/>
+                        <xf:hint ref="$form-resources/FutureExportMarketCountryName/hint"/><xf:alert ref="$fr-resources/detail/labels/alert"/>
+                        
+                        
+                    </xf:input></xh:td>
+	    </xh:tr>
+            </fr:grid></fr:section><fr:section id="section-110-control" bind="section-110-bind">
+                <xf:label ref="$form-resources/section-110/label"/><fr:grid>
+                        <xh:tr>
+	      <xh:td><xf:output id="control-139-control" bind="control-139-bind" class="question">
+                        <xf:label ref="$form-resources/control-139/label" mediatype="text/html"/>
+                        <xf:hint ref="$form-resources/control-139/hint" mediatype="text/html"/><xf:help ref="$form-resources/control-139/help" mediatype="text/html"/><xf:alert ref="$fr-resources/detail/labels/alert"/>
+                        
+                        
+                    </xf:output></xh:td>
+	    </xh:tr>
+                    </fr:grid><fr:grid>
+                <xh:tr>
+	      <xh:td><xf:output id="control-115-control" bind="control-115-bind" class="bold">
+                        <xf:label ref="$form-resources/control-115/label"/>
+                        <xf:hint ref="$form-resources/control-115/hint"/><xf:alert ref="$fr-resources/detail/labels/alert"/>
+                        
+                        
+                    </xf:output></xh:td>
+	    </xh:tr>
+            </fr:grid><fr:grid id="grid-112-grid" bind="grid-112-bind" repeat="content" min="1" template="instance('grid-112-template')">
+                <xh:tr>
+	      <xh:td><xf:input id="CurrentRelationshipCountryName-control" bind="CurrentRelationshipCountryName-bind">
+                        <xf:label ref="$form-resources/CurrentRelationshipCountryName/label" mediatype="text/html"/>
+                        <xf:hint ref="$form-resources/CurrentRelationshipCountryName/hint"/><xf:alert ref="$fr-resources/detail/labels/alert"/>
+                        
+                        
+                    </xf:input></xh:td>
+	      <xh:td><xf:input id="CurrentRelationshipNumberOfSubsiduaries-control" bind="CurrentRelationshipNumberOfSubsiduaries-bind">
+                        <xf:label ref="$form-resources/CurrentRelationshipNumberOfSubsiduaries/label" mediatype="text/html"/>
+                        <xf:hint ref="$form-resources/CurrentRelationshipNumberOfSubsiduaries/hint"/><xf:alert ref="$fr-resources/detail/labels/alert"/>
+                        
+                        
+                    </xf:input></xh:td>
+	      <xh:td><xf:input id="CurrentRelationshipNumberOfAgencies-control" bind="CurrentRelationshipNumberOfAgencies-bind">
+                        <xf:label ref="$form-resources/CurrentRelationshipNumberOfAgencies/label" mediatype="text/html"/>
+                        <xf:hint ref="$form-resources/CurrentRelationshipNumberOfAgencies/hint"/><xf:alert ref="$fr-resources/detail/labels/alert"/>
+                        
+                        
+                    </xf:input></xh:td>
+	      <xh:td><xf:input id="CurrentRelationshipNumberOfJointVentures-control" bind="CurrentRelationshipNumberOfJointVentures-bind">
+                        <xf:label ref="$form-resources/CurrentRelationshipNumberOfJointVentures/label" mediatype="text/html"/>
+                        <xf:hint ref="$form-resources/CurrentRelationshipNumberOfJointVentures/hint"/><xf:alert ref="$fr-resources/detail/labels/alert"/>
+                        
+                        
+                    </xf:input></xh:td>
+	      <xh:td><xf:input id="CurrentRelationshipNumberOfOther-control" bind="CurrentRelationshipNumberOfOther-bind">
+                        <xf:label ref="$form-resources/CurrentRelationshipNumberOfOther/label" mediatype="text/html"/>
+                        <xf:hint ref="$form-resources/CurrentRelationshipNumberOfOther/hint"/><xf:alert ref="$fr-resources/detail/labels/alert"/>
+                        
+                        
+                    </xf:input></xh:td>
+	    </xh:tr>
+            </fr:grid><fr:grid>
+                <xh:tr>
+	      <xh:td><xf:output id="control-120-control" bind="control-120-bind" class="bold">
+                        <xf:label ref="$form-resources/control-120/label"/>
+                        <xf:hint ref="$form-resources/control-120/hint"/><xf:alert ref="$fr-resources/detail/labels/alert"/>
+                        
+                        
+                    </xf:output></xh:td>
+	    </xh:tr>
+            </fr:grid><fr:grid id="grid-121-grid" bind="grid-121-bind" repeat="content" min="1" template="instance('grid-121-template')">
+                <xh:tr>
+	      <xh:td><xf:input id="PlannedRelationshipCountryName-control" bind="PlannedRelationshipCountryName-bind">
+                        <xf:label ref="$form-resources/PlannedRelationshipCountryName/label" mediatype="text/html"/>
+                        <xf:hint ref="$form-resources/PlannedRelationshipCountryName/hint"/><xf:alert ref="$fr-resources/detail/labels/alert"/>
+                        
+                        
+                    </xf:input></xh:td>
+	      <xh:td><xf:input id="PlannedRelationshipNumberOfSubsiduaries-control" bind="PlannedRelationshipNumberOfSubsiduaries-bind">
+                        <xf:label ref="$form-resources/PlannedRelationshipNumberOfSubsiduaries/label" mediatype="text/html"/>
+                        <xf:hint ref="$form-resources/PlannedRelationshipNumberOfSubsiduaries/hint"/><xf:alert ref="$fr-resources/detail/labels/alert"/>
+                        
+                        
+                    </xf:input></xh:td>
+	      <xh:td><xf:input id="PlannedRelationshipNumberOfAgencies-control" bind="PlannedRelationshipNumberOfAgencies-bind">
+                        <xf:label ref="$form-resources/PlannedRelationshipNumberOfAgencies/label" mediatype="text/html"/>
+                        <xf:hint ref="$form-resources/PlannedRelationshipNumberOfAgencies/hint"/><xf:alert ref="$fr-resources/detail/labels/alert"/>
+                        
+                        
+                    </xf:input></xh:td>
+	      <xh:td><xf:input id="PlannedRelationshipNumberOfJointVentures-control" bind="PlannedRelationshipNumberOfJointVentures-bind">
+                        <xf:label ref="$form-resources/PlannedRelationshipNumberOfJointVentures/label" mediatype="text/html"/>
+                        <xf:hint ref="$form-resources/PlannedRelationshipNumberOfJointVentures/hint"/><xf:alert ref="$fr-resources/detail/labels/alert"/>
+                        
+                        
+                    </xf:input></xh:td>
+	      <xh:td><xf:input id="PlannedRelationshipNumberOfOther-control" bind="PlannedRelationshipNumberOfOther-bind">
+                        <xf:label ref="$form-resources/PlannedRelationshipNumberOfOther/label" mediatype="text/html"/>
+                        <xf:hint ref="$form-resources/PlannedRelationshipNumberOfOther/hint"/><xf:alert ref="$fr-resources/detail/labels/alert"/>
+                        
+                        
+                    </xf:input></xh:td>
+	    </xh:tr>
+            </fr:grid></fr:section><fr:section id="section-128-control" bind="section-128-bind">
+                <xf:label ref="$form-resources/section-128/label"/><fr:grid>
+                        <xh:tr>
+	      <xh:td><xf:output id="control-140-control" bind="control-140-bind" class="question">
+                        <xf:label ref="$form-resources/control-140/label" mediatype="text/html"/>
+                        <xf:hint ref="$form-resources/control-140/hint"/><xf:help ref="$form-resources/control-140/help"/><xf:alert ref="$fr-resources/detail/labels/alert"/>
+                        
+                        
+                    </xf:output></xh:td>
+	      <xh:td/>
+	    </xh:tr><xh:tr>
+	      <xh:td><xf:output id="control-141-control" bind="control-141-bind" class="question">
+                        <xf:label ref="$form-resources/control-141/label" mediatype="text/html"/>
+                        <xf:hint ref="$form-resources/control-141/hint"/><xf:help ref="$form-resources/control-141/help"/><xf:alert ref="$fr-resources/detail/labels/alert"/>
+                        
+                        
+                    </xf:output></xh:td>
+	      <xh:td><fr:currency id="CostOfCompletingForm-control" bind="CostOfCompletingForm-bind" xmlns="http://orbeon.org/oxf/xml/form-builder" xmlns:xxbl="http://orbeon.org/oxf/xml/xbl">
+                        <xf:label ref="$form-resources/CostOfCompletingForm/label"/>
+                        <xf:hint ref="$form-resources/CostOfCompletingForm/hint"/><xf:alert ref="$fr-resources/detail/labels/alert"/>
+                        
+                        
+                    </fr:currency></xh:td>
+	    </xh:tr>
+                    </fr:grid><fr:grid>
+                <xh:tr>
+	      <xh:td><xf:output id="control-133-control" bind="control-133-bind" class="question">
+                        <xf:label ref="$form-resources/control-133/label" mediatype="text/html"/>
+                        <xf:hint ref="$form-resources/control-133/hint"/><xf:alert ref="$fr-resources/detail/labels/alert"/>
+                        
+                        
+                    </xf:output></xh:td>
+	    </xh:tr><xh:tr>
+	      <xh:td><xf:textarea id="QuestionnaireComments-control" bind="QuestionnaireComments-bind">
+                        <xf:label ref="$form-resources/QuestionnaireComments/label"/>
+                        <xf:hint ref="$form-resources/QuestionnaireComments/hint"/><xf:alert ref="$fr-resources/detail/labels/alert"/>
+                        
+                        
+                    </xf:textarea></xh:td>
+	    </xh:tr>
+            </fr:grid></fr:section>
 </fr:body>
 </fr:view>
 </xh:body>
-<sem:triples xmlns:sem="http://marklogic.com/semantics">
-<sem:triple>
-<sem:subject>http://marklogic.com/orbeon-ml-api/ns/GlobalConnectionsSurvey2015/form/1</sem:subject>
-<sem:predicate>http://marklogic.com/orbeon-ml-api/ns/has-doc-uri</sem:predicate>
-<sem:object>/orbeon/ScottishGovernment/GlobalConnectionsSurvey2015/form/form.xhtml</sem:object>
-</sem:triple>
-</sem:triples>
+  <xh:div style="display:none;">
+</xh:div>
+  <sem:triples xmlns:sem="http://marklogic.com/semantics">
+    <sem:triple>
+      <sem:subject>http://marklogic.com/orbeon-ml-api/ns/GlobalConnectionsSurvey2015/form/7</sem:subject>
+      <sem:predicate>http://marklogic.com/orbeon-ml-api/ns/has-doc-uri</sem:predicate>
+      <sem:object>/orbeon/ScottishGovernment/GlobalConnectionsSurvey2015/form/form.xhtml</sem:object>
+    </sem:triple>
+  </sem:triples>
 </xh:html>
