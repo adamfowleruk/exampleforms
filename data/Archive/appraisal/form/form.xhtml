@@ -1,0 +1,2735 @@
+<?xml version="1.0"?>
+<xh:html xmlns:xh="http://www.w3.org/1999/xhtml" xmlns:xf="http://www.w3.org/2002/xforms" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:xxf="http://orbeon.org/oxf/xml/xforms" xmlns:fr="http://orbeon.org/oxf/xml/form-runner">
+  <xh:head>
+    <xh:title>Appraisal Information</xh:title>
+    <xf:model id="fr-form-model" xxf:expose-xpath-types="true">
+      <xf:var name="is-appraisal" value="xxf:get-request-header('isAppraiser')  = 'true'"/>
+      <xf:var name="is-applicant" value="xxf:get-request-header('isApplicant')  = 'true'"/>
+      <xf:var name="is-appraisal-reviewer" value="xxf:get-request-header('isAppraisalReviewer') = 'true'"/>
+      <xf:var name="is-application-approver" value="xxf:get-request-header('isApplicationApprover') = 'true'"/>
+      <xf:var name="was-reviewed" value="exists(instance('fr-form-instance')/*:questionaire/*:conclusions-section/*:reviewed-date) and (instance('fr-form-instance')/*:questionaire/*:conclusions-section/*:reviewed-date/string() != '') and compare(instance('fr-form-instance')/*:questionaire/*:conclusions-section/*:reviewed-date,format-dateTime(current-dateTime(), '[D01]/[M01]/[Y] [H01]:[m01]')) != 1 "/>
+      <xf:var name="is-application-stage-view-mode" value="(instance('workflow-data')//*:stage = 'application') and ($is-appraisal or $is-appraisal-reviewer or $is-application-approver)"/>
+      <xf:var name="is-application-stage-edit-mode" value="(instance('workflow-data')//*:stage = 'application') and  $is-applicant and (xxf:instance('fr-parameters-instance')/mode != 'view')"/>
+      <xf:var name="is-evaluation-stage-view-mode" value="(instance('workflow-data')//*:stage = 'evaluation') and ($is-appraisal or $is-appraisal-reviewer or $is-application-approver)"/>
+      <xf:var name="is-evaluation-stage-edit-mode" value="(instance('workflow-data')//*:stage = 'evaluation') and  $is-appraisal and (xxf:instance('fr-parameters-instance')/mode != 'view')"/>
+      <xf:var name="is-review-stage-view-mode" value="((instance('workflow-data')//*:stage = 'review') and ($is-appraisal or $is-appraisal-reviewer or $is-application-approver))"/>
+      <xf:var name="is-review-stage-view-mode-for-comments" value="(($is-evaluation-stage-view-mode or $is-application-stage-view-mode) and $was-reviewed) or ((instance('workflow-data')//*:stage = 'review') and ((($is-appraisal or $is-application-approver) and $was-reviewed) or $is-appraisal-reviewer ))"/>
+      <xf:var name="is-review-stage-edit-mode-for-appraisal" value="(instance('workflow-data')//*:stage = 'evaluation') and ($is-appraisal and $was-reviewed) and (xxf:instance('fr-parameters-instance')/mode != 'view')"/>
+      <xf:var name="is-review-stage-edit-mode-for-reviewer" value="(instance('workflow-data')//*:stage = 'review') and $is-appraisal-reviewer and (xxf:instance('fr-parameters-instance')/mode != 'view')"/>
+      <xf:var name="is-review-stage-edit-mode" value="$is-review-stage-edit-mode-for-appraisal or $is-review-stage-edit-mode-for-reviewer and (xxf:instance('fr-parameters-instance')/mode != 'view')"/>
+      <xf:var name="is-decision-stage-view-mode" value="(instance('workflow-data')//*:stage = 'decision') and ($is-appraisal or $is-appraisal-reviewer or $is-application-approver)"/>
+      <xf:var name="is-decision-stage-edit-mode" value="(instance('workflow-data')//*:stage = 'decision') and  $is-application-approver and (xxf:instance('fr-parameters-instance')/mode != 'view')"/>
+      <xf:var name="is-complete-stage-view-mode" value="(instance('workflow-data')//*:stage = 'complete') and ($is-appraisal or $is-appraisal-reviewer or $is-application-approver)"/>
+      <xf:var name="complete-appraisal-action" value="instance('status-instance')//*:button-clicked eq 'complete appraisal'"/>
+      <xf:var name="return-review-action" value="instance('status-instance')//*:button-clicked = 'amendment requested'"/>
+      <xf:var name="request-info-action" value="instance('status-instance')//*:button-clicked = 'information requested'"/>
+      <xf:var name="additional-infromation-min" value="if($is-appraisal) then 1 else count(//*:fields-instructions-iteration)"/>
+      <xf:var name="additional-infromation-max" value="if($is-appraisal) then 'none' else count(//*:fields-instructions-iteration)"/>
+      <xf:var name="review-files-min" value="if($is-appraisal-reviewer) then 1 else count(//*:review-files-grid)"/>
+      <xf:var name="review-files-max" value="if($is-appraisal-reviewer) then 'none' else count(//*:review-files-grid)"/>
+      <!-- Main instance -->
+      <xf:instance id="fr-form-instance" xxf:exclude-result-prefixes="#all">
+        <appraisal>
+          <uids>
+            <application/>
+          </uids>
+          <full-application-overview-section>
+            <full-application-link/>
+            <app-ref-number/>
+            <app-project-name/>
+            <app-organisation-name/>
+            <display-complete-section>false</display-complete-section>
+            <display-decision-section>false</display-decision-section>
+          </full-application-overview-section>
+          <questionaire>
+            <outline-application-section>
+              <outline-application-conditions-comment/>
+              <outline-appplication-changes-comment/>
+            </outline-application-section>
+            <general-overview-section>
+              <general-overview-answer-overall>2</general-overview-answer-overall>
+              <general-overview-score-overall/>
+              <general-overview-description/>
+              <description/>
+              <questions>
+                <questions-iteration>
+                  <question>Whether or not the project is sufficiently well defined to enable the MA to enter into a funding agreement?</question>
+                  <answer>-1</answer>
+                  <score/>
+                </questions-iteration>
+                <questions-iteration>
+                  <question>To what extent is it easy to understand what is being proposed?</question>
+                  <answer>-1</answer>
+                  <score/>
+                </questions-iteration>
+                <questions-iteration>
+                  <question>Is it clear who will benefit from the project and what the results are?</question>
+                  <answer>-1</answer>
+                  <score/>
+                </questions-iteration>
+                <questions-iteration>
+                  <question>If there are partners, are their roles clearly defined?</question>
+                  <answer>-1</answer>
+                  <score/>
+                </questions-iteration>
+                <questions-iteration>
+                  <question>Are the objectives SMART?</question>
+                  <answer>-1</answer>
+                  <score/>
+                </questions-iteration>
+                <questions-iteration>
+                  <question>Is there a credible exit strategy?</question>
+                  <answer>-1</answer>
+                  <score/>
+                </questions-iteration>
+              </questions>
+              <questions-comment/>
+            </general-overview-section>
+            <core-selection-criteria-section>
+              <cross-cutting-themes-answer-overall-control>2</cross-cutting-themes-answer-overall-control>
+              <cross-cutting-themes-score-overall-control/>
+              <management-and-control-answer-overall-control>2</management-and-control-answer-overall-control>
+              <management-and-control-score-overall-control/>
+              <complience-answer-overall-control>2</complience-answer-overall-control>
+              <complience-score-overall-control/>
+              <deliverability-answer-overall-control>2</deliverability-answer-overall-control>
+              <deliverability-score-overall-control/>
+              <value-of-money-answer-overall-control>2</value-of-money-answer-overall-control>
+              <value-of-money-score-overall-control/>
+              <strategic-fit-answer-overall-control>2</strategic-fit-answer-overall-control>
+              <strategic-fit-score-overall-control/>
+              <strategic-fit>
+                <title>Strategic Fit</title>
+                <description>In considering the "Strategic Fit" use a qualitative approach to assess the following to come to an overall view: </description>
+                <strategic-fit-comment/>
+                <questions>
+                  <questions-iteration>
+                    <question>Does the proposed operation contribute to the needs/opportunities identified in the call? </question>
+                    <answer>-1</answer>
+                    <score/>
+                  </questions-iteration>
+                  <questions-iteration>
+                    <question>Does the proposed operation represent an appropriate means of delivering the relevant specific objectives of the relevant priorit(y)ies set out in the Operational Programme? </question>
+                    <answer>-1</answer>
+                    <score/>
+                  </questions-iteration>
+                  <questions-iteration>
+                    <question>Does the proposed operation align with the local growth needs set out in the local ESIF Strategies? </question>
+                    <answer>-1</answer>
+                    <score/>
+                  </questions-iteration>
+                  <questions-iteration>
+                    <question>Does the proposed project add value to, and not duplicate existing provision and must not conflict with national policy? </question>
+                    <answer>-1</answer>
+                    <score/>
+                  </questions-iteration>
+                </questions>
+              </strategic-fit>
+              <value-of-money>
+                <value-of-money-comment/>
+                <title>Value For Money</title>
+                <description>In considering the "Value For Money" use a qualitative approach to assess the following to come to an overall view: </description>
+                <questions>
+                  <questions-iteration>
+                    <question>Does the application demonstrate a clear case that the investment will deliver activities and impacts that would not otherwise take place? </question>
+                    <answer>-1</answer>
+                    <score/>
+                  </questions-iteration>
+                  <questions-iteration>
+                    <question>In assessing VFM take into account of Efficiency: the rate/unit cost at which the operation converts inputs into deliverables </question>
+                    <answer>-1</answer>
+                    <score/>
+                  </questions-iteration>
+                  <questions-iteration>
+                    <question>In assessing VFM take into account of Economy: the extent to which the operation will ensure that inputs to the operation are at the minimum cost commensurate with the required quality </question>
+                    <answer>-1</answer>
+                    <score/>
+                  </questions-iteration>
+                  <questions-iteration>
+                    <question>In assessing VFM take into account of Effectiveness: the extent to which the operation contributes to the funding targets in terms of programme deliverables and / or significant strategic impact at the local level </question>
+                    <answer>-1</answer>
+                    <score/>
+                  </questions-iteration>
+                </questions>
+              </value-of-money>
+              <deliverability>
+                <deliverability-comment/>
+                <title>Deliverability</title>
+                <description>In considering the "deliverability" use a qualitative approach to assess the following to come to an overall view: </description>
+                <description/>
+                <questions>
+                  <questions-iteration>
+                    <question>Is the operation deliverable within the requirements of the Operational Programme taking into account risks, constraints and dependencies? </question>
+                    <answer>-1</answer>
+                    <score/>
+                  </questions-iteration>
+                  <questions-iteration>
+                    <question>Does the operation have appropriate arrangements in place to secure the required level of match funding? </question>
+                    <answer>-1</answer>
+                    <score/>
+                  </questions-iteration>
+                  <questions-iteration>
+                    <question> And at the point of formal approval, is it evident that the required match funding will be in place? </question>
+                    <answer>-1</answer>
+                    <score/>
+                  </questions-iteration>
+                  <questions-iteration>
+                    <question>Does the operation provide evidence that this type of operation is effective or if new / innovative, the risks have been considered and appropriate mitigations have been put in place? </question>
+                    <answer>-1</answer>
+                    <score/>
+                  </questions-iteration>
+                </questions>
+              </deliverability>
+              <management-and-control>
+                <management-and-control-comment/>
+                <title>Management And Control</title>
+                <description>In considering the "Management And Control" use a qualitative approach to assess the following to come to an overall view: </description>
+                <questions>
+                  <questions-iteration>
+                    <question>Does the applicant demonstrate appropriate expertise, capacity and capability to deliver the operation successfully? </question>
+                    <answer>-1</answer>
+                    <score/>
+                  </questions-iteration>
+                  <questions-iteration>
+                    <question>Does the applicant demonstrate that the necessary management capacity, systems and processes are in place to meet the requirements of the fund. </question>
+                    <answer>-1</answer>
+                    <score/>
+                  </questions-iteration>
+                  <questions-iteration>
+                    <question>Does the applicant have the capability to meet the financial requirements that flow from receipt of ERDF or ESF support? </question>
+                    <answer>-1</answer>
+                    <score/>
+                  </questions-iteration>
+                  <questions-iteration>
+                    <question>Has the applicant adequately detailed the project&#x2019;s management structures and processes, to demonstrate that the project has the appropriate capacity to meet the requirements of ESI funds? </question>
+                    <answer>-1</answer>
+                    <score/>
+                  </questions-iteration>
+                  <questions-iteration>
+                    <question>Has the applicant demonstrated that the team set up to manage and deliver the project has appropriate resources, expertise, skills, responsibility and experience to achieve this? Is there evidence that existing staff have been identified appropriately and new staff will be openly recruited? Are individual posts and team roles adequately described? </question>
+                    <answer>-1</answer>
+                    <score/>
+                  </questions-iteration>
+                  <questions-iteration>
+                    <question>Has the applicant adequately explained the mechanisms which will be used to ensure that the project delivery team fully understand the requirements of the proposal? </question>
+                    <answer>-1</answer>
+                    <score/>
+                  </questions-iteration>
+                  <questions-iteration>
+                    <question>Has the applicant satisfactorily demonstrated how it will ensure continuous improvement in the quality of service or provision? </question>
+                    <answer>-1</answer>
+                    <score/>
+                  </questions-iteration>
+                  <questions-iteration>
+                    <question>If applicable, has the applicant adequately described how they will ensure that Delivery Partner(s) comply with the requirements of ESI funding and how they will monitor and manage the performance of Delivery Partner(s) and/or sub-contractors? </question>
+                    <answer>-1</answer>
+                    <score/>
+                  </questions-iteration>
+                  <questions-iteration>
+                    <question>Has the applicant demonstrated that satisfactory financial management and control procedures are or will be put in place for the project, including the process for compiling and authorising ESIF claims for payment, and which individuals will manage this process? </question>
+                    <answer>-1</answer>
+                    <score/>
+                  </questions-iteration>
+                  <questions-iteration>
+                    <question>Has the applicant adequately described the document management system for the project and how the audit trail will be maintained and accessible for the period required under the terms of the ESI Funding Agreement? </question>
+                    <answer>-1</answer>
+                    <score/>
+                  </questions-iteration>
+                  <questions-iteration>
+                    <question>Has the applicant adequately set out their organisation&#x2019;s financial policy which describes processes, roles and schemes of delegation? </question>
+                    <answer>-1</answer>
+                    <score/>
+                  </questions-iteration>
+                  <questions-iteration>
+                    <question>Has the applicant adequately described their system used for filing and retrieving original invoices and explained satisfactorily how evidence of costs incurred will be checked and verified? </question>
+                    <answer>-1</answer>
+                    <score/>
+                  </questions-iteration>
+                  <questions-iteration>
+                    <question>If applicable, has the applicant adequately explained how they will ensure that partners/financial beneficiaries engaged in the delivery of the project will comply with the requirements relating to defrayal of expenditure? </question>
+                    <answer>-1</answer>
+                    <score/>
+                  </questions-iteration>
+                  <questions-iteration>
+                    <question>Is it clear that the applicant has the capability to manage cash flow through the lifetime of the project? </question>
+                    <answer>-1</answer>
+                    <score/>
+                  </questions-iteration>
+                  <questions-iteration>
+                    <question>Is it clear how the applicant will ensure that only eligible and defrayed expenditure will be included in claims? </question>
+                    <answer>-1</answer>
+                    <score/>
+                  </questions-iteration>
+                  <questions-iteration>
+                    <question>Does the applicant (and its partners) have sufficient accounting and software controls in place? </question>
+                    <answer>-1</answer>
+                    <score/>
+                  </questions-iteration>
+                  <questions-iteration>
+                    <question>Has the applicant comprehensively described how (if appropriate) irrecoverable VAT will be accounted for? </question>
+                    <answer>-1</answer>
+                    <score/>
+                  </questions-iteration>
+                </questions>
+              </management-and-control>
+              <complience>
+                <complience-comment/>
+                <title>Compliance</title>
+                <description>In considering the "Compliance" use a qualitative approach to assess the following to come to an overall view: </description>
+                <questions>
+                  <questions-iteration>
+                    <question>State Aid: has the applicant listed all the organisations which may benefit from the measure (including the applicant)? </question>
+                    <answer>-1</answer>
+                    <score/>
+                  </questions-iteration>
+                  <questions-iteration>
+                    <question>State Aid: for each potential beneficiary (including the applicant and any delivery partners) has the applicant applied the State Aid test and reached conclusions? </question>
+                    <answer>-1</answer>
+                    <score/>
+                  </questions-iteration>
+                  <questions-iteration>
+                    <question>State Aid: for each potential beneficiary (including the applicant and any deliver partners) in receipt of State Aid, has the applicant set out a clear explanation of which exemption will be applied and why the terms of the exemption have been met? </question>
+                    <answer>-1</answer>
+                    <score/>
+                  </questions-iteration>
+                  <questions-iteration>
+                    <question>State Aid: has the applicant adequately demonstrated that a satisfactory system is or will be put in place for collecting and recording the required information for audits/returns? </question>
+                    <answer>-1</answer>
+                    <score/>
+                  </questions-iteration>
+                  <questions-iteration>
+                    <question>Procurement: Has the applicant properly analysed the stages of the project(s) where procurement is or may be required and provided a list of all the relevant procurements for the project (both contracts already awarded and those that will be let in the event of the project being funded)? </question>
+                    <answer>-1</answer>
+                    <score/>
+                  </questions-iteration>
+                  <questions-iteration>
+                    <question>Procurement: in respect of the procurement activities above have they demonstrated that they will comply with ESIF procurement rules? </question>
+                    <answer>-1</answer>
+                    <score/>
+                  </questions-iteration>
+                  <questions-iteration>
+                    <question>Procurement: for those contracts which have already been awarded, has the applicant reviewed the documents and provided a convincing explanation as to why these are compliant? Is the applicant able to provide copies of all tender documents? </question>
+                    <answer>-1</answer>
+                    <score/>
+                  </questions-iteration>
+                  <questions-iteration>
+                    <question>Procurement: for contracts that have yet to be let, has the applicant set out a convincing explanation of the processes that will be put in place to ensure all procurement requirements are met? </question>
+                    <answer>-1</answer>
+                    <score/>
+                  </questions-iteration>
+                  <questions-iteration>
+                    <question>Publicity: has the applicant adequately set out how the lead applicant and, if applicable, delivery partners and / or sub-contractors, will meet the ESI fund publicity requirements? </question>
+                    <answer>-1</answer>
+                    <score/>
+                  </questions-iteration>
+                  <questions-iteration>
+                    <question>General: has the applicant set out a clear process for monitoring that it is meeting its obligations during the project? </question>
+                    <answer>-1</answer>
+                    <score/>
+                  </questions-iteration>
+                  <questions-iteration>
+                    <question>General: are there any conflicts of interest which are not going to be managed in the delivery of the project?o </question>
+                    <answer>-1</answer>
+                    <score/>
+                  </questions-iteration>
+                </questions>
+              </complience>
+              <cross-cutting-themes>
+                <cross-cutting-themes-comment/>
+                <title>Cross Cutting Themes</title>
+                <description>In considering the "Cross Cutting Themes" use a qualitative approach to assess the following to come to an overall view: </description>
+                <questions>
+                  <questions-iteration>
+                    <question>Does applicant take into account of and contribute towards gender equality and non-discrimination. Does it meet the legal obligations? </question>
+                    <answer>-1</answer>
+                    <score/>
+                  </questions-iteration>
+                  <questions-iteration>
+                    <question>Does the applicant take into account of and contribute towards the sustainable development theme? Does it meet the legal obligations? </question>
+                    <answer>-1</answer>
+                    <score/>
+                  </questions-iteration>
+                </questions>
+              </cross-cutting-themes>
+            </core-selection-criteria-section>
+            <conclusions-section>
+              <completed-by/>
+              <completed-date/>
+              <reviewed-by/>
+              <reviewed-date/>
+              <summary-comments/>
+            </conclusions-section>
+          </questionaire>
+          <complete-appraisal>
+            <application-approved>yes</application-approved>
+            <approval-reasons/>
+            <supporting-documents>
+              <supporting-documents-iteration>
+                <attachment filename="" mediatype="" size=""/>
+                <docs-category itemset-empty="false"/>
+                <docs-description/>
+              </supporting-documents-iteration>
+            </supporting-documents>
+            <complete-appraisal-confirm/>
+            <complete-appraisal-cancel/>
+          </complete-appraisal>
+          <additional-information>
+            <aditional-information-title/>
+            <aditional-information-instructions/>
+            <response-required-by/>
+            <fields-instructions>
+              <fields-instructions-iteration>
+                <field/>
+                <instructions/>
+                <applicant-response/>
+              </fields-instructions-iteration>
+            </fields-instructions>
+          </additional-information>
+          <review-section>
+            <comments-grid>
+              <comments-grid-iteration>
+                <review-comment/>
+                <appraisal-response/>
+              </comments-grid-iteration>
+              <new-review-comment/>
+              <new-response-comment/>
+            </comments-grid>
+            <review-files-grid>
+              <review-files-grid-iteration>
+                <review-file filename="" mediatype="" size=""/>
+                <review-file-category itemset-empty="false"/>
+                <review-file-description/>
+              </review-files-grid-iteration>
+            </review-files-grid>
+          </review-section>
+          <decision-section>
+            <audit>
+              <audit-iteration>
+                <audit-date/>
+                <audit-comments/>
+                <audit-file filename="" mediatype="" size=""/>
+                <audit-file-category itemset-empty="false"/>
+                <audit-file-description/>
+              </audit-iteration>
+            </audit>
+            <decision>
+              <decision-made/>
+              <rejection-reason-grid>
+                <rejection-reason-iteration>
+                  <rejection-reason itemset-empty="false"/>
+                  <rejection-reason-motivation/>
+                </rejection-reason-iteration>
+              </rejection-reason-grid>
+              <decision-confirm/>
+              <decision-cancel/>
+            </decision>
+          </decision-section>
+          <audit-info>
+            <status>draft</status>
+            <last-update/>
+          </audit-info>
+        </appraisal>
+      </xf:instance>
+      <xf:instance id="status-instance">
+        <changes>
+          <button-clicked/>
+          <status-display/>
+        </changes>
+      </xf:instance>
+      <xf:action ev:event="xforms-model-construct-done">
+        <xf:send submission="retrieve-workflow-data"/>
+      </xf:action>
+      <xf:submission id="retrieve-workflow-data" method="get" instance="workflow-data" replace="instance" serialization="application/xml" validate="false" resource="{xxf:property('esif.marklogic.base')}/esif/workflow/data/full-application/{xxf:instance('fr-form-instance')/*:uids/*:application}">
+        <xf:action ev:event="xforms-submit-done">
+          <xf:setvalue bind="wf-data-stage-bind" value="xxf:instance('workflow-data')//*:stage"/>
+          <xf:setvalue bind="wf-data-type-bind" value="'appraisal'"/>
+          <!-- on Save the status is changed for appraisal & review steps, not maintained -->
+          <xf:setvalue bind="wf-data-status-bind" if="xxf:instance('workflow-data')//*:status = 'sent for review'">in review</xf:setvalue>
+          <xf:setvalue bind="wf-data-status-bind" if="xxf:instance('workflow-data')//*:status = ('submitted', 'information submitted')">in progress</xf:setvalue>
+          <xf:setvalue bind="wf-data-status-bind" if="not(xxf:instance('workflow-data')//*:status = ('submitted', 'information submitted', 'sent for review'))" value="xxf:instance('workflow-data')//*:status"/>
+        </xf:action>
+      </xf:submission>
+      <xf:instance id="workflow-data">
+        <workflow/>
+      </xf:instance>
+      <xf:instance id="workflow-payload" xxf:exclude-result-prefixes="#all">
+        <workflow>
+          <assignment>
+            <user-name/>
+            <user-role/>
+          </assignment>
+          <data>
+            <appraisal-id/>
+            <currently-assigned-user/>
+            <control>
+              <requestForInformation/>
+              <returnToQueue/>
+              <requestForAmendment/>
+              <approved/>
+            </control>
+            <staging>
+              <stage/>
+              <type/>
+              <status/>
+            </staging>
+            <email-data>
+              <username/>
+              <fullname/>
+              <email/>
+              <application-type/>
+              <web-app-base-uri/>
+            </email-data>
+          </data>
+          <attachment>
+            <name/>
+            <uri/>
+          </attachment>
+          <state-change/>
+        </workflow>
+      </xf:instance>
+      <xf:bind id="workflow-binds" ref="instance('workflow-payload')">
+        <xf:bind id="assignment-bind" ref="assignment" name="assignment">
+          <xf:bind id="user-name-bind" ref="user-name" name="user-name" xxf:default="xxf:get-request-header('username')"/>
+          <xf:bind id="user-role-bind" ref="user-role" name="user-role" calculate="if ($is-application-stage-edit-mode) then 'applicant' else                    if ($is-evaluation-stage-edit-mode) then 'appraiser' else                   if ($is-review-stage-edit-mode-for-reviewer) then 'reviewer' else 'approver'"/>
+        </xf:bind>
+        <xf:bind id="wf-data-bind" ref="data" name="data">
+          <xf:bind id="wf-appraisal-id-bind" ref="appraisal-id" name="appraisal-id" calculate="xxf:instance('fr-parameters-instance')/document"/>
+          <xf:bind id="wf-currently-assigned-user-bind" ref="currently-assigned-user" name="currently-assigned-user" xxf:default="xxf:get-request-header('username')"/>
+          <xf:bind id="control-bind" ref="control" name="control">
+            <xf:bind id="requestForInformation-bind" ref="requestForInformation" name="requestForInformation"/>
+            <xf:bind id="requestForAmendment-bind" ref="requestForAmendment" name="requestForAmendment"/>
+            <xf:bind id="approved-bind" ref="approved" name="approved"/>
+            <xf:bind id="returnToQueue-bind" ref="returnToQueue" name="returnToQueue"/>
+          </xf:bind>
+          <xf:bind id="wf-data-staging" ref="staging" name="staging">
+            <xf:bind id="wf-data-stage-bind" ref="stage" name="stage"/>
+            <xf:bind id="wf-data-type-bind" ref="type" name="type"/>
+            <xf:bind id="wf-data-status-bind" ref="status" name="status"/>
+          </xf:bind>
+          <xf:bind id="wf-data-email-bind" ref="email-data" name="email-data">
+            <xf:bind id="wf-data-mail-username" ref="username" name="username"/>
+            <xf:bind id="wf-data-mail-fullname" ref="fullname" name="fullname"/>
+            <xf:bind id="wf-data-mail-email" ref="email" name="email"/>
+            <xf:bind id="wf-data-mail-application-type" ref="application-type" name="application-type"/>
+            <xf:bind id="wf-data-mail-web-app-base-uri" ref="web-app-base-uri" name="web-app-base-uri"/>
+          </xf:bind>
+        </xf:bind>
+        <xf:bind id="wf-attachment-bind" ref="attachment" name="attachment">
+          <xf:bind id="wf-attachment-name-bind" ref="name" name="name" xxf:default="'Appraisal'"/>
+          <xf:bind id="wf-attachment-uri-bind" ref="uri" name="uri" calculate="concat('/orbeon/erdf/appraisal/data/', xxf:instance('fr-parameters-instance')/document, '/data.xml')"/>
+        </xf:bind>
+        <xf:bind id="state-change-bind" ref="state-change" name="state-change" xxf:default="'false'"/>
+      </xf:bind>
+      <xf:submission id="wf-update-process" method="post" ref="instance('workflow-payload')" replace="none" validate="false" resource="{xxf:property('esif.marklogic.base')}/esif/workflow/process/full-application/{xxf:instance('fr-form-instance')/*:uids/*:application}">
+      </xf:submission>
+      <xf:submission id="request-information" method="put" instance="fr-form-instance" replace="instance" serialization="application/xml" validate="true" relevant="false" resource="/fr/service/persistence/crud/erdf/appraisal/data/{xxf:instance('fr-parameters-instance')/document}/data.xml">
+        <xf:header combine="replace">
+          <xf:name>Accept</xf:name>
+          <xf:value>application/xml</xf:value>
+        </xf:header>
+        <xf:header>
+          <xf:name>Orbeon-Form-Definition-Version</xf:name>
+          <xf:value value="xxf:instance('fr-parameters-instance')/form-version"/>
+        </xf:header>
+        <xf:action ev:event="xforms-submit-error">
+          <xf:message level="modal">
+            <xf:output value="'There are validation errors (response request by, field name or instructions). Please check your selections and entries, and retry once all fields have been filled out.'"/>
+          </xf:message>
+          <xf:setfocus ev:event="DOMActivate" control="additional-information-control"/>
+        </xf:action>
+        <xf:action ev:event="xforms-submit-done">
+          <xf:setvalue bind="requestForInformation-bind">true</xf:setvalue>
+          <xf:setvalue bind="state-change-bind">true</xf:setvalue>
+          <xf:setvalue bind="wf-currently-assigned-user-bind" value="xxf:instance('workflow-data')//*:applicant-username"/>
+          <xf:setvalue bind="wf-data-stage-bind">application</xf:setvalue>
+          <xf:setvalue bind="wf-data-type-bind">appraisal</xf:setvalue>
+          <xf:setvalue bind="wf-data-status-bind">information requested</xf:setvalue>
+          <xf:send submission="wf-update-process"/>
+          <xf:setvalue ref="xxf:instance('fr-persistence-instance')/data-safe-override">true</xf:setvalue>
+          <xf:load resource="/esif-web/applications/dashboard"/>
+        </xf:action>
+      </xf:submission>
+      <xf:submission id="complete-appraisal" method="put" instance="fr-form-instance" replace="instance" serialization="application/xml" validate="true" relevant="false" resource="/fr/service/persistence/crud/erdf/appraisal/data/{xxf:instance('fr-parameters-instance')/document}/data.xml">
+        <xf:header combine="replace">
+          <xf:name>Accept</xf:name>
+          <xf:value>application/xml</xf:value>
+        </xf:header>
+        <xf:header>
+          <xf:name>Orbeon-Form-Definition-Version</xf:name>
+          <xf:value value="xxf:instance('fr-parameters-instance')/form-version"/>
+        </xf:header>
+        <xf:action ev:event="xforms-submit-error">
+          <xf:message level="modal">
+            <xf:output value="'There are validation errors (questionnaire answers or mandatory fields for files). Please check your answers to the questionnaire, and retry once all fields have been filled out.'"/>
+          </xf:message>
+          <xf:setfocus ev:event="DOMActivate" control="questionaire-control"/>
+        </xf:action>
+        <xf:action ev:event="xforms-submit-done">
+          <xf:setvalue bind="state-change-bind">true</xf:setvalue>
+          <xf:setvalue bind="wf-currently-assigned-user-bind"/>
+          <xf:setvalue bind="wf-data-stage-bind">review</xf:setvalue>
+          <xf:setvalue bind="wf-data-type-bind">appraisal</xf:setvalue>
+          <xf:setvalue bind="wf-data-status-bind" if="instance('workflow-data')//*:status = ('submitted','information submitted', 'in progress')">sent for review</xf:setvalue>
+          <xf:setvalue bind="wf-data-status-bind" if="instance('workflow-data')//*:status = 'amendment requested'">amendment submitted</xf:setvalue>
+          <xf:send submission="wf-update-process"/>
+          <xf:setvalue ref="xxf:instance('fr-persistence-instance')/data-safe-override">true</xf:setvalue>
+          <xf:load resource="/esif-web/applications/dashboard"/>
+        </xf:action>
+      </xf:submission>
+      <xf:submission id="return-appraisal" method="put" instance="fr-form-instance" replace="instance" serialization="application/xml" validate="true" relevant="false" resource="/fr/service/persistence/crud/erdf/appraisal/data/{xxf:instance('fr-parameters-instance')/document}/data.xml">
+        <xf:header combine="replace">
+          <xf:name>Accept</xf:name>
+          <xf:value>application/xml</xf:value>
+        </xf:header>
+        <xf:header>
+          <xf:name>Orbeon-Form-Definition-Version</xf:name>
+          <xf:value value="xxf:instance('fr-parameters-instance')/form-version"/>
+        </xf:header>
+        <xf:action ev:event="xforms-submit-error">
+          <xf:message level="modal">
+            <xf:output value="'There are validation errors (review comments or mandatory fields for files). Please check review comments or if you add files, and retry once all mandatory fields have been filled out.'"/>
+          </xf:message>
+          <xf:setfocus ev:event="DOMActivate" control="review-section-control"/>
+        </xf:action>
+        <xf:action ev:event="xforms-submit-done">
+          <xf:setvalue bind="state-change-bind">true</xf:setvalue>
+          <xf:setvalue bind="wf-currently-assigned-user-bind" value="xxf:instance('workflow-data')//*:appraiser-username"/>
+          <xf:setvalue bind="requestForAmendment-bind">true</xf:setvalue>
+          <xf:setvalue bind="wf-data-stage-bind">evaluation</xf:setvalue>
+          <xf:setvalue bind="wf-data-type-bind">appraisal</xf:setvalue>
+          <xf:setvalue bind="wf-data-status-bind">amendment requested</xf:setvalue>
+          <xf:send submission="wf-update-process"/>
+          <xf:setvalue ref="xxf:instance('fr-persistence-instance')/data-safe-override">true</xf:setvalue>
+          <xf:load resource="/esif-web/applications/dashboard"/>
+        </xf:action>
+      </xf:submission>
+      <xf:submission id="submit-appraisal" method="put" instance="fr-form-instance" replace="instance" serialization="application/xml" validate="true" relevant="false" resource="/fr/service/persistence/crud/erdf/appraisal/data/{xxf:instance('fr-parameters-instance')/document}/data.xml">
+        <xf:header combine="replace">
+          <xf:name>Accept</xf:name>
+          <xf:value>application/xml</xf:value>
+        </xf:header>
+        <xf:header>
+          <xf:name>Orbeon-Form-Definition-Version</xf:name>
+          <xf:value value="xxf:instance('fr-parameters-instance')/form-version"/>
+        </xf:header>
+        <xf:action ev:event="xforms-submit-error">
+          <xf:message level="modal" ev:event="xforms-submit-error">
+            <xf:output value="'There were some problems with the save... Please try again (If error continue to appear contact administrator)'"/>
+          </xf:message>
+          <xf:setfocus ev:event="DOMActivate" control="full-application-overview-section-control"/>
+        </xf:action>
+        <xf:action ev:event="xforms-submit-done">
+          <xf:setvalue bind="state-change-bind">true</xf:setvalue>
+          <xf:setvalue bind="wf-currently-assigned-user-bind"/>
+          <xf:setvalue bind="wf-data-stage-bind">decision</xf:setvalue>
+          <xf:setvalue bind="wf-data-type-bind">appraisal</xf:setvalue>
+          <xf:setvalue bind="wf-data-status-bind">pending decision</xf:setvalue>
+          <xf:send submission="wf-update-process"/>
+          <xf:setvalue ref="xxf:instance('fr-persistence-instance')/data-safe-override">true</xf:setvalue>
+          <xf:load resource="/esif-web/applications/dashboard"/>
+        </xf:action>
+      </xf:submission>
+      <xf:submission id="record-decision-on-appraisal" method="put" instance="fr-form-instance" replace="instance" serialization="application/xml" validate="true" relevant="false" resource="/fr/service/persistence/crud/erdf/appraisal/data/{xxf:instance('fr-parameters-instance')/document}/data.xml">
+        <xf:header combine="replace">
+          <xf:name>Accept</xf:name>
+          <xf:value>application/xml</xf:value>
+        </xf:header>
+        <xf:header>
+          <xf:name>Orbeon-Form-Definition-Version</xf:name>
+          <xf:value value="xxf:instance('fr-parameters-instance')/form-version"/>
+        </xf:header>
+        <xf:action ev:event="xforms-submit-error">
+          <xf:message level="modal">
+            <xf:output value="'There are validation errors (make decision and possibly rejection reason). Please check response required by field, and retry once that field has been filled out.'"/>
+          </xf:message>
+          <xf:setfocus ev:event="DOMActivate" control="decision-section-control"/>
+        </xf:action>
+        <xf:action ev:event="xforms-submit-done">
+          <!-- for the email some data from the call are required -->
+          <xf:send submission="retrieve-call"/>
+          <xf:setvalue bind="state-change-bind">true</xf:setvalue>
+          <xf:setvalue bind="approved-bind" if="instance('fr-form-instance')//*:decision-made = 'approved'">true</xf:setvalue>
+          <xf:setvalue bind="wf-data-stage-bind">complete</xf:setvalue>
+          <xf:setvalue bind="wf-data-type-bind">appraisal</xf:setvalue>
+          <xf:setvalue bind="wf-data-status-bind" value="xxf:instance('fr-form-instance')//*:decision-made"/>
+          <xf:setvalue bind="wf-currently-assigned-user-bind"/>
+          <xf:setvalue bind="wf-data-mail-username" value="xxf:instance('workflow-data')//*:applicant-username"/>
+          <xf:setvalue bind="wf-data-mail-fullname" value="concat('Mock-full-name-', xxf:instance('workflow-data')//*:applicant-username)"/>
+          <!-- need a way to get the email of the applicant user - until then - hardcoded -->
+          <xf:setvalue bind="wf-data-mail-email">bobtheapplicant@gmail.com</xf:setvalue>
+          <xf:setvalue bind="wf-data-mail-application-type" value="xxf:instance('find-call')/*:programme-details/*:fund"/>
+          <xf:setvalue bind="wf-data-mail-web-app-base-uri" value="xxf:property('esif.web.base.app')"/>
+          <xf:send submission="wf-update-process"/>
+          <xf:setvalue bind="req-status-bind" value="if(xxf:instance('fr-form-instance')//*:decision-made = 'approved') then 'awaiting funding agreement' else 'rejected'"/>
+          <xf:setvalue bind="req-decision-date-bind" value="current-dateTime()"/>
+          <xf:send submission="update-project-on-decision"/>
+          <xf:send submission="log-activity" if="xxf:instance('fr-form-instance')//*:decision-made = 'approved'"/>
+          <xf:setvalue ref="xxf:instance('fr-persistence-instance')/data-safe-override">true</xf:setvalue>
+          <xf:load resource="/esif-web/applications/dashboard"/>
+        </xf:action>
+      </xf:submission>
+      <xf:submission id="submit-information" method="put" instance="fr-form-instance" replace="instance" serialization="application/xml" validate="true" relevant="false" resource="/fr/service/persistence/crud/erdf/appraisal/data/{xxf:instance('fr-parameters-instance')/document}/data.xml">
+        <xf:header combine="replace">
+          <xf:name>Accept</xf:name>
+          <xf:value>application/xml</xf:value>
+        </xf:header>
+        <xf:header>
+          <xf:name>Orbeon-Form-Definition-Version</xf:name>
+          <xf:value value="xxf:instance('fr-parameters-instance')/form-version"/>
+        </xf:header>
+        <xf:action ev:event="xforms-submit-error">
+          <xf:message level="modal">
+            <xf:output value="'There are validation errors (applicant response). Please check your selections and entries, and retry once all fields have been filled out.'"/>
+          </xf:message>
+          <xf:setfocus ev:event="DOMActivate" control="additional-information-control"/>
+        </xf:action>
+        <xf:action ev:event="xforms-submit-done">
+          <xf:setvalue bind="state-change-bind">true</xf:setvalue>
+          <xf:setvalue bind="wf-currently-assigned-user-bind"/>
+          <xf:setvalue bind="wf-data-stage-bind">evaluation</xf:setvalue>
+          <xf:setvalue bind="wf-data-type-bind">appraisal</xf:setvalue>
+          <xf:setvalue bind="wf-data-status-bind">information submitted</xf:setvalue>
+          <xf:send submission="wf-update-process"/>
+          <xf:setvalue ref="xxf:instance('fr-persistence-instance')/data-safe-override">true</xf:setvalue>
+          <xf:load resource="/esif-web/applications/dashboard"/>
+        </xf:action>
+      </xf:submission>
+      <xf:submission id="update-project-on-decision" method="put" ref="instance('project-update-request')" replace="none" validate="false" resource="{xxf:property('esif.marklogic.base')}/esif/project/update">
+      </xf:submission>
+      <xf:instance id="project-update-request">
+        <request>
+          <type>project</type>
+          <id/>
+          <fields>
+            <status/>
+            <project-decision-date/>
+          </fields>
+        </request>
+      </xf:instance>
+      <xf:bind id="project-update-request-binds" ref="instance('project-update-request')">
+        <xf:bind id="req-type-bind" ref="type" name="type"/>
+        <xf:bind id="req-id-bind" ref="id" name="id" calculate="instance('find-application')/*:uids/*:project"/>
+        <xf:bind id="req-fields-bind" ref="fields" name="fields">
+          <xf:bind id="req-status-bind" ref="status" name="status"/>
+          <xf:bind id="req-decision-date-bind" ref="project-decision-date" name="project-decision-date"/>
+        </xf:bind>
+      </xf:bind>
+      <xf:submission id="log-activity" method="put" instance="activity-log" ref="instance('activity-log')" replace="none" validate="false" serialization="application/xml" resource="{xxf:property('esif.marklogic.base')}/esif/project/{xxf:instance('find-application')/*:uids/*:project}/activity"> 
+      </xf:submission>
+      <xf:instance id="activity-log" xxf:exclude-result-prefixes="#all">
+        <request-log>
+          <username/>
+          <activity/>
+        </request-log>
+      </xf:instance>
+      <xf:bind id="activity-log-binds" ref="instance('activity-log')">
+        <xf:bind id="username-bind" ref="username" name="username" xxf:default="xxf:get-request-header('username')"/>
+        <xf:bind id="activity" ref="activity" name="activity" xxf:default="'application approved'"/>
+      </xf:bind>
+      <xf:action ev:event="xforms-model-construct-done">
+        <xf:send submission="retrieve-application"/>
+      </xf:action>
+      <xf:action ev:event="xforms-model-construct-done">
+        <xf:setvalue ref="xxf:instance('status-instance')/*:button-clicked" value="'none'"/>
+        <xf:setvalue ref="xxf:instance('status-instance')/*:status-display" value="if ((instance('workflow-data')//*:type = 'application') and (instance('workflow-data')//*:stage = 'evaluation')) then 'in progress' else instance('workflow-data')//*:status"/>
+      </xf:action>
+      <xf:submission id="retrieve-application" method="get" instance="find-application" replace="instance" serialization="application/xml" validate="false" resource="/fr/service/persistence/crud/erdf/full-application/data/{xxf:instance('fr-form-instance')//*:uids/*:application}/data.xml">
+        <xf:action ev:event="xforms-submit-done">
+          <xf:setvalue ref="xxf:instance('fr-form-instance')//*:app-ref-number" value="xxf:instance('find-application')//*:application-reference"/>
+          <xf:setvalue ref="xxf:instance('fr-form-instance')//*:app-organisation-name" value="xxf:instance('find-application')//*:organization-name"/>
+          <xf:setvalue ref="xxf:instance('fr-form-instance')//*:app-project-name" value="xxf:instance('find-application')//*:project-name"/>
+        </xf:action>
+      </xf:submission>
+      <xf:submission id="retrieve-call" method="get" instance="find-call" replace="instance" serialization="application/xml" validate="false" resource="/fr/service/persistence/crud/erdf/add-call/data/{xxf:instance('find-application')/*:uids/*:call}/data.xml">
+      </xf:submission>
+      <xf:instance id="find-call">
+        <data/>
+      </xf:instance>
+      <!-- Bindings -->
+      <xf:bind id="fr-form-binds" ref="instance('fr-form-instance')">
+        <xf:bind id="uids-bind" ref="uids" name="uids" relevant="false()">
+          <xf:bind id="application-bind" ref="application" name="application" xxf:default="xxf:get-request-header('application-uid')"/>
+        </xf:bind>
+        <xf:bind id="full-application-overview-section-bind" ref="full-application-overview-section" readonly="true()" name="full-application-overview-section">
+          <xf:bind id="show-complete-section-bind" ref="display-complete-section"/>
+          <xf:bind id="show-decision-section-bind" ref="display-decision-section"/>
+          <xf:bind id="app-ref-number-bind" ref="app-ref-number" name="app-ref-number"/>
+          <xf:bind id="app-project-name-bind" ref="app-project-name" name="app-project-name"/>
+          <xf:bind id="app-organisation-name-bind" ref="app-organisation-name" name="app-organisation-name"/>
+          <xf:bind id="full-application-link-bind" ref="full-application-link" name="full-application-link" calculate="concat('&lt;a href=&quot;/esif-web/form/full-application/', if($is-applicant) then 'edit' else 'view' , '/', //*:uids/*:application, '&quot; target=&quot;_blank&quot;&gt;View Full Application&lt;/a&gt;')"/>
+        </xf:bind>
+        <xf:bind id="questionaire-bind" name="questionaire" ref="questionaire" readonly="not($is-evaluation-stage-edit-mode)" relevant="$is-application-stage-view-mode or $is-evaluation-stage-view-mode or $is-review-stage-view-mode or $is-decision-stage-view-mode or $is-complete-stage-view-mode">
+          <xf:bind id="outline-application-section-bind" ref="outline-application-section" name="outline-application-section">
+            <xf:bind id="outline-appplication-changes-comment-bind" ref="outline-appplication-changes-comment" name="outline-appplication-changes-comment"/>
+            <xf:bind id="outline-application-conditions-comment-bind" ref="outline-application-conditions-comment" name="outline-application-conditions-comment"/>
+          </xf:bind>
+          <xf:bind id="general-overview-section-bind" ref="general-overview-section" name="general-overview-section">
+            <xf:bind id="general-overview-description-bind" ref="general-overview-description" name="general-overview-description"/>
+            <xf:bind id="description-bind" ref="description" name="description"/>
+            <xf:bind id="go-questions-bind" ref="questions" name="questions">
+              <xf:bind id="go-questions-iteration-bind" ref="questions-iteration" name="questions-iteration">
+                <xf:bind id="go-question-bind" ref="question" name="question"/>
+                <xf:bind id="go-answer-bind" ref="answer" name="answer" constraint="if ($complete-appraisal-action) then if(normalize-space(.) != '') then true() else false() else true()"/>
+                <xf:bind id="go-score-bind" ref="score" name="score"/>
+              </xf:bind>
+            </xf:bind>
+            <xf:bind id="go-comment-bind" ref="questions-comment" name="go-comment"/>
+            <xf:bind id="general-overview-answer-overall-bind" ref="general-overview-answer-overall" name="general-overview-answer-overall" constraint="if ($complete-appraisal-action) then if(normalize-space(.) != '') then true() else false() else true()"/>
+            <xf:bind id="general-overview-score-overall-bind" ref="general-overview-score-overall" name="general-overview-score-overall"/>
+          </xf:bind>
+          <xf:bind id="core-selection-criteria-section-bind" ref="core-selection-criteria-section" name="core-selection-criteria-section">
+            <xf:bind id="strategic-fit-bind" name="strategic-fit" ref="strategic-fit">
+              <xf:bind id="strategic-fit-title-bind" name="title" ref="title"/>
+              <xf:bind id="strategic-fit-description-bind" name="description" ref="description"/>
+              <xf:bind id="strategic-fit-comment-bind" name="strategic-fit-comment" ref="strategic-fit-comment"/>
+              <xf:bind id="strategic-fit-questions-bind" name="strategic-fit-questions" ref="questions">
+                <xf:bind id="strategic-fit-questions-iteration-bind" name="strategic-fit-questions-iteration" ref="questions-iteration">
+                  <xf:bind id="strategic-fit-question-bind" name="strategic-fit-question" ref="question"/>
+                  <xf:bind id="strategic-fit-answer-bind" name="strategic-fit-answer" ref="answer" constraint="if ($complete-appraisal-action) then if(normalize-space(.) != '') then true() else false() else true()"/>
+                  <xf:bind id="strategic-fit-score-bind" name="strategic-fit-score" ref="score"/>
+                </xf:bind>
+              </xf:bind>
+            </xf:bind>
+            <xf:bind id="value-of-money-bind" name="value-of-money" ref="value-of-money">
+              <xf:bind id="value-of-money-description-bind" name="description" ref="description"/>
+              <xf:bind id="value-of-money-title-bind" name="title" ref="title"/>
+              <xf:bind id="value-of-money-comment-bind" name="value-of-money-comment" ref="value-of-money-comment"/>
+              <xf:bind id="value-of-money-questions-bind" name="value-of-money-questions" ref="questions">
+                <xf:bind id="value-of-money-questions-iteration-bind" name="value-of-money-questions-iteration" ref="questions-iteration">
+                  <xf:bind id="value-of-money-question-bind" name="value-of-money-question" ref="question"/>
+                  <xf:bind id="value-of-money-answer-bind" name="value-of-money-answer" ref="answer" constraint="if ($complete-appraisal-action) then if(normalize-space(.) != '') then true() else false() else true()"/>
+                  <xf:bind id="value-of-money-score-bind" name="value-of-money-score" ref="score"/>
+                </xf:bind>
+              </xf:bind>
+            </xf:bind>
+            <xf:bind id="deliverability-bind" name="deliverability" ref="deliverability">
+              <xf:bind id="deliverability-description-bind" name="description" ref="description"/>
+              <xf:bind id="deliverability-title-bind" name="title" ref="title"/>
+              <xf:bind id="deliverability-comment-bind" name="deliverability-comment" ref="deliverability-comment"/>
+              <xf:bind id="deliverability-questions-bind" name="deliverability-questions" ref="questions">
+                <xf:bind id="deliverability-questions-iteration-bind" name="deliverability-questions-iteration" ref="questions-iteration">
+                  <xf:bind id="deliverability-question-bind" name="deliverability-question" ref="question"/>
+                  <xf:bind id="deliverability-answer-bind" name="deliverability-answer" ref="answer" constraint="if ($complete-appraisal-action) then if(normalize-space(.) != '') then true() else false() else true()"/>
+                  <xf:bind id="deliverability-score-bind" name="deliverability-score" ref="score"/>
+                </xf:bind>
+              </xf:bind>
+            </xf:bind>
+            <xf:bind id="management-and-control-bind" name="management-and-control" ref="management-and-control">
+              <xf:bind id="management-and-control-description-bind" name="description" ref="description"/>
+              <xf:bind id="management-and-control-title-bind" name="title" ref="title"/>
+              <xf:bind id="management-and-control-comment-bind" name="management-and-control-comment" ref="management-and-control-comment"/>
+              <xf:bind id="management-and-control-questions-bind" name="management-and-control-questions" ref="questions">
+                <xf:bind id="management-and-control-questions-iteration-bind" name="management-and-control-questions-iteration" ref="questions-iteration">
+                  <xf:bind id="management-and-control-question-bind" name="management-and-control-question" ref="question"/>
+                  <xf:bind id="management-and-control-answer-bind" name="management-and-control-answer" ref="answer" constraint="if ($complete-appraisal-action) then if(normalize-space(.) != '') then true() else false() else true()"/>
+                  <xf:bind id="management-and-control-score-bind" name="management-and-control-score" ref="score"/>
+                </xf:bind>
+              </xf:bind>
+            </xf:bind>
+            <xf:bind id="complience-bind" name="complience" ref="complience">
+              <xf:bind id="complience-description-bind" name="description" ref="description"/>
+              <xf:bind id="complience-title-bind" name="title" ref="title"/>
+              <xf:bind id="complience-comment-bind" name="complience-comment" ref="complience-comment"/>
+              <xf:bind id="complience-questions-bind" name="complience-questions" ref="questions">
+                <xf:bind id="complience-questions-iteration-bind" name="complience-iteration" ref="questions-iteration">
+                  <xf:bind id="complience-question-bind" name="complience-question" ref="question"/>
+                  <xf:bind id="complience-answer-bind" name="complience-answer" ref="answer" constraint="if ($complete-appraisal-action) then if(normalize-space(.) != '') then true() else false() else true()"/>
+                  <xf:bind id="complience-score-bind" name="complience-score" ref="score"/>
+                </xf:bind>
+              </xf:bind>
+            </xf:bind>
+            <xf:bind id="cross-cutting-themes-bind" name="cross-cutting-themes" ref="cross-cutting-themes">
+              <xf:bind id="cross-cutting-themes-description-bind" name="description" ref="description"/>
+              <xf:bind id="cross-cutting-themes-title-bind" name="title" ref="title"/>
+              <xf:bind id="cross-cutting-themes-comment-bind" name="cross-cutting-themes-comment" ref="cross-cutting-themes-comment"/>
+              <xf:bind id="cross-cutting-themes-questions-bind" name="cross-cutting-themes-questions" ref="questions">
+                <xf:bind id="cross-cutting-themes-iteration-bind" name="cross-cutting-themes-questions-iteration" ref="questions-iteration">
+                  <xf:bind id="cross-cutting-themes-question-bind" name="cross-cutting-themes-question" ref="question"/>
+                  <xf:bind id="cross-cutting-themes-answer-bind" name="cross-cutting-themes-answer" ref="answer" constraint="if ($complete-appraisal-action) then if(normalize-space(.) != '') then true() else false() else true()"/>
+                  <xf:bind id="cross-cutting-themes-score-bind" name="cross-cutting-themes-score" ref="score"/>
+                </xf:bind>
+              </xf:bind>
+            </xf:bind>
+            <xf:bind id="strategic-fit-answer-overall-control-bind" ref="strategic-fit-answer-overall-control" name="strategic-fit-answer-overall-control" constraint="if ($complete-appraisal-action) then if(normalize-space(.) != '') then true() else false() else true()"/>
+            <xf:bind id="strategic-fit-score-overall-control-bind" ref="strategic-fit-score-overall-control" name="strategic-fit-score-overall-control"/>
+            <xf:bind id="value-of-money-answer-overall-control-bind" ref="value-of-money-answer-overall-control" name="value-of-money-answer-overall-control" constraint="if ($complete-appraisal-action) then if(normalize-space(.) != '') then true() else false() else true()"/>
+            <xf:bind id="value-of-money-score-overall-control-bind" ref="value-of-money-score-overall-control" name="value-of-money-score-overall-control"/>
+            <xf:bind id="deliverability-answer-overall-control-bind" ref="deliverability-answer-overall-control" name="deliverability-answer-overall-control" constraint="if ($complete-appraisal-action) then if(normalize-space(.) != '') then true() else false() else true()"/>
+            <xf:bind id="deliverability-score-overall-control-bind" ref="deliverability-score-overall-control" name="deliverability-score-overall-control"/>
+            <xf:bind id="complience-answer-overall-control-bind" ref="complience-answer-overall-control" name="complience-answer-overall-control" constraint="if ($complete-appraisal-action) then if(normalize-space(.) != '') then true() else false() else true()"/>
+            <xf:bind id="complience-score-overall-control-bind" ref="complience-score-overall-control" name="complience-score-overall-control"/>
+            <xf:bind id="management-and-control-answer-overall-control-bind" ref="management-and-control-answer-overall-control" name="management-and-control-answer-overall-control" constraint="if ($complete-appraisal-action) then if(normalize-space(.) != '') then true() else false() else true()"/>
+            <xf:bind id="management-and-control-score-overall-control-bind" ref="management-and-control-score-overall-control" name="management-and-control-score-overall-control"/>
+            <xf:bind id="cross-cutting-themes-answer-overall-control-bind" ref="cross-cutting-themes-answer-overall-control" name="cross-cutting-themes-answer-overall-control" constraint="if ($complete-appraisal-action) then if(normalize-space(.) != '') then true() else false() else true()"/>
+            <xf:bind id="cross-cutting-themes-score-overall-control-bind" ref="cross-cutting-themes-score-overall-control" name="cross-cutting-themes-score-overall-control"/>
+          </xf:bind>
+          <xf:bind id="conclusions-section-bind" ref="conclusions-section" name="conclusions-section">
+            <xf:bind id="completed-by-bind" ref="completed-by" name="completed-by"/>
+            <xf:bind id="completed-date-bind" ref="completed-date" name="completed-date"/>
+            <xf:bind id="reviewed-by-bind" ref="reviewed-by" name="reviewed-by"/>
+            <xf:bind id="reviewed-date-bind" ref="reviewed-date" name="reviewed-date"/>
+            <xf:bind id="summary-comments-bind" ref="summary-comments" name="summary-comments"/>
+          </xf:bind>
+        </xf:bind>
+        <xf:bind id="complete-appraisal-bind" ref="complete-appraisal" name="complete-appraisal" relevant="((($is-evaluation-stage-view-mode or $is-application-stage-view-mode)) and ((instance('fr-form-instance')//*:display-complete-section = 'true') or $was-reviewed or $is-review-stage-edit-mode-for-appraisal) or $is-review-stage-view-mode or $is-decision-stage-view-mode or $is-complete-stage-view-mode)" readonly="not($is-evaluation-stage-edit-mode)">
+          <xf:bind id="application-approved-bind" ref="application-approved" name="application-approved"/>
+          <xf:bind id="approval-reasons-bind" ref="approval-reasons" name="approval-reasons"/>
+          <xf:bind id="supporting-documents-bind" ref="supporting-documents" name="supporting-documents">
+            <xf:bind id="supporting-documents-iteration-bind" ref="supporting-documents-iteration" name="supporting-documents-iteration">
+              <xf:bind id="attachment-bind" ref="attachment" name="attachment" type="xf:anyURI">
+                <xf:constraint id="attachment-constraint" value="if(@filename ne '') then (ends-with(lower-case(@filename), 'doc') or ends-with(lower-case(@filename), 'docx') or ends-with(lower-case(@filename), 'rtf') or ends-with(lower-case(@filename), 'odf') or ends-with(lower-case(@filename), 'txt') or ends-with(lower-case(@filename), 'pdf') or ends-with(lower-case(@filename), 'xls') or ends-with(lower-case(@filename), 'xlsx') or ends-with(lower-case(@filename), 'jpg') or ends-with(lower-case(@filename), 'png')) else true()" level="error"/>
+              </xf:bind>
+              <xf:bind id="docs-description-bind" ref="docs-description" name="docs-description" required="if(../*:attachment/@filename != '') then true() else false()" relevant="if(../*:attachment/@filename != '') then true() else false()"/>
+              <xf:bind id="docs-category-bind" ref="docs-category" name="docs-category" required="if(../*:attachment/@filename != '') then true() else false()" relevant="if(../*:attachment/@filename != '') then true() else false()"/>
+            </xf:bind>
+          </xf:bind>
+          <xf:bind id="complete-appraisal-confirm-bind" ref="complete-appraisal-confirm" name="complete-appraisal-confirm" relevant="$is-evaluation-stage-edit-mode"/>
+          <xf:bind id="complete-appraisal-cancel-bind" ref="complete-appraisal-cancel" name="complete-appraisal-cancel" relevant="$is-evaluation-stage-edit-mode"/>
+        </xf:bind>
+        <xf:bind id="additional-information-bind" ref="additional-information" name="additional-information">
+          <xf:bind id="aditional-information-title-bind" ref="aditional-information-title" name="aditional-information-title"/>
+          <xf:bind id="aditional-information-instructions-bind" ref="aditional-information-instructions" name="aditional-information-instructions"/>
+          <xf:bind id="fields-instructions-bind" ref="fields-instructions" name="fields-instructions">
+            <xf:bind id="fields-instructions-iteration-bind" ref="fields-instructions-iteration" name="fields-instructions-iteration">
+              <xf:bind id="field-bind" ref="field" name="field" required="$request-info-action" readonly="not($is-evaluation-stage-edit-mode)"/>
+              <xf:bind id="instructions-bind" ref="instructions" name="instructions" readonly="not($is-evaluation-stage-edit-mode)" required="$request-info-action"/>
+              <xf:bind id="applicant-response-bind" ref="applicant-response" name="applicant-response" readonly="not($is-application-stage-edit-mode)"/>
+            </xf:bind>
+          </xf:bind>
+          <xf:bind id="response-required-by-bind" ref="response-required-by" name="response-required-by" type="xf:date" readonly="not($is-evaluation-stage-edit-mode)" required="$request-info-action"/>
+        </xf:bind>
+        <xf:bind id="review-section-bind" ref="review-section" name="review-section" relevant="$is-review-stage-view-mode-for-comments or $is-decision-stage-view-mode or $is-complete-stage-view-mode">
+          <xf:bind id="comments-grid-bind" ref="comments-grid" name="comments-grid">
+            <xf:bind id="comments-grid-iteration-bind" ref="comments-grid-iteration" name="comments-grid-iteration">
+              <xf:bind id="review-comment-bind" ref="review-comment" name="review-comment"/>
+              <xf:bind id="appraisal-response-bind" ref="appraisal-response" name="appraisal-response"/>
+            </xf:bind>
+            <xf:bind id="new-review-comment-bind" ref="new-review-comment" name="new-review-comment" relevant="$is-review-stage-edit-mode-for-reviewer" constraint="if ($return-review-action) then (exists(instance('fr-form-instance')//*:comments-grid-iteration/review-comment[concat(substring(@date, 7,4), '-',substring(@date, 4,2), '-',substring(@date, 1,2), substring(@date, 11)) gt concat(substring(instance('fr-form-instance')//*:completed-date, 7,4), '-',substring(instance('fr-form-instance')//*:completed-date, 4,2), '-',substring(instance('fr-form-instance')//*:completed-date, 1,2), substring(instance('fr-form-instance')//*:completed-date, 11)) ])   )  else true()"/>
+            <xf:bind id="new-response-comment-bind" ref="new-response-comment" name="new-response-comment" relevant="$is-review-stage-edit-mode-for-appraisal"/>
+          </xf:bind>
+          <xf:bind id="review-files-grid-bind" ref="review-files-grid" name="review-files-grid" readonly="not($is-review-stage-edit-mode-for-reviewer)">
+            <xf:bind id="review-files-grid-iteration-bind" ref="review-files-grid-iteration" name="review-files-grid-iteration">
+              <xf:bind id="review-file-bind" ref="review-file" name="review-file" type="xf:anyURI">
+                <xf:constraint id="constraint-99-constraint" value="if(@filename ne '') then (ends-with(lower-case(@filename), 'doc') or ends-with(lower-case(@filename), 'docx') or ends-with(lower-case(@filename), 'rtf') or ends-with(lower-case(@filename), 'odf') or ends-with(lower-case(@filename), 'txt') or ends-with(lower-case(@filename), 'pdf') or ends-with(lower-case(@filename), 'xls') or ends-with(lower-case(@filename), 'xlsx') or ends-with(lower-case(@filename), 'jpg') or ends-with(lower-case(@filename), 'png')) else true()" level="error"/>
+              </xf:bind>
+              <xf:bind id="review-file-category-bind" ref="review-file-category" name="review-file-category" required="if(../*:review-file/@filename != '') then true() else false()" relevant="if(../*:review-file/@filename != '') then true() else false()"/>
+              <xf:bind id="review-file-description-bind" ref="review-file-description" name="review-file-description" required="if(../*:review-file/@filename != '') then true() else false()" relevant="if(../*:review-file/@filename != '') then true() else false()"/>
+            </xf:bind>
+          </xf:bind>
+        </xf:bind>
+        <xf:bind id="decision-section-bind" ref="decision-section" name="decision-section" relevant="instance('fr-form-instance')//*:display-decision-section = 'true'">
+          <xf:bind id="audit-bind" ref="audit" name="audit">
+            <xf:bind id="audit-iteration-bind" ref="audit-iteration" name="audit-iteration">
+              <xf:bind id="audit-date-bind" ref="audit-date" name="audit-date" type="xf:date"/>
+              <xf:bind id="audit-comments-bind" ref="audit-comments" name="audit-comments"/>
+              <xf:bind id="audit-file-bind" ref="audit-file" name="audit-file" type="xf:anyURI">
+                <xf:constraint id="constraint-100-constraint" value="if(@filename ne '') then (ends-with(lower-case(@filename), 'doc') or ends-with(lower-case(@filename), 'docx') or ends-with(lower-case(@filename), 'rtf') or ends-with(lower-case(@filename), 'odf') or ends-with(lower-case(@filename), 'txt') or ends-with(lower-case(@filename), 'pdf') or ends-with(lower-case(@filename), 'xls') or ends-with(lower-case(@filename), 'xlsx') or ends-with(lower-case(@filename), 'jpg') or ends-with(lower-case(@filename), 'png')) else true()" level="error"/>
+              </xf:bind>
+              <xf:bind id="audit-file-description-bind" ref="audit-file-description" name="audit-file-description" required="if(../*:audit-file/@filename != '') then true() else false()" relevant="if(../*:audit-file/@filename != '') then true() else false()"/>
+              <xf:bind id="audit-file-category-bind" ref="audit-file-category" name="audit-file-category" required="if(../*:audit-file/@filename != '') then true() else false()" relevant="if(../*:audit-file/@filename != '') then true() else false()"/>
+            </xf:bind>
+          </xf:bind>
+          <xf:bind id="decision-bind" ref="decision" name="decision">
+            <xf:bind id="decision-made-bind" ref="decision-made" name="decision-made" required="($is-decision-stage-edit-mode) and (instance('fr-form-instance')//*:display-decision-section = 'true')"/>
+            <xf:bind id="rejection-reason-grid-bind" ref="rejection-reason-grid" name="rejection-reason-grid" relevant="../*:decision-made='rejected'">
+              <xf:bind id="rejection-reason-iteration-bind" ref="rejection-reason-iteration" name="rejection-reason-iteration">
+                <xf:bind id="rejection-reason-motivation-bind" ref="rejection-reason-motivation" name="rejection-reason-motivation" required="ancestor::*:decision/*:decision-made = 'rejected'" constraint="if (ancestor::*:decision/*:decision-made = 'rejected') then if(normalize-space(.) != '') then true() else false() else true()"/>
+                <xf:bind id="rejection-reason-bind" ref="rejection-reason" name="rejection-reason" required="ancestor::*:decision/*:decision-made = 'rejected'" constraint="if (ancestor::*:decision/*:decision-made = 'rejected') then if(normalize-space(.) != '') then true() else false() else true()"/>
+              </xf:bind>
+            </xf:bind>
+            <xf:bind id="decision-confirm-bind" relevant="$is-decision-stage-edit-mode" ref="decision-confirm" name="decision-confirm"/>
+            <xf:bind id="decision-cancel-bind" relevant="$is-decision-stage-edit-mode" ref="decision-cancel" name="decision-cancel"/>
+          </xf:bind>
+        </xf:bind>
+        <xf:bind id="audit-info-bind" ref="audit-info" name="audit-info">
+          <xf:bind id="status-bind" ref="status" name="status" readonly="true()"/>
+          <xf:bind id="last-update-bind" ref="last-update" name="last-update" readonly="true()"/>
+        </xf:bind>
+      </xf:bind>
+      <!-- Metadata -->
+      <xf:instance xxf:readonly="true" id="fr-form-metadata" xxf:exclude-result-prefixes="#all">
+        <metadata>
+          <application-name>erdf</application-name>
+          <form-name>appraisal</form-name>
+          <title xml:lang="en">Appraisal Information</title>
+          <description xml:lang="en"/>
+          <singleton>false</singleton>
+        </metadata>
+      </xf:instance>
+      <!-- Attachments -->
+      <xf:instance id="fr-form-attachments" xxf:exclude-result-prefixes="#all">
+        <attachments>
+          <css mediatype="text/css" filename="" size=""/>
+          <pdf mediatype="application/pdf" filename="" size=""/>
+        </attachments>
+      </xf:instance>
+      <!-- All form resources -->
+      <!-- Don't make readonly by default in case a service modifies the resources -->
+      <xf:instance id="fr-form-resources" xxf:readonly="false" xxf:exclude-result-prefixes="#all">
+        <resources>
+          <resource xml:lang="en">
+            <decision-section>
+              <label>Decision</label>
+              <hint/>
+            </decision-section>
+            <decision-made>
+              <label>Which is the decision?</label>
+              <hint/>
+              <item>
+                <label>Approve</label>
+                <hint/>
+                <value>approved</value>
+              </item>
+              <item>
+                <label>Reject</label>
+                <hint/>
+                <value>rejected</value>
+              </item>
+            </decision-made>
+            <rejection-reason>
+              <label>Rejection reason:</label>
+              <hint/>
+            </rejection-reason>
+            <rejection-reason-motivation>
+              <label>Motivation:</label>
+              <hint/>
+            </rejection-reason-motivation>
+            <audit-file>
+              <label>Upload file</label>
+              <hint/>
+              <alert>The type of file selected is not permitted for upload</alert>
+            </audit-file>
+            <audit-file-category>
+              <label>File Category</label>
+              <hint/>
+            </audit-file-category>
+            <audit-file-description>
+              <label>File Description</label>
+              <hint/>
+            </audit-file-description>
+            <audit-date>
+              <label>Date</label>
+              <hint/>
+            </audit-date>
+            <audit-iteration>
+              <label>Decision Log</label>
+              <hint/>
+            </audit-iteration>
+            <audit-comments>
+              <label>Comment</label>
+              <hint/>
+            </audit-comments>
+            <answer-overall>
+              <label/>
+              <hint/>
+              <item>
+                <label>Unsatisfactory</label>
+                <value>1</value>
+                <hint/>
+              </item>
+              <item>
+                <label>Satisfactory</label>
+                <value>2</value>
+                <hint/>
+              </item>
+              <item>
+                <label>Good</label>
+                <value>3</value>
+                <hint/>
+              </item>
+            </answer-overall>
+            <general-overview-answer-overall>
+              <label>General overview - overall answer</label>
+              <hint/>
+            </general-overview-answer-overall>
+            <value-of-money-answer-overall>
+              <label>Value For Money - overall answer</label>
+              <hint/>
+            </value-of-money-answer-overall>
+            <strategic-fit-answer-overall>
+              <label>Strategic fit - overall answer</label>
+              <hint/>
+            </strategic-fit-answer-overall>
+            <deliverability-answer-overall>
+              <label>Deliverability - overall answer</label>
+              <hint/>
+            </deliverability-answer-overall>
+            <compliance-answer-overall>
+              <label>Compliance - overall answer</label>
+              <hint/>
+            </compliance-answer-overall>
+            <management-and-control-answer-overall>
+              <label>Management And Control - overall answer</label>
+              <hint/>
+            </management-and-control-answer-overall>
+            <cross-cutting-themes-answer-overall>
+              <label>Cross Cutting Themes - overall answer</label>
+              <hint/>
+            </cross-cutting-themes-answer-overall>
+            <status>
+              <label>Appraisal status</label>
+              <hint/>
+            </status>
+            <app-ref-number>
+              <label>Application Reference Number</label>
+              <hint/>
+            </app-ref-number>
+            <app-project-name>
+              <label>Project Name</label>
+              <hint/>
+            </app-project-name>
+            <app-organisation-name>
+              <label>Organisation Name</label>
+              <hint/>
+            </app-organisation-name>
+            <outline-application-conditions-comment>
+              <label>Please comment on the applicant&#x2019;s response to the Outline                                Application Conditions</label>
+              <hint/>
+            </outline-application-conditions-comment>
+            <outline-appplication-changes-comment>
+              <label>Please comment on any changes since the Outline Application and                                the applicant&#x2019;s justification for them</label>
+              <hint/>
+            </outline-appplication-changes-comment>
+            <completed-by>
+              <label>Completed by:</label>
+              <hint/>
+            </completed-by>
+            <completed-date>
+              <label>Date:</label>
+              <hint/>
+            </completed-date>
+            <reviewed-by>
+              <label>Reviewed by:</label>
+              <hint/>
+            </reviewed-by>
+            <reviewed-date>
+              <label>Date:</label>
+              <hint/>
+            </reviewed-date>
+            <summary-comments>
+              <label>Comments:</label>
+              <hint/>
+            </summary-comments>
+            <application-approved>
+              <label>Do you recommend that this application be approved?</label>
+              <hint/>
+              <item>
+                <label>yes</label>
+                <hint/>
+                <value>yes</value>
+              </item>
+              <item>
+                <label>no</label>
+                <hint/>
+                <value>no</value>
+              </item>
+            </application-approved>
+            <approval-reasons>
+              <label>Reasons</label>
+              <hint/>
+            </approval-reasons>
+            <attachment>
+              <label>Complete appraisal additional documents</label>
+              <hint/>
+              <alert>The type of file selected is not permitted for upload</alert>
+            </attachment>
+            <docs-category>
+              <label>File Category</label>
+              <hint/>
+            </docs-category>
+            <docs-description>
+              <label>File Description</label>
+              <hint/>
+            </docs-description>
+            <complete-appraisal-confirm>
+              <label>Complete appraisal</label>
+              <hint/>
+            </complete-appraisal-confirm>
+            <complete-appraisal-cancel>
+              <label>Cancel</label>
+              <hint/>
+            </complete-appraisal-cancel>
+            <decision-cancel>
+              <label>Cancel</label>
+              <hint/>
+            </decision-cancel>
+            <decision-confirm>
+              <label>Submit</label>
+              <hint/>
+            </decision-confirm>
+            <general-overview-description>
+              <label>The appraisal is based on the published Core Selection Criteria                                and should be undertaken based on the information provided within                                the Full Application including annexes. In coming to a conclusion                                around the core selection criteria the Appraiser must take a                                holistic view of the application and firstly be satisfied that from                                a general overview it is clear what the project is and what it                                intends to do. This section should be completed prior to starting                                the appraisal against the core selection criteria and be used to                                inform it (part 3)</label>
+              <hint/>
+            </general-overview-description>
+            <description>
+              <label>1. Is it clear from the information provided what the operation                                intends to do, what it will achieve and what its overarching aims                                and objectives are? In coming to an overall conclusion                                consider</label>
+              <hint/>
+            </description>
+            <full-application-overview-section>
+              <label>Full Application Overview</label>
+              <help/>
+            </full-application-overview-section>
+            <outline-application-section>
+              <label>Outline Application</label>
+              <help/>
+            </outline-application-section>
+            <general-overview-section>
+              <label>General Overview</label>
+              <help/>
+              <alert>Please give the answer for each question in the section.</alert>
+            </general-overview-section>
+            <core-selection-criteria-section>
+              <label>Core Selection Criteria</label>
+              <help/>
+              <alert>Please give the answer for each question in the section.</alert>
+            </core-selection-criteria-section>
+            <conclusions-section>
+              <label>Summary</label>
+              <help/>
+            </conclusions-section>
+            <complete-appraisal>
+              <label>Complete Appraisal</label>
+              <help/>
+            </complete-appraisal>
+            <aditional-information-title>
+              <label>Additional information needed from applicant to complete the                                appraisal:</label>
+              <hint/>
+            </aditional-information-title>
+            <aditional-information-instructions>
+              <label>Please identify the field in the application form and provide                                instructions for the applicant to follow in providing additional                                information</label>
+              <hint/>
+            </aditional-information-instructions>
+            <response-required-by>
+              <label>Response Required By:</label>
+              <hint/>
+            </response-required-by>
+            <field>
+              <label>Field or Section Name</label>
+              <hint/>
+              <alert/>
+            </field>
+            <instructions>
+              <label>Instructions to applicant</label>
+              <hint/>
+              <alert/>
+            </instructions>
+            <applicant-response>
+              <label>Response from applicant</label>
+              <hint/>
+              <alert/>
+            </applicant-response>
+            <comment>
+              <label> Comment:</label>
+              <hint/>
+              <alert/>
+            </comment>
+            <questionaire>
+              <label>Appraisal Questionaire</label>
+            </questionaire>
+            <additional-information>
+              <label>Additional Information</label>
+              <help/>
+            </additional-information>
+            <question>
+              <label>Question</label>
+              <help/>
+            </question>
+            <answer>
+              <label>Answer</label>
+              <hint/>
+              <item>
+                <label>N/A</label>
+                <hint/>
+                <value>-1</value>
+              </item>
+              <item>
+                <label>Unsatisfactory</label>
+                <hint/>
+                <value>0</value>
+              </item>
+              <item>
+                <label>Satisfactory</label>
+                <hint/>
+                <value>1</value>
+              </item>
+              <item>
+                <label>Good</label>
+                <hint/>
+                <value>2</value>
+              </item>
+            </answer>
+            <score>
+              <label>Score</label>
+              <hint/>
+              <item>
+                <label>0</label>
+                <hint/>
+                <value>0</value>
+              </item>
+              <item>
+                <label>1</label>
+                <hint/>
+                <value>1</value>
+              </item>
+              <item>
+                <label>2</label>
+                <hint/>
+                <value>2</value>
+              </item>
+              <item>
+                <label>3</label>
+                <hint/>
+                <value>3</value>
+              </item>
+              <item>
+                <label>4</label>
+                <hint/>
+                <value>4</value>
+              </item>
+              <item>
+                <label>5</label>
+                <hint/>
+                <value>5</value>
+              </item>
+              <item>
+                <label>6</label>
+                <hint/>
+                <value>6</value>
+              </item>
+              <item>
+                <label>7</label>
+                <hint/>
+                <value>7</value>
+              </item>
+            </score>
+            <review-section>
+              <label>Review Comments</label>
+              <help/>
+            </review-section>
+            <new-review-comment>
+              <label>Comments &lt;span class="form-hint"&gt;Please add your comment and press 'Insert' to record your comment in the log prior to returning or submitting the appraisal.&lt;/span&gt;</label>
+              <hint/>
+              <alert>A review comment must be inserted before returnig the appraisal.</alert>
+            </new-review-comment>
+            <new-response-comment>
+              <label>Appraisal Response &lt;span class="form-hint"&gt;Please add your comment and press 'Insert' to record your comment in the log prior to returning or submitting the appraisal.&lt;/span&gt;</label>
+              <hint/>
+            </new-response-comment>
+            <review-file>
+              <label>File</label>
+              <hint/>
+              <alert>The type of file selected is not permitted for upload</alert>
+            </review-file>
+            <review-file-category>
+              <label>File Category</label>
+              <hint/>
+            </review-file-category>
+            <review-file-description>
+              <label>File Description</label>
+              <hint/>
+            </review-file-description>
+            <full-application-link>
+              <label/>
+              <hint/>
+            </full-application-link>
+          </resource>
+        </resources>
+      </xf:instance>
+      <xf:instance xxf:readonly="true" id="fields-instructions-template" xxf:exclude-result-prefixes="#all">
+        <fields-instructions-iteration>
+          <field/>
+          <instructions/>
+          <applicant-response/>
+        </fields-instructions-iteration>
+      </xf:instance>
+      <xf:instance xxf:readonly="true" id="rejection-reasons-template" xxf:exclude-result-prefixes="#all">
+        <rejection-reason-iteration>
+          <rejection-reason/>
+          <rejection-reason-motivation/>
+        </rejection-reason-iteration>
+      </xf:instance>
+      <xf:instance id="questions-template" xxf:exclude-result-prefixes="#all">
+        <questions-iteration>
+          <question/>
+          <answer>-1</answer>
+          <score/>
+        </questions-iteration>
+      </xf:instance>
+      <!-- Utility instances for services -->
+      <xf:instance id="fr-service-request-instance" xxf:exclude-result-prefixes="#all">
+        <request/>
+      </xf:instance>
+      <xf:instance id="fr-service-response-instance" xxf:exclude-result-prefixes="#all">
+        <response/>
+      </xf:instance>
+      <xf:instance xxf:readonly="true" id="review-files-grid-template" xxf:exclude-result-prefixes="#all">
+        <review-files-grid-iteration>
+          <review-file filename="" mediatype="" size=""/>
+          <review-file-category/>
+          <review-file-description/>
+        </review-files-grid-iteration>
+      </xf:instance>
+      <xf:instance xxf:readonly="true" id="audit-template" xxf:exclude-result-prefixes="#all">
+        <audit-iteration>
+          <audit-date/>
+          <audit-comments/>
+          <audit-file filename="" mediatype="" size=""/>
+          <audit-file-category itemset-empty="false"/>
+          <audit-file-description/>
+        </audit-iteration>
+      </xf:instance>
+      <xf:instance xxf:readonly="true" id="supporting-documents-template" xxf:exclude-result-prefixes="#all">
+        <supporting-documents-iteration>
+          <attachment filename="" mediatype="" size=""/>
+          <docs-category itemset-empty="false"/>
+          <docs-description/>
+        </supporting-documents-iteration>
+      </xf:instance>
+      <xf:instance id="find-application">
+        <data/>
+      </xf:instance>
+      <xf:action ev:event="xforms-model-construct-done">
+        <xf:setvalue ref="//*:new-review-comment" value="''"/>
+        <xf:setvalue ref="//*:new-response-comment" value="''"/>
+      </xf:action>
+      <!-- Invoke the old complete appraisal bottom button action using an if for control      
+         This is simpler without understanding a *lot* more about this form ML #519 -->
+      <xf:action ev:event="xforms-model-construct-done" if="xxf:instance('fr-parameters-instance')/mode != 'view' and $is-evaluation-stage-edit-mode">
+        <xf:setvalue bind="show-complete-section-bind" value="'true'"/>
+        <xf:setvalue ref="instance('status-instance')//*:button-clicked" value="'complete appraisal'"/>
+      </xf:action>
+      <!-- Invoke the old record decision bottom button action using an if for control      
+         This is simpler without understanding a *lot* more about this form ML #519 -->
+      <xf:action ev:event="xforms-model-construct-done" if="$is-decision-stage-edit-mode">
+        <xf:setvalue bind="show-decision-section-bind" value="'true'"/>
+        <xf:setvalue ref="instance('status-instance')//*:button-clicked" value="'record decision'"/>
+      </xf:action>
+      <xf:action ev:event="add-review">
+        <xf:insert nodeset="//*:comments-grid-iteration/*[last()]" origin=" xf:element('review-comment',root()//*:new-review-comment/text())"/>
+        <xf:insert context="//*:comments-grid-iteration/*[last()]" origin=" xf:attribute('date',format-dateTime(current-dateTime(), '[D01]/[M01]/[Y] [H]:[m01]'))"/>
+        <xf:insert context="//*:comments-grid-iteration/*[last()]" origin=" xf:attribute('name',xxf:get-request-header('username'))"/>
+      </xf:action>
+      <xf:action ev:event="add-response">
+        <xf:insert nodeset="//*:comments-grid-iteration/*[last()]" origin=" xf:element('appraisal-response',root()//*:new-response-comment/text())"/>
+        <xf:insert context="//*:comments-grid-iteration/*[last()]" origin=" xf:attribute('date',format-dateTime(current-dateTime(), '[D01]/[M01]/[Y] [H]:[m01]'))"/>
+        <xf:insert context="//*:comments-grid-iteration/*[last()]" origin=" xf:attribute('name',xxf:get-request-header('username'))"/>
+      </xf:action>
+    </xf:model>
+  </xh:head>
+  <xh:body>
+    <fr:view>
+      <fr:body xmlns:oxf="http://www.orbeon.com/oxf/processors" xmlns:p="http://www.orbeon.com/oxf/pipeline" xmlns:xbl="http://www.w3.org/ns/xbl">
+        <fr:section id="full-application-overview-section-control" bind="full-application-overview-section-bind">
+          <xf:label ref="$form-resources/full-application-overview-section/label"/>
+          <fr:grid>
+            <xh:tr>
+              <xh:td>
+                <xf:output id="full-application-link-control" bind="full-application-link-bind" ref="//*:full-application-link" mediatype="text/html">
+                  <xf:label ref="$form-resources/full-application-link/label"/>
+                  <xf:hint ref="$form-resources/full-application-link/hint"/>
+                  <xf:alert ref="$fr-resources/detail/labels/alert"/>
+                </xf:output>
+              </xh:td>
+            </xh:tr>
+            <xh:tr>
+              <xh:td>
+                <xf:output id="status-control" ref="instance('status-instance')//*:status-display">
+                  <xf:label ref="$form-resources/status/label"/>
+                  <xf:hint ref="$form-resources/status/hint"/>
+                  <xf:alert ref="$fr-resources/detail/labels/alert"/>
+                </xf:output>
+              </xh:td>
+            </xh:tr>
+            <xh:tr>
+              <xh:td>
+                <xf:output id="app-ref-number-control" bind="app-ref-number-bind">
+                  <xf:label ref="$form-resources/app-ref-number/label"/>
+                  <xf:hint ref="$form-resources/app-ref-number/hint"/>
+                  <xf:alert ref="$fr-resources/detail/labels/alert"/>
+                </xf:output>
+              </xh:td>
+            </xh:tr>
+            <xh:tr>
+              <xh:td>
+                <xf:output id="app-project-name-control" bind="app-project-name-bind">
+                  <xf:label ref="$form-resources/app-project-name/label"/>
+                  <xf:hint ref="$form-resources/app-project-name/hint"/>
+                  <xf:alert ref="$fr-resources/detail/labels/alert"/>
+                </xf:output>
+              </xh:td>
+            </xh:tr>
+            <xh:tr>
+              <xh:td>
+                <xf:output id="app-organisation-name-control" bind="app-organisation-name-bind">
+                  <xf:label ref="$form-resources/app-organisation-name/label"/>
+                  <xf:hint ref="$form-resources/app-organisation-name/hint"/>
+                  <xf:alert ref="$fr-resources/detail/labels/alert"/>
+                </xf:output>
+              </xh:td>
+            </xh:tr>
+          </fr:grid>
+        </fr:section>
+        <fr:section id="questionaire-control" bind="questionaire-bind">
+          <xf:label ref="$form-resources/questionaire/label"/>
+          <fr:section id="outline-application-section-control" bind="outline-application-section-bind">
+            <xf:label ref="$form-resources/outline-application-section/label"/>
+            <fr:grid>
+              <xh:tr>
+                <xh:td>
+                  <xf:textarea id="outline-application-conditions-comment-control" bind="outline-application-conditions-comment-bind">
+                    <xf:label ref="$form-resources/outline-application-conditions-comment/label"/>
+                    <xf:hint ref="$form-resources/outline-application-conditions-comment/hint"/>
+                    <xf:alert ref="$fr-resources/detail/labels/alert"/>
+                  </xf:textarea>
+                </xh:td>
+              </xh:tr>
+              <xh:tr>
+                <xh:td>
+                  <xf:textarea id="outline-appplication-changes-comment-control" bind="outline-appplication-changes-comment-bind">
+                    <xf:label ref="$form-resources/outline-appplication-changes-comment/label"/>
+                    <xf:hint ref="$form-resources/outline-appplication-changes-comment/hint"/>
+                    <xf:alert ref="$fr-resources/detail/labels/alert"/>
+                  </xf:textarea>
+                </xh:td>
+              </xh:tr>
+            </fr:grid>
+          </fr:section>
+          <fr:section id="general-overview-section-control" bind="general-overview-section-bind">
+            <xf:label ref="$form-resources/general-overview-section/label"/>
+            <xf:alert ref="$form-resources/general-overview-section/alert"/>
+            <fr:grid>
+              <xh:tr>
+                <xh:td>
+                  <xf:output id="general-overview-description-control" bind="general-overview-description-bind">
+                    <xf:label ref="$form-resources/general-overview-description/label"/>
+                    <xf:hint ref="$form-resources/general-overview-description/hint"/>
+                    <xf:alert ref="$fr-resources/detail/labels/alert"/>
+                  </xf:output>
+                </xh:td>
+              </xh:tr>
+              <xh:tr>
+                <xh:td>
+                  <xf:output id="description-control" bind="description-bind">
+                    <xf:label ref="$form-resources/description/label"/>
+                    <xf:hint ref="$form-resources/description/hint"/>
+                    <xf:alert ref="$fr-resources/detail/labels/alert"/>
+                  </xf:output>
+                </xh:td>
+              </xh:tr>
+            </fr:grid>
+            <fr:grid id="general-overview-questions-control" bind="go-questions-bind" repeat="content" min="6" max="6" template="instance('questions-template')">
+              <xh:tr>
+                <xh:td>
+                  <xf:output id="go-question-control" bind="go-question-bind">
+                    <xf:label ref="$form-resources/question/label"/>
+                    <xf:hint ref="$form-resources/question/hint"/>
+                    <xf:alert ref="$form-resources/question/alert"/>
+                  </xf:output>
+                </xh:td>
+                <xh:td>
+                  <xf:select1 id="got-answer-control" appearance="full" bind="go-answer-bind">
+                    <xf:label ref="$form-resources/answer/label"/>
+                    <xf:hint ref="$form-resources/answer/hint"/>
+                    <xf:alert ref="$fr-resources/detail/labels/alert"/>
+                    <xf:itemset ref="$form-resources/answer/item">
+                      <xf:label ref="label"/>
+                      <xf:value ref="value"/>
+                      <xf:hint ref="hint"/>
+                    </xf:itemset>
+                  </xf:select1>
+                </xh:td>
+                <xh:td>
+                  <fr:dropdown-select1 xmlns:xxbl="http://orbeon.org/oxf/xml/xbl" id="got-score-control" bind="go-score-bind">
+                    <xf:label ref="$form-resources/score/label"/>
+                    <xf:hint ref="$form-resources/score/hint"/>
+                    <xf:alert ref="$fr-resources/detail/labels/alert"/>
+                    <xf:itemset ref="$form-resources/score/item">
+                      <xf:label ref="label"/>
+                      <xf:value ref="value"/>
+                      <xf:hint ref="hint"/>
+                    </xf:itemset>
+                  </fr:dropdown-select1>
+                </xh:td>
+              </xh:tr>
+            </fr:grid>
+            <fr:grid>
+              <xh:tr>
+                <xh:td colspan="3">
+                  <xf:textarea id="go-comment-control" bind="go-comment-bind">
+                    <xf:label ref="$form-resources/comment/label"/>
+                    <xf:hint ref="$form-resources/comment/hint"/>
+                    <xf:alert ref="$form-resources/comment/alert"/>
+                  </xf:textarea>
+                </xh:td>
+              </xh:tr>
+              <xh:tr>
+                <xh:td>
+                  <xf:label for="general-overview-answer-overall-control" ref="$form-resources/general-overview-answer-overall/label"/>
+                </xh:td>
+                <xh:td>
+                  <xf:select1 id="general-overview-answer-overall-control" appearance="full" bind="general-overview-answer-overall-bind">
+                    <xf:hint ref="$form-resources/answer-overall/hint"/>
+                    <xf:alert ref="$fr-resources/detail/labels/alert"/>
+                    <xf:itemset ref="$form-resources/answer-overall/item">
+                      <xf:label ref="label"/>
+                      <xf:value ref="value"/>
+                      <xf:hint ref="hint"/>
+                    </xf:itemset>
+                  </xf:select1>
+                </xh:td>
+                <xh:td>
+                  <fr:dropdown-select1 xmlns:xxbl="http://orbeon.org/oxf/xml/xbl" id="general-overview-score-overall-control" bind="general-overview-score-overall-bind">
+                    <xf:label ref="$form-resources/score/label"/>
+                    <xf:hint ref="$form-resources/score/hint"/>
+                    <xf:alert ref="$fr-resources/detail/labels/alert"/>
+                    <xf:itemset ref="$form-resources/score/item">
+                      <xf:label ref="label"/>
+                      <xf:value ref="value"/>
+                      <xf:hint ref="hint"/>
+                    </xf:itemset>
+                  </fr:dropdown-select1>
+                </xh:td>
+              </xh:tr>
+            </fr:grid>
+          </fr:section>
+          <fr:section id="core-selection-criteria-section-control" bind="core-selection-criteria-section-bind">
+            <xf:label ref="$form-resources/core-selection-criteria-section/label"/>
+            <xf:alert ref="$form-resources/core-selection-criteria-section/alert"/>
+            <!-- Strategic Fit -->
+            <fr:grid>
+              <xh:tr>
+                <xh:td>
+                  <xf:output id="strategic-fit-title-control" bind="strategic-fit-title-bind"/>
+                </xh:td>
+              </xh:tr>
+              <xh:tr>
+                <xh:td>
+                  <xf:output id="strategic-fit-description-control" bind="strategic-fit-description-bind"/>
+                </xh:td>
+              </xh:tr>
+            </fr:grid>
+            <fr:grid id="strategic-fit-questions-control" bind="strategic-fit-questions-bind" repeat="content" min="4" max="4" template="instance('questions-template')">
+              <xh:tr>
+                <xh:td>
+                  <xf:output id="strategic-fit-question-control" bind="strategic-fit-question-bind">
+                    <xf:label ref="$form-resources/question/label"/>
+                    <xf:hint ref="$form-resources/question/hint"/>
+                    <xf:alert ref="$form-resources/question/alert"/>
+                  </xf:output>
+                </xh:td>
+                <xh:td>
+                  <xf:select1 id="strategic-fit-answer-control" appearance="full" bind="strategic-fit-answer-bind">
+                    <xf:label ref="$form-resources/answer/label"/>
+                    <xf:hint ref="$form-resources/answer/hint"/>
+                    <xf:alert ref="$fr-resources/detail/labels/alert"/>
+                    <xf:itemset ref="$form-resources/answer/item">
+                      <xf:label ref="label"/>
+                      <xf:value ref="value"/>
+                      <xf:hint ref="hint"/>
+                    </xf:itemset>
+                  </xf:select1>
+                </xh:td>
+                <xh:td>
+                  <fr:dropdown-select1 xmlns:xxbl="http://orbeon.org/oxf/xml/xbl" id="strategic-fit-score-control" bind="strategic-fit-score-bind">
+                    <xf:label ref="$form-resources/score/label"/>
+                    <xf:hint ref="$form-resources/score/hint"/>
+                    <xf:alert ref="$fr-resources/detail/labels/alert"/>
+                    <xf:itemset ref="$form-resources/score/item">
+                      <xf:label ref="label"/>
+                      <xf:value ref="value"/>
+                      <xf:hint ref="hint"/>
+                    </xf:itemset>
+                  </fr:dropdown-select1>
+                </xh:td>
+              </xh:tr>
+            </fr:grid>
+            <fr:grid>
+              <xh:tr>
+                <xh:td colspan="3">
+                  <xf:textarea id="strategic-fit-comment-control" bind="strategic-fit-comment-bind">
+                    <xf:label ref="$form-resources/comment/label"/>
+                    <xf:hint ref="$form-resources/comment/hint"/>
+                    <xf:alert ref="$form-resources/comment/alert"/>
+                  </xf:textarea>
+                </xh:td>
+              </xh:tr>
+              <xh:tr>
+                <xh:td>
+                  <xf:label for="strategic-fit-answer-overall-control-control" ref="$form-resources/strategic-fit-answer-overall/label"/>
+                </xh:td>
+                <xh:td>
+                  <xf:select1 id="strategic-fit-answer-overall-control-control" appearance="full" bind="strategic-fit-answer-overall-control-bind">
+                    <xf:hint ref="$form-resources/answer-overall/hint"/>
+                    <xf:alert ref="$fr-resources/detail/labels/alert"/>
+                    <xf:itemset ref="$form-resources/answer-overall/item">
+                      <xf:label ref="label"/>
+                      <xf:value ref="value"/>
+                      <xf:hint ref="hint"/>
+                    </xf:itemset>
+                  </xf:select1>
+                </xh:td>
+                <xh:td>
+                  <fr:dropdown-select1 xmlns:xxbl="http://orbeon.org/oxf/xml/xbl" id="strategic-fit-score-overall-control-control" bind="strategic-fit-score-overall-control-bind">
+                    <xf:label ref="$form-resources/score/label"/>
+                    <xf:hint ref="$form-resources/score/hint"/>
+                    <xf:alert ref="$fr-resources/detail/labels/alert"/>
+                    <xf:itemset ref="$form-resources/score/item">
+                      <xf:label ref="label"/>
+                      <xf:value ref="value"/>
+                      <xf:hint ref="hint"/>
+                    </xf:itemset>
+                  </fr:dropdown-select1>
+                </xh:td>
+              </xh:tr>
+            </fr:grid>
+            <!-- Value of money -->
+            <fr:grid>
+              <xh:tr>
+                <xh:td>
+                  <xf:output id="value-of-money-title-control" bind="value-of-money-title-bind"/>
+                </xh:td>
+              </xh:tr>
+              <xh:tr>
+                <xh:td>
+                  <xf:output id="value-of-money-description-control" bind="value-of-money-description-bind"/>
+                </xh:td>
+              </xh:tr>
+            </fr:grid>
+            <fr:grid id="value-of-money-questions-control" bind="value-of-money-questions-bind" repeat="content" min="4" max="4" template="instance('questions-template')">
+              <xh:tr>
+                <xh:td>
+                  <xf:output id="value-of-money-question-control" bind="value-of-money-question-bind">
+                    <xf:label ref="$form-resources/question/label"/>
+                    <xf:hint ref="$form-resources/question/hint"/>
+                    <xf:alert ref="$form-resources/question/alert"/>
+                  </xf:output>
+                </xh:td>
+                <xh:td>
+                  <xf:select1 id="value-of-money-answer-control" appearance="full" bind="value-of-money-answer-bind">
+                    <xf:label ref="$form-resources/answer/label"/>
+                    <xf:hint ref="$form-resources/answer/hint"/>
+                    <xf:alert ref="$fr-resources/detail/labels/alert"/>
+                    <xf:itemset ref="$form-resources/answer/item">
+                      <xf:label ref="label"/>
+                      <xf:value ref="value"/>
+                      <xf:hint ref="hint"/>
+                    </xf:itemset>
+                  </xf:select1>
+                </xh:td>
+                <xh:td>
+                  <fr:dropdown-select1 xmlns:xxbl="http://orbeon.org/oxf/xml/xbl" id="value-of-money-score-control" bind="value-of-money-score-bind">
+                    <xf:label ref="$form-resources/score/label"/>
+                    <xf:hint ref="$form-resources/score/hint"/>
+                    <xf:alert ref="$fr-resources/detail/labels/alert"/>
+                    <xf:itemset ref="$form-resources/score/item">
+                      <xf:label ref="label"/>
+                      <xf:value ref="value"/>
+                      <xf:hint ref="hint"/>
+                    </xf:itemset>
+                  </fr:dropdown-select1>
+                </xh:td>
+              </xh:tr>
+            </fr:grid>
+            <fr:grid>
+              <xh:tr>
+                <xh:td colspan="3">
+                  <xf:textarea id="value-of-money-comment-control" bind="value-of-money-comment-bind">
+                    <xf:label ref="$form-resources/comment/label"/>
+                    <xf:hint ref="$form-resources/comment/hint"/>
+                    <xf:alert ref="$form-resources/comment/alert"/>
+                  </xf:textarea>
+                </xh:td>
+              </xh:tr>
+              <xh:tr>
+                <xh:td>
+                  <xf:label for="value-of-money-answer-overall-control-control" ref="$form-resources/value-of-money-answer-overall/label"/>
+                </xh:td>
+                <xh:td>
+                  <xf:select1 id="value-of-money-answer-overall-control-control" appearance="full" bind="value-of-money-answer-overall-control-bind">
+                    <xf:hint ref="$form-resources/answer-overall/hint"/>
+                    <xf:alert ref="$fr-resources/detail/labels/alert"/>
+                    <xf:itemset ref="$form-resources/answer-overall/item">
+                      <xf:label ref="label"/>
+                      <xf:value ref="value"/>
+                      <xf:hint ref="hint"/>
+                    </xf:itemset>
+                  </xf:select1>
+                </xh:td>
+                <xh:td>
+                  <fr:dropdown-select1 xmlns:xxbl="http://orbeon.org/oxf/xml/xbl" id="value-of-money-score-overall-control-control" bind="value-of-money-score-overall-control-bind">
+                    <xf:label ref="$form-resources/score/label"/>
+                    <xf:hint ref="$form-resources/score/hint"/>
+                    <xf:alert ref="$fr-resources/detail/labels/alert"/>
+                    <xf:itemset ref="$form-resources/score/item">
+                      <xf:label ref="label"/>
+                      <xf:value ref="value"/>
+                      <xf:hint ref="hint"/>
+                    </xf:itemset>
+                  </fr:dropdown-select1>
+                </xh:td>
+              </xh:tr>
+            </fr:grid>
+            <!-- Deliverability -->
+            <fr:grid>
+              <xh:tr>
+                <xh:td>
+                  <xf:output id="deliverability-title-control" bind="deliverability-title-bind"/>
+                </xh:td>
+              </xh:tr>
+              <xh:tr>
+                <xh:td>
+                  <xf:output id="deliverability-description-control" bind="deliverability-description-bind"/>
+                </xh:td>
+              </xh:tr>
+            </fr:grid>
+            <fr:grid id="deliverability-questions-control" bind="deliverability-questions-bind" repeat="content" min="4" max="4" template="instance('questions-template')">
+              <xh:tr>
+                <xh:td>
+                  <xf:output id="deliverability-question-control" bind="deliverability-question-bind">
+                    <xf:label ref="$form-resources/question/label"/>
+                    <xf:hint ref="$form-resources/question/hint"/>
+                    <xf:alert ref="$form-resources/question/alert"/>
+                  </xf:output>
+                </xh:td>
+                <xh:td>
+                  <xf:select1 id="deliverability-answer-control" appearance="full" bind="deliverability-answer-bind">
+                    <xf:label ref="$form-resources/answer/label"/>
+                    <xf:hint ref="$form-resources/answer/hint"/>
+                    <xf:alert ref="$fr-resources/detail/labels/alert"/>
+                    <xf:itemset ref="$form-resources/answer/item">
+                      <xf:label ref="label"/>
+                      <xf:value ref="value"/>
+                      <xf:hint ref="hint"/>
+                    </xf:itemset>
+                  </xf:select1>
+                </xh:td>
+                <xh:td>
+                  <fr:dropdown-select1 xmlns:xxbl="http://orbeon.org/oxf/xml/xbl" id="deliverability-score-control" bind="deliverability-score-bind">
+                    <xf:label ref="$form-resources/score/label"/>
+                    <xf:hint ref="$form-resources/score/hint"/>
+                    <xf:alert ref="$fr-resources/detail/labels/alert"/>
+                    <xf:itemset ref="$form-resources/score/item">
+                      <xf:label ref="label"/>
+                      <xf:value ref="value"/>
+                      <xf:hint ref="hint"/>
+                    </xf:itemset>
+                  </fr:dropdown-select1>
+                </xh:td>
+              </xh:tr>
+            </fr:grid>
+            <fr:grid>
+              <xh:tr>
+                <xh:td colspan="3">
+                  <xf:textarea id="deliverability-comment-control" bind="deliverability-comment-bind">
+                    <xf:label ref="$form-resources/comment/label"/>
+                    <xf:hint ref="$form-resources/comment/hint"/>
+                    <xf:alert ref="$form-resources/comment/alert"/>
+                  </xf:textarea>
+                </xh:td>
+              </xh:tr>
+              <xh:tr>
+                <xh:td>
+                  <xf:label for="deliverability-answer-overall-control-control" ref="$form-resources/deliverability-answer-overall/label"/>
+                </xh:td>
+                <xh:td>
+                  <xf:select1 id="deliverability-answer-overall-control-control" appearance="full" bind="deliverability-answer-overall-control-bind">
+                    <xf:alert ref="$fr-resources/detail/labels/alert"/>
+                    <xf:itemset ref="$form-resources/answer-overall/item">
+                      <xf:label ref="label"/>
+                      <xf:value ref="value"/>
+                      <xf:hint ref="hint"/>
+                    </xf:itemset>
+                  </xf:select1>
+                </xh:td>
+                <xh:td>
+                  <fr:dropdown-select1 xmlns:xxbl="http://orbeon.org/oxf/xml/xbl" id="deliverability-score-overall-control-control" bind="deliverability-score-overall-control-bind">
+                    <xf:label ref="$form-resources/score/label"/>
+                    <xf:hint ref="$form-resources/score/hint"/>
+                    <xf:alert ref="$fr-resources/detail/labels/alert"/>
+                    <xf:itemset ref="$form-resources/score/item">
+                      <xf:label ref="label"/>
+                      <xf:value ref="value"/>
+                      <xf:hint ref="hint"/>
+                    </xf:itemset>
+                  </fr:dropdown-select1>
+                </xh:td>
+              </xh:tr>
+            </fr:grid>
+            <!-- Management and Control  -->
+            <fr:grid>
+              <xh:tr>
+                <xh:td>
+                  <xf:output id="management-and-control-title-control" bind="management-and-control-title-bind"/>
+                </xh:td>
+              </xh:tr>
+              <xh:tr>
+                <xh:td>
+                  <xf:output id="management-and-control-description-control" bind="management-and-control-description-bind"/>
+                </xh:td>
+              </xh:tr>
+            </fr:grid>
+            <fr:grid id="management-and-control-questions-control" bind="management-and-control-questions-bind" repeat="content" min="17" max="17" template="instance('questions-template')">
+              <xh:tr>
+                <xh:td>
+                  <xf:output id="management-and-control-question-control" bind="management-and-control-question-bind">
+                    <xf:label ref="$form-resources/question/label"/>
+                    <xf:hint ref="$form-resources/question/hint"/>
+                    <xf:alert ref="$form-resources/question/alert"/>
+                  </xf:output>
+                </xh:td>
+                <xh:td>
+                  <xf:select1 id="management-and-control-answer-control" appearance="full" bind="management-and-control-answer-bind">
+                    <xf:label ref="$form-resources/answer/label"/>
+                    <xf:hint ref="$form-resources/answer/hint"/>
+                    <xf:alert ref="$fr-resources/detail/labels/alert"/>
+                    <xf:itemset ref="$form-resources/answer/item">
+                      <xf:label ref="label"/>
+                      <xf:value ref="value"/>
+                      <xf:hint ref="hint"/>
+                    </xf:itemset>
+                  </xf:select1>
+                </xh:td>
+                <xh:td>
+                  <fr:dropdown-select1 xmlns:xxbl="http://orbeon.org/oxf/xml/xbl" id="management-and-control-score-control" bind="management-and-control-score-bind">
+                    <xf:label ref="$form-resources/score/label"/>
+                    <xf:hint ref="$form-resources/score/hint"/>
+                    <xf:alert ref="$fr-resources/detail/labels/alert"/>
+                    <xf:itemset ref="$form-resources/score/item">
+                      <xf:label ref="label"/>
+                      <xf:value ref="value"/>
+                      <xf:hint ref="hint"/>
+                    </xf:itemset>
+                  </fr:dropdown-select1>
+                </xh:td>
+              </xh:tr>
+            </fr:grid>
+            <fr:grid>
+              <xh:tr>
+                <xh:td colspan="3">
+                  <xf:textarea id="management-and-control-comment-control" bind="management-and-control-comment-bind">
+                    <xf:label ref="$form-resources/comment/label"/>
+                    <xf:hint ref="$form-resources/comment/hint"/>
+                    <xf:alert ref="$form-resources/comment/alert"/>
+                  </xf:textarea>
+                </xh:td>
+              </xh:tr>
+              <xh:tr>
+                <xh:td>
+                  <xf:label for="management-and-control-answer-overall-control-control" ref="$form-resources/management-and-control-answer-overall/label"/>
+                </xh:td>
+                <xh:td>
+                  <xf:select1 id="management-and-control-answer-overall-control-control" appearance="full" bind="management-and-control-answer-overall-control-bind">
+                    <xf:hint ref="$form-resources/answer-overall/hint"/>
+                    <xf:alert ref="$fr-resources/detail/labels/alert"/>
+                    <xf:itemset ref="$form-resources/answer-overall/item">
+                      <xf:label ref="label"/>
+                      <xf:value ref="value"/>
+                      <xf:hint ref="hint"/>
+                    </xf:itemset>
+                  </xf:select1>
+                </xh:td>
+                <xh:td>
+                  <fr:dropdown-select1 xmlns:xxbl="http://orbeon.org/oxf/xml/xbl" id="management-and-control-score-overall-control-control" bind="management-and-control-score-overall-control-bind">
+                    <xf:label ref="$form-resources/score/label"/>
+                    <xf:hint ref="$form-resources/score/hint"/>
+                    <xf:alert ref="$fr-resources/detail/labels/alert"/>
+                    <xf:itemset ref="$form-resources/score/item">
+                      <xf:label ref="label"/>
+                      <xf:value ref="value"/>
+                      <xf:hint ref="hint"/>
+                    </xf:itemset>
+                  </fr:dropdown-select1>
+                </xh:td>
+              </xh:tr>
+            </fr:grid>
+            <!-- Compliance  -->
+            <fr:grid>
+              <xh:tr>
+                <xh:td>
+                  <xf:output id="complience-title-control" bind="complience-title-bind"/>
+                </xh:td>
+              </xh:tr>
+              <xh:tr>
+                <xh:td>
+                  <xf:output id="complience-description-control" bind="complience-description-bind"/>
+                </xh:td>
+              </xh:tr>
+            </fr:grid>
+            <fr:grid id="complience-questions-control" bind="complience-questions-bind" repeat="content" min="11" max="11" template="instance('questions-template')">
+              <xh:tr>
+                <xh:td>
+                  <xf:output id="complience-question-control" bind="complience-question-bind">
+                    <xf:label ref="$form-resources/question/label"/>
+                    <xf:hint ref="$form-resources/question/hint"/>
+                    <xf:alert ref="$form-resources/question/alert"/>
+                  </xf:output>
+                </xh:td>
+                <xh:td>
+                  <xf:select1 id="complience-answer-control" appearance="full" bind="complience-answer-bind">
+                    <xf:label ref="$form-resources/answer/label"/>
+                    <xf:hint ref="$form-resources/answer/hint"/>
+                    <xf:alert ref="$fr-resources/detail/labels/alert"/>
+                    <xf:itemset ref="$form-resources/answer/item">
+                      <xf:label ref="label"/>
+                      <xf:value ref="value"/>
+                      <xf:hint ref="hint"/>
+                    </xf:itemset>
+                  </xf:select1>
+                </xh:td>
+                <xh:td>
+                  <fr:dropdown-select1 xmlns:xxbl="http://orbeon.org/oxf/xml/xbl" id="complience-score-control" bind="complience-score-bind">
+                    <xf:label ref="$form-resources/score/label"/>
+                    <xf:hint ref="$form-resources/score/hint"/>
+                    <xf:alert ref="$fr-resources/detail/labels/alert"/>
+                    <xf:itemset ref="$form-resources/score/item">
+                      <xf:label ref="label"/>
+                      <xf:value ref="value"/>
+                      <xf:hint ref="hint"/>
+                    </xf:itemset>
+                  </fr:dropdown-select1>
+                </xh:td>
+              </xh:tr>
+            </fr:grid>
+            <fr:grid>
+              <xh:tr>
+                <xh:td colspan="3">
+                  <xf:textarea id="complience-comment-control" bind="complience-comment-bind">
+                    <xf:label ref="$form-resources/comment/label"/>
+                    <xf:hint ref="$form-resources/comment/hint"/>
+                    <xf:alert ref="$form-resources/comment/alert"/>
+                  </xf:textarea>
+                </xh:td>
+              </xh:tr>
+              <xh:tr>
+                <xh:td>
+                  <xf:label for="complience-answer-overall-control-control" ref="$form-resources/compliance-answer-overall/label"/>
+                </xh:td>
+                <xh:td>
+                  <xf:select1 id="complience-answer-overall-control-control" appearance="full" bind="complience-answer-overall-control-bind">
+                    <xf:hint ref="$form-resources/answer-overall/hint"/>
+                    <xf:alert ref="$fr-resources/detail/labels/alert"/>
+                    <xf:itemset ref="$form-resources/answer-overall/item">
+                      <xf:label ref="label"/>
+                      <xf:value ref="value"/>
+                      <xf:hint ref="hint"/>
+                    </xf:itemset>
+                  </xf:select1>
+                </xh:td>
+                <xh:td>
+                  <fr:dropdown-select1 xmlns:xxbl="http://orbeon.org/oxf/xml/xbl" id="complience-score-overall-control-control" bind="complience-score-overall-control-bind">
+                    <xf:label ref="$form-resources/score/label"/>
+                    <xf:hint ref="$form-resources/score/hint"/>
+                    <xf:alert ref="$fr-resources/detail/labels/alert"/>
+                    <xf:itemset ref="$form-resources/score/item">
+                      <xf:label ref="label"/>
+                      <xf:value ref="value"/>
+                      <xf:hint ref="hint"/>
+                    </xf:itemset>
+                  </fr:dropdown-select1>
+                </xh:td>
+              </xh:tr>
+            </fr:grid>
+            <!-- Cross Cutting Themes -->
+            <fr:grid>
+              <xh:tr>
+                <xh:td>
+                  <xf:output id="cross-cutting-themes-title-control" bind="cross-cutting-themes-title-bind"/>
+                </xh:td>
+              </xh:tr>
+              <xh:tr>
+                <xh:td>
+                  <xf:output id="cross-cutting-themes-description-control" bind="cross-cutting-themes-description-bind"/>
+                </xh:td>
+              </xh:tr>
+            </fr:grid>
+            <fr:grid id="cross-cutting-themes-questions-control" bind="cross-cutting-themes-questions-bind" repeat="content" min="2" max="2" template="instance('questions-template')">
+              <xh:tr>
+                <xh:td>
+                  <xf:output id="cross-cutting-themes-question-control" bind="cross-cutting-themes-question-bind">
+                    <xf:label ref="$form-resources/question/label"/>
+                    <xf:hint ref="$form-resources/question/hint"/>
+                    <xf:alert ref="$form-resources/question/alert"/>
+                  </xf:output>
+                </xh:td>
+                <xh:td>
+                  <xf:select1 id="cross-cutting-themes-answer-control" appearance="full" bind="cross-cutting-themes-answer-bind">
+                    <xf:label ref="$form-resources/answer/label"/>
+                    <xf:hint ref="$form-resources/answer/hint"/>
+                    <xf:alert ref="$fr-resources/detail/labels/alert"/>
+                    <xf:itemset ref="$form-resources/answer/item">
+                      <xf:label ref="label"/>
+                      <xf:value ref="value"/>
+                      <xf:hint ref="hint"/>
+                    </xf:itemset>
+                  </xf:select1>
+                </xh:td>
+                <xh:td>
+                  <fr:dropdown-select1 xmlns:xxbl="http://orbeon.org/oxf/xml/xbl" id="cross-cutting-themes-score-control" bind="cross-cutting-themes-score-bind">
+                    <xf:label ref="$form-resources/score/label"/>
+                    <xf:hint ref="$form-resources/score/hint"/>
+                    <xf:alert ref="$fr-resources/detail/labels/alert"/>
+                    <xf:itemset ref="$form-resources/score/item">
+                      <xf:label ref="label"/>
+                      <xf:value ref="value"/>
+                      <xf:hint ref="hint"/>
+                    </xf:itemset>
+                  </fr:dropdown-select1>
+                </xh:td>
+              </xh:tr>
+            </fr:grid>
+            <fr:grid>
+              <xh:tr>
+                <xh:td colspan="3">
+                  <xf:textarea id="cross-cutting-themes-comment-control" bind="cross-cutting-themes-comment-bind">
+                    <xf:label ref="$form-resources/comment/label"/>
+                    <xf:hint ref="$form-resources/comment/hint"/>
+                    <xf:alert ref="$form-resources/comment/alert"/>
+                  </xf:textarea>
+                </xh:td>
+              </xh:tr>
+              <xh:tr>
+                <xh:td>
+                  <xf:label for="cross-cutting-themes-answer-overall-control-control" ref="$form-resources/cross-cutting-themes-answer-overall/label"/>
+                </xh:td>
+                <xh:td>
+                  <xf:select1 id="cross-cutting-themes-answer-overall-control-control" appearance="full" bind="cross-cutting-themes-answer-overall-control-bind">
+                    <!--<xf:label ref="$form-resources/answer-overall/label"/> -->
+                    <xf:hint ref="$form-resources/answer-overall/hint"/>
+                    <xf:alert ref="$fr-resources/detail/labels/alert"/>
+                    <xf:itemset ref="$form-resources/answer-overall/item">
+                      <xf:label ref="label"/>
+                      <xf:value ref="value"/>
+                      <xf:hint ref="hint"/>
+                    </xf:itemset>
+                  </xf:select1>
+                </xh:td>
+                <xh:td>
+                  <fr:dropdown-select1 xmlns:xxbl="http://orbeon.org/oxf/xml/xbl" id="cross-cutting-themes-score-overall-control-control" bind="cross-cutting-themes-score-overall-control-bind">
+                    <xf:label ref="$form-resources/score/label"/>
+                    <xf:hint ref="$form-resources/score/hint"/>
+                    <xf:alert ref="$fr-resources/detail/labels/alert"/>
+                    <xf:itemset ref="$form-resources/score/item">
+                      <xf:label ref="label"/>
+                      <xf:value ref="value"/>
+                      <xf:hint ref="hint"/>
+                    </xf:itemset>
+                  </fr:dropdown-select1>
+                </xh:td>
+              </xh:tr>
+            </fr:grid>
+          </fr:section>
+          <fr:section id="conclusions-section-control" bind="conclusions-section-bind">
+            <xf:label ref="$form-resources/conclusions-section/label"/>
+            <fr:grid>
+              <xh:tr>
+                <xh:td>
+                  <xf:output id="completed-by-control" bind="completed-by-bind">
+                    <xf:label ref="$form-resources/completed-by/label"/>
+                    <xf:hint ref="$form-resources/completed-by/hint"/>
+                    <xf:alert ref="$fr-resources/detail/labels/alert"/>
+                  </xf:output>
+                </xh:td>
+                <xh:td>
+                  <xf:output id="completed-date-control" bind="completed-date-bind">
+                    <xf:label ref="$form-resources/completed-date/label"/>
+                    <xf:hint ref="$form-resources/completed-date/hint"/>
+                    <xf:alert ref="$fr-resources/detail/labels/alert"/>
+                  </xf:output>
+                </xh:td>
+              </xh:tr>
+              <xh:tr>
+                <xh:td>
+                  <xf:output id="reviewed-by-control" bind="reviewed-by-bind">
+                    <xf:label ref="$form-resources/reviewed-by/label"/>
+                    <xf:hint ref="$form-resources/reviewed-by/hint"/>
+                    <xf:alert ref="$fr-resources/detail/labels/alert"/>
+                  </xf:output>
+                </xh:td>
+                <xh:td>
+                  <xf:output id="reviewed-date-control" bind="reviewed-date-bind">
+                    <xf:label ref="$form-resources/reviewed-date/label"/>
+                    <xf:hint ref="$form-resources/reviewed-date/hint"/>
+                    <xf:alert ref="$fr-resources/detail/labels/alert"/>
+                  </xf:output>
+                </xh:td>
+              </xh:tr>
+              <xh:tr>
+                <xh:td colspan="2">
+                  <xf:textarea id="summary-comments-control" bind="summary-comments-bind">
+                    <xf:label ref="$form-resources/summary-comments/label"/>
+                    <xf:hint ref="$form-resources/summary-comments/hint"/>
+                    <xf:alert ref="$fr-resources/detail/labels/alert"/>
+                  </xf:textarea>
+                </xh:td>
+              </xh:tr>
+            </fr:grid>
+          </fr:section>
+        </fr:section>
+        <fr:section id="additional-information-control" bind="additional-information-bind">
+          <xf:label ref="$form-resources/additional-information/label"/>
+          <fr:grid>
+            <xh:tr>
+              <xh:td>
+                <xf:output id="aditional-information-title-control" bind="aditional-information-title-bind" class="bold">
+                  <xf:label ref="$form-resources/aditional-information-title/label"/>
+                  <xf:hint ref="$form-resources/aditional-information-title/hint"/>
+                  <xf:alert ref="$fr-resources/detail/labels/alert"/>
+                </xf:output>
+              </xh:td>
+            </xh:tr>
+            <xh:tr>
+              <xh:td>
+                <xf:output id="aditional-information-instructions-control" bind="aditional-information-instructions-bind">
+                  <xf:label ref="$form-resources/aditional-information-instructions/label"/>
+                  <xf:hint ref="$form-resources/aditional-information-instructions/hint"/>
+                  <xf:alert ref="$fr-resources/detail/labels/alert"/>
+                </xf:output>
+              </xh:td>
+            </xh:tr>
+            <xh:tr>
+              <xh:td>
+                <xf:input id="response-required-by-control" bind="response-required-by-bind">
+                  <xf:label ref="$form-resources/response-required-by/label"/>
+                  <xf:hint ref="$form-resources/response-required-by/hint"/>
+                  <xf:alert ref="$fr-resources/detail/labels/alert"/>
+                </xf:input>
+              </xh:td>
+            </xh:tr>
+          </fr:grid>
+          <fr:grid id="fields-instructions-control" bind="fields-instructions-bind" repeat="content" min="{$additional-infromation-min}" max="{$additional-infromation-max}" template="instance('fields-instructions-template')">
+            <xh:tr>
+              <xh:td>
+                <xf:input id="field-control" bind="field-bind">
+                  <xf:label ref="$form-resources/field/label"/>
+                  <xf:hint ref="$form-resources/field/hint"/>
+                  <xf:alert ref="$form-resources/field/alert"/>
+                </xf:input>
+              </xh:td>
+              <xh:td>
+                <xf:textarea id="istructions-control" bind="instructions-bind">
+                  <xf:label ref="$form-resources/instructions/label"/>
+                  <xf:hint ref="$form-resources/instructions/hint"/>
+                  <xf:alert ref="$form-resources/instructions/alert"/>
+                </xf:textarea>
+              </xh:td>
+            </xh:tr>
+            <xh:tr>
+              <xh:td colspan="2">
+                <xf:textarea id="applicant-response-control" bind="applicant-response-bind">
+                  <xf:label ref="$form-resources/applicant-response/label"/>
+                  <xf:hint ref="$form-resources/applicant-response/hint"/>
+                  <xf:alert ref="$form-resources/applicant-response/alert"/>
+                </xf:textarea>
+              </xh:td>
+            </xh:tr>
+          </fr:grid>
+        </fr:section>
+        <fr:section id="review-section-control" bind="review-section-bind">
+          <xf:label ref="$form-resources/review-section/label"/>
+          <fr:grid>
+            <xf:repeat nodeset="//*:comments-grid-iteration[count(*:review-comment) != 1 or count(*:appraisal-response) != 1]">
+              <xh:table>
+                <xh:thead>
+                  <xh:tr>
+                    <xh:th scope="col">
+                      <xf:output value="'Date'"/>
+                    </xh:th>
+                    <xh:th scope="col">
+                      <xf:output value="'Comments'"/>
+                    </xh:th>
+                    <xh:th scope="col">
+                      <xf:output value="'Role'"/>
+                    </xh:th>
+                    <xh:th scope="col">
+                      <xf:output value="'Name'"/>
+                    </xh:th>
+                  </xh:tr>
+                </xh:thead>
+                <xh:tbody>
+                  <xf:repeat nodeset="*[@date]">
+                    <xh:tr>
+                      <xh:td>
+                        <xf:output ref="@date"/>
+                      </xh:td>
+                      <xh:td>
+                        <xf:output ref="."/>
+                      </xh:td>
+                      <xh:td>
+                        <xf:output value="if (contains(local-name(),'review') )then 'Reviewer' else 'Appraiser'"/>
+                      </xh:td>
+                      <xh:td>
+                        <xf:output ref="@name"/>
+                      </xh:td>
+                    </xh:tr>
+                  </xf:repeat>
+                </xh:tbody>
+              </xh:table>
+            </xf:repeat>
+          </fr:grid>
+          <fr:grid>
+            <xh:tr>
+              <xh:td>
+                <xf:textarea bind="new-review-comment-bind">
+                  <xf:label ref="$form-resources/new-review-comment/label" mediatype="text/html"/>
+                  <xf:hint ref="$form-resources/new-review-comment/hint"/>
+                  <xf:alert ref="$form-resources/new-review-comment/alert"/>
+                </xf:textarea>
+                <xf:textarea bind="new-response-comment-bind">
+                  <xf:label ref="$form-resources/new-response-comment/label" mediatype="text/html"/>
+                  <xf:hint ref="$form-resources/new-response-comment/hint"/>
+                  <xf:alert ref="$fr-resources/detail/labels/alert"/>
+                </xf:textarea>
+              </xh:td>
+            </xh:tr>
+          </fr:grid>
+          <fr:grid>
+            <xh:tr>
+              <xf:trigger ref=".[$is-review-stage-edit-mode-for-appraisal or $is-review-stage-edit-mode-for-reviewer]">
+                <xf:label>Insert</xf:label>
+                <xf:action ev:event="DOMActivate" if="$is-appraisal and                                     not(normalize-space(//*:new-response-comment) = '')">
+                  <!--<xf:message level="modal">DOMActivate-appraisal</xf:message>-->
+                  <xf:dispatch name="add-response" targetid="fr-form-model"/>
+                  <xf:setvalue ref="//*:new-response-comment" value="''"/>
+                </xf:action>
+                <xf:action ev:event="DOMActivate" if="$is-appraisal-reviewer and                                     not(normalize-space(//*:new-review-comment) = '') ">
+                  <!-- <xf:message level="modal">DOMActivate-revierwer</xf:message>-->
+                  <xf:dispatch name="add-review" targetid="fr-form-model"/>
+                  <xf:setvalue ref="//*:new-review-comment" value="''"/>
+                </xf:action>
+              </xf:trigger>
+            </xh:tr>
+          </fr:grid>
+          <fr:grid id="review-files-grid-control" bind="review-files-grid-bind" repeat="content" min="{$review-files-min}" max="{$review-files-max}" template="instance('review-files-grid-template')">
+            <xh:tr>
+              <xh:td>
+                <fr:attachment xmlns="http://orbeon.org/oxf/xml/form-builder" xmlns:xxbl="http://orbeon.org/oxf/xml/xbl" id="review-file-control" bind="review-file-bind" class="fr-attachment">
+                  <xf:label ref="$form-resources/review-file/label"/>
+                  <xf:hint ref="$form-resources/review-file/hint"/>
+                  <xf:alert ref="$form-resources/review-file/alert" validation="constraint-99-constraint"/>
+                  <xf:alert ref="$fr-resources/detail/labels/alert"/>
+                  <xf:filename ref="@filename"/>
+                  <xf:mediatype ref="@mediatype"/>
+                  <xxf:size ref="@size"/>
+                  <xf:action ev:event="xforms-value-changed" if="@size = ''">
+                    <xf:setvalue ref="../*:review-file-category" value=""/>
+                    <xf:setvalue ref="../*:review-file-description" value=""/>
+                  </xf:action>
+                </fr:attachment>
+              </xh:td>
+              <xh:td>
+                <fr:databound-select1 xmlns:xxbl="http://orbeon.org/oxf/xml/xbl" id="review-file-category-control" appearance="minimal" resource="{xxf:property('esif.marklogic.base')}/v1/documents?uri=/reference/lov/file-categories.xml" bind="review-file-category-bind">
+                  <xf:label ref="$form-resources/review-file-category/label"/>
+                  <xf:hint ref="$form-resources/review-file-category/hint"/>
+                  <xf:alert ref="$fr-resources/detail/labels/alert"/>
+                  <xf:itemset ref="/data/record">
+                    <xf:label ref="label"/>
+                    <xf:value ref="value"/>
+                  </xf:itemset>
+                </fr:databound-select1>
+              </xh:td>
+            </xh:tr>
+            <xh:tr>
+              <xh:td colspan="2">
+                <xf:group ref=".[$is-review-stage-edit-mode-for-reviewer]">
+                  <xf:input id="review-file-description-control" bind="review-file-description-bind">
+                    <xf:label ref="$form-resources/review-file-description/label"/>
+                    <xf:hint ref="$form-resources/review-file-description/hint"/>
+                    <xf:alert ref="$fr-resources/detail/labels/alert"/>
+                  </xf:input>
+                </xf:group>
+                <xf:group ref=".[not($is-review-stage-edit-mode-for-reviewer)]">
+                  <xf:output bind="review-file-description-bind"/>
+                </xf:group>
+              </xh:td>
+            </xh:tr>
+          </fr:grid>
+        </fr:section>
+        <fr:section id="complete-appraisal-control" bind="complete-appraisal-bind">
+          <xf:label ref="$form-resources/complete-appraisal/label"/>
+          <fr:grid>
+            <xh:tr>
+              <xh:td>
+                <xf:select1 id="application-approved-control" appearance="full" bind="application-approved-bind">
+                  <xf:label ref="$form-resources/application-approved/label"/>
+                  <xf:hint ref="$form-resources/application-approved/hint"/>
+                  <xf:alert ref="$fr-resources/detail/labels/alert"/>
+                  <xf:itemset ref="$form-resources/application-approved/item">
+                    <xf:label ref="label"/>
+                    <xf:value ref="value"/>
+                    <xf:hint ref="hint"/>
+                  </xf:itemset>
+                </xf:select1>
+              </xh:td>
+            </xh:tr>
+            <xh:tr>
+              <xh:td>
+                <xf:textarea id="approval-reasons-control" bind="approval-reasons-bind">
+                  <xf:label ref="$form-resources/approval-reasons/label"/>
+                  <xf:hint ref="$form-resources/approval-reasons/hint"/>
+                  <xf:alert ref="$fr-resources/detail/labels/alert"/>
+                </xf:textarea>
+              </xh:td>
+            </xh:tr>
+          </fr:grid>
+          <fr:grid id="supporting-documents-control" bind="supporting-documents-bind" repeat="content" template="instance('supporting-documents-template')">
+            <xh:tr>
+              <xh:td>
+                <fr:attachment xmlns="http://orbeon.org/oxf/xml/form-builder" xmlns:xxbl="http://orbeon.org/oxf/xml/xbl" id="attachment-control" bind="attachment-bind" class="fr-attachment">
+                  <xf:label ref="$form-resources/attachment/label"/>
+                  <xf:hint ref="$form-resources/attachment/hint"/>
+                  <xf:alert ref="$form-resources/attachment/alert" validation="attachment-constraint"/>
+                  <xf:alert ref="$fr-resources/detail/labels/alert"/>
+                  <xf:filename ref="@filename"/>
+                  <xf:mediatype ref="@mediatype"/>
+                  <xxf:size ref="@size"/>
+                  <xf:action ev:event="xforms-value-changed" if="@size = ''">
+                    <xf:setvalue ref="../*:docs-category" value=""/>
+                    <xf:setvalue ref="../*:docs-description" value=""/>
+                  </xf:action>
+                </fr:attachment>
+              </xh:td>
+              <xh:td>
+                <fr:databound-select1 xmlns:xxbl="http://orbeon.org/oxf/xml/xbl" id="docs-category-control" appearance="minimal" resource="{xxf:property('esif.marklogic.base')}/v1/documents?uri=/reference/lov/file-categories.xml" bind="docs-category-bind">
+                  <xf:label ref="$form-resources/docs-category/label"/>
+                  <xf:hint ref="$form-resources/docs-category/hint"/>
+                  <xf:alert ref="$fr-resources/detail/labels/alert"/>
+                  <xf:itemset ref="/data/record">
+                    <xf:label ref="label"/>
+                    <xf:value ref="value"/>
+                  </xf:itemset>
+                </fr:databound-select1>
+              </xh:td>
+            </xh:tr>
+            <xh:tr>
+              <xh:td colspan="2">
+                <xf:group ref=".[$is-evaluation-stage-edit-mode]">
+                  <xf:input id="docs-description-control" bind="docs-description-bind">
+                    <xf:label ref="$form-resources/docs-description/label"/>
+                    <xf:hint ref="$form-resources/docs-description/hint"/>
+                    <xf:alert ref="$fr-resources/detail/labels/alert"/>
+                  </xf:input>
+                </xf:group>
+                <xf:group ref=".[not($is-evaluation-stage-edit-mode)]">
+                  <xf:output bind="docs-description-bind"/>
+                </xf:group>
+              </xh:td>
+            </xh:tr>
+          </fr:grid>
+          <!--          
+ 		 These buttons moved out-form ML #519
+          <fr:grid>
+            <xh:tr>
+              <xh:td>
+                <xf:trigger id="complete-appraisal-confirm-control" bind="complete-appraisal-confirm-bind">
+                  <xf:label ref="$form-resources/complete-appraisal-confirm/label"/>
+                  <xf:hint ref="$form-resources/complete-appraisal-confirm/hint"/>
+                  <xf:alert ref="$fr-resources/detail/labels/alert"/>
+                  <xf:action ev:event="DOMActivate">
+                    <xf:setvalue bind="completed-date-bind" value="format-dateTime(current-dateTime(), '[D01]/[M01]/[Y] [H01]:[m01]')"/>
+                    <xf:setvalue bind="completed-by-bind" value="instance('workflow-payload')/user-name"/>
+                    <xf:send submission="complete-appraisal"/>
+                  </xf:action>
+                </xf:trigger>
+              </xh:td>
+              <xh:td>
+                <xf:trigger id="complete-appraisal-cancel-control" bind="complete-appraisal-cancel-bind">
+                  <xf:label ref="$form-resources/complete-appraisal-cancel/label"/>
+                  <xf:action ev:event="DOMActivate">
+                    <xf:setvalue bind="show-complete-section-bind" value="'false'"/>
+                    <xf:setvalue bind="application-approved-bind" value="'yes'"/>
+                    <xf:setvalue bind="approval-reasons-bind" value="''"/>
+                    <xf:setfocus ev:event="DOMActivate" control="full-application-overview-section-control"/>
+                  </xf:action>
+                  <xf:hint ref="$form-resources/complete-appraisal-cancel/hint"/>
+                  <xf:alert ref="$fr-resources/detail/labels/alert"/>
+                </xf:trigger>
+              </xh:td>
+              <xh:td/>
+              <xh:td/>
+            </xh:tr>
+          </fr:grid>  
+  -->
+        </fr:section>
+        <fr:section id="decision-section-control" bind="decision-section-bind">
+          <xf:label ref="$form-resources/decision-section/label"/>
+          <fr:grid id="audit-control-lable">
+            <xh:tr>
+              <xh:td>
+                <xf:output ref="$form-resources/audit-iteration/label"/>
+              </xh:td>
+            </xh:tr>
+          </fr:grid>
+          <fr:grid id="audit-control" bind="audit-bind" repeat="content" min="1" template="instance('audit-template')">
+            <xh:tr>
+              <xh:td>
+                <xf:input id="audit-date-control" bind="audit-date-bind">
+                  <xf:label ref="$form-resources/audit-date/label"/>
+                  <xf:hint ref="$form-resources/audit-date/hint"/>
+                  <xf:alert ref="$fr-resources/detail/labels/alert"/>
+                </xf:input>
+              </xh:td>
+              <xh:td>
+                <xf:input id="audit-comments-control" bind="audit-comments-bind">
+                  <xf:label ref="$form-resources/audit-comments/label"/>
+                  <xf:hint ref="$form-resources/audit-comments/hint"/>
+                  <xf:alert ref="$fr-resources/detail/labels/alert"/>
+                </xf:input>
+              </xh:td>
+            </xh:tr>
+            <xh:tr>
+              <xh:td>
+                <fr:attachment xmlns="http://orbeon.org/oxf/xml/form-builder" xmlns:xxbl="http://orbeon.org/oxf/xml/xbl" id="audit-file-control" bind="audit-file-bind" class="fr-attachment">
+                  <xf:label ref="$form-resources/audit-file/label"/>
+                  <xf:hint ref="$form-resources/audit-file/hint"/>
+                  <xf:alert ref="$form-resources/audit-file/alert" validation="constraint-100-constraint"/>
+                  <xf:alert ref="$fr-resources/detail/labels/alert"/>
+                  <xf:filename ref="@filename"/>
+                  <xf:mediatype ref="@mediatype"/>
+                  <xxf:size ref="@size"/>
+                </fr:attachment>
+              </xh:td>
+              <xh:td>
+                <fr:databound-select1 xmlns:xxbl="http://orbeon.org/oxf/xml/xbl" id="audit-file-category-control" appearance="minimal" resource="{xxf:property('esif.marklogic.base')}/v1/documents?uri=/reference/lov/file-categories.xml" bind="audit-file-category-bind">
+                  <xf:label ref="$form-resources/audit-file-category/label"/>
+                  <xf:hint ref="$form-resources/audit-file-category/hint"/>
+                  <xf:alert ref="$fr-resources/detail/labels/alert"/>
+                  <xf:itemset ref="/data/record">
+                    <xf:label ref="label"/>
+                    <xf:value ref="value"/>
+                  </xf:itemset>
+                </fr:databound-select1>
+              </xh:td>
+            </xh:tr>
+            <xh:tr>
+              <xh:td colspan="2">
+                <xf:input id="audit-file-description-control" bind="audit-file-description-bind">
+                  <xf:label ref="$form-resources/audit-file-description/label"/>
+                  <xf:hint ref="$form-resources/audit-file-description/hint"/>
+                  <xf:alert ref="$fr-resources/detail/labels/alert"/>
+                </xf:input>
+              </xh:td>
+            </xh:tr>
+          </fr:grid>
+          <fr:grid id="decision-control" bind="decision-bind">
+            <xh:tr>
+              <xh:td>
+                <xf:select1 id="decision-made-control" appearance="full" bind="decision-made-bind">
+                  <xf:label ref="$form-resources/decision-made/label"/>
+                  <xf:hint ref="$form-resources/decision-made/hint"/>
+                  <xf:alert ref="$fr-resources/detail/labels/alert"/>
+                  <xf:itemset ref="$form-resources/decision-made/item">
+                    <xf:label ref="label"/>
+                    <xf:value ref="value"/>
+                    <xf:hint ref="hint"/>
+                  </xf:itemset>
+                </xf:select1>
+              </xh:td>
+            </xh:tr>
+          </fr:grid>
+          <fr:grid id="rejection-reasons-control" bind="rejection-reason-grid-bind" repeat="content" template="instance('rejection-reasons-template')">
+            <xh:tr>
+              <xh:td>
+                <fr:databound-select1 xmlns:xxbl="http://orbeon.org/oxf/xml/xbl" id="rejection-reason-control" appearance="minimal" resource="{xxf:property('esif.marklogic.base')}/v1/documents?uri=/reference/lov/rejection-reasons.xml" bind="rejection-reason-bind">
+                  <xf:label ref="$form-resources/rejection-reason/label"/>
+                  <xf:hint ref="$form-resources/rejection-reason/hint"/>
+                  <xf:alert ref="$fr-resources/detail/labels/alert"/>
+                  <xf:itemset ref="/data/record">
+                    <xf:label ref="label"/>
+                    <xf:value ref="value"/>
+                  </xf:itemset>
+                </fr:databound-select1>
+              </xh:td>
+              <xh:td>
+                <xf:input id="rejection-reason-motivation-control" bind="rejection-reason-motivation-bind">
+                  <xf:label ref="$form-resources/rejection-reason-motivation/label"/>
+                  <xf:hint ref="$form-resources/rejection-reason-motivation/hint"/>
+                  <xf:alert ref="$fr-resources/detail/labels/alert"/>
+                </xf:input>
+              </xh:td>
+            </xh:tr>
+          </fr:grid>
+          <!--  These buttons moved out-form ML #519
+          <fr:grid>
+            <xh:tr>
+              <xh:td>
+                <xf:trigger id="decision-confirm-control" bind="decision-confirm-bind">
+                  <xf:label ref="$form-resources/decision-confirm/label"/>
+                  <xf:hint ref="$form-resources/decision-confirm/hint"/>
+                  <xf:alert ref="$fr-resources/detail/labels/alert"/>
+                  <xf:action ev:event="DOMActivate">
+                    <xf:dispatch target="confirmation-dialog" name="fr-show">
+                      <xf:property name="message" value="'Are you sure you want to record the final decision?'"/>
+                      <xf:property name="positive-targetid" value="'decision-confirm-control'"/>
+                    </xf:dispatch>
+                  </xf:action>
+                  <xf:action ev:event="fr-positive">
+                    <xf:setvalue bind="status-bind" value="instance('fr-form-instance')//*:decision-made"/>
+                    <xf:send submission="record-decision-on-appraisal"/>
+                  </xf:action>
+                </xf:trigger>
+              </xh:td>
+              <xh:td>
+                <xf:trigger id="decision-cancel-control" bind="decision-cancel-bind">
+                  <xf:label ref="$form-resources/decision-cancel/label"/>
+                  <xf:action ev:event="DOMActivate">
+                    <xf:setvalue bind="show-decision-section-bind" value="'false'"/>
+                    <xf:setvalue bind="decision-made-bind" value="''"/>
+                    <xf:setvalue bind="rejection-reason-bind" value="''"/>
+                    <xf:setfocus ev:event="DOMActivate" control="full-application-overview-section-control"/>
+                  </xf:action>
+                  <xf:hint ref="$form-resources/decision-cancel/hint"/>
+                  <xf:alert ref="$fr-resources/detail/labels/alert"/>
+                </xf:trigger>
+              </xh:td>
+              <xh:td/>
+              <xh:td/>
+            </xh:tr>
+          </fr:grid>
+         -->
+        </fr:section>
+        <fr:alert-dialog id="message-dialog">
+          <fr:label>Information</fr:label>
+          <fr:positive-choice>
+            <fr:label>OK</fr:label>
+            <xf:action event="DOMActivate">
+              <xf:setvalue ref="xxf:instance('fr-persistence-instance')/data-safe-override">true</xf:setvalue>
+              <!-- <xf:load resource="/esif-web/appraisal/appraisal-dashboard"/> -->
+              <xf:load resource="/esif-web/applications/dashboard"/>
+            </xf:action>
+          </fr:positive-choice>
+        </fr:alert-dialog>
+        <!-- generic confirmation dialog with ok and label, the actual message is passed from the message property  -->
+        <fr:alert-dialog id="confirmation-dialog">
+          <fr:label>Confirmation</fr:label>
+          <fr:positive-choice>
+            <fr:label>OK</fr:label>
+          </fr:positive-choice>
+          <fr:negative-choice>
+            <fr:label>Cancel</fr:label>
+          </fr:negative-choice>
+        </fr:alert-dialog>
+      </fr:body>
+      <fr:buttons xmlns:oxf="http://www.orbeon.com/oxf/processors" xmlns:p="http://www.orbeon.com/oxf/pipeline" xmlns:xbl="http://www.w3.org/ns/xbl">
+        <fr:pdf-button/>
+        <fr:save-button ref=".[xxf:instance('fr-parameters-instance')/mode != 'view' and ($is-application-stage-edit-mode or $is-evaluation-stage-edit-mode or $is-review-stage-edit-mode-for-reviewer or $is-decision-stage-edit-mode)]"/>
+        <!-- Hidden and moved actions up to model on init #519 ML -->
+        <!--
+        <xf:trigger id="complete-appraisal-btn-control" ref=".[xxf:instance('fr-parameters-instance')/mode != 'view' and $is-evaluation-stage-edit-mode]">
+          <xf:label>Complete Appraisal</xf:label>
+          <xf:action ev:event="DOMActivate">
+            <xf:setvalue bind="show-complete-section-bind" value="'true'"/>
+            <xf:setfocus ev:event="DOMActivate" control="complete-appraisal-control"/>
+            <xf:setvalue ref="instance('status-instance')//*:button-clicked" value="'complete appraisal'"/>
+          </xf:action>
+        </xf:trigger>
+        -->
+        <!-- Moved from section above #519 ML 
+        	 Added a ref to control it -->
+        <xf:trigger id="complete-appraisal-confirm-control" ref=".[xxf:instance('fr-parameters-instance')/mode != 'view' and $is-evaluation-stage-edit-mode]">
+          <xf:label ref="$form-resources/complete-appraisal-confirm/label"/>
+          <xf:hint ref="$form-resources/complete-appraisal-confirm/hint"/>
+          <xf:alert ref="$fr-resources/detail/labels/alert"/>
+          <xf:action ev:event="DOMActivate">
+              </xf:action>
+          <xf:action ev:event="DOMActivate">
+            <xf:dispatch target="confirmation-dialog" name="fr-show">
+              <xf:property name="message" value="'Are you sure you want to complete this appraisal?'"/>
+              <xf:property name="positive-targetid" value="'complete-appraisal-confirm-control'"/>
+            </xf:dispatch>
+          </xf:action>
+          <xf:action ev:event="fr-positive">
+            <xf:setvalue bind="completed-date-bind" value="format-dateTime(current-dateTime(), '[D01]/[M01]/[Y] [H01]:[m01]')"/>
+            <xf:setvalue bind="completed-by-bind" value="instance('workflow-payload')/user-name"/>
+            <xf:setvalue ref="instance('status-instance')//*:button-clicked" value="'complete appraisal'"/>
+            <xf:send submission="complete-appraisal"/>
+          </xf:action>
+        </xf:trigger>
+        <!-- Moved from section above #519 ML 
+        	 Added a ref to control it -->
+        <xf:trigger id="decision-confirm-control" ref=".[$is-decision-stage-edit-mode]">
+          <xf:label ref="$form-resources/decision-confirm/label"/>
+          <xf:hint ref="$form-resources/decision-confirm/hint"/>
+          <xf:alert ref="$fr-resources/detail/labels/alert"/>
+          <xf:action ev:event="DOMActivate">
+            <xf:dispatch target="confirmation-dialog" name="fr-show">
+              <xf:property name="message" value="'Are you sure you want to record the final decision?'"/>
+              <xf:property name="positive-targetid" value="'decision-confirm-control'"/>
+            </xf:dispatch>
+          </xf:action>
+          <xf:action ev:event="fr-positive">
+            <xf:setvalue bind="status-bind" value="instance('fr-form-instance')//*:decision-made"/>
+            <xf:send submission="record-decision-on-appraisal"/>
+          </xf:action>
+        </xf:trigger>
+        <!-- Hidden and action moved to model on init -->
+        <!--
+        <xf:trigger id="record-decision-control" ref=".[$is-decision-stage-edit-mode]">
+          <xf:label>Record Decision</xf:label>
+          <xf:action ev:event="DOMActivate">
+            <xf:setvalue bind="show-decision-section-bind" value="'true'"/>
+            <xf:setvalue ref="instance('status-instance')//*:button-clicked" value="'record decision'"/>
+            <xf:setfocus ev:event="DOMActivate" control="decision-section-control"/>
+          </xf:action>
+        </xf:trigger>
+        -->
+        <xf:trigger id="ask-additional-information-btn-control" ref=".[xxf:instance('fr-parameters-instance')/mode != 'view' and $is-evaluation-stage-edit-mode]">
+          <xf:label>Request Info</xf:label>
+          <xf:action ev:event="DOMActivate">
+            <xf:dispatch target="confirmation-dialog" name="fr-show">
+              <xf:property name="message" value="'Are you sure you want to ask additional information for this appraisal?'"/>
+              <xf:property name="positive-targetid" value="'ask-additional-information-btn-control'"/>
+            </xf:dispatch>
+          </xf:action>
+          <xf:action ev:event="fr-positive">
+            <xf:setvalue ref="instance('status-instance')//*:button-clicked" value="'information requested'"/>
+            <xf:setvalue bind="show-complete-section-bind" value="'false'"/>
+            <xf:send submission="request-information"/>
+          </xf:action>
+        </xf:trigger>
+        <xf:trigger id="submit-additional-information-btn-control" ref=".[xxf:instance('fr-parameters-instance')/mode != 'view' and $is-application-stage-edit-mode]">
+          <xf:label>Submit Info</xf:label>
+          <xf:action ev:event="DOMActivate">
+            <xf:dispatch target="confirmation-dialog" name="fr-show">
+              <xf:property name="message" value="'Are you sure you want to submit this additional information to the appraiser?'"/>
+              <xf:property name="positive-targetid" value="'submit-additional-information-btn-control'"/>
+            </xf:dispatch>
+          </xf:action>
+          <xf:action ev:event="fr-positive">
+            <xf:setvalue ref="instance('status-instance')//*:button-clicked" value="'information received'"/>
+            <xf:send submission="submit-information"/>
+          </xf:action>
+        </xf:trigger>
+        <xf:trigger id="return-appraisal-btn-control" ref=".[xxf:instance('fr-parameters-instance')/mode != 'view' and $is-review-stage-edit-mode-for-reviewer]">
+          <xf:label>Return</xf:label>
+          <xf:action ev:event="DOMActivate">
+            <xf:dispatch target="confirmation-dialog" name="fr-show">
+              <xf:property name="message" value="'Are you sure you want to return this appraisal?'"/>
+              <xf:property name="positive-targetid" value="'return-appraisal-btn-control'"/>
+            </xf:dispatch>
+          </xf:action>
+          <xf:action ev:event="fr-positive">
+            <xf:setvalue ref="instance('status-instance')//*:button-clicked" value="'amendment requested'"/>
+            <xf:setvalue bind="reviewed-date-bind" value="format-dateTime(current-dateTime(), '[D01]/[M01]/[Y] [H01]:[m01]')"/>
+            <xf:setvalue bind="reviewed-by-bind" value="instance('workflow-payload')/user-name"/>
+            <xf:send submission="return-appraisal"/>
+          </xf:action>
+        </xf:trigger>
+        <xf:trigger id="submit-appraisal-btn-control" ref=".[xxf:instance('fr-parameters-instance')/mode != 'view' and $is-review-stage-edit-mode-for-reviewer]">
+          <xf:label>Submit</xf:label>
+          <xf:action ev:event="DOMActivate">
+            <xf:dispatch target="confirmation-dialog" name="fr-show">
+              <xf:property name="message" value="'Are you sure you want to submit this appraisal?'"/>
+              <xf:property name="positive-targetid" value="'submit-appraisal-btn-control'"/>
+            </xf:dispatch>
+          </xf:action>
+          <xf:action ev:event="fr-positive">
+            <xf:setvalue ref="instance('status-instance')//*:button-clicked" value="'pending decision'"/>
+            <xf:setvalue bind="reviewed-date-bind" value="format-dateTime(current-dateTime(), '[D01]/[M01]/[Y] [H01]:[m01]')"/>
+            <xf:setvalue bind="reviewed-by-bind" value="instance('workflow-payload')/user-name"/>
+            <xf:send submission="submit-appraisal"/>
+          </xf:action>
+        </xf:trigger>
+      </fr:buttons>
+    </fr:view>
+  </xh:body>
+</xh:html>

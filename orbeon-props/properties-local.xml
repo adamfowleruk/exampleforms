@@ -1,0 +1,62 @@
+<!--
+    This file is an empty template for your own properties-local.xml file. Please follow the instructions here:
+    
+    http://wiki.orbeon.com/forms/doc/developer-guide/configuration-properties
+-->
+<properties xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:oxf="http://www.orbeon.com/oxf/processors">
+    
+    <property as="xs:string"  name="oxf.fr.persistence.provider.*.*.*"                              value="marklogic"/>            
+    <property as="xs:anyURI"  name="oxf.fr.persistence.marklogic.uri"                               value="http://localhost:8046"/>
+    <property as="xs:string"  name="oxf.fr.persistence.marklogic.datasource"                        value="marklogic"/>
+    <property as="xs:boolean" name="oxf.fr.persistence.*.autosave"                                  value="false"/>                
+    <property as="xs:boolean" name="oxf.fr.persistence.marklogic.permissions"                       value="true"/>    
+    <property as="xs:boolean" name="oxf.fr.persistence.marklogic.versioning"                        value="true"/>    
+    <property as="xs:boolean" name="oxf.fr.persistence.marklogic.active"                            value="true"/>
+    
+    <!-- Configuration of built-in forms -->
+    <property as="xs:string" name="oxf.fr.detail.captcha.orbeon.builder" value=""/>
+    <property as="xs:string" name="oxf.fr.persistence.provider.orbeon.builder.form" value="resource"/>
+    <!-- Be specific, as user might change the default persistence layer -->
+    <property as="xs:string" name="oxf.fr.persistence.provider.orbeon.bookshelf.form" value="exist"/>
+    <!-- Be specific, as user might change the default persistence layer -->
+    <property as="xs:string" name="oxf.fr.persistence.provider.orbeon.contact.form" value="exist"/>
+    <!-- Be specific, as user might change the default persistence layer -->
+    <property as="xs:string" name="oxf.fr.persistence.provider.orbeon.controls.form" value="exist"/>
+    <property as="xs:string" name="oxf.fr.persistence.provider.orbeon.dmv-14.form" value="resource"/>
+    <property as="xs:boolean" name="oxf.fr.noscript-link.orbeon.contact" value="true"/>
+    <property as="xs:string" name="oxf.fr.detail.buttons.orbeon.controls">
+        refresh pdf wizard-prev wizard-next review
+    </property>
+    <property as="xs:string" name="oxf.fr.detail.view.appearance.orbeon.controls" value="wizard"/>
+    <property as="xs:integer" name="oxf.fr.detail.toc.orbeon.controls" value="-1"/>
+    <property as="xs:string" name="oxf.fr.detail.buttons.orbeon.dmv-14">
+        refresh summary clear pdf save-final review
+    </property>
+    <property as="xs:string" name="oxf.fr.resource.orbeon.dmv-14.*.print.formats.date" value="[Y0001]-[M01]-[D01]"/>
+    <property as="xs:string" name="oxf.fr.pdf.map.orbeon.dmv-14.fr-us-state" value="select-value"/>
+    <property as="xs:string" name="oxf.fr.detail.view.appearance.orbeon.dmv-14" value="wizard"/>
+    <property as="xs:string" name="oxf.fr.detail.view.appearance.orbeon.w9" value="wizard"/>
+    <property as="xs:integer" name="oxf.fr.detail.toc.orbeon.w9" value="-1"/>
+    <property as="xs:string" name="oxf.fr.pdf.map.orbeon.w9.xforms-select1.*" value="select-value"/>
+    <property as="xs:string" name="oxf.fr.detail.buttons.orbeon.w9">
+        refresh summary save-final wizard-prev wizard-next review
+    </property>
+    
+    <property as="xs:string" name="oxf.fr.detail.view.appearance.*.*" value="wizard"/>
+    <property as="xs:boolean" name="oxf.xforms.xbl.fr.wizard.validate.*.*" value="true"/>
+    
+    <property as="xs:integer" name="oxf.fb.grid.max-columns" value="6"/>
+    
+    <!-- currency handling -->
+    <property as="xs:string" name="oxf.xforms.xbl.fr.currency.prefix"                      value="£"/>
+    <property as="xs:string" name="oxf.xforms.xbl.fr.currency.suffix"                      value=""/>
+    <property as="xs:string" name="oxf.xforms.xbl.fr.currency.digits-after-decimal"        value="2"/>
+    <property as="xs:string" name="oxf.xforms.xbl.fr.currency.decimal-separator"           value="."/>
+    <property as="xs:string" name="oxf.xforms.xbl.fr.currency.grouping-separator"          value=","/>
+    
+    <!-- session handling https://github.com/orbeon/orbeon-forms/wiki/Contributors-~-Internals-~-State-Handling -->
+    <property as="xs:boolean" name="oxf.xforms.session-heartbeat" value="true"/>
+    
+    
+</properties>

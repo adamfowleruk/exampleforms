@@ -1,0 +1,742 @@
+<?xml version="1.0"?>
+<xh:html xmlns:xh="http://www.w3.org/1999/xhtml" xmlns:xf="http://www.w3.org/2002/xforms" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:xxf="http://orbeon.org/oxf/xml/xforms" xmlns:fr="http://orbeon.org/oxf/xml/form-runner" xmlns:f="http://orbeon.org/oxf/xml/formatting">
+  <xh:head>
+    <xh:title>Claim</xh:title>
+    <xf:model id="fr-form-model" xxf:expose-xpath-types="true">
+      <!-- Main instance -->
+      <xf:instance id="fr-form-instance" xxf:exclude-result-prefixes="#all">
+        <claim>
+          <uids>
+            <project/>
+          </uids>
+          <project-overview>
+            <application-link/>
+            <application-uid/>
+            <project-reference-number/>
+            <project-name/>
+            <project-start-date/>
+            <project-financial-end-date/>
+            <project-practical-end-date/>
+            <project-lep-areas/>
+          </project-overview>
+          <claim-details>
+            <claim-reference-number/>
+            <claim-type/>
+            <claim-schedule/>
+            <claim-month/>
+            <claim-quarter/>
+            <claim-year/>
+            <claim-date/>
+            <nil-claim>false</nil-claim>
+          </claim-details>
+          <audit-info>
+            <last-update/>
+          </audit-info>
+        </claim>
+      </xf:instance>
+      <xf:action ev:event="xforms-model-construct-done">
+        <xf:send submission="retrieve-project"/>
+        <xf:send submission="retrieve-leps"/>
+        <xf:send submission="check-transactions"/>
+        <xf:send submission="retrieve-workflow-data"/>
+        <xf:send submission="retrieve-progress"/>
+      </xf:action>
+      <xf:submission id="retrieve-progress" method="get" instance="find-progress" replace="instance" serialization="application/xml" validate="false" resource="/fr/service/persistence/crud/erdf/progress-report/data/{xxf:get-request-header('progressId')}/data.xml"/>
+      <xf:submission id="retrieve-project" method="get" instance="find-project" replace="instance" serialization="application/xml" validate="false" resource="{xxf:property('esif.marklogic.base')}/v1/documents?uri={concat('/project/', instance('fr-form-instance')//*:uids/*:project,'.xml')}">
+        <xf:action ev:event="xforms-submit-done">
+          <xf:setvalue ref="xxf:instance('fr-form-instance')//*:application-uid" value="xxf:instance('find-project')//*:uids/*:application"/>
+          <xf:setvalue ref="xxf:instance('fr-form-instance')//*:claim-schedule" value="xxf:instance('find-project')//*:claims-schedule"/>
+          <xf:send submission="retrieve-application"/>
+        </xf:action>
+      </xf:submission>
+      <xf:submission id="retrieve-application" method="get" instance="find-application" replace="instance" serialization="application/xml" validate="false" resource="/fr/service/persistence/crud/erdf/full-application/data/{xxf:instance('fr-form-instance')//*:application-uid}/data.xml">
+        <xf:action ev:event="xforms-submit-done">
+          <xf:setvalue ref="xxf:instance('fr-form-instance')//*:project-reference-number" value="xxf:instance('find-application')//*:application-reference"/>
+          <xf:setvalue ref="xxf:instance('fr-form-instance')//*:project-name" value="xxf:instance('find-application')//*:project-name"/>
+          <xf:setvalue ref="xxf:instance('fr-form-instance')//*:project-start-date" value="xxf:instance('find-application')//*:proposed-start-date"/>
+          <xf:setvalue ref="xxf:instance('fr-form-instance')//*:project-financial-end-date" value="xxf:instance('find-application')//*:proposed-financial-completion-date"/>
+          <xf:setvalue ref="xxf:instance('fr-form-instance')//*:project-practical-end-date" value="xxf:instance('find-application')//*:proposed-practical-completion-date"/>
+          <xf:setvalue ref="xxf:instance('fr-form-instance')//*:project-lep-areas" value="string-join(xxf:instance('find-application')//*:lep-area, ',')"/>
+        </xf:action>
+      </xf:submission>
+      <xf:submission id="retrieve-leps" method="get" instance="find-leps" replace="instance" serialization="application/xml" validate="false" resource="{xxf:property('esif.marklogic.base')}/v1/documents?uri=/reference/lov/leps.xml">
+         </xf:submission>
+      <xf:submission id="check-transactions" method="post" ref="instance('find-transactions-request')" instance="find-transactions" replace="instance" serialization="application/xml" validate="false" resource="{xxf:property('esif.marklogic.base')}/esif/claim-transaction/search/count"/>
+      <xf:submission id="wf-update-process" method="post" ref="instance('workflow-payload')" replace="none" validate="false" resource="{xxf:property('esif.marklogic.base')}/esif/workflow/process/claim/{xxf:instance('fr-parameters-instance')/document}">
+      </xf:submission>
+      <xf:submission id="retrieve-claim" method="get" instance="fr-form-instance" replace="instance" serialization="application/xml" validate="false" resource="/fr/service/persistence/crud/erdf/claim/data/{xxf:instance('fr-parameters-instance')/document}/data.xml">
+        <xf:header combine="replace">
+          <xf:name>Accept</xf:name>
+          <xf:value>application/xml</xf:value>
+        </xf:header>
+        <xf:action ev:event="xforms-submit-done">
+          <xf:setvalue bind="claim-reference-bind" value="xxf:instance('fr-form-instance')//*:claim-reference-number"/>
+          <xf:setvalue ref="xxf:instance('fr-persistence-instance')/data-safe-override">true</xf:setvalue>
+        </xf:action>
+      </xf:submission>
+      <xf:submission id="submit-claim" method="put" instance="fr-form-instance" replace="instance" serialization="application/xml" validate="true" relevant="false" resource="/fr/service/persistence/crud/erdf/claim/data/{xxf:instance('fr-parameters-instance')/document}/data.xml?apply-transformation=true&amp;versioning=true">
+        <xf:header combine="replace">
+          <xf:name>Accept</xf:name>
+          <xf:value>application/xml</xf:value>
+        </xf:header>
+        <xf:header>
+          <xf:name>Orbeon-Form-Definition-Version</xf:name>
+          <xf:value value="xxf:instance('fr-parameters-instance')/form-version"/>
+        </xf:header>
+        <xf:action ev:event="xforms-submit-error">
+          <xf:message level="modal">
+            <xf:output value="'There are validation errors (request more information). Please check your selections and entries, and retry once all fields have been filled out.'"/>
+          </xf:message>
+        </xf:action>
+        <xf:action ev:event="xforms-submit-done">
+          <xf:send submission="retrieve-claim"/>
+          <xf:setvalue bind="claim-status-bind">submitted</xf:setvalue>
+          <xf:setvalue bind="state-change-bind">true</xf:setvalue>
+          <xf:send submission="wf-update-process"/>
+          <xf:send submission="update-visit-test-set"/>
+          <xf:send submission="log-activity"/>
+          <xf:load resource="/esif-web/project/{encode-for-uri(xxf:instance('fr-form-instance')//*:project)}/claims"/>
+        </xf:action>
+        <xf:action ev:event="xforms-submit-done" if="xxf:instance('fr-form-instance')/*:claim-details/*:nil-claim/string() = 'true'">
+          <xf:send submission="delete-transactions-for-nil-claim"/>
+          <xf:send submission="delete-transactions-sheet-for-nil-claim"/>
+        </xf:action>
+      </xf:submission>
+      <xf:submission id="save-claim" method="put" instance="fr-form-instance" replace="instance" serialization="application/xml" validate="true" relevant="false" resource="/fr/service/persistence/crud/erdf/claim/data/{xxf:instance('fr-parameters-instance')/document}/data.xml?apply-transformation=true&amp;versioning=false">
+        <xf:header combine="replace">
+          <xf:name>Accept</xf:name>
+          <xf:value>application/xml</xf:value>
+        </xf:header>
+        <xf:header>
+          <xf:name>Orbeon-Form-Definition-Version</xf:name>
+          <xf:value value="xxf:instance('fr-parameters-instance')/form-version"/>
+        </xf:header>
+        <xf:action ev:event="xforms-submit-error">
+          <xf:message level="modal">
+            <xf:output value="'There are validation errors (request more information). Please check your selections and entries, and retry once all fields have been filled out.'"/>
+          </xf:message>
+        </xf:action>
+        <xf:action ev:event="xforms-submit-done" if="xxf:instance('activity-log')//new-claim eq 'true'">
+          <xf:send submission="log-activity"/>
+        </xf:action>
+        <xf:action ev:event="xforms-submit-done">
+          <xf:send submission="retrieve-claim"/>
+          <xf:send submission="wf-update-process"/>
+          <xf:load resource="/esif-web/project/{encode-for-uri(xxf:instance('fr-form-instance')//*:project)}/claims"/>
+        </xf:action>
+      </xf:submission>
+      <xf:submission id="upload-transactions-mock" method="put" instance="fr-form-instance" replace="none" serialization="application/xml" validate="true" relevant="false" resource="/fr/service/persistence/crud/erdf/claim/data/{xxf:instance('fr-parameters-instance')/document}/data.xml?apply-transformation=true&amp;versioning=false">
+        <xf:header combine="replace">
+          <xf:name>Accept</xf:name>
+          <xf:value>application/xml</xf:value>
+        </xf:header>
+        <xf:header>
+          <xf:name>Orbeon-Form-Definition-Version</xf:name>
+          <xf:value value="xxf:instance('fr-parameters-instance')/form-version"/>
+        </xf:header>
+        <xf:action ev:event="xforms-submit-error">
+          <xf:message level="modal">
+            <xf:output value="'There are validation errors (request more information). Please check your selections and entries, and retry once all fields have been filled out.'"/>
+          </xf:message>
+        </xf:action>
+        <xf:action ev:event="xforms-submit-done">
+          <xf:send submission="retrieve-claim"/>
+          <xf:send submission="wf-update-process"/>
+          <xf:send submission="upload-transactions-mock-page"/>
+        </xf:action>
+      </xf:submission>
+      <xf:submission id="upload-transactions-mock-page" serialization="none" method="get" replace="all" f:url-norewrite="true" resource="/esif-web/form/claim-transaction/import?app-uid={xxf:instance('fr-parameters-instance')/document}"/>
+      <xf:submission id="upload-deliverables-mock" method="put" instance="fr-form-instance" replace="none" serialization="application/xml" validate="false" relevant="false" resource="/fr/service/persistence/crud/erdf/claim/data/{xxf:instance('fr-parameters-instance')/document}/data.xml?apply-transformation=true&amp;versioning=false">
+        <xf:header combine="replace">
+          <xf:name>Accept</xf:name>
+          <xf:value>application/xml</xf:value>
+        </xf:header>
+        <xf:header>
+          <xf:name>Orbeon-Form-Definition-Version</xf:name>
+          <xf:value value="xxf:instance('fr-parameters-instance')/form-version"/>
+        </xf:header>
+        <xf:action ev:event="xforms-submit-error">
+          <xf:message level="modal">
+            <xf:output value="'There are validation errors (request more information). Please check your selections and entries, and retry once all fields have been filled out.'"/>
+          </xf:message>
+        </xf:action>
+        <xf:action ev:event="xforms-submit-done">
+          <xf:send submission="retrieve-claim"/>
+          <xf:send submission="wf-update-process"/>
+          <xf:send submission="upload-deliverables-mock-page"/>
+        </xf:action>
+      </xf:submission>
+      <xf:submission id="upload-deliverables-mock-page" serialization="none" method="get" replace="all" f:url-norewrite="true" resource="/esif-web/form/claim-deliverable/import?app-uid={xxf:instance('fr-parameters-instance')/document}"/>
+      <xf:submission id="upload-participant-data" method="put" instance="fr-form-instance" replace="none" serialization="application/xml" validate="false" relevant="false" resource="/fr/service/persistence/crud/erdf/claim/data/{xxf:instance('fr-parameters-instance')/document}/data.xml?apply-transformation=true&amp;versioning=false">
+        <xf:header combine="replace">
+          <xf:name>Accept</xf:name>
+          <xf:value>application/xml</xf:value>
+        </xf:header>
+        <xf:header>
+          <xf:name>Orbeon-Form-Definition-Version</xf:name>
+          <xf:value value="xxf:instance('fr-parameters-instance')/form-version"/>
+        </xf:header>
+        <xf:action ev:event="xforms-submit-error">
+          <xf:message level="modal">
+            <xf:output value="'There are validation errors (request more information). Please check your selections and entries, and retry once all fields have been filled out.'"/>
+          </xf:message>
+        </xf:action>
+        <xf:action ev:event="xforms-submit-done">
+          <xf:send submission="retrieve-claim"/>
+          <xf:send submission="wf-update-process"/>
+          <xf:send submission="upload-participant-data-page"/>
+        </xf:action>
+      </xf:submission>
+      <xf:submission id="upload-participant-data-page" serialization="none" method="get" replace="all" f:url-norewrite="true" resource="/esif-web/form/claim-participant-data/import?app-uid={xxf:instance('fr-parameters-instance')/document}"/>
+      <xf:submission id="log-activity" method="put" instance="activity-log" ref="instance('activity-log')" replace="instance" validate="false" serialization="application/xml" resource="{xxf:property('esif.marklogic.base')}/esif/project/{xxf:instance('fr-form-instance')//*:uids/*:project}/activity"> 
+         </xf:submission>
+      <xf:submission id="update-visit-test-set" method="put" instance="empty" ref="instance('empty')" replace="instance" validate="false" serialization="application/xml" resource="{xxf:property('esif.marklogic.base')}/esif/claim/{xxf:instance('fr-parameters-instance')/document}/update-visit-test-set">
+      </xf:submission>
+      <xf:submission id="delete-transactions-for-nil-claim" method="delete" serialization="none" action="/fr/service/persistence/crud/erdf/claim-transaction/data/?query={xxf:instance('fr-parameters-instance')/document}" replace="none"/>
+      <xf:submission id="delete-transactions-sheet-for-nil-claim" method="delete" serialization="none" f:url-norewrite="true" action="{xxf:property('esif.marklogic.base')}/v1/documents?uri={concat('/files/claim/', xxf:instance('fr-parameters-instance')/document, '/transaction-spreadsheet.xlsx')}" replace="none"/>
+      <xf:action ev:event="xforms-value-changed">
+        <xf:recalculate/>
+        <xf:recalculate model="fr-form-model" xxf:deferred="true"/>
+      </xf:action>
+      <xf:action ev:event="xforms-value-changed" ev:observer="nil-claim-group" if="xxf:instance('fr-form-instance')/*:claim-details/*:nil-claim/string() = 'true' and xxf:instance('find-transactions')/node()/string() ne '0'">
+        <xxf:show dialog="nil-warning"/>
+      </xf:action>
+      <!-- Bindings -->
+      <xf:bind id="fr-form-binds" ref="instance('fr-form-instance')">
+        <xf:bind id="uids-bind" ref="uids" name="uids" relevant="false()">
+          <xf:bind id="project-bind" ref="project" name="project" xxf:default="xxf:get-request-header('projectId')"/>
+        </xf:bind>
+        <xf:bind id="project-overview-bind" name="project-overview" ref="project-overview">
+          <xf:bind id="application-link-bind" ref="application-link" name="application-link" calculate="concat('&lt;a href=&quot;/esif-web/form/full-application/view/', //*:application-uid, '&quot; target=&quot;_blank&quot;&gt;View Full Application&lt;/a&gt;')"/>
+          <xf:bind id="project-reference-number-bind" name="project-reference-number" ref="project-reference-number" readonly="true()"/>
+          <xf:bind id="project-name-bind" ref="project-name" name="project-name" readonly="true()"/>
+          <xf:bind id="project-start-date-bind" ref="project-start-date" name="project-start-date" readonly="true()"/>
+          <xf:bind id="project-financial-end-date-bind" ref="project-financial-end-date" name="project-financial-end-date" readonly="true()"/>
+          <xf:bind id="project-practical-end-date-bind" ref="project-practical-end-date" name="project-practical-end-date" readonly="true()"/>
+          <xf:bind id="project-lep-areas-bind" ref="project-lep-areas" name="project-lep-areas" relevant="false()"/>
+        </xf:bind>
+        <xf:bind id="claim-details-bind" ref="claim-details" name="claim-details">
+          <xf:bind id="claim-reference-number-bind" ref="claim-reference-number" name="claim-reference-number"/>
+          <xf:bind id="claim-schedule-bind" ref="claim-schedule" name="claim-schedule" readonly="true()"/>
+          <xf:bind id="claim-type-bind" ref="claim-type" name="claim-type" type="xf:string" readonly="true()" xxf:default="xxf:get-request-header('type')"/>
+          <xf:bind id="claim-month-bind" ref="claim-month" name="claim-month" relevant="../*:claim-schedule = 'monthly'" readonly="true()" required="if(../*:claim-schedule = 'monthly') then true() else false()" xxf:default="xxf:get-request-header('month')"/>
+          <xf:bind id="claim-quarter-bind" ref="claim-quarter" name="claim-quarter" relevant="../*:claim-schedule = 'quarterly'" required="if(../*:claim-schedule = 'quarterly') then true() else false()" xxf:default="xxf:get-request-header('month')" readonly="true()"/>
+          <xf:bind id="claim-year-bind" ref="claim-year" name="claim-year" required="true()" xxf:default="xxf:get-request-header('year')" readonly="true()"/>
+          <xf:bind id="claim-date-bind" ref="claim-date" name="claim-date" calculate="concat(../*:claim-year, '-', if(../*:claim-schedule = 'quarterly') then ../*:claim-quarter else ../*:claim-month, '-01')" relevant="false()"/>
+          <xf:bind id="nil-claim-bind" ref="nil-claim" name="nil-claim" type="xf:boolean"/>
+        </xf:bind>
+        <xf:bind id="audit-info-bind" ref="audit-info" name="audit-info" relevant="false()">
+          <xf:bind id="last-update-bind" ref="last-update" name="last-update" relevant="false()"/>
+        </xf:bind>
+      </xf:bind>
+      <xf:bind id="workflow-binds" ref="instance('workflow-payload')">
+        <xf:bind id="assignment-bind" ref="assignment" name="assignment">
+          <xf:bind id="user-name-bind" ref="user-name" name="user-name" xxf:default="xxf:get-request-header('username')"/>
+          <xf:bind id="user-role-bind" ref="user-role" name="user-role" xxf:default="'applicant'"/>
+        </xf:bind>
+        <xf:bind id="claim-data-bind" ref="data" name="data">
+          <xf:bind id="claim-reference-bind" ref="claim-reference" name="claim-reference"/>
+          <xf:bind id="project-id-bind" ref="project-id" name="project-id"/>
+          <xf:bind id="project-reference-bind" ref="project-reference" name="project-reference"/>
+          <xf:bind id="claim-status-bind" ref="claim-status" name="claim-status" xxf:default="'draft'"/>
+        </xf:bind>
+        <xf:bind id="claim-attachment-bind" ref="attachment" name="attachment">
+          <xf:bind id="attachment-name-bind" ref="name" name="name" xxf:default="'Claim'"/>
+          <xf:bind id="attachment-uri-bind" ref="uri" name="uri"/>
+        </xf:bind>
+        <xf:bind id="state-change-bind" ref="state-change" name="state-change" xxf:default="'false'"/>
+      </xf:bind>
+      <xf:bind id="activity-log-binds" ref="instance('activity-log')">
+        <xf:bind id="username-bind" ref="username" name="username" xxf:default="xxf:get-request-header('username')"/>
+        <xf:bind id="activity" ref="activity" name="activity" calculate="             concat(              if(xxf:instance('fr-form-instance')//*:claim-schedule eq 'monthly') then 'M' else 'Q',              if(xxf:instance('fr-form-instance')//*:claim-schedule eq 'monthly')               then xxf:instance('fr-form-instance')//*:claim-month               else xxf:instance('fr-form-resources')//claim-quarter/item[value = xxf:instance('fr-form-instance')//*:claim-quarter]/number ,              ', ',              xxf:instance('fr-form-instance')//*:claim-year,               ' claim ',                if(xxf:instance('fr-form-instance')//*:claim-reference-number ne '') then 'submitted' else 'started'             )           "/>
+        <xf:bind id="new-claim-bind" ref="new-claim" name="new-claim" calculate="xxf:instance('fr-form-instance')//*:claim-reference-number eq ''"/>
+      </xf:bind>
+      <xf:bind id="find-transactions-request-binds" ref="instance('find-transactions-request')">
+        <xf:bind id="request-filter-bind" ref="filter" name="filter" calculate="concat('claim:', xxf:instance('fr-parameters-instance')/document)"/>
+      </xf:bind>
+      <!-- Metadata -->
+      <xf:instance xxf:readonly="true" id="fr-form-metadata" xxf:exclude-result-prefixes="#all">
+        <metadata>
+          <application-name>erdf</application-name>
+          <form-name>claim</form-name>
+          <title xml:lang="en">Claim</title>
+          <description xml:lang="en"/>
+          <singleton>false</singleton>
+        </metadata>
+      </xf:instance>
+      <!-- Attachments -->
+      <xf:instance id="fr-form-attachments" xxf:exclude-result-prefixes="#all">
+        <attachments>
+          <css mediatype="text/css" filename="" size=""/>
+          <pdf mediatype="application/pdf" filename="" size=""/>
+        </attachments>
+      </xf:instance>
+      <xf:instance id="workflow-payload" xxf:exclude-result-prefixes="#all">
+        <workflow>
+          <assignment>
+            <user-name/>
+            <user-role/>
+          </assignment>
+          <data>
+            <claim-reference/>
+            <claim-status/>
+            <claim-period/>
+            <claim-type/>
+            <project-id/>
+            <project-reference/>
+            <project-name/>
+          </data>
+          <attachment>
+            <name/>
+            <uri/>
+          </attachment>
+          <state-change/>
+        </workflow>
+      </xf:instance>
+      <xf:instance id="workflow-data">
+        <workflow/>
+      </xf:instance>
+      <xf:submission id="retrieve-workflow-data" method="get" instance="workflow-data" replace="instance" serialization="application/xml" validate="false" resource="{xxf:property('esif.marklogic.base')}/esif/workflow/data/claim/{xxf:instance('fr-parameters-instance')/document}">
+        <xf:action ev:event="xforms-submit-done" if="not(empty(instance('workflow-data')/*))">
+          <xf:setvalue bind="claim-status-bind" value="instance('workflow-data')/*:claim-status"/>
+        </xf:action>
+      </xf:submission>
+      <xf:action ev:event="xforms-model-construct-done">
+        <xf:setvalue ref="xxf:instance('workflow-payload')//claim-type" value="xxf:instance('fr-form-instance')//*:claim-type"/>
+        <xf:setvalue ref="xxf:instance('workflow-payload')//claim-period" value="xxf:instance('fr-form-instance')//*:claim-date"/>
+        <xf:setvalue ref="xxf:instance('workflow-payload')//claim-reference" value="xxf:instance('fr-form-instance')//*:claim-reference-number"/>
+        <xf:setvalue ref="xxf:instance('workflow-payload')//project-id" value="xxf:instance('fr-form-instance')//*:project"/>
+        <xf:setvalue ref="xxf:instance('workflow-payload')//project-reference" value="xxf:instance('fr-form-instance')//*:project-reference-number"/>
+        <xf:setvalue ref="xxf:instance('workflow-payload')//project-name" value="xxf:instance('fr-form-instance')//*:project-name"/>
+        <xf:setvalue ref="xxf:instance('workflow-payload')//attachment/uri" value="concat('/orbeon/erdf/claim/data/', xxf:instance('fr-parameters-instance')/document, '/data.xml')"/>
+      </xf:action>
+      <xf:instance id="activity-log" xxf:exclude-result-prefixes="#all">
+        <request-log>
+          <username/>
+          <activity/>
+          <new-claim/>
+        </request-log>
+      </xf:instance>
+      <xf:instance id="empty">
+        <empty/>
+      </xf:instance>
+      <!-- All form resources -->
+      <!-- Don't make readonly by default in case a service modifies the resources -->
+      <xf:instance id="fr-form-resources" xxf:readonly="false" xxf:exclude-result-prefixes="#all">
+        <resources>
+          <resource xml:lang="en">
+            <application-link>
+              <label/>
+              <hint/>
+            </application-link>
+            <claim-reference-number>
+              <label>Claim Reference Number</label>
+              <hint/>
+            </claim-reference-number>
+            <claim-type>
+              <label>Claim Type</label>
+              <hint/>
+            </claim-type>
+            <claim-schedule>
+              <label>Claim Schedule</label>
+              <hint/>
+            </claim-schedule>
+            <claim-quarter>
+              <label>Claim Quarter</label>
+              <hint/>
+              <item>
+                <label>Q1</label>
+                <value>01</value>
+                <number>01</number>
+              </item>
+              <item>
+                <label>Q2</label>
+                <value>04</value>
+                <number>02</number>
+              </item>
+              <item>
+                <label>Q3</label>
+                <value>07</value>
+                <number>03</number>
+              </item>
+              <item>
+                <label>Q4</label>
+                <value>10</value>
+                <number>04</number>
+              </item>
+            </claim-quarter>
+            <claim-year>
+              <label>Claim Year</label>
+              <hint/>
+              <alert>Claim year must be within project start date and project financial or practical end date.</alert>
+              <alert>Incorect year!</alert>
+            </claim-year>
+            <nil-claim>
+              <label>Nil Claim</label>
+              <hint/>
+            </nil-claim>
+            <claim-month>
+              <label>Claim Month</label>
+              <hint/>
+              <item>
+                <label>January</label>
+                <value>01</value>
+              </item>
+              <item>
+                <label>February</label>
+                <value>02</value>
+              </item>
+              <item>
+                <label>March</label>
+                <value>03</value>
+              </item>
+              <item>
+                <label>April</label>
+                <value>04</value>
+              </item>
+              <item>
+                <label>May</label>
+                <value>05</value>
+              </item>
+              <item>
+                <label>June</label>
+                <value>06</value>
+              </item>
+              <item>
+                <label>July</label>
+                <value>07</value>
+              </item>
+              <item>
+                <label>August</label>
+                <value>08</value>
+              </item>
+              <item>
+                <label>September</label>
+                <value>09</value>
+              </item>
+              <item>
+                <label>October</label>
+                <value>10</value>
+              </item>
+              <item>
+                <label>November</label>
+                <value>11</value>
+              </item>
+              <item>
+                <label>December</label>
+                <value>12</value>
+              </item>
+            </claim-month>
+            <project-overview>
+              <label>Project Overview</label>
+            </project-overview>
+            <project-reference-number>
+              <label>Project Reference Number</label>
+              <hint/>
+            </project-reference-number>
+            <project-name>
+              <label>Project Name</label>
+              <hint/>
+            </project-name>
+            <project-start-date>
+              <label>Project Start Date</label>
+              <hint/>
+            </project-start-date>
+            <project-financial-end-date>
+              <label>Project Financial End Date</label>
+              <hint/>
+            </project-financial-end-date>
+            <project-practical-end-date>
+              <label>Project Practical End Date</label>
+              <hint/>
+            </project-practical-end-date>
+            <project-lep-areas>
+              <label>LEP Areas</label>
+              <hint/>
+            </project-lep-areas>
+            <claim-details>
+              <label>Claim Details</label>
+              <help/>
+            </claim-details>
+            <upload-transactions>
+              <label>Go To Upload transactions (this will save the form first)</label>
+              <help/>
+            </upload-transactions>
+            <upload-deliverables>
+              <label>Go To Upload deliverables data (this will save the form first)</label>
+              <help/>
+            </upload-deliverables>
+            <upload-participant-data>
+              <label>Go To Upload participant data (this will save the form first)</label>
+              <help/>
+            </upload-participant-data>
+          </resource>
+        </resources>
+      </xf:instance>
+      <!-- Utility instances for services -->
+      <xf:instance id="fr-service-request-instance" xxf:exclude-result-prefixes="#all">
+        <request/>
+      </xf:instance>
+      <xf:instance id="fr-service-response-instance" xxf:exclude-result-prefixes="#all">
+        <response/>
+      </xf:instance>
+      <xf:instance id="find-project">
+        <data/>
+      </xf:instance>
+      <xf:instance id="find-application">
+        <data/>
+      </xf:instance>
+      <xf:instance id="find-leps">
+        <data/>
+      </xf:instance>
+      <xf:instance id="find-transactions">
+        <data/>
+      </xf:instance>
+      <xf:instance id="find-transactions-request">
+        <request>
+          <filter/>
+          <format>xml</format>
+        </request>
+      </xf:instance>
+      <xf:instance id="find-progress">
+        <data/>
+      </xf:instance>
+    </xf:model>
+  </xh:head>
+  <xh:body>
+    <fr:view>
+      <fr:body xmlns:oxf="http://www.orbeon.com/oxf/processors" xmlns:p="http://www.orbeon.com/oxf/pipeline" xmlns:xbl="http://www.w3.org/ns/xbl">
+        <fr:section id="project-overview-control" bind="project-overview-bind">
+          <xf:label ref="$form-resources/project-overview/label"/>
+          <fr:grid>
+            <xh:tr>
+              <xh:td>
+                <xf:output id="application-link-control" bind="application-link-bind" mediatype="text/html">
+                  <xf:label ref="$form-resources/application-link/label"/>
+                  <xf:hint ref="$form-resources/application-link/hint"/>
+                  <xf:alert ref="$fr-resources/detail/labels/alert"/>
+                </xf:output>
+              </xh:td>
+            </xh:tr>
+            <xh:tr>
+              <xh:td>
+                <xf:output id="project-reference-number-control" bind="project-reference-number-bind">
+                  <xf:label ref="$form-resources/project-reference-number/label"/>
+                  <xf:hint ref="$form-resources/project-reference-number/hint"/>
+                  <xf:alert ref="$fr-resources/detail/labels/alert"/>
+                </xf:output>
+              </xh:td>
+            </xh:tr>
+            <xh:tr>
+              <xh:td>
+                <xf:output id="project-name-control" bind="project-name-bind">
+                  <xf:label ref="$form-resources/project-name/label"/>
+                  <xf:hint ref="$form-resources/project-name/hint"/>
+                  <xf:alert ref="$fr-resources/detail/labels/alert"/>
+                </xf:output>
+              </xh:td>
+            </xh:tr>
+          </fr:grid>
+          <fr:grid>
+            <xh:tr>
+              <xh:td colspan="2">
+                <xf:output id="project-start-date-control" bind="project-start-date-bind">
+                  <xf:label ref="$form-resources/project-start-date/label"/>
+                  <xf:hint ref="$form-resources/project-start-date/hint"/>
+                  <xf:alert ref="$fr-resources/detail/labels/alert"/>
+                </xf:output>
+              </xh:td>
+            </xh:tr>
+            <xh:tr>
+              <xh:td>
+                <xf:output id="project-financial-end-date-control" bind="project-financial-end-date-bind">
+                  <xf:label ref="$form-resources/project-financial-end-date/label"/>
+                  <xf:hint ref="$form-resources/project-financial-end-date/hint"/>
+                  <xf:alert ref="$fr-resources/detail/labels/alert"/>
+                </xf:output>
+              </xh:td>
+              <xh:td>
+                <xf:output id="project-practical-end-date-control" bind="project-practical-end-date-bind">
+                  <xf:label ref="$form-resources/project-practical-end-date/label"/>
+                  <xf:hint ref="$form-resources/project-practical-end-date/hint"/>
+                  <xf:alert ref="$fr-resources/detail/labels/alert"/>
+                </xf:output>
+              </xh:td>
+            </xh:tr>
+          </fr:grid>
+          <fr:grid id="project-lep-areas-control">
+            <xh:tr>
+              <xh:td>
+                <xf:output ref="$form-resources/project-lep-areas/label"/>
+              </xh:td>
+            </xh:tr>
+            <xf:repeat nodeset="for $lep in distinct-values(tokenize(//*:project-lep-areas,',')) return xxf:element('text', $lep)">
+              <xh:tr>
+                <xh:td><xf:var name="lep-code" value="./string()"/><xf:output ref="xxf:instance('find-leps')//record[value = $lep-code]/label"/>&gt;
+                            </xh:td>
+              </xh:tr>
+            </xf:repeat>
+          </fr:grid>
+        </fr:section>
+        <fr:section id="claim-details-control" bind="claim-details-bind">
+          <xf:label ref="$form-resources/claim-details/label"/>
+          <fr:grid>
+            <xh:tr>
+              <xh:td>
+                <xf:output id="claim-reference-number-control" bind="claim-reference-number-bind">
+                  <xf:label ref="$form-resources/claim-reference-number/label"/>
+                  <xf:hint ref="$form-resources/claim-reference-number/hint"/>
+                  <xf:alert ref="$fr-resources/detail/labels/alert"/>
+                </xf:output>
+              </xh:td>
+            </xh:tr>
+            <xh:tr>
+              <xh:td>
+                <xf:output id="claim-type-control" bind="claim-type-bind">
+                  <xf:label ref="$form-resources/claim-type/label"/>
+                  <xf:hint ref="$form-resources/claim-type/hint"/>
+                  <xf:alert ref="$fr-resources/detail/labels/alert"/>
+                </xf:output>
+              </xh:td>
+            </xh:tr>
+            <xh:tr>
+              <xh:td>
+                <xf:output id="claim-schedule-control" bind="claim-schedule-bind">
+                  <xf:label ref="$form-resources/claim-schedule/label"/>
+                  <xf:hint ref="$form-resources/claim-schedule/hint"/>
+                  <xf:alert ref="$fr-resources/detail/labels/alert"/>
+                </xf:output>
+              </xh:td>
+            </xh:tr>
+          </fr:grid>
+          <fr:grid>
+            <xh:tr>
+              <xh:td>
+                <fr:dropdown-select1 xmlns:xxbl="http://orbeon.org/oxf/xml/xbl" id="claim-quarter-control" bind="claim-quarter-bind">
+                  <xf:label ref="$form-resources/claim-quarter/label"/>
+                  <xf:hint ref="$form-resources/claim-quarter/hint"/>
+                  <xf:alert ref="$fr-resources/detail/labels/alert"/>
+                  <xf:itemset ref="$form-resources/claim-quarter/item">
+                    <xf:label ref="label"/>
+                    <xf:value ref="value"/>
+                  </xf:itemset>
+                </fr:dropdown-select1>
+                <fr:dropdown-select1 xmlns:xxbl="http://orbeon.org/oxf/xml/xbl" id="claim-month-control" bind="claim-month-bind">
+                  <xf:label ref="$form-resources/claim-month/label"/>
+                  <xf:hint ref="$form-resources/claim-month/hint"/>
+                  <xf:alert ref="$fr-resources/detail/labels/alert"/>
+                  <xf:itemset ref="$form-resources/claim-month/item">
+                    <xf:label ref="label"/>
+                    <xf:value ref="value"/>
+                  </xf:itemset>
+                </fr:dropdown-select1>
+              </xh:td>
+            </xh:tr>
+            <xh:tr>
+              <xh:td>
+                <xf:output id="claim-year-control" bind="claim-year-bind">
+                  <xf:label ref="$form-resources/claim-year/label"/>
+                  <xf:hint ref="$form-resources/claim-year/hint"/>
+                  <xf:alert ref="$form-resources/claim-year/alert[1]" validation="claim-year-range-constraint"/>
+                  <xf:alert ref="$form-resources/claim-year/alert[2]"/>
+                </xf:output>
+              </xh:td>
+            </xh:tr>
+          </fr:grid>
+          <fr:grid>
+            <xh:tr>
+              <xh:td colspan="2">
+                <xf:group id="nil-claim-group">
+                  <xf:input id="nil-claim-control" bind="nil-claim-bind">
+                    <xf:label ref="$form-resources/nil-claim/label"/>
+                    <xf:hint ref="$form-resources/nil-claim/hint"/>
+                    <xf:alert ref="$fr-resources/detail/labels/alert"/>
+                  </xf:input>
+                </xf:group>
+              </xh:td>
+            </xh:tr>
+            <xh:tr>
+              <xh:td colspan="2">
+                <xf:trigger id="upload-transactions-link-control" ref=".[$fr-mode != 'view' and xxf:instance('fr-form-instance')//*:nil-claim != true() ]" appearance="minimal">
+                  <xf:label ref="$form-resources/upload-transactions/label"/>
+                  <xf:hint ref="$form-resources/upload-transactions/hint"/>
+                  <xf:action ev:event="DOMActivate">
+                    <xf:send submission="upload-transactions-mock"/>
+                  </xf:action>
+                </xf:trigger>
+              </xh:td>
+            </xh:tr>
+            <xh:tr>
+              <xh:td colspan="2">
+                <xf:trigger id="upload-deliverables-link-control" ref=".[$fr-mode != 'view' and xxf:instance('find-project')//*:project-fund = 'ERDF' ]" appearance="minimal">
+                  <xf:label ref="$form-resources/upload-deliverables/label"/>
+                  <xf:hint ref="$form-resources/upload-deliverables/hint"/>
+                  <xf:action ev:event="DOMActivate">
+                    <xf:send submission="upload-deliverables-mock"/>
+                  </xf:action>
+                </xf:trigger>
+              </xh:td>
+            </xh:tr>
+            <xh:tr>
+              <xh:td colspan="2">
+                <xf:trigger id="upload-participant-data-link-control" ref=".[$fr-mode != 'view' and xxf:instance('find-project')//*:project-fund = 'ESF' ]" appearance="minimal">
+                  <xf:label ref="$form-resources/upload-participant-data/label"/>
+                  <xf:hint ref="$form-resources/upload-participant-data/hint"/>
+                  <xf:action ev:event="DOMActivate">
+                    <xf:send submission="upload-participant-data"/>
+                  </xf:action>
+                </xf:trigger>
+              </xh:td>
+            </xh:tr>
+          </fr:grid>
+        </fr:section>
+        <xxf:dialog id="claim-submit-confirmation" appearance="full" close="true">
+          <xf:label>Submit claim confirmation</xf:label>
+          <xf:group>
+            <xh:p>Changes to a claim cannot be made after it has been submitted. Has a Claim review occurred?</xh:p>
+            <xh:p class="form-hint">Please use the left-side menu link for 'Reviews' (after the claim was saved) to add a review.</xh:p>
+          </xf:group>
+          <xh:br/>
+          <xh:div>
+            <xf:trigger>
+              <xf:label>Yes</xf:label>
+              <xf:action ev:event="DOMActivate">
+                <xf:send submission="submit-claim"/>
+                <xxf:hide ev:event="DOMActivate" dialog="claim-submit-confirmation"/>
+              </xf:action>
+            </xf:trigger>
+            <xf:trigger>
+              <xf:label>No</xf:label>
+              <xf:action ev:event="DOMActivate">
+                <xxf:hide ev:event="DOMActivate" dialog="claim-submit-confirmation"/>
+              </xf:action>
+            </xf:trigger>
+          </xh:div>
+        </xxf:dialog>
+        <xxf:dialog id="nil-warning" appearance="full" close="true">
+          <xf:label>NIL Claim Warning</xf:label>
+          <xf:group>
+            <xh:p>You have already uploaded transaction to this claim. Making it a NIL claim will delete all the transaction on submit.</xh:p>
+            <xh:p>Are you sure you want to proceed? </xh:p>
+          </xf:group>
+          <xh:br/>
+          <xh:div>
+            <xf:trigger>
+              <xf:label>Yes</xf:label>
+              <xf:action ev:event="DOMActivate">
+                <xxf:hide ev:event="DOMActivate" dialog="nil-warning"/>
+              </xf:action>
+            </xf:trigger>
+            <xf:trigger>
+              <xf:label>No</xf:label>
+              <xf:action ev:event="DOMActivate">
+                <xxf:hide ev:event="DOMActivate" dialog="nil-warning"/>
+                <xf:setvalue ref="xxf:instance('fr-form-instance')/*:claim-details/*:nil-claim" value="'false'"/>
+              </xf:action>
+            </xf:trigger>
+          </xh:div>
+        </xxf:dialog>
+      </fr:body>
+    </fr:view>
+  </xh:body>
+</xh:html>
