@@ -18,3 +18,9 @@ Please find attached some of the erdf forms for reference.
 
 Thanks,
 Balvinder
+
+## Instructions from Jon
+The content under data/scottish-government/* contains the updated formbuilder and formrunner instance
+Import the data using the sample script form-import.xqy from the MarkLogic query console
+Copy the custom.css file to the orbeon deployment under $TOMCAT_HOME/webapps/orbeon/WEB-INF/resources/config
+Copy or modify properties-local.xml using supplied sample
