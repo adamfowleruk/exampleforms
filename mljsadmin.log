@@ -25888,3 +25888,191 @@
 {"level":"debug","message":"__doreq: reqname: SAVESEARCHOPTIONS, method: PUT, uri: /v1/config/query/temperatures","timestamp":"2015-11-09T13:34:45.634Z"}
 {"level":"debug","message":"__doreq: reqname: INSTALLEXTENSION, method: PUT, uri: /v1/config/resources/workplace?method=GET&method=POST","timestamp":"2015-11-09T13:53:31.439Z"}
 {"level":"debug","message":"__doreq: reqname: INSTALLEXTENSION, method: PUT, uri: /v1/config/resources/version?method=GET","timestamp":"2015-11-09T13:53:31.443Z"}
+{"level":"debug","message":"__doreq: reqname: SAVESEARCHOPTIONS, method: PUT, uri: /v1/config/query/all","timestamp":"2015-11-16T15:02:03.575Z"}
+{"level":"debug","message":"__doreq: reqname: SAVESEARCHOPTIONS, method: PUT, uri: /v1/config/query/author-topic","timestamp":"2015-11-16T15:02:03.581Z"}
+{"level":"debug","message":"__doreq: reqname: SAVESEARCHOPTIONS, method: PUT, uri: /v1/config/query/animals","timestamp":"2015-11-16T15:02:03.582Z"}
+{"level":"debug","message":"__doreq: reqname: SAVESEARCHOPTIONS, method: PUT, uri: /v1/config/query/gcs","timestamp":"2015-11-16T15:02:03.582Z"}
+{"level":"debug","message":"__doreq: reqname: SAVESEARCHOPTIONS, method: PUT, uri: /v1/config/query/actor-genre-year","timestamp":"2015-11-16T15:02:03.582Z"}
+{"level":"debug","message":"__doreq: reqname: SAVESEARCHOPTIONS, method: PUT, uri: /v1/config/query/alltest","timestamp":"2015-11-16T15:02:03.582Z"}
+{"level":"debug","message":"__doreq: reqname: SAVESEARCHOPTIONS, method: PUT, uri: /v1/config/query/olddashboard","timestamp":"2015-11-16T15:02:03.582Z"}
+{"level":"debug","message":"__doreq: reqname: SAVESEARCHOPTIONS, method: PUT, uri: /v1/config/query/temperatures","timestamp":"2015-11-16T15:02:03.584Z"}
+{"level":"debug","message":"__doreq: reqname: SAVESEARCHOPTIONS, method: PUT, uri: /v1/config/query/backup-all","timestamp":"2015-11-16T15:02:03.584Z"}
+{"level":"debug","message":"__doreq: reqname: SAVESEARCHOPTIONS, method: PUT, uri: /v1/config/query/jointdemo","timestamp":"2015-11-16T15:02:03.584Z"}
+{"level":"debug","message":"__doreq: reqname: SAVESEARCHOPTIONS, method: PUT, uri: /v1/config/query/actor-genre-year","timestamp":"2015-11-16T15:06:26.003Z"}
+{"level":"debug","message":"__doreq: reqname: SAVESEARCHOPTIONS, method: PUT, uri: /v1/config/query/alltest","timestamp":"2015-11-16T15:06:26.007Z"}
+{"level":"debug","message":"__doreq: reqname: SAVESEARCHOPTIONS, method: PUT, uri: /v1/config/query/author-topic","timestamp":"2015-11-16T15:06:26.008Z"}
+{"level":"debug","message":"__doreq: reqname: SAVESEARCHOPTIONS, method: PUT, uri: /v1/config/query/animals","timestamp":"2015-11-16T15:06:26.008Z"}
+{"level":"debug","message":"__doreq: reqname: SAVESEARCHOPTIONS, method: PUT, uri: /v1/config/query/backup-all","timestamp":"2015-11-16T15:06:26.008Z"}
+{"level":"debug","message":"__doreq: reqname: SAVESEARCHOPTIONS, method: PUT, uri: /v1/config/query/gcs","timestamp":"2015-11-16T15:06:26.008Z"}
+{"level":"debug","message":"__doreq: reqname: SAVESEARCHOPTIONS, method: PUT, uri: /v1/config/query/jointdemo","timestamp":"2015-11-16T15:06:26.008Z"}
+{"level":"debug","message":"__doreq: reqname: SAVESEARCHOPTIONS, method: PUT, uri: /v1/config/query/olddashboard","timestamp":"2015-11-16T15:06:26.008Z"}
+{"level":"debug","message":"__doreq: reqname: SAVESEARCHOPTIONS, method: PUT, uri: /v1/config/query/temperatures","timestamp":"2015-11-16T15:06:26.008Z"}
+{"level":"debug","message":"__doreq: reqname: SAVESEARCHOPTIONS, method: PUT, uri: /v1/config/query/all","timestamp":"2015-11-16T15:06:26.010Z"}
+{"level":"debug","message":"__doreq: reqname: SAVESEARCHOPTIONS, method: PUT, uri: /v1/config/query/actor-genre-year","timestamp":"2015-11-16T15:08:46.724Z"}
+{"level":"debug","message":"__doreq: reqname: SAVESEARCHOPTIONS, method: PUT, uri: /v1/config/query/all","timestamp":"2015-11-16T15:08:46.728Z"}
+{"level":"debug","message":"__doreq: reqname: SAVESEARCHOPTIONS, method: PUT, uri: /v1/config/query/alltest","timestamp":"2015-11-16T15:08:46.728Z"}
+{"level":"debug","message":"__doreq: reqname: SAVESEARCHOPTIONS, method: PUT, uri: /v1/config/query/animals","timestamp":"2015-11-16T15:08:46.729Z"}
+{"level":"debug","message":"__doreq: reqname: SAVESEARCHOPTIONS, method: PUT, uri: /v1/config/query/author-topic","timestamp":"2015-11-16T15:08:46.729Z"}
+{"level":"debug","message":"__doreq: reqname: SAVESEARCHOPTIONS, method: PUT, uri: /v1/config/query/backup-all","timestamp":"2015-11-16T15:08:46.729Z"}
+{"level":"debug","message":"__doreq: reqname: SAVESEARCHOPTIONS, method: PUT, uri: /v1/config/query/gcs","timestamp":"2015-11-16T15:08:46.729Z"}
+{"level":"debug","message":"__doreq: reqname: SAVESEARCHOPTIONS, method: PUT, uri: /v1/config/query/jointdemo","timestamp":"2015-11-16T15:08:46.729Z"}
+{"level":"debug","message":"__doreq: reqname: SAVESEARCHOPTIONS, method: PUT, uri: /v1/config/query/olddashboard","timestamp":"2015-11-16T15:08:46.729Z"}
+{"level":"debug","message":"__doreq: reqname: SAVESEARCHOPTIONS, method: PUT, uri: /v1/config/query/temperatures","timestamp":"2015-11-16T15:08:46.729Z"}
+{"level":"debug","message":"__doreq: reqname: SAVESEARCHOPTIONS, method: PUT, uri: /v1/config/query/actor-genre-year","timestamp":"2015-11-16T15:15:32.801Z"}
+{"level":"debug","message":"__doreq: reqname: SAVESEARCHOPTIONS, method: PUT, uri: /v1/config/query/all","timestamp":"2015-11-16T15:15:32.805Z"}
+{"level":"debug","message":"__doreq: reqname: SAVESEARCHOPTIONS, method: PUT, uri: /v1/config/query/alltest","timestamp":"2015-11-16T15:15:32.806Z"}
+{"level":"debug","message":"__doreq: reqname: SAVESEARCHOPTIONS, method: PUT, uri: /v1/config/query/animals","timestamp":"2015-11-16T15:15:32.806Z"}
+{"level":"debug","message":"__doreq: reqname: SAVESEARCHOPTIONS, method: PUT, uri: /v1/config/query/backup-all","timestamp":"2015-11-16T15:15:32.806Z"}
+{"level":"debug","message":"__doreq: reqname: SAVESEARCHOPTIONS, method: PUT, uri: /v1/config/query/gcs","timestamp":"2015-11-16T15:15:32.807Z"}
+{"level":"debug","message":"__doreq: reqname: SAVESEARCHOPTIONS, method: PUT, uri: /v1/config/query/author-topic","timestamp":"2015-11-16T15:15:32.807Z"}
+{"level":"debug","message":"__doreq: reqname: SAVESEARCHOPTIONS, method: PUT, uri: /v1/config/query/jointdemo","timestamp":"2015-11-16T15:15:32.807Z"}
+{"level":"debug","message":"__doreq: reqname: SAVESEARCHOPTIONS, method: PUT, uri: /v1/config/query/olddashboard","timestamp":"2015-11-16T15:15:32.807Z"}
+{"level":"debug","message":"__doreq: reqname: SAVESEARCHOPTIONS, method: PUT, uri: /v1/config/query/temperatures","timestamp":"2015-11-16T15:15:32.807Z"}
+{"level":"debug","message":"__doreq: reqname: SAVESEARCHOPTIONS, method: PUT, uri: /v1/config/query/actor-genre-year","timestamp":"2015-11-16T15:17:40.697Z"}
+{"level":"debug","message":"__doreq: reqname: SAVESEARCHOPTIONS, method: PUT, uri: /v1/config/query/all","timestamp":"2015-11-16T15:17:40.701Z"}
+{"level":"debug","message":"__doreq: reqname: SAVESEARCHOPTIONS, method: PUT, uri: /v1/config/query/alltest","timestamp":"2015-11-16T15:17:40.702Z"}
+{"level":"debug","message":"__doreq: reqname: SAVESEARCHOPTIONS, method: PUT, uri: /v1/config/query/author-topic","timestamp":"2015-11-16T15:17:40.702Z"}
+{"level":"debug","message":"__doreq: reqname: SAVESEARCHOPTIONS, method: PUT, uri: /v1/config/query/animals","timestamp":"2015-11-16T15:17:40.702Z"}
+{"level":"debug","message":"__doreq: reqname: SAVESEARCHOPTIONS, method: PUT, uri: /v1/config/query/backup-all","timestamp":"2015-11-16T15:17:40.702Z"}
+{"level":"debug","message":"__doreq: reqname: SAVESEARCHOPTIONS, method: PUT, uri: /v1/config/query/gcs","timestamp":"2015-11-16T15:17:40.702Z"}
+{"level":"debug","message":"__doreq: reqname: SAVESEARCHOPTIONS, method: PUT, uri: /v1/config/query/olddashboard","timestamp":"2015-11-16T15:17:40.702Z"}
+{"level":"debug","message":"__doreq: reqname: SAVESEARCHOPTIONS, method: PUT, uri: /v1/config/query/jointdemo","timestamp":"2015-11-16T15:17:40.703Z"}
+{"level":"debug","message":"__doreq: reqname: SAVESEARCHOPTIONS, method: PUT, uri: /v1/config/query/temperatures","timestamp":"2015-11-16T15:17:40.703Z"}
+{"level":"debug","message":"__doreq: reqname: SAVESEARCHOPTIONS, method: PUT, uri: /v1/config/query/actor-genre-year","timestamp":"2015-11-16T15:20:47.379Z"}
+{"level":"debug","message":"__doreq: reqname: SAVESEARCHOPTIONS, method: PUT, uri: /v1/config/query/all","timestamp":"2015-11-16T15:20:47.383Z"}
+{"level":"debug","message":"__doreq: reqname: SAVESEARCHOPTIONS, method: PUT, uri: /v1/config/query/alltest","timestamp":"2015-11-16T15:20:47.383Z"}
+{"level":"debug","message":"__doreq: reqname: SAVESEARCHOPTIONS, method: PUT, uri: /v1/config/query/animals","timestamp":"2015-11-16T15:20:47.384Z"}
+{"level":"debug","message":"__doreq: reqname: SAVESEARCHOPTIONS, method: PUT, uri: /v1/config/query/author-topic","timestamp":"2015-11-16T15:20:47.384Z"}
+{"level":"debug","message":"__doreq: reqname: SAVESEARCHOPTIONS, method: PUT, uri: /v1/config/query/gcs","timestamp":"2015-11-16T15:20:47.384Z"}
+{"level":"debug","message":"__doreq: reqname: SAVESEARCHOPTIONS, method: PUT, uri: /v1/config/query/backup-all","timestamp":"2015-11-16T15:20:47.384Z"}
+{"level":"debug","message":"__doreq: reqname: SAVESEARCHOPTIONS, method: PUT, uri: /v1/config/query/jointdemo","timestamp":"2015-11-16T15:20:47.384Z"}
+{"level":"debug","message":"__doreq: reqname: SAVESEARCHOPTIONS, method: PUT, uri: /v1/config/query/olddashboard","timestamp":"2015-11-16T15:20:47.384Z"}
+{"level":"debug","message":"__doreq: reqname: SAVESEARCHOPTIONS, method: PUT, uri: /v1/config/query/temperatures","timestamp":"2015-11-16T15:20:47.384Z"}
+{"level":"debug","message":"__doreq: reqname: SAVESEARCHOPTIONS, method: PUT, uri: /v1/config/query/actor-genre-year","timestamp":"2015-11-16T15:23:34.291Z"}
+{"level":"debug","message":"__doreq: reqname: SAVESEARCHOPTIONS, method: PUT, uri: /v1/config/query/all","timestamp":"2015-11-16T15:23:34.295Z"}
+{"level":"debug","message":"__doreq: reqname: SAVESEARCHOPTIONS, method: PUT, uri: /v1/config/query/alltest","timestamp":"2015-11-16T15:23:34.296Z"}
+{"level":"debug","message":"__doreq: reqname: SAVESEARCHOPTIONS, method: PUT, uri: /v1/config/query/animals","timestamp":"2015-11-16T15:23:34.296Z"}
+{"level":"debug","message":"__doreq: reqname: SAVESEARCHOPTIONS, method: PUT, uri: /v1/config/query/author-topic","timestamp":"2015-11-16T15:23:34.296Z"}
+{"level":"debug","message":"__doreq: reqname: SAVESEARCHOPTIONS, method: PUT, uri: /v1/config/query/backup-all","timestamp":"2015-11-16T15:23:34.296Z"}
+{"level":"debug","message":"__doreq: reqname: SAVESEARCHOPTIONS, method: PUT, uri: /v1/config/query/gcs","timestamp":"2015-11-16T15:23:34.296Z"}
+{"level":"debug","message":"__doreq: reqname: SAVESEARCHOPTIONS, method: PUT, uri: /v1/config/query/olddashboard","timestamp":"2015-11-16T15:23:34.296Z"}
+{"level":"debug","message":"__doreq: reqname: SAVESEARCHOPTIONS, method: PUT, uri: /v1/config/query/temperatures","timestamp":"2015-11-16T15:23:34.296Z"}
+{"level":"debug","message":"__doreq: reqname: SAVESEARCHOPTIONS, method: PUT, uri: /v1/config/query/jointdemo","timestamp":"2015-11-16T15:23:34.296Z"}
+{"level":"debug","message":"__doreq: reqname: SAVESEARCHOPTIONS, method: PUT, uri: /v1/config/query/all","timestamp":"2015-11-16T15:27:48.773Z"}
+{"level":"debug","message":"__doreq: reqname: SAVESEARCHOPTIONS, method: PUT, uri: /v1/config/query/actor-genre-year","timestamp":"2015-11-16T15:27:48.777Z"}
+{"level":"debug","message":"__doreq: reqname: SAVESEARCHOPTIONS, method: PUT, uri: /v1/config/query/animals","timestamp":"2015-11-16T15:27:48.777Z"}
+{"level":"debug","message":"__doreq: reqname: SAVESEARCHOPTIONS, method: PUT, uri: /v1/config/query/alltest","timestamp":"2015-11-16T15:27:48.778Z"}
+{"level":"debug","message":"__doreq: reqname: SAVESEARCHOPTIONS, method: PUT, uri: /v1/config/query/gcs","timestamp":"2015-11-16T15:27:48.778Z"}
+{"level":"debug","message":"__doreq: reqname: SAVESEARCHOPTIONS, method: PUT, uri: /v1/config/query/author-topic","timestamp":"2015-11-16T15:27:48.778Z"}
+{"level":"debug","message":"__doreq: reqname: SAVESEARCHOPTIONS, method: PUT, uri: /v1/config/query/temperatures","timestamp":"2015-11-16T15:27:48.778Z"}
+{"level":"debug","message":"__doreq: reqname: SAVESEARCHOPTIONS, method: PUT, uri: /v1/config/query/olddashboard","timestamp":"2015-11-16T15:27:48.778Z"}
+{"level":"debug","message":"__doreq: reqname: SAVESEARCHOPTIONS, method: PUT, uri: /v1/config/query/backup-all","timestamp":"2015-11-16T15:27:48.779Z"}
+{"level":"debug","message":"__doreq: reqname: SAVESEARCHOPTIONS, method: PUT, uri: /v1/config/query/jointdemo","timestamp":"2015-11-16T15:27:48.779Z"}
+{"level":"debug","message":"__doreq: reqname: GETWORKPLACE, method: GET, uri: /v1/resources/workplace","timestamp":"2015-11-16T15:32:23.071Z"}
+{"level":"debug","message":"NODE: *********** CT UNDEFINED *************","timestamp":"2015-11-16T15:32:23.072Z"}
+{"level":"debug","message":"__doreq: reqname: GETDATABASECONFIGURATION, method: GET, uri: /manage/v2/databases/orbeon-ml-api-content?view=package","timestamp":"2015-11-16T15:32:23.076Z"}
+{"level":"debug","message":"WARNING: Not accessing same host as REST API. Accessing: 192.168.123.4:8002","timestamp":"2015-11-16T15:32:23.076Z"}
+{"level":"debug","message":"Creating new wrapper","timestamp":"2015-11-16T15:32:23.076Z"}
+{"level":"debug","message":"NODE: *********** CT UNDEFINED *************","timestamp":"2015-11-16T15:32:23.076Z"}
+{"level":"error","message":"GETWORKPLACE error: <error-response xmlns=\"http://marklogic.com/xdmp/error\">\n  <status-code>400</status-code>\n  <status>Bad Request</status>\n  <message-code>XDMP-CHILDNODEKIND</message-code>\n  <message>XDMP-CHILDNODEKIND: $page -- element nodes cannot have object node children</message>\n</error-response>\n","timestamp":"2015-11-16T15:32:25.167Z"}
+{"level":"debug","message":"__doreq: reqname: INSTALLEXTENSION, method: PUT, uri: /v1/config/resources/workplace?method=GET&method=POST","timestamp":"2015-11-16T15:35:37.756Z"}
+{"level":"debug","message":"__doreq: reqname: INSTALLEXTENSION, method: PUT, uri: /v1/config/resources/version?method=GET","timestamp":"2015-11-16T15:35:37.761Z"}
+{"level":"debug","message":"__doreq: reqname: GETWORKPLACE, method: GET, uri: /v1/resources/workplace","timestamp":"2015-11-16T15:35:42.456Z"}
+{"level":"debug","message":"NODE: *********** CT UNDEFINED *************","timestamp":"2015-11-16T15:35:42.457Z"}
+{"level":"debug","message":"__doreq: reqname: GETDATABASECONFIGURATION, method: GET, uri: /manage/v2/databases/orbeon-ml-api-content?view=package","timestamp":"2015-11-16T15:35:42.462Z"}
+{"level":"debug","message":"WARNING: Not accessing same host as REST API. Accessing: 192.168.123.4:8002","timestamp":"2015-11-16T15:35:42.462Z"}
+{"level":"debug","message":"Creating new wrapper","timestamp":"2015-11-16T15:35:42.462Z"}
+{"level":"debug","message":"NODE: *********** CT UNDEFINED *************","timestamp":"2015-11-16T15:35:42.462Z"}
+{"level":"debug","message":"__doreq: reqname: GETWORKPLACE, method: GET, uri: /v1/resources/workplace","timestamp":"2015-11-16T15:35:59.004Z"}
+{"level":"debug","message":"NODE: *********** CT UNDEFINED *************","timestamp":"2015-11-16T15:35:59.005Z"}
+{"level":"debug","message":"__doreq: reqname: GETDATABASECONFIGURATION, method: GET, uri: /manage/v2/databases/orbeon-ml-api-content?view=package","timestamp":"2015-11-16T15:35:59.009Z"}
+{"level":"debug","message":"WARNING: Not accessing same host as REST API. Accessing: 192.168.123.4:8002","timestamp":"2015-11-16T15:35:59.009Z"}
+{"level":"debug","message":"Creating new wrapper","timestamp":"2015-11-16T15:35:59.009Z"}
+{"level":"debug","message":"NODE: *********** CT UNDEFINED *************","timestamp":"2015-11-16T15:35:59.009Z"}
+{"level":"debug","message":"__doreq: reqname: GETDATABASECONFIGURATION, method: GET, uri: /manage/v2/databases/orbeon-ml-api-modules?view=package","timestamp":"2015-11-16T15:35:59.110Z"}
+{"level":"debug","message":"WARNING: Not accessing same host as REST API. Accessing: 192.168.123.4:8002","timestamp":"2015-11-16T15:35:59.110Z"}
+{"level":"debug","message":"Reusing saved wrapper","timestamp":"2015-11-16T15:35:59.110Z"}
+{"level":"debug","message":"NODE: *********** CT UNDEFINED *************","timestamp":"2015-11-16T15:35:59.110Z"}
+{"level":"debug","message":"__doreq: reqname: GETWORKPLACE, method: GET, uri: /v1/resources/workplace","timestamp":"2015-11-16T15:35:59.187Z"}
+{"level":"debug","message":"NODE: *********** CT UNDEFINED *************","timestamp":"2015-11-16T15:35:59.187Z"}
+{"level":"debug","message":"__doreq: reqname: GETGRAPH, method: GET, uri: /v1/graphs?graph=ontology","timestamp":"2015-11-16T15:35:59.195Z"}
+{"level":"debug","message":"NODE: *********** CT UNDEFINED *************","timestamp":"2015-11-16T15:35:59.195Z"}
+{"level":"error","message":"GETGRAPH error: {\"errorResponse\":{\"statusCode\":404, \"status\":\"Not Found\", \"messageCode\":\"RESTAPI-NODOCUMENT\", \"message\":\"RESTAPI-NODOCUMENT: (err:FOER0000) Resource or document does not exist:  category: Graphstore message: URI not found ontology\"}}","timestamp":"2015-11-16T15:35:59.962Z"}
+{"level":"debug","message":"__doreq: reqname: INSTALLEXTENSION, method: PUT, uri: /v1/config/resources/version?method=GET","timestamp":"2015-11-16T15:37:09.126Z"}
+{"level":"debug","message":"__doreq: reqname: INSTALLEXTENSION, method: PUT, uri: /v1/config/resources/workplace?method=GET&method=POST","timestamp":"2015-11-16T15:37:09.130Z"}
+{"level":"debug","message":"__doreq: reqname: GETWORKPLACE, method: GET, uri: /v1/resources/workplace","timestamp":"2015-11-16T15:37:11.355Z"}
+{"level":"debug","message":"NODE: *********** CT UNDEFINED *************","timestamp":"2015-11-16T15:37:11.356Z"}
+{"level":"debug","message":"__doreq: reqname: GETDATABASECONFIGURATION, method: GET, uri: /manage/v2/databases/orbeon-ml-api-content?view=package","timestamp":"2015-11-16T15:37:11.360Z"}
+{"level":"debug","message":"WARNING: Not accessing same host as REST API. Accessing: 192.168.123.4:8002","timestamp":"2015-11-16T15:37:11.360Z"}
+{"level":"debug","message":"Creating new wrapper","timestamp":"2015-11-16T15:37:11.360Z"}
+{"level":"debug","message":"NODE: *********** CT UNDEFINED *************","timestamp":"2015-11-16T15:37:11.360Z"}
+{"level":"debug","message":"__doreq: reqname: GETDATABASECONFIGURATION, method: GET, uri: /manage/v2/databases/orbeon-ml-api-modules?view=package","timestamp":"2015-11-16T15:37:12.454Z"}
+{"level":"debug","message":"WARNING: Not accessing same host as REST API. Accessing: 192.168.123.4:8002","timestamp":"2015-11-16T15:37:12.454Z"}
+{"level":"debug","message":"Reusing saved wrapper","timestamp":"2015-11-16T15:37:12.454Z"}
+{"level":"debug","message":"NODE: *********** CT UNDEFINED *************","timestamp":"2015-11-16T15:37:12.454Z"}
+{"level":"debug","message":"__doreq: reqname: GETWORKPLACE, method: GET, uri: /v1/resources/workplace","timestamp":"2015-11-16T15:37:12.534Z"}
+{"level":"debug","message":"NODE: *********** CT UNDEFINED *************","timestamp":"2015-11-16T15:37:12.534Z"}
+{"level":"debug","message":"__doreq: reqname: GETGRAPH, method: GET, uri: /v1/graphs?graph=ontology","timestamp":"2015-11-16T15:37:12.539Z"}
+{"level":"debug","message":"NODE: *********** CT UNDEFINED *************","timestamp":"2015-11-16T15:37:12.539Z"}
+{"level":"error","message":"GETGRAPH error: {\"errorResponse\":{\"statusCode\":404, \"status\":\"Not Found\", \"messageCode\":\"RESTAPI-NODOCUMENT\", \"message\":\"RESTAPI-NODOCUMENT: (err:FOER0000) Resource or document does not exist:  category: Graphstore message: URI not found ontology\"}}","timestamp":"2015-11-16T15:37:13.262Z"}
+{"level":"debug","message":"__doreq: reqname: INSTALLEXTENSION, method: PUT, uri: /v1/config/resources/workplace?method=GET&method=POST","timestamp":"2015-11-16T15:37:59.840Z"}
+{"level":"debug","message":"__doreq: reqname: INSTALLEXTENSION, method: PUT, uri: /v1/config/resources/version?method=GET","timestamp":"2015-11-16T15:37:59.844Z"}
+{"level":"debug","message":"__doreq: reqname: GETWORKPLACE, method: GET, uri: /v1/resources/workplace","timestamp":"2015-11-16T15:38:01.616Z"}
+{"level":"debug","message":"NODE: *********** CT UNDEFINED *************","timestamp":"2015-11-16T15:38:01.617Z"}
+{"level":"debug","message":"__doreq: reqname: GETDATABASECONFIGURATION, method: GET, uri: /manage/v2/databases/orbeon-ml-api-content?view=package","timestamp":"2015-11-16T15:38:01.621Z"}
+{"level":"debug","message":"WARNING: Not accessing same host as REST API. Accessing: 192.168.123.4:8002","timestamp":"2015-11-16T15:38:01.621Z"}
+{"level":"debug","message":"Creating new wrapper","timestamp":"2015-11-16T15:38:01.621Z"}
+{"level":"debug","message":"NODE: *********** CT UNDEFINED *************","timestamp":"2015-11-16T15:38:01.621Z"}
+{"level":"debug","message":"__doreq: reqname: GETDATABASECONFIGURATION, method: GET, uri: /manage/v2/databases/orbeon-ml-api-modules?view=package","timestamp":"2015-11-16T15:38:02.637Z"}
+{"level":"debug","message":"WARNING: Not accessing same host as REST API. Accessing: 192.168.123.4:8002","timestamp":"2015-11-16T15:38:02.637Z"}
+{"level":"debug","message":"Reusing saved wrapper","timestamp":"2015-11-16T15:38:02.637Z"}
+{"level":"debug","message":"NODE: *********** CT UNDEFINED *************","timestamp":"2015-11-16T15:38:02.637Z"}
+{"level":"debug","message":"__doreq: reqname: GETWORKPLACE, method: GET, uri: /v1/resources/workplace","timestamp":"2015-11-16T15:38:02.719Z"}
+{"level":"debug","message":"NODE: *********** CT UNDEFINED *************","timestamp":"2015-11-16T15:38:02.719Z"}
+{"level":"debug","message":"__doreq: reqname: GETGRAPH, method: GET, uri: /v1/graphs?graph=ontology","timestamp":"2015-11-16T15:38:02.724Z"}
+{"level":"debug","message":"NODE: *********** CT UNDEFINED *************","timestamp":"2015-11-16T15:38:02.726Z"}
+{"level":"error","message":"GETGRAPH error: {\"errorResponse\":{\"statusCode\":404, \"status\":\"Not Found\", \"messageCode\":\"RESTAPI-NODOCUMENT\", \"message\":\"RESTAPI-NODOCUMENT: (err:FOER0000) Resource or document does not exist:  category: Graphstore message: URI not found ontology\"}}","timestamp":"2015-11-16T15:38:03.411Z"}
+{"level":"debug","message":"__doreq: reqname: INSTALLEXTENSION, method: PUT, uri: /v1/config/resources/workplace?method=GET&method=POST","timestamp":"2015-11-16T15:43:07.624Z"}
+{"level":"debug","message":"__doreq: reqname: INSTALLEXTENSION, method: PUT, uri: /v1/config/resources/version?method=GET","timestamp":"2015-11-16T15:43:07.629Z"}
+{"level":"error","message":"INSTALLEXTENSION error: ","timestamp":"2015-11-16T15:43:08.878Z"}
+{"level":"debug","message":"__doreq: reqname: GETWORKPLACE, method: GET, uri: /v1/resources/workplace","timestamp":"2015-11-16T15:43:10.140Z"}
+{"level":"debug","message":"NODE: *********** CT UNDEFINED *************","timestamp":"2015-11-16T15:43:10.141Z"}
+{"level":"debug","message":"__doreq: reqname: GETDATABASECONFIGURATION, method: GET, uri: /manage/v2/databases/orbeon-ml-api-content?view=package","timestamp":"2015-11-16T15:43:10.145Z"}
+{"level":"debug","message":"WARNING: Not accessing same host as REST API. Accessing: 192.168.123.4:8002","timestamp":"2015-11-16T15:43:10.145Z"}
+{"level":"debug","message":"Creating new wrapper","timestamp":"2015-11-16T15:43:10.145Z"}
+{"level":"debug","message":"NODE: *********** CT UNDEFINED *************","timestamp":"2015-11-16T15:43:10.145Z"}
+{"level":"error","message":"GETWORKPLACE error: <error-response xmlns=\"http://marklogic.com/xdmp/error\">\n  <status-code>400</status-code>\n  <status>Bad Request</status>\n  <message-code>XDMP-UNDFUN</message-code>\n  <message>XDMP-UNDFUN: (err:XPST0017) Undefined function json-transform-to-json()</message>\n</error-response>\n","timestamp":"2015-11-16T15:43:11.226Z"}
+{"level":"debug","message":"__doreq: reqname: INSTALLEXTENSION, method: PUT, uri: /v1/config/resources/version?method=GET","timestamp":"2015-11-16T15:43:25.855Z"}
+{"level":"debug","message":"__doreq: reqname: INSTALLEXTENSION, method: PUT, uri: /v1/config/resources/workplace?method=GET&method=POST","timestamp":"2015-11-16T15:43:25.859Z"}
+{"level":"debug","message":"__doreq: reqname: GETWORKPLACE, method: GET, uri: /v1/resources/workplace","timestamp":"2015-11-16T15:43:27.493Z"}
+{"level":"debug","message":"NODE: *********** CT UNDEFINED *************","timestamp":"2015-11-16T15:43:27.494Z"}
+{"level":"debug","message":"__doreq: reqname: GETDATABASECONFIGURATION, method: GET, uri: /manage/v2/databases/orbeon-ml-api-content?view=package","timestamp":"2015-11-16T15:43:27.498Z"}
+{"level":"debug","message":"WARNING: Not accessing same host as REST API. Accessing: 192.168.123.4:8002","timestamp":"2015-11-16T15:43:27.499Z"}
+{"level":"debug","message":"Creating new wrapper","timestamp":"2015-11-16T15:43:27.499Z"}
+{"level":"debug","message":"NODE: *********** CT UNDEFINED *************","timestamp":"2015-11-16T15:43:27.499Z"}
+{"level":"debug","message":"__doreq: reqname: GETDATABASECONFIGURATION, method: GET, uri: /manage/v2/databases/orbeon-ml-api-modules?view=package","timestamp":"2015-11-16T15:43:28.520Z"}
+{"level":"debug","message":"WARNING: Not accessing same host as REST API. Accessing: 192.168.123.4:8002","timestamp":"2015-11-16T15:43:28.520Z"}
+{"level":"debug","message":"Reusing saved wrapper","timestamp":"2015-11-16T15:43:28.520Z"}
+{"level":"debug","message":"NODE: *********** CT UNDEFINED *************","timestamp":"2015-11-16T15:43:28.520Z"}
+{"level":"debug","message":"__doreq: reqname: GETWORKPLACE, method: GET, uri: /v1/resources/workplace","timestamp":"2015-11-16T15:43:28.587Z"}
+{"level":"debug","message":"NODE: *********** CT UNDEFINED *************","timestamp":"2015-11-16T15:43:28.587Z"}
+{"level":"debug","message":"__doreq: reqname: GETGRAPH, method: GET, uri: /v1/graphs?graph=ontology","timestamp":"2015-11-16T15:43:28.597Z"}
+{"level":"debug","message":"NODE: *********** CT UNDEFINED *************","timestamp":"2015-11-16T15:43:28.597Z"}
+{"level":"error","message":"GETGRAPH error: {\"errorResponse\":{\"statusCode\":404, \"status\":\"Not Found\", \"messageCode\":\"RESTAPI-NODOCUMENT\", \"message\":\"RESTAPI-NODOCUMENT: (err:FOER0000) Resource or document does not exist:  category: Graphstore message: URI not found ontology\"}}","timestamp":"2015-11-16T15:43:29.052Z"}
+{"level":"debug","message":"__doreq: reqname: INSTALLEXTENSION, method: PUT, uri: /v1/config/resources/version?method=GET","timestamp":"2015-11-16T15:43:45.964Z"}
+{"level":"debug","message":"__doreq: reqname: INSTALLEXTENSION, method: PUT, uri: /v1/config/resources/workplace?method=GET&method=POST","timestamp":"2015-11-16T15:43:45.968Z"}
+{"level":"debug","message":"__doreq: reqname: GETWORKPLACE, method: GET, uri: /v1/resources/workplace","timestamp":"2015-11-16T15:43:46.992Z"}
+{"level":"debug","message":"NODE: *********** CT UNDEFINED *************","timestamp":"2015-11-16T15:43:46.993Z"}
+{"level":"debug","message":"__doreq: reqname: GETDATABASECONFIGURATION, method: GET, uri: /manage/v2/databases/orbeon-ml-api-content?view=package","timestamp":"2015-11-16T15:43:46.997Z"}
+{"level":"debug","message":"WARNING: Not accessing same host as REST API. Accessing: 192.168.123.4:8002","timestamp":"2015-11-16T15:43:46.997Z"}
+{"level":"debug","message":"Creating new wrapper","timestamp":"2015-11-16T15:43:46.997Z"}
+{"level":"debug","message":"NODE: *********** CT UNDEFINED *************","timestamp":"2015-11-16T15:43:46.997Z"}
+{"level":"debug","message":"__doreq: reqname: GETDATABASECONFIGURATION, method: GET, uri: /manage/v2/databases/orbeon-ml-api-modules?view=package","timestamp":"2015-11-16T15:43:48.222Z"}
+{"level":"debug","message":"WARNING: Not accessing same host as REST API. Accessing: 192.168.123.4:8002","timestamp":"2015-11-16T15:43:48.224Z"}
+{"level":"debug","message":"Reusing saved wrapper","timestamp":"2015-11-16T15:43:48.225Z"}
+{"level":"debug","message":"NODE: *********** CT UNDEFINED *************","timestamp":"2015-11-16T15:43:48.225Z"}
+{"level":"debug","message":"__doreq: reqname: GETWORKPLACE, method: GET, uri: /v1/resources/workplace","timestamp":"2015-11-16T15:43:48.315Z"}
+{"level":"debug","message":"NODE: *********** CT UNDEFINED *************","timestamp":"2015-11-16T15:43:48.315Z"}
+{"level":"debug","message":"__doreq: reqname: GETGRAPH, method: GET, uri: /v1/graphs?graph=ontology","timestamp":"2015-11-16T15:43:48.327Z"}
+{"level":"debug","message":"NODE: *********** CT UNDEFINED *************","timestamp":"2015-11-16T15:43:48.327Z"}
+{"level":"error","message":"GETGRAPH error: {\"errorResponse\":{\"statusCode\":404, \"status\":\"Not Found\", \"messageCode\":\"RESTAPI-NODOCUMENT\", \"message\":\"RESTAPI-NODOCUMENT: (err:FOER0000) Resource or document does not exist:  category: Graphstore message: URI not found ontology\"}}","timestamp":"2015-11-16T15:43:49.053Z"}

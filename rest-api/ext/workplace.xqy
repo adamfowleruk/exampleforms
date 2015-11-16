@@ -2,6 +2,8 @@ xquery version "1.0-ml";
 
 module namespace ext = "http://marklogic.com/rest-api/resource/workplace";
 
+import module namespace json = "http://marklogic.com/xdmp/json" at "/MarkLogic/json/json.xqy";
+
 declare namespace roxy = "http://marklogic.com/roxy";
 
 
@@ -25,8 +27,12 @@ function ext:get(
        <pages>
         {
           for $page in fn:collection("/config/workplace/page")/node()
+          (:
+          let $_ := xdmp:log("WORKPLACE PAGE: " | xs:string(fn:base-uri($page)))
+          let $_ := xdmp:log($page)
+          :)
           return
-           <page uri="{$page/fn:base-uri(.)}">{$page}</page>
+           <page uri="{fn:base-uri($page)}">{json:transform-from-json($page)}</page>
         }
        </pages>
       </workplace>
@@ -49,7 +55,7 @@ return
   (
     for $page in $input/workplace/pages/page
     return
-      xdmp:document-insert(xs:string($page/@uri),$page/node(),xdmp:default-permissions(),("mljsInternalData","mljsWorkplacePages","/config/workplace/page",xdmp:default-collections()))
+      xdmp:document-insert(xs:string($page/@uri),json:transform-to-json(xs:string($page)),xdmp:default-permissions(),("mljsInternalData","mljsWorkplacePages","/config/workplace/page",xdmp:default-collections()))
   )
   ,
   map:put($context, "output-types", "application/json"),
