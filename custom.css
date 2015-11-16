@@ -76,7 +76,7 @@ body.orbeon, .orbeon .xbl-fr-section{
     list-style: none;
 }
 
-.orbeon ul li:before {
+.orbeon .xforms-hint ul li:before {
     content: "\25C6 \0020";
     color: #aa477e;
     font-size: 18px;
@@ -87,13 +87,13 @@ body.orbeon, .orbeon .xbl-fr-section{
     float: right;
 }
 
+/* Override checkbox */
+.orbeon .xforms-input.xforms-type-boolean label {
+    float: left;
+    width: 90%;
+}
+
 /* Custom class for bold labels */
 .orbeon .xforms-output.bold label,  .orbeon .xforms-input.bold label{
     font-weight: bold;
-}
-
-/* Override checkbox alignment */
-.orbeon .xforms-input.xforms-type-boolean label {
-	float: left;
-    width: 90%;
 }
