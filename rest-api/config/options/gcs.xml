@@ -32,6 +32,12 @@
   <search:debug>true</search:debug>
   <search:extract-metadata>
     <search:qname elem-ns="http://marklogic.com/orbeon-ml-api/ns" elem-name="CompanyName"/>
+    <search:qname elem-ns="http://marklogic.com/orbeon-ml-api/ns" elem-name="ScottishEmployeeCount"/>
+    <search:qname elem-ns="http://marklogic.com/orbeon-ml-api/ns" elem-name="HQCountry"/>
+    <search:qname elem-ns="http://marklogic.com/orbeon-ml-api/ns" elem-name="MainBusinessActivities"/>
+    <search:qname elem-ns="http://marklogic.com/orbeon-ml-api/ns" elem-name="TotalGoodsSold"/>
+    <search:qname elem-ns="http://marklogic.com/orbeon-ml-api/ns" elem-name="TotalServicesSold"/>
+    <search:qname elem-ns="http://marklogic.com/orbeon-ml-api/ns" elem-name="TotalSold"/>
   </search:extract-metadata>
   <search:transform-results apply="snippet"/>
   <search:constraint name="collection">
@@ -39,11 +45,64 @@
   </search:constraint>
 
   <search:constraint name="HQCountry">
-    <search:range type="xs:string" collation="http://marklogic.com/collation/">
+    <search:range type="xs:string" collation="http://marklogic.com/collation/" facet="true">
       <search:element name="HQCountry" ns="http://marklogic.com/orbeon-ml-api/ns"/>
     </search:range>
   </search:constraint>
 
+  <search:constraint name="CompanyName">
+    <search:range type="xs:string" collation="http://marklogic.com/collation/" facet="false">
+      <search:element name="CompanyName" ns="http://marklogic.com/orbeon-ml-api/ns"/>
+    </search:range>
+  </search:constraint>
+
+  <search:constraint name="mainbusiness">
+    <search:range type="xs:string" collation="http://marklogic.com/collation/" facet="true">
+      <search:element name="MainBusinessActivities" ns="http://marklogic.com/orbeon-ml-api/ns"/>
+    </search:range>
+  </search:constraint>
+
+    <search:constraint name="goods">
+      <search:range type="xs:double" facet="true">
+        <search:element name="TotalGoodsSold" ns="http://marklogic.com/orbeon-ml-api/ns"/>
+        <search:bucket lt="100000" ge="0" name="100k">Less than 100k</search:bucket>
+        <search:bucket lt="250000" ge="100000" name="250k">Less than 50k</search:bucket>
+        <search:bucket lt="500000" ge="250000" name="500k">Less than 500k</search:bucket>
+        <search:bucket lt="1000000" ge="500000" name="1mil">Less than 1mil</search:bucket>
+        <search:bucket lt="1500000" ge="1000000" name="1.5mil">Less than 1.5mil</search:bucket>
+        <search:bucket ge="2000000" name="2mil+">2mil+</search:bucket>
+      </search:range>
+    </search:constraint>
+
+      <search:constraint name="services">
+        <search:range type="xs:double" facet="true">
+          <search:element name="TotalServicesSold" ns="http://marklogic.com/orbeon-ml-api/ns"/>
+          <search:bucket lt="100000" ge="0" name="100k">Less than 100k</search:bucket>
+          <search:bucket lt="250000" ge="100000" name="250k">Less than 50k</search:bucket>
+          <search:bucket lt="500000" ge="250000" name="500k">Less than 500k</search:bucket>
+          <search:bucket lt="1000000" ge="500000" name="1mil">Less than 1mil</search:bucket>
+          <search:bucket lt="1500000" ge="1000000" name="1.5mil">Less than 1.5mil</search:bucket>
+          <search:bucket ge="2000000" name="2mil+">2mil+</search:bucket>
+        </search:range>
+      </search:constraint>
+
+        <search:constraint name="totalsold">
+          <search:range type="xs:double" facet="true">
+            <search:element name="TotalSold" ns="http://marklogic.com/orbeon-ml-api/ns"/>
+            <search:bucket lt="100000" ge="0" name="100k">Less than 100k</search:bucket>
+            <search:bucket lt="250000" ge="100000" name="250k">Less than 50k</search:bucket>
+            <search:bucket lt="500000" ge="250000" name="500k">Less than 500k</search:bucket>
+            <search:bucket lt="1000000" ge="500000" name="1mil">Less than 1mil</search:bucket>
+            <search:bucket lt="1500000" ge="1000000" name="1.5mil">Less than 1.5mil</search:bucket>
+            <search:bucket ge="2000000" name="2mil+">2mil+</search:bucket>
+          </search:range>
+        </search:constraint>
+
+    <search:constraint name="employeecount">
+      <search:range type="xs:int">
+        <search:element name="ScottishEmployeeCount" ns="http://marklogic.com/orbeon-ml-api/ns"/>
+      </search:range>
+    </search:constraint>
 
   <search:return-metrics>true</search:return-metrics>
   <search:return-qtext>true</search:return-qtext>

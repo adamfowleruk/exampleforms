@@ -1,0 +1,42 @@
+<search:options xmlns:search="http://marklogic.com/appservices/search">
+  <search:debug>false</search:debug>
+
+
+  <search:additional-query>
+  <cts:collection-query xmlns:cts="http://marklogic.com/cts">
+    <cts:uri>gcsdata</cts:uri>
+  </cts:collection-query>
+  </search:additional-query>
+
+  <search:tuples name="biz-hqcountry">
+
+        <search:range type="xs:string" collation="http://marklogic.com/collation/">
+          <search:element name="MainBusinessActivities" ns="http://marklogic.com/orbeon-ml-api/ns"/>
+        </search:range>
+        <search:range type="xs:string" collation="http://marklogic.com/collation/">
+          <search:element name="HQCountry" ns="http://marklogic.com/orbeon-ml-api/ns"/>
+        </search:range>
+      <search:values-option>limit=100</search:values-option>
+
+
+  </search:tuples>
+
+  <search:transform-results apply="raw"/>
+
+  <search:page-length>10</search:page-length>
+  <search:return-metrics>true</search:return-metrics>
+  <search:return-qtext>true</search:return-qtext>
+
+  <search:return-query>false</search:return-query>
+  <search:return-results>false</search:return-results>
+  <search:return-similar>false</search:return-similar>
+  <search:sort-order direction="descending">
+    <search:score/>
+    <search:annotation>Relevancy (Desc)</search:annotation>
+  </search:sort-order>
+
+
+
+  <search:return-values>true</search:return-values>
+  <search:return-facets>false</search:return-facets>
+</search:options>

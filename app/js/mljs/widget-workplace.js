@@ -1655,7 +1655,14 @@ com.marklogic.widgets.workplacecontext.prototype.findWorkplace = function(pageur
       return;
     }
     // pass single document as result to callback
-    callback({inError: false,doc: results.results[0]});
+    var found = false;
+    for (var i = 0;!found && i < results.results.length;i++) {
+      for (var j = 0;j < results.results[i].content.urls.length;j++) {
+        if (results.results[i].content.urls[0] == pageurl) { // sanity check for range index snafu (no range index for urls configured)
+          callback({inError: false,doc: results.results[i]});
+        }
+      }
+    }
   });
   sc.doStructuredQuery(qb.toJson());
 };
