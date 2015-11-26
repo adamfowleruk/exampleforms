@@ -121,3 +121,40 @@ com.marklogic.widgets.searchresultsext.tweets = {
     } // end tweet custom renderer
   } // end custom renderers
 };
+
+com.marklogic.widgets.searchresultsext.companies = {
+  customrenderers: {
+    "company-form": {
+      matcher: function(result,manager,settings) {
+        return (null != manager.getResultExtract(result,"CompanyName","http://marklogic.com/orbeon-ml-api/ns"));
+      },
+
+      title: function(result,manager,settings) { // optional, no need to include
+        // Example of an optional field
+        var mytitle = manager.getResultExtract(result,"CompanyName","http://marklogic.com/orbeon-ml-api/ns");
+        if (null == mytitle) {
+          // default to default XML title (looks for xhtml title, h1, falls back to URI)
+          return com.marklogic.widgets.defaulthtmlrenderer.genericXMLTitle(result,manager,settings);
+        } else {
+          return com.marklogic.widgets.defaulthtmlrenderer.wrapTitle(
+                    result.index + ". " + mytitle, // Note you are responsible for the result.index too!
+                  result,manager,settings);
+        }
+      },
+      summary: function(result,manager,settings) { // optional, but usually the one you want to customise
+
+        var employees = manager.getResultExtract(result,"ScottishEmployeeCount","http://marklogic.com/orbeon-ml-api/ns");
+        var totalSold = manager.getResultExtract(result,"TotalSold","http://marklogic.com/orbeon-ml-api/ns");
+        var hqCountry = manager.getResultExtract(result,"HQCountry","http://marklogic.com/orbeon-ml-api/ns");
+        var totalServices = manager.getResultExtract(result,"TotalServicesSold","http://marklogic.com/orbeon-ml-api/ns");
+        var totalGoods = manager.getResultExtract(result,"TotalGoodsSold","http://marklogic.com/orbeon-ml-api/ns");
+        return "<div>Has " + employees + " Scottish Employees, and annual revenues of £" + totalSold + " (£" + totalServices +
+          " Services, £" + totalGoods + " Goods). Company's HQ is in " + hqCountry + "</div>";
+          // using divs incase description has html <p> tags
+      },
+      metadata: function(result,manager,settings) {
+        return "";
+      }
+    }
+  }
+};

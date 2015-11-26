@@ -6652,18 +6652,20 @@ mljs.prototype.searchcontext.prototype.getOptions = function() {
   // bit of clever mixin work as we no longer have an options builder reference here
   var opts = this._options;
   opts._findConstraint = function(cname) {
+    
+    var con = null;
 
-  var con = null;
+    if (undefined != opts.options.constraint) {
+      for (var i = 0, max = opts.options.constraint.length, c;i < max;i++) {
+        c = opts.options.constraint[i];
 
-  for (var i = 0, max = opts.options.constraint.length, c;i < max;i++) {
-    c = opts.options.constraint[i];
-
-    if (c.name == cname) {
-      return c;
+        if (c.name == cname) {
+          return c;
+        }
+      }
     }
-  }
 
-  return null;
+    return null;
   };
   return opts;
 };
