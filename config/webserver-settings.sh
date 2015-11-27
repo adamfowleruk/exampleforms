@@ -1,0 +1,16 @@
+#!/bin/sh
+
+# CREATED BY YEOMAN generator-mljsworkplace!
+
+RESTHOST=192.168.123.4
+RESTPORT=8049
+DATABASE=orbeon-ml-api-content
+MLADMINUSER=admin
+MLADMINPASS=admin
+MLAUTH=digest
+MLDEFAULTUSER=nobody
+WEBPORT=5001
+ALERTPORT=5002
+APPPATH=./app
+DEFAULTPATH=/workplace.html5
+MLCP=

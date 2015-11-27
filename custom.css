@@ -88,7 +88,7 @@ body.orbeon, .orbeon .xbl-fr-section{
 }
 
 /* Override checkbox */
-.orbeon .xforms-input.xforms-type-boolean label {
+.orbeon .fr-mode-edit .xforms-input.xforms-type-boolean label {
     float: left;
     width: 90%;
 }

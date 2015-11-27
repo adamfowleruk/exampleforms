@@ -1,0 +1,1167 @@
+<?xml version="1.0"?>
+<xh:html xmlns:xh="http://www.w3.org/1999/xhtml" xmlns:xf="http://www.w3.org/2002/xforms" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:xxf="http://orbeon.org/oxf/xml/xforms" xmlns:fr="http://orbeon.org/oxf/xml/form-runner">
+  <xh:head>
+    <xh:title>Add Programme</xh:title>
+    <xf:model id="fr-form-model" xxf:expose-xpath-types="true">
+      <xf:var name="is-editable" value="instance('fr-form-instance')//*:status eq 'draft'"/>
+      <!-- Main instance -->
+      <xf:instance id="fr-form-instance" xxf:exclude-result-prefixes="#all">
+        <programme>
+          <programme-details>
+            <programme-name/>
+            <fund itemset-empty="false"/>
+            <programme-start-date/>
+            <programme-end-date/>
+          </programme-details>
+          <local-contacts>
+            <local-contacts-iteration>
+              <local-contact-firstname/>
+              <local-contact-lastname/>
+              <local-contact-email/>
+            </local-contacts-iteration>
+          </local-contacts>
+          <priority-axes>
+            <priority-axes-iteration>
+              <priority-axis-name/>
+              <priority-axis-reference/>
+              <priority-axis-allocation-euros/>
+              <priority-axis-allocation-gbp/>
+              <category-of-regions>
+                <category-of-regions-iteration>
+                  <category-of-region itemset-empty="false"/>
+                  <category-of-region-allocation/>
+                </category-of-regions-iteration>
+              </category-of-regions>
+              <leps>
+                <leps-iteration>
+                  <lep itemset-empty="false"/>
+                  <lep-allocation/>
+                </leps-iteration>
+              </leps>
+              <investment-priority>
+                <investment-priority-iteration>
+                  <investment-priority-id/>
+                  <investment-priority-full-name/>
+                  <investment-priority-short-name/>
+                  <investment-priority-notes/>
+                  <specific-objective-grid>
+                    <specific-objective-grid-iteration>
+                      <specific-objective-id/>
+                      <specific-objective/>
+                      <specific-objective-notes/>
+                    </specific-objective-grid-iteration>
+                  </specific-objective-grid>
+                </investment-priority-iteration>
+              </investment-priority>
+            </priority-axes-iteration>
+          </priority-axes>
+          <programme-indicators>
+            <programme-indicators-iteration>
+              <programme-indicator-code/>
+              <indicator-description/>
+              <indicator-type>1</indicator-type>
+              <unit-of-measure itemset-empty="false"/>
+              <indicator-definition/>
+              <indicator-source/>
+              <reporting-level/>
+              <tag-indicators/>
+            </programme-indicators-iteration>
+          </programme-indicators>
+          <priority-axis-indicators>
+            <priority-axis-indicators-iteration>
+              <priority-axis-indicator-id/>
+              <priority-axis-dynamic-dropdown/>
+              <priority-axis-indicator-level>investment-priority</priority-axis-indicator-level>
+              <investment-priority-reference/>
+              <specific-objective-reference/>
+              <indicator-code-dynamic-dropdown/>
+              <priority-axis-indicator-ref/>
+              <sfc-reference/>
+              <priority-axis-indicator-target/>
+              <performance-framework/>
+              <milestone-target/>
+              <priority-axis-indicator-tags/>
+            </priority-axis-indicators-iteration>
+          </priority-axis-indicators>
+          <supporting-documents>
+            <supporting-documents-iteration>
+              <attachment filename="" mediatype="" size=""/>
+              <docs-category itemset-empty="false"/>
+              <docs-description/>
+            </supporting-documents-iteration>
+          </supporting-documents>
+          <audit-info>
+            <status>draft</status>
+            <last-update/>
+          </audit-info>
+        </programme>
+      </xf:instance>
+      <!-- Bindings -->
+      <xf:bind id="fr-form-binds" ref="instance('fr-form-instance')">
+        <xf:bind id="programme-details-bind" name="programme-details" ref="programme-details">
+          <xf:bind id="programme-name-bind" name="programme-name" ref="programme-name" required="true()" constraint="if(normalize-space(.) != '') then true() else false()"/>
+          <xf:bind id="programme-start-date-bind" ref="programme-start-date" name="programme-start-date" type="xs:date" required="true()"/>
+          <xf:bind id="programme-end-date-bind" ref="programme-end-date" name="programme-end-date" type="xs:date" required="true()">
+            <xf:constraint id="end-date-before-start-date" level="error" value="                            empty(../xs:string(*:programme-start-date)[.])                              or xs:date(.) ge xs:date(../*:programme-start-date)"/>
+          </xf:bind>
+          <xf:bind id="fund-bind" ref="fund" name="fund"/>
+        </xf:bind>
+        <xf:bind id="local-contacts-bind" ref="local-contacts" name="local-contacts">
+          <xf:bind id="local-contacts-iteration-bind" ref="local-contacts-iteration" name="local-contacts-iteration">
+            <xf:bind id="local-contact-firstname-bind" ref="local-contact-firstname" name="local-contact-firstname"/>
+            <xf:bind id="local-contact-lastname-bind" ref="local-contact-lastname" name="local-contact-lastname"/>
+            <xf:bind id="local-contact-email-bind" ref="local-contact-email" name="local-contact-email" type="xf:email"/>
+          </xf:bind>
+        </xf:bind>
+        <xf:bind id="priority-axes-bind" ref="priority-axes" name="priority-axes">
+          <xf:bind id="priority-axes-iteration-bind" ref="priority-axes-iteration" name="priority-axes-iteration">
+            <xf:bind id="priority-axis-name-bind" ref="priority-axis-name" name="priority-axis-name" required="true()"/>
+            <xf:bind id="priority-axis-allocation-euros-bind" ref="priority-axis-allocation-euros" name="priority-axis-allocation-euros" required="true()" type="xs:decimal">
+              <xf:constraint id="constraint-38-constraint" value=". ge 0" level="error"/>
+              <xf:constraint id="constraint-39-constraint" value=". le 10000000000" level="error"/>
+              <xf:constraint id="constraint-44-constraint" value="string-length(substring-after(string(.),'.')) le 2" level="error"/>
+            </xf:bind>
+            <xf:bind id="priority-axis-allocation-gbp-bind" ref="priority-axis-allocation-gbp" name="priority-axis-allocation-gbp" required="true()" type="xs:decimal">
+              <xf:constraint id="constraint-40-constraint" value=". ge 0" level="error"/>
+              <xf:constraint id="constraint-41-constraint" value=". le 10000000000" level="error"/>
+              <xf:constraint id="constraint-45-constraint" value="string-length(substring-after(string(.),'.')) le 2" level="error"/>
+            </xf:bind>
+            <xf:bind id="leps-bind" ref="leps" name="leps">
+              <xf:bind id="leps-iteration-bind" ref="leps-iteration" name="leps-iteration">
+                <xf:bind id="lep-allocation-bind" ref="lep-allocation" name="lep-allocation" type="xf:decimal">
+                  <xf:constraint id="constraint-47-constraint" value="if(normalize-space(string(.)) ne '') then (if(. lt 0) then false() else true() ) else true()" level="error"/>
+                  <xf:constraint id="constraint-42-constraint" value="if(normalize-space(string(.)) ne '') then ( if(. le 1000000000) then true() else false() ) else true()" level="error"/>
+                  <xf:constraint id="constraint-46-constraint" value="string-length(substring-after(string(.),'.')) le 2" level="error"/>
+                </xf:bind>
+                <xf:bind id="lep-bind" ref="lep" name="lep"/>
+              </xf:bind>
+            </xf:bind>
+            <xf:bind id="category-of-regions-bind" ref="category-of-regions" name="category-of-regions">
+              <xf:bind id="category-of-regions-iteration-bind" ref="category-of-regions-iteration" name="category-of-regions-iteration">
+                <xf:bind id="category-of-region-bind" ref="category-of-region" name="category-of-region" required="true()"/>
+                <xf:bind id="category-of-region-allocation-bind" ref="category-of-region-allocation" name="category-of-region-allocation" type="xf:decimal">
+                  <xf:constraint id="constraint-48-constraint" value=". ge 0" level="error"/>
+                  <xf:constraint id="constraint-49-constraint" value=". le 10000000000" level="error"/>
+                  <xf:constraint id="constraint-50-constraint" value="string-length(substring-after(string(.),'.')) le 2" level="error"/>
+                </xf:bind>
+              </xf:bind>
+            </xf:bind>
+            <xf:bind id="priority-axis-reference-bind" ref="priority-axis-reference" name="priority-axis-reference"/>
+            <xf:bind id="investment-priority-bind" ref="investment-priority" name="investment-priority">
+              <xf:bind id="investment-priority-iteration-bind" ref="investment-priority-iteration" name="investment-priority-iteration">
+                <xf:bind id="investment-priority-id-bind" ref="investment-priority-id" name="investment-priority-id"/>
+                <xf:bind id="investment-priority-full-name-bind" ref="investment-priority-full-name" name="investment-priority-full-name"/>
+                <xf:bind id="investment-priority-short-name-bind" ref="investment-priority-short-name" name="investment-priority-short-name"/>
+                <xf:bind id="investment-priority-notes-bind" ref="investment-priority-notes" name="investment-priority-notes"/>
+                <xf:bind id="specific-objective-grid-bind" ref="specific-objective-grid" name="specific-objective-grid">
+                  <xf:bind id="specific-objective-grid-iteration-bind" ref="specific-objective-grid-iteration" name="specific-objective-grid-iteration">
+                    <xf:bind id="specific-objective-id-bind" ref="specific-objective-id" name="specific-objective-id"/>
+                    <xf:bind id="specific-objective-bind" ref="specific-objective" name="specific-objective"/>
+                    <xf:bind id="specific-objective-notes-bind" ref="specific-objective-notes" name="specific-objective-notes"/>
+                  </xf:bind>
+                </xf:bind>
+              </xf:bind>
+            </xf:bind>
+          </xf:bind>
+        </xf:bind>
+        <xf:bind id="supporting-documents-bind" ref="supporting-documents" name="supporting-documents">
+          <xf:bind id="supporting-documents-iteration-bind" ref="supporting-documents-iteration" name="supporting-documents-iteration">
+            <xf:bind id="attachment-bind" ref="attachment" name="attachment" type="xf:anyURI">
+              <xf:constraint id="constraint-74-constraint" value="if(@filename ne '') then (ends-with(lower-case(@filename), 'doc') or ends-with(lower-case(@filename), 'docx') or ends-with(lower-case(@filename), 'rtf') or ends-with(lower-case(@filename), 'odf') or ends-with(lower-case(@filename), 'txt') or ends-with(lower-case(@filename), 'pdf') or ends-with(lower-case(@filename), 'xls') or ends-with(lower-case(@filename), 'xlsx') or ends-with(lower-case(@filename), 'jpg') or ends-with(lower-case(@filename), 'png')) else true()" level="error"/>
+            </xf:bind>
+            <xf:bind id="docs-description-bind" ref="docs-description" name="docs-description" required="if(../*:attachment/@filename != '') then true() else false()" relevant="if(../*:attachment/@filename != '') then true() else false()"/>
+            <xf:bind id="docs-category-bind" ref="docs-category" name="docs-category" required="if(../*:attachment/@filename != '') then true() else false()" relevant="if(../*:attachment/@filename != '') then true() else false()"/>
+          </xf:bind>
+        </xf:bind>
+        <xf:bind id="programme-indicators-bind" ref="programme-indicators" name="programme-indicators">
+          <xf:bind id="programme-indicators-iteration-bind" ref="programme-indicators-iteration" name="programme-indicators-iteration">
+            <xf:bind id="programme-indicator-code-bind" ref="programme-indicator-code" name="programme-indicator-code"/>
+            <xf:bind id="indicator-type-bind" ref="indicator-type" name="indicator-type"/>
+            <xf:bind id="unit-of-measure-bind" ref="unit-of-measure" name="unit-of-measure"/>
+            <xf:bind id="indicator-description-bind" ref="indicator-description" name="indicator-description"/>
+            <xf:bind id="indicator-definition-bind" ref="indicator-definition" name="indicator-definition"/>
+            <xf:bind id="indicator-source-bind" ref="indicator-source" name="indicator-source"/>
+            <xf:bind id="reporting-level-bind" ref="reporting-level" name="reporting-level"/>
+            <xf:bind id="tag-indicators-bind" ref="tag-indicators" name="tag-indicators"/>
+          </xf:bind>
+        </xf:bind>
+        <xf:bind id="priority-axis-indicators-bind" ref="priority-axis-indicators" name="priority-axis-indicators">
+          <xf:bind id="priority-axis-indicators-iteration-bind" ref="priority-axis-indicators-iteration" name="priority-axis-indicators-iteration">
+            <xf:bind id="priority-axis-dynamic-dropdown-bind" ref="priority-axis-dynamic-dropdown" name="priority-axis-dynamic-dropdown"/>
+            <xf:bind id="priority-axis-indicator-level-bind" ref="priority-axis-indicator-level" name="priority-axis-indicator-level" xxf:default="investment-priority"/>
+            <xf:bind id="indicator-code-dynamic-dropdown-bind" ref="indicator-code-dynamic-dropdown" name="indicator-code-dynamic-dropdown"/>
+            <xf:bind id="investment-priority-reference-bind" ref="investment-priority-reference" name="investment-priority-reference"/>
+            <xf:bind id="sfc-reference-bind" ref="sfc-reference" name="sfc-reference"/>
+            <xf:bind id="priority-axis-indicator-target-bind" ref="priority-axis-indicator-target" name="priority-axis-indicator-target" type="xf:decimal"/>
+            <xf:bind id="milestone-target-bind" ref="milestone-target" name="milestone-target" type="xf:decimal" relevant="../*:performance-framework = '1'"/>
+            <xf:bind id="priority-axis-indicator-tags-bind" ref="priority-axis-indicator-tags" name="priority-axis-indicator-tags"/>
+            <xf:bind id="priority-axis-indicator-ref-bind" ref="priority-axis-indicator-ref" name="priority-axis-indicator-ref" required="true()"/>
+            <xf:bind id="performance-framework-bind" ref="performance-framework" name="performance-framework"/>
+            <xf:bind id="priority-axis-indicator-id-bind" ref="priority-axis-indicator-id" name="priority-axis-indicator-id" calculate="digest(concat(xxf:document-id(),string(count(../preceding-sibling::*)+1)), &quot;MD5&quot;)"/>
+            <xf:bind id="specific-objective-reference-bind" ref="specific-objective-reference" name="specific-objective-reference" relevant="if(../*:priority-axis-indicator-level eq 'specific-objective') then true() else false()"/>
+          </xf:bind>
+        </xf:bind>
+        <xf:bind id="audit-info-bind" ref="audit-info" name="audit-info">
+          <xf:bind id="status-bind" ref="status" name="status" readonly="true()"/>
+          <xf:bind id="last-update-bind" ref="last-update" name="last-update" readonly="true()"/>
+        </xf:bind>
+      </xf:bind>
+      <!-- Metadata -->
+      <xf:instance xxf:readonly="true" id="fr-form-metadata" xxf:exclude-result-prefixes="#all">
+        <metadata>
+          <application-name>erdf</application-name>
+          <form-name>add-programme</form-name>
+          <title xml:lang="en">Add Programme</title>
+          <description xml:lang="en">Programme managers will use this form to add a new programme to the application</description>
+          <singleton>false</singleton>
+        </metadata>
+      </xf:instance>
+      <!-- Attachments -->
+      <xf:instance id="fr-form-attachments" xxf:exclude-result-prefixes="#all">
+        <attachments>
+          <css mediatype="text/css" filename="" size=""/>
+          <pdf mediatype="application/pdf" filename="" size=""/>
+        </attachments>
+      </xf:instance>
+      <!-- All form resources -->
+      <!-- Don't make readonly by default in case a service modifies the resources -->
+      <xf:instance id="fr-form-resources" xxf:readonly="false" xxf:exclude-result-prefixes="#all">
+        <resources>
+          <resource xml:lang="en">
+            <status>
+              <label>Status</label>
+              <hint/>
+            </status>
+            <specific-objective-id>
+              <label>Specific Objective ID</label>
+              <hint/>
+            </specific-objective-id>
+            <specific-objective>
+              <label>Specific Objective</label>
+              <hint/>
+            </specific-objective>
+            <specific-objective-notes>
+              <label>Notes</label>
+              <hint/>
+            </specific-objective-notes>
+            <investment-priority-id>
+              <label>Investment Priority ID</label>
+              <hint/>
+            </investment-priority-id>
+            <investment-priority-full-name>
+              <label>Full name</label>
+              <hint/>
+            </investment-priority-full-name>
+            <investment-priority-short-name>
+              <label>Short name</label>
+              <hint/>
+            </investment-priority-short-name>
+            <investment-priority-notes>
+              <label>Notes</label>
+              <hint/>
+            </investment-priority-notes>
+            <priority-axis-indicator-id>
+              <label>ID</label>
+              <hint/>
+            </priority-axis-indicator-id>
+            <priority-axis-dynamic-dropdown>
+              <label>Priority Axis</label>
+              <hint/>
+            </priority-axis-dynamic-dropdown>
+            <priority-axis-indicator-level>
+              <label>Level</label>
+              <hint/>
+              <item>
+                <label>Investment priority</label>
+                <hint/>
+                <value>investment-priority</value>
+              </item>
+              <item>
+                <label>Specific objective</label>
+                <hint/>
+                <value>specific-objective</value>
+              </item>
+            </priority-axis-indicator-level>
+            <investment-priority-reference>
+              <label>Investment Priority</label>
+              <hint/>
+            </investment-priority-reference>
+            <specific-objective-reference>
+              <label>Specific Objective</label>
+              <hint/>
+            </specific-objective-reference>
+            <indicator-code-dynamic-dropdown>
+              <label>Indicator Code</label>
+              <hint/>
+            </indicator-code-dynamic-dropdown>
+            <priority-axis-indicator-ref>
+              <label>Priority Axis Indicator Reference</label>
+              <hint/>
+            </priority-axis-indicator-ref>
+            <sfc-reference>
+              <label>SFC Reference</label>
+              <hint/>
+            </sfc-reference>
+            <priority-axis-indicator-target>
+              <label>Target</label>
+              <hint/>
+            </priority-axis-indicator-target>
+            <performance-framework>
+              <label>Performance Framework</label>
+              <hint/>
+              <item>
+                <label>Is this indicator part of performance framework?</label>
+                <hint/>
+                <value>1</value>
+              </item>
+            </performance-framework>
+            <milestone-target>
+              <label>Milestone Target</label>
+              <hint/>
+            </milestone-target>
+            <priority-axis-indicator-tags>
+              <label>Tags</label>
+              <hint>Comma separated tags to aid reporting</hint>
+            </priority-axis-indicator-tags>
+            <programme-indicator-code>
+              <label>Programme Indicator Code</label>
+              <hint/>
+            </programme-indicator-code>
+            <indicator-description>
+              <label>Indicator description</label>
+              <hint/>
+            </indicator-description>
+            <indicator-type>
+              <label>Indicator Type</label>
+              <hint/>
+              <item>
+                <label>Output</label>
+                <hint/>
+                <value>Output</value>
+              </item>
+              <item>
+                <label>Result</label>
+                <hint/>
+                <value>Result</value>
+              </item>
+            </indicator-type>
+            <unit-of-measure>
+              <label>Unit of measure</label>
+              <hint/>
+            </unit-of-measure>
+            <indicator-definition>
+              <label>Definition</label>
+              <hint/>
+            </indicator-definition>
+            <indicator-source>
+              <label>Source</label>
+              <hint/>
+              <item>
+                <label>EC</label>
+                <hint/>
+                <value>EC</value>
+              </item>
+              <item>
+                <label>Programme</label>
+                <hint/>
+                <value>Programme</value>
+              </item>
+            </indicator-source>
+            <reporting-level>
+              <label>Reporting level</label>
+              <hint/>
+              <item>
+                <label>Project</label>
+                <hint/>
+                <value>Project</value>
+              </item>
+              <item>
+                <label>Programme</label>
+                <hint/>
+                <value>Programme</value>
+              </item>
+            </reporting-level>
+            <tag-indicators>
+              <label>Tags</label>
+              <hint>Comma separated tags to aid reporting</hint>
+            </tag-indicators>
+            <lep>
+              <label>LEP</label>
+              <hint/>
+            </lep>
+            <category-of-region>
+              <label>Category of Region</label>
+              <hint/>
+              <alert>Please select a category of region!</alert>
+            </category-of-region>
+            <category-of-region-allocation>
+              <label>Category of Region Allocation</label>
+              <hint/>
+              <alert>The value is negative</alert>
+              <alert>The value is too big</alert>
+              <alert>Only 2 decimal digits allowed. e.g. 1000.25</alert>
+            </category-of-region-allocation>
+            <attachment>
+              <label>Add supporting documentation to be saved with the programme</label>
+              <hint/>
+              <alert>The type of file selected is not permitted for upload</alert>
+            </attachment>
+            <docs-category>
+              <label>File Category</label>
+              <hint/>
+            </docs-category>
+            <docs-description>
+              <label>File Description</label>
+              <hint/>
+            </docs-description>
+            <supporting-documents>
+              <label>Supporting Documentation</label>
+              <help/>
+            </supporting-documents>
+            <lep-allocation>
+              <label>LEP Allocation</label>
+              <hint/>
+              <alert>The value is negative</alert>
+              <alert>The value is too big</alert>
+              <alert>Only 2 decimal digits allowed. eg. 10000.25</alert>
+              <alert>Incorrect Value</alert>
+            </lep-allocation>
+            <investment-priority>
+              <label>Investment Priority</label>
+              <help/>
+            </investment-priority>
+            <priority-axis-name>
+              <label>Priority Axis Name</label>
+              <hint/>
+              <alert>Name is required!</alert>
+            </priority-axis-name>
+            <priority-axis-reference>
+              <label>Priority Axis Reference Number</label>
+              <hint/>
+            </priority-axis-reference>
+            <priority-axis-allocation-euros>
+              <label>Priority Axis Allocation</label>
+              <hint/>
+              <alert>The value is negative</alert>
+              <alert>The value is too big</alert>
+              <alert>Only 2 decimal digits allowed. eg. 10000.25</alert>
+              <alert>Missing or incorrect value</alert>
+            </priority-axis-allocation-euros>
+            <priority-axis-allocation-gbp>
+              <label>Priority Axis Sterling Allocation</label>
+              <hint/>
+              <alert>The value is negative</alert>
+              <alert>The value is too big</alert>
+              <alert>Only 2 decimal digits allowed. eg. 10000.25</alert>
+              <alert>Missing or incorrect value</alert>
+            </priority-axis-allocation-gbp>
+            <local-contact-firstname>
+              <label>First Name</label>
+              <hint/>
+            </local-contact-firstname>
+            <local-contact-lastname>
+              <label>Last Name</label>
+              <hint/>
+            </local-contact-lastname>
+            <local-contact-email>
+              <label>Email Address</label>
+              <hint/>
+            </local-contact-email>
+            <programme-details>
+              <label>Programme Details</label>
+            </programme-details>
+            <local-contacts>
+              <label>Local Contacts</label>
+              <help/>
+            </local-contacts>
+            <priority-axes>
+              <label>Priority Axes</label>
+              <help/>
+            </priority-axes>
+            <programme-indicators>
+              <label>Programme Indicators</label>
+              <help/>
+            </programme-indicators>
+            <priority-axis-indicators>
+              <label>Priority Axis Indicators</label>
+              <help/>
+            </priority-axis-indicators>
+            <programme-name>
+              <label>Programme Name</label>
+              <hint/>
+              <alert>Programme name is required!</alert>
+            </programme-name>
+            <fund>
+              <label>Fund</label>
+              <hint/>
+            </fund>
+            <programme-start-date>
+              <label>Programme Start Date</label>
+              <hint/>
+            </programme-start-date>
+            <programme-end-date>
+              <label>Programme End Date</label>
+              <hint/>
+              <alert>End date cannot be before start date.</alert>
+            </programme-end-date>
+          </resource>
+        </resources>
+      </xf:instance>
+      <!-- Utility instances for services -->
+      <xf:instance id="fr-service-request-instance" xxf:exclude-result-prefixes="#all">
+        <request/>
+      </xf:instance>
+      <xf:instance id="fr-service-response-instance" xxf:exclude-result-prefixes="#all">
+        <response/>
+      </xf:instance>
+      <xf:instance xxf:readonly="true" id="local-contacts-template" xxf:exclude-result-prefixes="#all">
+        <local-contacts-iteration>
+          <local-contact-firstname/>
+          <local-contact-lastname/>
+          <local-contact-email/>
+        </local-contacts-iteration>
+      </xf:instance>
+      <xf:instance xxf:readonly="true" id="priority-axes-template" xxf:exclude-result-prefixes="#all">
+        <priority-axes-iteration>
+          <priority-axis-name/>
+          <priority-axis-allocation-euros/>
+          <priority-axis-allocation-gbp/>
+          <leps>
+            <leps-iteration>
+              <lep-allocation/>
+              <lep/>
+            </leps-iteration>
+          </leps>
+          <category-of-regions>
+            <category-of-regions-iteration>
+              <category-of-region/>
+              <category-of-region-allocation/>
+            </category-of-regions-iteration>
+          </category-of-regions>
+          <priority-axis-reference/>
+          <investment-priority>
+            <investment-priority-iteration>
+              <investment-priority-id/>
+              <investment-priority-full-name/>
+              <investment-priority-short-name/>
+              <investment-priority-notes/>
+              <specific-objective-grid>
+                <specific-objective-grid-iteration>
+                  <specific-objective-id/>
+                  <specific-objective/>
+                  <specific-objective-notes/>
+                </specific-objective-grid-iteration>
+              </specific-objective-grid>
+            </investment-priority-iteration>
+          </investment-priority>
+        </priority-axes-iteration>
+      </xf:instance>
+      <xf:instance xxf:readonly="true" id="leps-template" xxf:exclude-result-prefixes="#all">
+        <leps-iteration>
+          <lep-allocation/>
+          <lep/>
+        </leps-iteration>
+      </xf:instance>
+      <xf:instance xxf:readonly="true" id="supporting-documents-template" xxf:exclude-result-prefixes="#all">
+        <supporting-documents-iteration>
+          <attachment filename="" mediatype="" size=""/>
+          <docs-category itemset-empty="false"/>
+          <docs-description/>
+        </supporting-documents-iteration>
+      </xf:instance>
+      <xf:instance xxf:readonly="true" id="category-of-regions-template" xxf:exclude-result-prefixes="#all">
+        <category-of-regions-iteration>
+          <category-of-region/>
+          <category-of-region-allocation/>
+        </category-of-regions-iteration>
+      </xf:instance>
+      <xf:instance xxf:readonly="true" id="programme-indicators-template" xxf:exclude-result-prefixes="#all">
+        <programme-indicators-iteration>
+          <programme-indicator-code/>
+          <indicator-type/>
+          <unit-of-measure/>
+          <indicator-description/>
+          <indicator-definition/>
+          <indicator-source/>
+          <reporting-level/>
+          <tag-indicators/>
+        </programme-indicators-iteration>
+      </xf:instance>
+      <xf:instance xxf:readonly="true" id="priority-axis-indicators-template" xxf:exclude-result-prefixes="#all">
+        <priority-axis-indicators-iteration>
+          <priority-axis-dynamic-dropdown/>
+          <priority-axis-indicator-level/>
+          <indicator-code-dynamic-dropdown/>
+          <investment-priority-reference/>
+          <sfc-reference/>
+          <priority-axis-indicator-target/>
+          <milestone-target/>
+          <priority-axis-indicator-tags/>
+          <priority-axis-indicator-ref/>
+          <performance-framework/>
+          <priority-axis-indicator-id/>
+          <specific-objective-reference/>
+        </priority-axis-indicators-iteration>
+      </xf:instance>
+      <xf:instance xxf:readonly="true" id="specific-objective-grid-template" xxf:exclude-result-prefixes="#all">
+        <specific-objective-grid-iteration>
+          <specific-objective-id/>
+          <specific-objective/>
+          <specific-objective-notes/>
+        </specific-objective-grid-iteration>
+      </xf:instance>
+      <xf:instance xxf:readonly="true" id="investment-priority-template" xxf:exclude-result-prefixes="#all">
+        <investment-priority-iteration>
+          <investment-priority-id/>
+          <investment-priority-full-name/>
+          <investment-priority-short-name/>
+          <investment-priority-notes/>
+          <specific-objective-grid>
+            <specific-objective-grid-iteration>
+              <specific-objective-id/>
+              <specific-objective/>
+              <specific-objective-notes/>
+            </specific-objective-grid-iteration>
+          </specific-objective-grid>
+        </investment-priority-iteration>
+      </xf:instance>
+    </xf:model>
+  </xh:head>
+  <xh:body>
+    <fr:view>
+      <fr:body xmlns:oxf="http://www.orbeon.com/oxf/processors" xmlns:p="http://www.orbeon.com/oxf/pipeline" xmlns:xbl="http://www.w3.org/ns/xbl">
+        <fr:section id="programme-details-control" bind="programme-details-bind">
+          <xf:label ref="$form-resources/programme-details/label"/>
+          <fr:grid>
+            <xh:tr>
+              <xh:td>
+                <xf:input id="status-control" bind="status-bind">
+                  <xf:label ref="$form-resources/status/label"/>
+                  <xf:hint ref="$form-resources/status/hint"/>
+                  <xf:alert ref="$fr-resources/detail/labels/alert"/>
+                </xf:input>
+              </xh:td>
+              <xh:td/>
+            </xh:tr>
+            <xh:tr>
+              <xh:td>
+                <xf:input id="programme-name-control" bind="programme-name-bind">
+                  <xf:label ref="$form-resources/programme-name/label"/>
+                  <xf:hint ref="$form-resources/programme-name/hint"/>
+                  <xf:alert ref="$form-resources/programme-name/alert"/>
+                </xf:input>
+              </xh:td>
+              <xh:td>
+                <fr:databound-select1 xmlns:xxbl="http://orbeon.org/oxf/xml/xbl" id="fund-control" appearance="minimal" resource="{xxf:property('esif.marklogic.base')}/v1/documents?uri=/reference/lov/funds.xml" bind="fund-bind">
+                  <xf:label ref="$form-resources/fund/label"/>
+                  <xf:hint ref="$form-resources/fund/hint"/>
+                  <xf:alert ref="$fr-resources/detail/labels/alert"/>
+                  <xf:itemset ref="/data/record">
+                    <xf:label ref="label"/>
+                    <xf:value ref="value"/>
+                  </xf:itemset>
+                </fr:databound-select1>
+              </xh:td>
+            </xh:tr>
+            <xh:tr>
+              <xh:td>
+                <xf:input id="programme-start-date-control" bind="programme-start-date-bind">
+                  <xf:label ref="$form-resources/programme-start-date/label"/>
+                  <xf:hint ref="$form-resources/programme-start-date/hint"/>
+                  <xf:alert ref="$fr-resources/detail/labels/alert"/>
+                </xf:input>
+              </xh:td>
+              <xh:td>
+                <xf:input id="programme-end-date-control" bind="programme-end-date-bind">
+                  <xf:label ref="$form-resources/programme-end-date/label"/>
+                  <xf:hint ref="$form-resources/programme-end-date/hint"/>
+                  <xf:alert ref="$form-resources/programme-end-date/alert" validation="end-date-before-start-date"/>
+                  <xf:alert ref="$fr-resources/detail/labels/alert"/>
+                </xf:input>
+              </xh:td>
+            </xh:tr>
+          </fr:grid>
+        </fr:section>
+        <fr:section id="local-contacts-control" bind="local-contacts-bind" repeat="content" template="instance('local-contacts-template')">
+          <xf:label ref="$form-resources/local-contacts/label"/>
+          <fr:grid>
+            <xh:tr>
+              <xh:td>
+                <xf:input id="local-contact-firstname-control" bind="local-contact-firstname-bind">
+                  <xf:label ref="$form-resources/local-contact-firstname/label"/>
+                  <xf:hint ref="$form-resources/local-contact-firstname/hint"/>
+                  <xf:alert ref="$fr-resources/detail/labels/alert"/>
+                </xf:input>
+              </xh:td>
+              <xh:td>
+                <xf:input id="local-contact-lastname-control" bind="local-contact-lastname-bind">
+                  <xf:label ref="$form-resources/local-contact-lastname/label"/>
+                  <xf:hint ref="$form-resources/local-contact-lastname/hint"/>
+                  <xf:alert ref="$fr-resources/detail/labels/alert"/>
+                </xf:input>
+              </xh:td>
+              <xh:td>
+                <xf:input id="local-contact-email-control" bind="local-contact-email-bind">
+                  <xf:label ref="$form-resources/local-contact-email/label"/>
+                  <xf:hint ref="$form-resources/local-contact-email/hint"/>
+                  <xf:alert ref="$fr-resources/detail/labels/alert"/>
+                </xf:input>
+              </xh:td>
+            </xh:tr>
+          </fr:grid>
+        </fr:section>
+        <fr:section id="priority-axes-control" bind="priority-axes-bind" repeat="content" template="instance('priority-axes-template')">
+          <xf:label ref="$form-resources/priority-axes/label"/>
+          <fr:grid>
+            <xh:tr>
+              <xh:td>
+                <xf:input id="priority-axis-name-control" bind="priority-axis-name-bind">
+                  <xf:label ref="$form-resources/priority-axis-name/label"/>
+                  <xf:hint ref="$form-resources/priority-axis-name/hint"/>
+                  <xf:alert ref="$form-resources/priority-axis-name/alert"/>
+                </xf:input>
+              </xh:td>
+              <xh:td>
+                <xf:input id="priority-axis-reference-control" bind="priority-axis-reference-bind">
+                  <xf:label ref="$form-resources/priority-axis-reference/label"/>
+                  <xf:hint ref="$form-resources/priority-axis-reference/hint"/>
+                  <xf:alert ref="$fr-resources/detail/labels/alert"/>
+                </xf:input>
+              </xh:td>
+            </xh:tr>
+            <xh:tr>
+              <xh:td>
+                <fr:currency xmlns="http://orbeon.org/oxf/xml/form-builder" xmlns:xxbl="http://orbeon.org/oxf/xml/xbl" id="priority-axis-allocation-euros-control" prefix="&#x20AC;" bind="priority-axis-allocation-euros-bind">
+                  <xf:label ref="$form-resources/priority-axis-allocation-euros/label"/>
+                  <xf:hint ref="$form-resources/priority-axis-allocation-euros/hint"/>
+                  <xf:alert ref="$form-resources/priority-axis-allocation-euros/alert[1]" validation="constraint-38-constraint"/>
+                  <xf:alert ref="$form-resources/priority-axis-allocation-euros/alert[2]" validation="constraint-39-constraint"/>
+                  <xf:alert ref="$form-resources/priority-axis-allocation-euros/alert[3]" validation="constraint-44-constraint"/>
+                  <xf:alert ref="$form-resources/priority-axis-allocation-euros/alert[4]"/>
+                </fr:currency>
+              </xh:td>
+              <xh:td>
+                <fr:currency xmlns="http://orbeon.org/oxf/xml/form-builder" xmlns:xxbl="http://orbeon.org/oxf/xml/xbl" id="priority-axis-allocation-gbp-control" bind="priority-axis-allocation-gbp-bind">
+                  <xf:label ref="$form-resources/priority-axis-allocation-gbp/label"/>
+                  <xf:hint ref="$form-resources/priority-axis-allocation-gbp/hint"/>
+                  <xf:alert ref="$form-resources/priority-axis-allocation-gbp/alert[1]" validation="constraint-40-constraint"/>
+                  <xf:alert ref="$form-resources/priority-axis-allocation-gbp/alert[2]" validation="constraint-41-constraint"/>
+                  <xf:alert ref="$form-resources/priority-axis-allocation-gbp/alert[3]" validation="constraint-45-constraint"/>
+                  <xf:alert ref="$form-resources/priority-axis-allocation-gbp/alert[4]"/>
+                </fr:currency>
+              </xh:td>
+            </xh:tr>
+          </fr:grid>
+          <fr:grid id="category-of-regions-control" bind="category-of-regions-bind" repeat="content" min="1" template="instance('category-of-regions-template')">
+            <xh:tr>
+              <xh:td>
+                <fr:databound-select1 xmlns:xxbl="http://orbeon.org/oxf/xml/xbl" id="category-of-region-control" appearance="minimal" resource="{xxf:property('esif.marklogic.base')}/v1/documents?uri=/reference/lov/category-of-region.xml" bind="category-of-region-bind">
+                  <xf:label ref="$form-resources/category-of-region/label"/>
+                  <xf:hint ref="$form-resources/category-of-region/hint"/>
+                  <xf:alert ref="$form-resources/category-of-region/alert"/>
+                  <xf:itemset ref="/data/record">
+                    <xf:label ref="label"/>
+                    <xf:value ref="value"/>
+                  </xf:itemset>
+                </fr:databound-select1>
+              </xh:td>
+              <xh:td>
+                <fr:currency xmlns="http://orbeon.org/oxf/xml/form-builder" xmlns:xxbl="http://orbeon.org/oxf/xml/xbl" prefix="&#x20AC;" id="category-of-region-allocation-control" bind="category-of-region-allocation-bind">
+                  <xf:label ref="$form-resources/category-of-region-allocation/label"/>
+                  <xf:hint ref="$form-resources/category-of-region-allocation/hint"/>
+                  <xf:alert ref="$form-resources/category-of-region-allocation/alert[1]" validation="constraint-48-constraint"/>
+                  <xf:alert ref="$form-resources/category-of-region-allocation/alert[2]" validation="constraint-49-constraint"/>
+                  <xf:alert ref="$form-resources/category-of-region-allocation/alert[3]" validation="constraint-50-constraint"/>
+                  <xf:alert ref="$fr-resources/detail/labels/alert"/>
+                </fr:currency>
+              </xh:td>
+            </xh:tr>
+          </fr:grid>
+          <fr:grid id="leps-control" bind="leps-bind" repeat="content" min="1" template="instance('leps-template')">
+            <xh:tr>
+              <xh:td>
+                <fr:databound-select1 xmlns:xxbl="http://orbeon.org/oxf/xml/xbl" id="lep-control" appearance="minimal" resource="{xxf:property('esif.marklogic.base')}/v1/documents?uri=/reference/lov/leps.xml" bind="lep-bind">
+                  <xf:label ref="$form-resources/lep/label"/>
+                  <xf:hint ref="$form-resources/lep/hint"/>
+                  <xf:alert ref="$fr-resources/detail/labels/alert"/>
+                  <xf:itemset ref="/data/record">
+                    <xf:label ref="label"/>
+                    <xf:value ref="value"/>
+                  </xf:itemset>
+                </fr:databound-select1>
+              </xh:td>
+              <xh:td>
+                <fr:currency xmlns="http://orbeon.org/oxf/xml/form-builder" xmlns:xxbl="http://orbeon.org/oxf/xml/xbl" id="lep-allocation-control" prefix="&#x20AC;" bind="lep-allocation-bind">
+                  <xf:label ref="$form-resources/lep-allocation/label"/>
+                  <xf:hint ref="$form-resources/lep-allocation/hint"/>
+                  <xf:alert ref="$form-resources/lep-allocation/alert[1]" validation="constraint-47-constraint"/>
+                  <xf:alert ref="$form-resources/lep-allocation/alert[2]" validation="constraint-42-constraint"/>
+                  <xf:alert ref="$form-resources/lep-allocation/alert[3]" validation="constraint-46-constraint"/>
+                  <xf:alert ref="$form-resources/lep-allocation/alert[4]"/>
+                </fr:currency>
+              </xh:td>
+            </xh:tr>
+          </fr:grid>
+          <fr:grid>
+            <xh:tr>
+              <xh:td/>
+            </xh:tr>
+          </fr:grid>
+          <fr:section id="investment-priority-control" bind="investment-priority-bind" repeat="content" min="1" template="instance('investment-priority-template')">
+            <xf:label ref="$form-resources/investment-priority/label"/>
+            <fr:grid>
+              <xh:tr>
+                <xh:td>
+                  <xf:input id="investment-priority-id-control" bind="investment-priority-id-bind">
+                    <xf:label ref="$form-resources/investment-priority-id/label"/>
+                    <xf:hint ref="$form-resources/investment-priority-id/hint"/>
+                    <xf:alert ref="$fr-resources/detail/labels/alert"/>
+                  </xf:input>
+                </xh:td>
+              </xh:tr>
+              <xh:tr>
+                <xh:td>
+                  <xf:input id="investment-priority-full-name-control" bind="investment-priority-full-name-bind">
+                    <xf:label ref="$form-resources/investment-priority-full-name/label"/>
+                    <xf:hint ref="$form-resources/investment-priority-full-name/hint"/>
+                    <xf:alert ref="$fr-resources/detail/labels/alert"/>
+                  </xf:input>
+                </xh:td>
+              </xh:tr>
+              <xh:tr>
+                <xh:td>
+                  <xf:input id="investment-priority-short-name-control" bind="investment-priority-short-name-bind">
+                    <xf:label ref="$form-resources/investment-priority-short-name/label"/>
+                    <xf:hint ref="$form-resources/investment-priority-short-name/hint"/>
+                    <xf:alert ref="$fr-resources/detail/labels/alert"/>
+                  </xf:input>
+                </xh:td>
+              </xh:tr>
+              <xh:tr>
+                <xh:td>
+                  <xf:textarea id="investment-priority-notes-control" bind="investment-priority-notes-bind">
+                    <xf:label ref="$form-resources/investment-priority-notes/label"/>
+                    <xf:hint ref="$form-resources/investment-priority-notes/hint"/>
+                    <xf:alert ref="$fr-resources/detail/labels/alert"/>
+                  </xf:textarea>
+                </xh:td>
+              </xh:tr>
+            </fr:grid>
+            <fr:grid id="specific-objective-grid-control" bind="specific-objective-grid-bind" repeat="content" template="instance('specific-objective-grid-template')">
+              <xh:tr>
+                <xh:td>
+                  <xf:input id="specific-objective-id-control" bind="specific-objective-id-bind">
+                    <xf:label ref="$form-resources/specific-objective-id/label"/>
+                    <xf:hint ref="$form-resources/specific-objective-id/hint"/>
+                    <xf:alert ref="$fr-resources/detail/labels/alert"/>
+                  </xf:input>
+                </xh:td>
+              </xh:tr>
+              <xh:tr>
+                <xh:td>
+                  <xf:input id="specific-objective-control" bind="specific-objective-bind">
+                    <xf:label ref="$form-resources/specific-objective/label"/>
+                    <xf:hint ref="$form-resources/specific-objective/hint"/>
+                    <xf:alert ref="$fr-resources/detail/labels/alert"/>
+                  </xf:input>
+                </xh:td>
+              </xh:tr>
+              <xh:tr>
+                <xh:td>
+                  <xf:textarea id="specific-objective-notes-control" bind="specific-objective-notes-bind">
+                    <xf:label ref="$form-resources/specific-objective-notes/label"/>
+                    <xf:hint ref="$form-resources/specific-objective-notes/hint"/>
+                    <xf:alert ref="$fr-resources/detail/labels/alert"/>
+                  </xf:textarea>
+                </xh:td>
+              </xh:tr>
+            </fr:grid>
+          </fr:section>
+        </fr:section>
+        <fr:section id="programme-indicators-control" bind="programme-indicators-bind" repeat="content" min="1" template="instance('programme-indicators-template')">
+          <xf:label ref="$form-resources/programme-indicators/label"/>
+          <fr:grid>
+            <xh:tr>
+              <xh:td>
+                <xf:input id="programme-indicator-code-control" bind="programme-indicator-code-bind">
+                  <xf:label ref="$form-resources/programme-indicator-code/label"/>
+                  <xf:hint ref="$form-resources/programme-indicator-code/hint"/>
+                  <xf:alert ref="$fr-resources/detail/labels/alert"/>
+                </xf:input>
+              </xh:td>
+            </xh:tr>
+            <xh:tr>
+              <xh:td>
+                <xf:input id="indicator-description-control" bind="indicator-description-bind">
+                  <xf:label ref="$form-resources/indicator-description/label"/>
+                  <xf:hint ref="$form-resources/indicator-description/hint"/>
+                  <xf:alert ref="$fr-resources/detail/labels/alert"/>
+                </xf:input>
+              </xh:td>
+            </xh:tr>
+            <xh:tr>
+              <xh:td>
+                <xf:select1 id="indicator-type-control" appearance="full" bind="indicator-type-bind">
+                  <xf:label ref="$form-resources/indicator-type/label"/>
+                  <xf:hint ref="$form-resources/indicator-type/hint"/>
+                  <xf:alert ref="$fr-resources/detail/labels/alert"/>
+                  <xf:itemset ref="$form-resources/indicator-type/item">
+                    <xf:label ref="label"/>
+                    <xf:value ref="value"/>
+                    <xf:hint ref="hint"/>
+                  </xf:itemset>
+                </xf:select1>
+              </xh:td>
+            </xh:tr>
+            <xh:tr>
+              <xh:td>
+                <fr:databound-select1 xmlns:xxbl="http://orbeon.org/oxf/xml/xbl" id="unit-of-measure-control" appearance="minimal" resource="{xxf:property('esif.marklogic.base')}/v1/documents?uri=/reference/lov/unit-of-measure.xml" bind="unit-of-measure-bind">
+                  <xf:label ref="$form-resources/unit-of-measure/label"/>
+                  <xf:hint ref="$form-resources/unit-of-measure/hint"/>
+                  <xf:alert ref="$fr-resources/detail/labels/alert"/>
+                  <xf:itemset ref="/data/record">
+                    <xf:label ref="label"/>
+                    <xf:value ref="value"/>
+                  </xf:itemset>
+                </fr:databound-select1>
+              </xh:td>
+            </xh:tr>
+            <xh:tr>
+              <xh:td>
+                <xf:textarea id="indicator-definition-control" bind="indicator-definition-bind">
+                  <xf:label ref="$form-resources/indicator-definition/label"/>
+                  <xf:hint ref="$form-resources/indicator-definition/hint"/>
+                  <xf:alert ref="$fr-resources/detail/labels/alert"/>
+                </xf:textarea>
+              </xh:td>
+            </xh:tr>
+            <xh:tr>
+              <xh:td>
+                <xf:select1 id="indicator-source-control" appearance="full" bind="indicator-source-bind">
+                  <xf:label ref="$form-resources/indicator-source/label"/>
+                  <xf:hint ref="$form-resources/indicator-source/hint"/>
+                  <xf:alert ref="$fr-resources/detail/labels/alert"/>
+                  <xf:itemset ref="$form-resources/indicator-source/item">
+                    <xf:label ref="label"/>
+                    <xf:value ref="value"/>
+                    <xf:hint ref="hint"/>
+                  </xf:itemset>
+                </xf:select1>
+              </xh:td>
+            </xh:tr>
+            <xh:tr>
+              <xh:td>
+                <xf:select1 id="reporting-level-control" appearance="full" bind="reporting-level-bind">
+                  <xf:label ref="$form-resources/reporting-level/label"/>
+                  <xf:hint ref="$form-resources/reporting-level/hint"/>
+                  <xf:alert ref="$fr-resources/detail/labels/alert"/>
+                  <xf:itemset ref="$form-resources/reporting-level/item">
+                    <xf:label ref="label"/>
+                    <xf:value ref="value"/>
+                    <xf:hint ref="hint"/>
+                  </xf:itemset>
+                </xf:select1>
+              </xh:td>
+            </xh:tr>
+            <xh:tr>
+              <xh:td>
+                <xf:input id="tag-indicators-control" bind="tag-indicators-bind">
+                  <xf:label ref="$form-resources/tag-indicators/label"/>
+                  <xf:hint ref="$form-resources/tag-indicators/hint"/>
+                  <xf:alert ref="$fr-resources/detail/labels/alert"/>
+                </xf:input>
+              </xh:td>
+            </xh:tr>
+          </fr:grid>
+        </fr:section>
+        <fr:section id="priority-axis-indicators-control" bind="priority-axis-indicators-bind" repeat="content" min="1" template="instance('priority-axis-indicators-template')">
+          <xf:label ref="$form-resources/priority-axis-indicators/label"/>
+          <fr:grid>
+            <xh:tr>
+              <xh:td>
+                <xf:input id="priority-axis-indicator-id-control" bind="priority-axis-indicator-id-bind">
+                  <xf:label ref="$form-resources/priority-axis-indicator-id/label"/>
+                  <xf:hint ref="$form-resources/priority-axis-indicator-id/hint"/>
+                  <xf:alert ref="$fr-resources/detail/labels/alert"/>
+                </xf:input>
+              </xh:td>
+            </xh:tr>
+            <xh:tr>
+              <xh:td>
+                <fr:dropdown-select1 xmlns:xxbl="http://orbeon.org/oxf/xml/xbl" id="priority-axis-dynamic-dropdown-control" bind="priority-axis-dynamic-dropdown-bind">
+                  <xf:label ref="$form-resources/priority-axis-dynamic-dropdown/label"/>
+                  <xf:hint ref="$form-resources/priority-axis-dynamic-dropdown/hint"/>
+                  <xf:alert ref="$fr-resources/detail/labels/alert"/>
+                  <xf:itemset ref="instance('fr-form-instance')/*:priority-axes/*:priority-axes-iteration">
+                    <xf:label ref="concat(*:priority-axis-name,'-', *:priority-axis-reference)"/>
+                    <xf:value ref="*:priority-axis-name"/>
+                  </xf:itemset>
+                </fr:dropdown-select1>
+              </xh:td>
+            </xh:tr>
+            <xh:tr>
+              <xh:td>
+                <xf:select1 id="priority-axis-indicator-level-control" appearance="full" bind="priority-axis-indicator-level-bind">
+                  <xf:label ref="$form-resources/priority-axis-indicator-level/label"/>
+                  <xf:hint ref="$form-resources/priority-axis-indicator-level/hint"/>
+                  <xf:alert ref="$fr-resources/detail/labels/alert"/>
+                  <xf:itemset ref="$form-resources/priority-axis-indicator-level/item">
+                    <xf:label ref="label"/>
+                    <xf:value ref="value"/>
+                    <xf:hint ref="hint"/>
+                  </xf:itemset>
+                </xf:select1>
+              </xh:td>
+            </xh:tr>
+            <xh:tr>
+              <xh:td rowspan="1">
+                <fr:dropdown-select1 xmlns:xxbl="http://orbeon.org/oxf/xml/xbl" id="investment-priority-reference-control" bind="investment-priority-reference-bind">
+                  <xf:label ref="$form-resources/investment-priority-reference/label"/>
+                  <xf:hint ref="$form-resources/investment-priority-reference/hint"/>
+                  <xf:alert ref="$fr-resources/detail/labels/alert"/>
+                  <!-- BSD relative xpath does  ./*:priority-axis-dynamic-dropdown does not work for some reason, have to use context() -->
+                  <xf:itemset ref="instance('fr-form-instance')/*:priority-axes/*:priority-axes-iteration[*:priority-axis-name= context()/*:priority-axis-dynamic-dropdown]/*:investment-priority/*:investment-priority-iteration">
+                    <xf:label ref="*:investment-priority-full-name"/>
+                    <xf:value ref="*:investment-priority-id"/>
+                  </xf:itemset>
+                </fr:dropdown-select1>
+              </xh:td>
+            </xh:tr>
+            <xh:tr>
+              <xh:td>
+                <fr:dropdown-select1 xmlns:xxbl="http://orbeon.org/oxf/xml/xbl" id="specific-objective-reference-control" bind="specific-objective-reference-bind">
+                  <xf:label ref="$form-resources/specific-objective-reference/label"/>
+                  <xf:hint ref="$form-resources/specific-objective-reference/hint"/>
+                  <xf:alert ref="$fr-resources/detail/labels/alert"/>
+                  <xf:itemset ref="instance('fr-form-instance')/*:priority-axes/*:priority-axes-iteration[*:priority-axis-name= context()/*:priority-axis-dynamic-dropdown]/*:investment-priority/*:investment-priority-iteration[*:investment-priority-id= context()/*:investment-priority-reference]/*:specific-objective-grid/*:specific-objective-grid-iteration">
+                    <xf:label ref="*:specific-objective"/>
+                    <xf:value ref="*:specific-objective-id"/>
+                  </xf:itemset>
+                </fr:dropdown-select1>
+              </xh:td>
+            </xh:tr>
+            <xh:tr>
+              <xh:td>
+                <fr:dropdown-select1 xmlns:xxbl="http://orbeon.org/oxf/xml/xbl" id="indicator-code-dynamic-dropdown-control" bind="indicator-code-dynamic-dropdown-bind">
+                  <xf:label ref="$form-resources/indicator-code-dynamic-dropdown/label"/>
+                  <xf:hint ref="$form-resources/indicator-code-dynamic-dropdown/hint"/>
+                  <xf:alert ref="$fr-resources/detail/labels/alert"/>
+                  <xf:itemset ref="instance('fr-form-instance')/*:programme-indicators/*:programme-indicators-iteration">
+                    <xf:label ref="*:programme-indicator-code"/>
+                    <xf:value ref="*:programme-indicator-code"/>
+                  </xf:itemset>
+                </fr:dropdown-select1>
+              </xh:td>
+            </xh:tr>
+            <xh:tr>
+              <xh:td>
+                <xf:input id="priority-axis-indicator-ref-control" bind="priority-axis-indicator-ref-bind">
+                  <xf:label ref="$form-resources/priority-axis-indicator-ref/label"/>
+                  <xf:hint ref="$form-resources/priority-axis-indicator-ref/hint"/>
+                  <xf:alert ref="$fr-resources/detail/labels/alert"/>
+                </xf:input>
+              </xh:td>
+            </xh:tr>
+            <xh:tr>
+              <xh:td>
+                <xf:input id="sfc-reference-control" bind="sfc-reference-bind">
+                  <xf:label ref="$form-resources/sfc-reference/label"/>
+                  <xf:hint ref="$form-resources/sfc-reference/hint"/>
+                  <xf:alert ref="$fr-resources/detail/labels/alert"/>
+                </xf:input>
+              </xh:td>
+            </xh:tr>
+            <xh:tr>
+              <xh:td>
+                <fr:number xmlns="http://orbeon.org/oxf/xml/form-builder" xmlns:xxbl="http://orbeon.org/oxf/xml/xbl" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" id="priority-axis-indicator-target-control" bind="priority-axis-indicator-target-bind">
+                  <xf:label ref="$form-resources/priority-axis-indicator-target/label"/>
+                  <xf:hint ref="$form-resources/priority-axis-indicator-target/hint"/>
+                  <xf:alert ref="$fr-resources/detail/labels/alert"/>
+                </fr:number>
+              </xh:td>
+            </xh:tr>
+            <xh:tr>
+              <xh:td>
+                <xf:select id="performance-framework-control" appearance="full" bind="performance-framework-bind">
+                  <xf:label ref="$form-resources/performance-framework/label"/>
+                  <xf:hint ref="$form-resources/performance-framework/hint"/>
+                  <xf:alert ref="$fr-resources/detail/labels/alert"/>
+                  <xf:itemset ref="$form-resources/performance-framework/item">
+                    <xf:label ref="label"/>
+                    <xf:value ref="value"/>
+                    <xf:hint ref="hint"/>
+                  </xf:itemset>
+                </xf:select>
+              </xh:td>
+            </xh:tr>
+            <xh:tr>
+              <xh:td>
+                <fr:number xmlns="http://orbeon.org/oxf/xml/form-builder" xmlns:xxbl="http://orbeon.org/oxf/xml/xbl" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" id="milestone-target-control" bind="milestone-target-bind">
+                  <xf:label ref="$form-resources/milestone-target/label"/>
+                  <xf:hint ref="$form-resources/milestone-target/hint"/>
+                  <xf:alert ref="$fr-resources/detail/labels/alert"/>
+                </fr:number>
+              </xh:td>
+            </xh:tr>
+            <xh:tr>
+              <xh:td>
+                <xf:input id="priority-axis-indicator-tags-control" bind="priority-axis-indicator-tags-bind">
+                  <xf:label ref="$form-resources/priority-axis-indicator-tags/label"/>
+                  <xf:hint ref="$form-resources/priority-axis-indicator-tags/hint"/>
+                  <xf:alert ref="$fr-resources/detail/labels/alert"/>
+                </xf:input>
+              </xh:td>
+            </xh:tr>
+          </fr:grid>
+        </fr:section>
+        <fr:section id="supporting-documents-control" bind="supporting-documents-bind" repeat="content" template="instance('supporting-documents-template')">
+          <xf:label ref="$form-resources/supporting-documents/label"/>
+          <fr:grid>
+            <xh:tr>
+              <xh:td>
+                <fr:attachment xmlns="http://orbeon.org/oxf/xml/form-builder" xmlns:xxbl="http://orbeon.org/oxf/xml/xbl" id="attachment-control" bind="attachment-bind" class="fr-attachment">
+                  <xf:label ref="$form-resources/attachment/label"/>
+                  <xf:hint ref="$form-resources/attachment/hint"/>
+                  <xf:alert ref="$form-resources/attachment/alert" validation="constraint-74-constraint"/>
+                  <xf:alert ref="$fr-resources/detail/labels/alert"/>
+                  <xf:filename ref="@filename"/>
+                  <xf:mediatype ref="@mediatype"/>
+                  <xxf:size ref="@size"/>
+                  <xf:action ev:event="xforms-value-changed" if="@size = ''">
+                    <xf:setvalue ref="../*:docs-category" value=""/>
+                    <xf:setvalue ref="../*:docs-description" value=""/>
+                  </xf:action>
+                </fr:attachment>
+              </xh:td>
+              <xh:td>
+                <fr:databound-select1 xmlns:xxbl="http://orbeon.org/oxf/xml/xbl" id="docs-category-control" appearance="minimal" resource="{xxf:property('esif.marklogic.base')}/v1/documents?uri=/reference/lov/file-categories.xml" bind="docs-category-bind">
+                  <xf:label ref="$form-resources/docs-category/label"/>
+                  <xf:hint ref="$form-resources/docs-category/hint"/>
+                  <xf:alert ref="$fr-resources/detail/labels/alert"/>
+                  <xf:itemset ref="/data/record">
+                    <xf:label ref="label"/>
+                    <xf:value ref="value"/>
+                  </xf:itemset>
+                </fr:databound-select1>
+              </xh:td>
+            </xh:tr>
+            <xh:tr>
+              <xh:td colspan="2">
+                <xf:input id="docs-description-control" bind="docs-description-bind">
+                  <xf:label ref="$form-resources/docs-description/label"/>
+                  <xf:hint ref="$form-resources/docs-description/hint"/>
+                  <xf:alert ref="$fr-resources/detail/labels/alert"/>
+                </xf:input>
+              </xh:td>
+            </xh:tr>
+          </fr:grid>
+        </fr:section>
+      </fr:body>
+      <fr:buttons>
+        <fr:pdf-button/>
+        <fr:save-button id="save-button" ref=".[$is-editable]"/>
+        <fr:submit-button ref=".[$is-editable]"/>
+      </fr:buttons>
+    </fr:view>
+  </xh:body>
+</xh:html>
