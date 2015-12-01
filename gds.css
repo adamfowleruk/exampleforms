@@ -26,28 +26,28 @@
 }
 
 /* Change default page font */
-body.orbeon, .orbeon input, .orbeon button, .orbeon select, .orbeon textarea
+.gds body.orbeon, .gds .orbeon input, .gds .orbeon button, .gds .orbeon select, .gds .orbeon textarea
 {
   font-family: "nta",Arial,sans-serif;
 }
 
 /* Override input controls & textarea */
-.orbeon textarea, 
-.orbeon input[type="text"], 
-.orbeon input[type="password"], 
-.orbeon input[type="datetime"], 
-.orbeon input[type="datetime-local"], 
-.orbeon input[type="date"], 
-.orbeon input[type="month"], 
-.orbeon input[type="time"], 
-.orbeon input[type="week"], 
-.orbeon input[type="number"], 
-.orbeon input[type="email"], 
-.orbeon input[type="url"], 
-.orbeon input[type="search"], 
-.orbeon input[type="tel"], 
-.orbeon input[type="color"], 
-.orbeon .uneditable-input
+.gds .orbeon textarea, 
+.gds .orbeon input[type="text"], 
+.gds .orbeon input[type="password"], 
+.gds .orbeon input[type="datetime"], 
+.gds .orbeon input[type="datetime-local"], 
+.gds .orbeon input[type="date"], 
+.gds .orbeon input[type="month"], 
+.gds .orbeon input[type="time"], 
+.gds .orbeon input[type="week"], 
+.gds .orbeon input[type="number"], 
+.gds .orbeon input[type="email"], 
+.gds .orbeon input[type="url"], 
+.gds .orbeon input[type="search"], 
+.gds .orbeon input[type="tel"], 
+.gds .orbeon input[type="color"], 
+.gds .orbeon .uneditable-input
 {
   width: 50%;
   font-size: 19px;
@@ -62,27 +62,27 @@ body.orbeon, .orbeon input, .orbeon button, .orbeon select, .orbeon textarea
   height: auto;
 }
 
-.orbeon #fr-view .fr-grid td .fr-grid-content .fr-width-10em input.xforms-input-input, .orbeon #fr-view .fr-grid td .fr-grid-content .fr-width-10em select {
+.gds .orbeon #fr-view .fr-grid td .fr-grid-content .fr-width-10em input.xforms-input-input, .gds .orbeon #fr-view .fr-grid td .fr-grid-content .fr-width-10em select {
     width: 8em;
 }
 
 /* Override focus */
-.orbeon textarea:focus, 
-.orbeon input[type="text"]:focus, 
-.orbeon input[type="password"]:focus, 
-.orbeon input[type="datetime"]:focus, 
-.orbeon input[type="datetime-local"]:focus, 
-.orbeon input[type="date"]:focus, 
-.orbeon input[type="month"]:focus, 
-.orbeon input[type="time"]:focus, 
-.orbeon input[type="week"]:focus, 
-.orbeon input[type="number"]:focus, 
-.orbeon input[type="email"]:focus, 
-.orbeon input[type="url"]:focus, 
-.orbeon input[type="search"]:focus, 
-.orbeon input[type="tel"]:focus, 
-.orbeon input[type="color"]:focus, 
-.orbeon .uneditable-input:focus
+.gds .orbeon textarea:focus, 
+.gds .orbeon input[type="text"]:focus, 
+.gds .orbeon input[type="password"]:focus, 
+.gds .orbeon input[type="datetime"]:focus, 
+.gds .orbeon input[type="datetime-local"]:focus, 
+.gds .orbeon input[type="date"]:focus, 
+.gds .orbeon input[type="month"]:focus, 
+.gds .orbeon input[type="time"]:focus, 
+.gds .orbeon input[type="week"]:focus, 
+.gds .orbeon input[type="number"]:focus, 
+.gds .orbeon input[type="email"]:focus, 
+.gds .orbeon input[type="url"]:focus, 
+.gds .orbeon input[type="search"]:focus, 
+.gds .orbeon input[type="tel"]:focus, 
+.gds .orbeon input[type="color"]:focus, 
+.gds .orbeon .uneditable-input:focus
 input:focus, textarea:focus, 
 select:focus, button:focus, 
 #global-header input:focus 
@@ -93,11 +93,11 @@ select:focus, button:focus,
 }
 
 /* Override label */
-.orbeon .fr-mode-new .xforms-required .xforms-label, 
-.orbeon .fr-mode-edit .xforms-required .xforms-label, 
-.orbeon .fr-mode-test .xforms-required .xforms-label,
-.orbeon .xforms-dialog .xforms-required .xforms-label,
-.orbeon .fr-grid .xforms-label
+.gds .orbeon .fr-mode-new .xforms-required .xforms-label, 
+.gds .orbeon .fr-mode-edit .xforms-required .xforms-label, 
+.gds .orbeon .fr-mode-test .xforms-required .xforms-label,
+.gds .orbeon .xforms-dialog .xforms-required .xforms-label,
+.gds .orbeon .fr-grid .xforms-label
 {
     font-size: 19px;
     line-height: 1.31579;
@@ -111,17 +111,17 @@ select:focus, button:focus,
     padding: 0;
 }
 
-.orbeon .xforms-label strong {
+.gds .orbeon .xforms-label strong {
     font-weight: inherit;
 }
 
 /* Override to align help icon right */
-.orbeon .fr-grid .xforms-help {
+.gds .orbeon .fr-grid .xforms-help {
     float: right;
 }
 
 /* Override hint text */
-.orbeon .xforms-hint-appearance-inline .xforms-hint 
+.gds .orbeon .xforms-hint-appearance-inline .xforms-hint 
 {
     font-size: 19px;
     line-height: 1.31579;
@@ -133,19 +133,19 @@ select:focus, button:focus,
     text-transform: none;
 }
 
-.orbeon ul {
+.gds .orbeon ul {
     margin: 0;
     padding: 0;
     list-style: none;
 }
 
 /* Increase element spacing */
-.orbeon .fr-grid .fr-grid-content {
+.gds .orbeon .fr-grid .fr-grid-content {
     margin-bottom: 26px; 
 }
 
 /* Override Radio Buttons */
-.orbeon label.radio {
+.gds .orbeon label.radio {
     clear: none;
     margin-right: 10px;
     float: left;
@@ -158,7 +158,7 @@ select:focus, button:focus,
     position: relative;
 }
 
-.orbeon label.radio span {
+.gds .orbeon label.radio span {
     font-size: 19px;
     line-height: 1.31579;
     font-family: "nta",Arial,sans-serif;
@@ -166,7 +166,7 @@ select:focus, button:focus,
     text-transform: none;
 }
 
-.orbeon label.radio input[type="radio"]
+.gds .orbeon label.radio input[type="radio"]
 {
     cursor: pointer;
     height: 29px;
@@ -178,7 +178,7 @@ select:focus, button:focus,
 }
 
 /* Override checkbox */
-.orbeon .xforms-type-boolean
+.gds .orbeon .xforms-type-boolean
 {
     float: left;
     background: #dee0e2 none repeat scroll 0 0;
@@ -192,7 +192,7 @@ select:focus, button:focus,
 }
 
 
-.orbeon .fr-grid .xforms-type-boolean input {
+.gds .orbeon .fr-grid .xforms-type-boolean input {
         cursor: pointer;
     height: 29px;
     left: 15px;
@@ -203,7 +203,7 @@ select:focus, button:focus,
 }
 
 /* Override headings */
-.orbeon .xbl-fr-section .fr-section-title .fr-section-label a {
+.gds .orbeon .xbl-fr-section .fr-section-title .fr-section-label a {
     margin-bottom: 0.555556em;
     margin-top: 1.25em;
     font-size: 36px;
@@ -215,33 +215,33 @@ select:focus, button:focus,
 }
 
 /* Remove backgrounds */
-.orbeon h2, .orbeon h3 {
+.gds .orbeon h2, .gds .orbeon h3 {
     background-color: transparent;
     background-image: none;
 }
 
 /* Remove Asterisk */
-.orbeon .fr-mode-new .xforms-required.xforms-empty .xforms-label, .orbeon .fr-mode-edit .xforms-required.xforms-empty .xforms-label, .orbeon .fr-mode-test .xforms-required.xforms-empty .xforms-label, .orbeon .xforms-dialog .xforms-required.xforms-empty .xforms-label,
-.orbeon .fr-mode-new .xforms-required .xforms-label, .orbeon .fr-mode-edit .xforms-required .xforms-label, .orbeon .fr-mode-test .xforms-required .xforms-label, .orbeon .xforms-dialog .xforms-required .xforms-label 
+.gds .orbeon .fr-mode-new .xforms-required.xforms-empty .xforms-label, .gds .orbeon .fr-mode-edit .xforms-required.xforms-empty .xforms-label, .gds .orbeon .fr-mode-test .xforms-required.xforms-empty .xforms-label, .gds .orbeon .xforms-dialog .xforms-required.xforms-empty .xforms-label,
+.gds .orbeon .fr-mode-new .xforms-required .xforms-label, .gds .orbeon .fr-mode-edit .xforms-required .xforms-label, .gds .orbeon .fr-mode-test .xforms-required .xforms-label, .gds .orbeon .xforms-dialog .xforms-required .xforms-label 
 {
     background-image: none;
 }
-.orbeon .fr-mode-new .xforms-required .xforms-label::after, 
-.orbeon .fr-mode-edit .xforms-required .xforms-label::after, 
-.orbeon .fr-mode-test .xforms-required .xforms-label::after, 
-.orbeon .xforms-dialog .xforms-required .xforms-label::before {
+.gds .orbeon .fr-mode-new .xforms-required .xforms-label::after, 
+.gds .orbeon .fr-mode-edit .xforms-required .xforms-label::after, 
+.gds .orbeon .fr-mode-test .xforms-required .xforms-label::after, 
+.gds .orbeon .xforms-dialog .xforms-required .xforms-label::before {
     content: " (required)";
 }
 
 
 /* Set default font-size */
-.orbeon .xforms-output-output 
+.gds .orbeon .xforms-output-output 
 {
   font-size: 19px;
 }
 
 /* Format question labels */
-.orbeon .fr-grid .question .xforms-label {
+.gds .orbeon .fr-grid .question .xforms-label {
     /*margin-top: 1.05263em; */
     font-size: 19px;
     line-height: 1.31579;
@@ -252,12 +252,12 @@ select:focus, button:focus,
 }
 
 /* Custom class for bold labels */
-.orbeon .xforms-output.bold label,  .orbeon .xforms-input.bold label{
+.gds .orbeon .xforms-output.bold label,  .gds .orbeon .xforms-input.bold label{
     font-weight: bold;
 }
 
 /* Format top navbar */
-.orbeon .navbar 
+.gds .orbeon .navbar 
 {
     background-color: #0b0c0c;
     width: 100%;
@@ -269,7 +269,7 @@ select:focus, button:focus,
     left: 0;
 }
 
-.orbeon .navbar-inverse .navbar-inner
+.gds .orbeon .navbar-inverse .navbar-inner
 {
     background-image: none;
     padding-left: 15px;
@@ -282,12 +282,12 @@ select:focus, button:focus,
     line-height: 1.5;
 }
 
-.orbeon .navbar-inner .xforms-output
+.gds .orbeon .navbar-inner .xforms-output
 {
     float: right;
     width: 66.66%;
 }
-.orbeon .navbar-inner .xforms-output-output
+.gds .orbeon .navbar-inner .xforms-output-output
 {
     color: white;
     font-family: "nta",Arial,sans-serif;
@@ -299,7 +299,7 @@ select:focus, button:focus,
 }
 
 /* Format body */
-body.orbeon {
+body.gds .orbeon {
     background-color: transparent;
 }
 
@@ -309,13 +309,13 @@ body.orbeon {
 }
 
 /* Override buttons */
-.orbeon .btn 
+.gds .orbeon .btn 
 {
   background-image: none;
   text-shadow: none;
 }
 
-.orbeon .fr-buttons .xforms-trigger button
+.gds .orbeon .fr-buttons .xforms-trigger button
 {
     background-color: #00823b;
     border: medium none;
@@ -334,7 +334,7 @@ body.orbeon {
     vertical-align: top;
 }
 
-.orbeon .fr-buttons .xforms-trigger button:before
+.gds .orbeon .fr-buttons .xforms-trigger button:before
 {
    background: transparent none repeat scroll 0 0;
     content: "";
@@ -346,24 +346,24 @@ body.orbeon {
     width: 100%;
 }
 
-.orbeon .fr-buttons .xforms-trigger button:visited {
+.gds .orbeon .fr-buttons .xforms-trigger button:visited {
     background-color: #00823b;
 }
-.orbeon .fr-buttons .xforms-trigger button:hover, .orbeon .fr-buttons .xforms-trigger button:focus {
+.gds .orbeon .fr-buttons .xforms-trigger button:hover, .gds .orbeon .fr-buttons .xforms-trigger button:focus {
     background-color: #00692f;
 }
-.orbeon .fr-buttons .xforms-trigger button:active {
+.gds .orbeon .fr-buttons .xforms-trigger button:active {
     box-shadow: 0 0 0 #00823b;
     top: 2px;
 }
 
-.orbeon .xforms-trigger-appearance-xxforms-primary .btn
+.gds .orbeon .xforms-trigger-appearance-xxforms-primary .btn
 {
   background-image: none;
 }
 
 /* Override error messages */
-.orbeon .xforms-invalid  .xforms-alert.xforms-active, .orbeon .xforms-alert.xforms-active.xforms-invalid
+.gds .orbeon .xforms-invalid  .xforms-alert.xforms-active, .gds .orbeon .xforms-alert.xforms-active.xforms-invalid
 {
 	color: #b10e1e;
     font-weight: bold;
@@ -378,13 +378,13 @@ body.orbeon {
 }
 
 /* Override question numbers */
-.orbeon .fr-grid .question .xforms-label strong::after 
+.gds .orbeon .fr-grid .question .xforms-label strong::after 
 {
 		content: ".";
 }
 
 /* Override subheading */
-.orbeon .alert 
+.gds .orbeon .alert 
 {
 	background-color: transparent;
     border: none;
@@ -398,7 +398,7 @@ body.orbeon {
 	padding-top: 10px;
 }
 
-.orbeon .alert .xforms-output-output 
+.gds .orbeon .alert .xforms-output-output 
 {
     font-size: 16px;
     line-height: 1.25;
