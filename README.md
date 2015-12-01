@@ -22,7 +22,10 @@ Balvinder
 ## Instructions from Jon
 The content under data/scottish-government/* contains the updated formbuilder and formrunner instance
 Import the data using the sample script form-import.xqy from the MarkLogic query console
-Copy the custom.css file to the orbeon deployment under $TOMCAT_HOME/webapps/orbeon/WEB-INF/resources/config
+Copy the gds.css and custom.css files to the orbeon deployment under $TOMCAT_HOME/webapps/orbeon/WEB-INF/resources/config
+Copy the switcher.js file to $TOMCAT_HOME/webapps/orbeon/WEB-INF/resources/forms
 Copy or modify properties-local.xml using supplied sample.
 
 The files under autocomplete should be deployed to a MarkLogic application server running on port 8048
+
+
