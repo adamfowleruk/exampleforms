@@ -13,7 +13,9 @@
     <property as="xs:boolean" name="oxf.fr.persistence.marklogic.permissions"                       value="true"/>    
     <property as="xs:boolean" name="oxf.fr.persistence.marklogic.versioning"                        value="true"/>    
     <property as="xs:boolean" name="oxf.fr.persistence.marklogic.active"                            value="true"/>
-    <property as="xs:string"  name="oxf.fr.css.custom.uri.*.*"                                      value="/config/custom.css"/> 
+    <!--property as="xs:string"  name="oxf.fr.css.custom.uri.*.*"                                      value="/config/custom.css"/--> 
+    <property as="xs:string"  name="oxf.fr.css.custom.uri.*.*"                                      value="/config/gds.css /config/custom.css"/> 
+    <property as="xs:string"  name="oxf.fr.js.custom.uri.*.*"                                      value="/forms/switcher.js"/>
     
     <!-- Configuration of built-in forms -->
     <property as="xs:string" name="oxf.fr.detail.captcha.orbeon.builder" value=""/>
@@ -44,9 +46,9 @@
         refresh summary save-final wizard-prev wizard-next review
     </property>
     
-    <!--property as="xs:string" name="oxf.fr.detail.view.appearance.*.*" value="wizard"/-->
+    <property as="xs:string" name="oxf.fr.detail.view.appearance.*.*" value="wizard"/>
     <property as="xs:string" name="oxf.fr.detail.view.appearance.*.*" value=""/>
-    <property as="xs:boolean" name="oxf.xforms.xbl.fr.wizard.validate.*.*" value="true"/>
+    <!--property as="xs:boolean" name="oxf.xforms.xbl.fr.wizard.validate.*.*" value="true"/-->
     
     <property as="xs:integer" name="oxf.fb.grid.max-columns" value="6"/>
     
