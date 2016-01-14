@@ -10,11 +10,15 @@
 
   <search:tuples name="biz-hqcountry">
 
-        <search:range type="xs:string" collation="http://marklogic.com/collation/">
-          <search:element name="MainBusinessActivities" ns="http://marklogic.com/orbeon-ml-api/ns"/>
+        <search:range type="xs:string" collation="http://marklogic.com/collation/" facet="true">
+              <search:path-index xmlns:orbeon="http://marklogic.com/orbeon-ml-api/ns">
+               /orbeon:GlobalConnectionsSurvey2015/orbeon:CompanyDetails/orbeon:MainBusinessActivities
+             </search:path-index>
         </search:range>
         <search:range type="xs:string" collation="http://marklogic.com/collation/">
-          <search:element name="HQCountry" ns="http://marklogic.com/orbeon-ml-api/ns"/>
+         <search:path-index xmlns:orbeon="http://marklogic.com/orbeon-ml-api/ns">
+           /orbeon:GlobalConnectionsSurvey2015/orbeon:CompanyDetails/orbeon:HQCountry
+         </search:path-index>
         </search:range>
       <search:values-option>limit=100</search:values-option>
 

@@ -871,8 +871,18 @@ var targets = {
               deferred2.resolve(settings.folder + "/" + file);
             } else {
               itob.isText(file,data,function (err,result) {
-                if (result) {
+
+
+                var props = {
+                };
+
+                if (result === true) {
+                  //console.log("      - is text");
                   data = data.toString(); // convert to string if utf8, otherwise leave as binary buffer
+                } else {
+                  //console.log("      - is binary");
+                  //props.format = "binary";
+                  props.contentType = "";
                 }
 
               // actually upload the file once working
@@ -906,8 +916,6 @@ var targets = {
                 }
                 cols += col;
               }
-              var props = {
-              };
               if (undefined != cols && "" != cols) {
                 props.collection=cols;
               }

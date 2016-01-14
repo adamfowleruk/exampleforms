@@ -31,13 +31,13 @@
   </search:additional-query>
   <search:debug>true</search:debug>
   <search:extract-metadata>
-    <search:qname elem-ns="http://marklogic.com/orbeon-ml-api/ns" elem-name="CompanyName"/>
-    <search:qname elem-ns="http://marklogic.com/orbeon-ml-api/ns" elem-name="ScottishEmployeeCount"/>
-    <search:qname elem-ns="http://marklogic.com/orbeon-ml-api/ns" elem-name="HQCountry"/>
-    <search:qname elem-ns="http://marklogic.com/orbeon-ml-api/ns" elem-name="MainBusinessActivities"/>
-    <search:qname elem-ns="http://marklogic.com/orbeon-ml-api/ns" elem-name="TotalGoodsSold"/>
-    <search:qname elem-ns="http://marklogic.com/orbeon-ml-api/ns" elem-name="TotalServicesSold"/>
-    <search:qname elem-ns="http://marklogic.com/orbeon-ml-api/ns" elem-name="TotalSold"/>
+  <search:constraint-value ref="HQCountry"/>
+  <search:constraint-value ref="CompanyName"/>
+  <search:constraint-value ref="mainbusiness"/>
+  <search:constraint-value ref="goods"/>
+  <search:constraint-value ref="services"/>
+  <search:constraint-value ref="totalsold"/>
+  <search:constraint-value ref="employeecount"/>
   </search:extract-metadata>
   <search:transform-results apply="snippet"/>
   <search:constraint name="collection">
