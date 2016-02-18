@@ -25,16 +25,15 @@
     <search:joiner strength="50" apply="constraint" compare="NE" tokenize="word">NE</search:joiner>
   </search:grammar>
   <search:additional-query>
-	<cts:collection-query xmlns:cts="http://marklogic.com/cts">
-	  <cts:uri>gcsdata</cts:uri>
-	</cts:collection-query>
+    <cts:collection-query xmlns:cts="http://marklogic.com/cts">
+      <cts:uri>gcsdata</cts:uri>
+    </cts:collection-query>
   </search:additional-query>
   <search:debug>true</search:debug>
   <search:transform-results apply="raw"/>
   <search:constraint name="collection">
     <search:collection prefix="" facet="true"/>
   </search:constraint>
-
   <search:constraint name="HQCountry">
     <search:range type="xs:string" collation="http://marklogic.com/collation/" facet="true">
       <search:path-index xmlns:orbeon="http://marklogic.com/orbeon-ml-api/ns">
@@ -42,73 +41,66 @@
      </search:path-index>
     </search:range>
   </search:constraint>
-
   <search:constraint name="CompanyName">
     <search:range type="xs:string" collation="http://marklogic.com/collation/" facet="false">
-        <search:path-index xmlns:orbeon="http://marklogic.com/orbeon-ml-api/ns">
+      <search:path-index xmlns:orbeon="http://marklogic.com/orbeon-ml-api/ns">
          /orbeon:GlobalConnectionsSurvey2015/orbeon:CompanyDetails/orbeon:CompanyName
        </search:path-index>
     </search:range>
   </search:constraint>
-
   <search:constraint name="mainbusiness">
     <search:range type="xs:string" collation="http://marklogic.com/collation/" facet="true">
-        <search:path-index xmlns:orbeon="http://marklogic.com/orbeon-ml-api/ns">
+      <search:path-index xmlns:orbeon="http://marklogic.com/orbeon-ml-api/ns">
          /orbeon:GlobalConnectionsSurvey2015/orbeon:CompanyDetails/orbeon:MainBusinessActivities
        </search:path-index>
     </search:range>
   </search:constraint>
-
-    <search:constraint name="goods">
-      <search:range type="xs:double" facet="true">
-          <search:path-index xmlns:orbeon="http://marklogic.com/orbeon-ml-api/ns">
+  <search:constraint name="goods">
+    <search:range type="xs:double" facet="true">
+      <search:path-index xmlns:orbeon="http://marklogic.com/orbeon-ml-api/ns">
            /orbeon:GlobalConnectionsSurvey2015/orbeon:SalesAndExports/orbeon:TotalGoodsSold
          </search:path-index>
-        <search:bucket lt="100000" ge="0" name="100k">Less than 100k</search:bucket>
-        <search:bucket lt="250000" ge="100000" name="250k">Less than 50k</search:bucket>
-        <search:bucket lt="500000" ge="250000" name="500k">Less than 500k</search:bucket>
-        <search:bucket lt="1000000" ge="500000" name="1mil">Less than 1mil</search:bucket>
-        <search:bucket lt="1500000" ge="1000000" name="1.5mil">Less than 1.5mil</search:bucket>
-        <search:bucket ge="2000000" name="2mil+">2mil+</search:bucket>
-      </search:range>
-    </search:constraint>
-
-      <search:constraint name="services">
-        <search:range type="xs:double" facet="true">
-            <search:path-index xmlns:orbeon="http://marklogic.com/orbeon-ml-api/ns">
+      <search:bucket lt="100000" ge="0" name="100k">Less than 100k</search:bucket>
+      <search:bucket lt="250000" ge="100000" name="250k">Less than 50k</search:bucket>
+      <search:bucket lt="500000" ge="250000" name="500k">Less than 500k</search:bucket>
+      <search:bucket lt="1000000" ge="500000" name="1mil">Less than 1mil</search:bucket>
+      <search:bucket lt="1500000" ge="1000000" name="1.5mil">Less than 1.5mil</search:bucket>
+      <search:bucket ge="2000000" name="2mil+">2mil+</search:bucket>
+    </search:range>
+  </search:constraint>
+  <search:constraint name="services">
+    <search:range type="xs:double" facet="true">
+      <search:path-index xmlns:orbeon="http://marklogic.com/orbeon-ml-api/ns">
              /orbeon:GlobalConnectionsSurvey2015/orbeon:SalesAndExports/orbeon:TotalServicesSold
            </search:path-index>
-          <search:bucket lt="100000" ge="0" name="100k">Less than 100k</search:bucket>
-          <search:bucket lt="250000" ge="100000" name="250k">Less than 50k</search:bucket>
-          <search:bucket lt="500000" ge="250000" name="500k">Less than 500k</search:bucket>
-          <search:bucket lt="1000000" ge="500000" name="1mil">Less than 1mil</search:bucket>
-          <search:bucket lt="1500000" ge="1000000" name="1.5mil">Less than 1.5mil</search:bucket>
-          <search:bucket ge="2000000" name="2mil+">2mil+</search:bucket>
-        </search:range>
-      </search:constraint>
-
-        <search:constraint name="totalsold">
-          <search:range type="xs:double" facet="true">
-              <search:path-index xmlns:orbeon="http://marklogic.com/orbeon-ml-api/ns">
+      <search:bucket lt="100000" ge="0" name="100k">Less than 100k</search:bucket>
+      <search:bucket lt="250000" ge="100000" name="250k">Less than 50k</search:bucket>
+      <search:bucket lt="500000" ge="250000" name="500k">Less than 500k</search:bucket>
+      <search:bucket lt="1000000" ge="500000" name="1mil">Less than 1mil</search:bucket>
+      <search:bucket lt="1500000" ge="1000000" name="1.5mil">Less than 1.5mil</search:bucket>
+      <search:bucket ge="2000000" name="2mil+">2mil+</search:bucket>
+    </search:range>
+  </search:constraint>
+  <search:constraint name="totalsold">
+    <search:range type="xs:double" facet="true">
+      <search:path-index xmlns:orbeon="http://marklogic.com/orbeon-ml-api/ns">
                /orbeon:GlobalConnectionsSurvey2015/orbeon:SalesAndExports/orbeon:TotalSold
              </search:path-index>
-            <search:bucket lt="100000" ge="0" name="100k">Less than 100k</search:bucket>
-            <search:bucket lt="250000" ge="100000" name="250k">Less than 50k</search:bucket>
-            <search:bucket lt="500000" ge="250000" name="500k">Less than 500k</search:bucket>
-            <search:bucket lt="1000000" ge="500000" name="1mil">Less than 1mil</search:bucket>
-            <search:bucket lt="1500000" ge="1000000" name="1.5mil">Less than 1.5mil</search:bucket>
-            <search:bucket ge="2000000" name="2mil+">2mil+</search:bucket>
-          </search:range>
-        </search:constraint>
-
-    <search:constraint name="employeecount">
-      <search:range type="xs:int">
-          <search:path-index xmlns:orbeon="http://marklogic.com/orbeon-ml-api/ns">
+      <search:bucket lt="100000" ge="0" name="100k">Less than 100k</search:bucket>
+      <search:bucket lt="250000" ge="100000" name="250k">Less than 50k</search:bucket>
+      <search:bucket lt="500000" ge="250000" name="500k">Less than 500k</search:bucket>
+      <search:bucket lt="1000000" ge="500000" name="1mil">Less than 1mil</search:bucket>
+      <search:bucket lt="1500000" ge="1000000" name="1.5mil">Less than 1.5mil</search:bucket>
+      <search:bucket ge="2000000" name="2mil+">2mil+</search:bucket>
+    </search:range>
+  </search:constraint>
+  <search:constraint name="employeecount">
+    <search:range type="xs:int">
+      <search:path-index xmlns:orbeon="http://marklogic.com/orbeon-ml-api/ns">
            /orbeon:GlobalConnectionsSurvey2015/orbeon:CompanyDetails/orbeon:ScottishEmployeeCount
          </search:path-index>
-      </search:range>
-    </search:constraint>
-
+    </search:range>
+  </search:constraint>
   <search:return-metrics>true</search:return-metrics>
   <search:return-qtext>true</search:return-qtext>
   <search:return-query>true</search:return-query>

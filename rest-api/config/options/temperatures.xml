@@ -27,14 +27,14 @@
   <search:additional-query>
     <cts:not-query xmlns:cts="http://marklogic.com/cts">
       <cts:or-query>
-        <cts:collection-query>
-          <cts:uri>mljsInternalData</cts:uri>
-          <cts:uri>ontology</cts:uri>
-        </cts:collection-query>
-        <cts:element-query>
-          <cts:element xmlns:sem="http://marklogic.com/semantics">sem:triples</cts:element>
-          <cts:or-query/>
-        </cts:element-query>
+	<cts:collection-query>
+	  <cts:uri>mljsInternalData</cts:uri>
+	  <cts:uri>ontology</cts:uri>
+	</cts:collection-query>
+	<cts:element-query>
+	  <cts:element xmlns:sem="http://marklogic.com/semantics">sem:triples</cts:element>
+	  <cts:or-query/>
+	</cts:element-query>
       </cts:or-query>
     </cts:not-query>
   </search:additional-query>
@@ -43,7 +43,6 @@
   <search:constraint name="collection">
     <search:collection prefix="" facet="true"/>
   </search:constraint>
-
   <search:constraint name="city">
     <search:range type="xs:string" collation="http://marklogic.com/collation/">
       <search:element name="city" ns="http://marklogic.com/xdmp/json/basic"/>
@@ -54,7 +53,6 @@
       <search:element name="month" ns="http://marklogic.com/xdmp/json/basic"/>
     </search:range>
   </search:constraint>
-
   <search:return-metrics>true</search:return-metrics>
   <search:return-qtext>true</search:return-qtext>
   <search:return-query>false</search:return-query>

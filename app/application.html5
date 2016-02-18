@@ -17,6 +17,8 @@
     <!-- Custom styles for this template -->
     <link href="/css/navbar.css" rel="stylesheet">
 
+    <link href="/js/pivottable/pivot.min.css" rel="stylesheet">
+
     <link href="/css/mljs/widgets.css" rel="stylesheet">
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -74,6 +76,13 @@ and its
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="js/lib/jquery-1.7.1.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
+
+
+    <script src="/js/pivottable/pivot.min.js"></script>
+    <script src="/js/pivottable/c3_renderers.min.js"></script>
+    <script src="/js/pivottable/d3_renderers.min.js"></script>
+    <script src="/js/pivottable/export_renderers.min.js"></script>
+
     <script src="js/mljs/mljs.js"></script>
     <script src="js/mljs/mljs-xhr2.js"></script>
     <script src="js/mljs/widgets.js"></script>
@@ -83,8 +92,9 @@ and its
     <script type="text/javascript" src="/js/highcharts.js"></script>
 
     <script type="text/javascript" src="/js/mljs/widget-security.js"></script>
-    
+
     <script type="text/javascript" src="/js/mljs/widget-search.js"></script>
+    <script type="text/javascript" src="/js/mljs/widget-pivottable.js"></script>
     <script type="text/javascript" src="/js/mljs/widget-address.js"></script>
     <script type="text/javascript" src="/js/mljs/widget-collections.js"></script>
     <script type="text/javascript" src="/js/mljs/widget-cooccurence.js"></script>

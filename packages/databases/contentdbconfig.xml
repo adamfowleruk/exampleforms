@@ -4,7 +4,7 @@
     <user>admin</user>
     <group>Default</group>
     <host>localhost.localdomain</host>
-    <timestamp>2015-11-16T07:43:48.189157-08:00</timestamp>
+    <timestamp>2016-02-18T01:51:55.508843-08:00</timestamp>
     <platform>linux</platform>
   </metadata>
   <config>
@@ -85,9 +85,9 @@
       <range-element-indexes>
 	<range-element-index>
 	  <scalar-type>string</scalar-type>
+	  <namespace-uri/>
+	  <localname>urls</localname>
 	  <collation>http://marklogic.com/collation/</collation>
-	  <namespace-uri>http://marklogic.com/orbeon-ml-api/ns</namespace-uri>
-	  <localname>HQCountry</localname>
 	  <range-value-positions>false</range-value-positions>
 	  <invalid-values>reject</invalid-values>
 	</range-element-index>
@@ -95,8 +95,63 @@
       <range-element-attribute-indexes/>
       <element-word-lexicons/>
       <element-attribute-word-lexicons/>
-      <path-namespaces/>
-      <range-path-indexes/>
+      <path-namespaces>
+	<path-namespace>
+	  <prefix>orbeon</prefix>
+	  <namespace-uri>http://marklogic.com/orbeon-ml-api/ns</namespace-uri>
+	</path-namespace>
+      </path-namespaces>
+      <range-path-indexes>
+	<range-path-index>
+	  <scalar-type>string</scalar-type>
+	  <path-expression>/orbeon:GlobalConnectionsSurvey2015/orbeon:CompanyDetails/orbeon:CompanyName</path-expression>
+	  <collation>http://marklogic.com/collation/</collation>
+	  <range-value-positions>false</range-value-positions>
+	  <invalid-values>reject</invalid-values>
+	</range-path-index>
+	<range-path-index>
+	  <scalar-type>string</scalar-type>
+	  <path-expression>/orbeon:GlobalConnectionsSurvey2015/orbeon:CompanyDetails/orbeon:HQCountry</path-expression>
+	  <collation>http://marklogic.com/collation/</collation>
+	  <range-value-positions>false</range-value-positions>
+	  <invalid-values>reject</invalid-values>
+	</range-path-index>
+	<range-path-index>
+	  <scalar-type>double</scalar-type>
+	  <path-expression>/orbeon:GlobalConnectionsSurvey2015/orbeon:SalesAndExports/orbeon:TotalGoodsSold</path-expression>
+	  <collation/>
+	  <range-value-positions>false</range-value-positions>
+	  <invalid-values>reject</invalid-values>
+	</range-path-index>
+	<range-path-index>
+	  <scalar-type>double</scalar-type>
+	  <path-expression>/orbeon:GlobalConnectionsSurvey2015/orbeon:SalesAndExports/orbeon:TotalServicesSold</path-expression>
+	  <collation/>
+	  <range-value-positions>false</range-value-positions>
+	  <invalid-values>reject</invalid-values>
+	</range-path-index>
+	<range-path-index>
+	  <scalar-type>double</scalar-type>
+	  <path-expression>/orbeon:GlobalConnectionsSurvey2015/orbeon:SalesAndExports/orbeon:TotalSold</path-expression>
+	  <collation/>
+	  <range-value-positions>false</range-value-positions>
+	  <invalid-values>reject</invalid-values>
+	</range-path-index>
+	<range-path-index>
+	  <scalar-type>string</scalar-type>
+	  <path-expression>/orbeon:GlobalConnectionsSurvey2015/orbeon:CompanyDetails/orbeon:MainBusinessActivities</path-expression>
+	  <collation>http://marklogic.com/collation/</collation>
+	  <range-value-positions>false</range-value-positions>
+	  <invalid-values>reject</invalid-values>
+	</range-path-index>
+	<range-path-index>
+	  <scalar-type>int</scalar-type>
+	  <path-expression>/orbeon:GlobalConnectionsSurvey2015/orbeon:CompanyDetails/orbeon:ScottishEmployeeCount</path-expression>
+	  <collation/>
+	  <range-value-positions>false</range-value-positions>
+	  <invalid-values>reject</invalid-values>
+	</range-path-index>
+      </range-path-indexes>
       <fields>
 	<field>
 	  <field-name/>

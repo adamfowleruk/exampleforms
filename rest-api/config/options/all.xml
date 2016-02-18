@@ -69,7 +69,6 @@
       <search:heatmap n="-22.601751738293885" s="-23.384274889550028" w="-43.87691212109409" e="-42.62996387890622" latdivs="14" londivs="19"/>
     </search:geo-elem-pair>
   </search:constraint>
-
   <search:constraint name="stars">
     <search:range type="xs:int">
       <search:element name="stars" ns="http://marklogic.com/xdmp/json/basic"/>
@@ -125,7 +124,6 @@
       <search:element name="h1" ns="http://www.w3.org/1999/xhtml"/>
     </search:range>
   </search:constraint>
-
   <search:return-metrics>true</search:return-metrics>
   <search:return-qtext>true</search:return-qtext>
   <search:return-query>false</search:return-query>

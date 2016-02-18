@@ -1,0 +1,11 @@
+<export><workspace name="Forms"><query name="Add JSON" focus="true" active="true" content-source="as:5133796097072465620:" mode="xquery">xdmp:document-insert("/some/json/1.json",xdmp:to-json(xdmp:from-json-string('{CompanyName: "My Company Inc", Sales: "70000"}')),xdmp:default-permissions(),(xdmp:default-collections(),"testjson"))
+;
+xdmp:document-insert("/some/json/2.json",xdmp:to-json(xdmp:from-json-string('{CompanyName: "Another Inc", Sales: "3000"}')),xdmp:default-permissions(),(xdmp:default-collections(),"testjson"))
+;
+xdmp:document-insert("/some/json/3.json",xdmp:to-json(xdmp:from-json-string('{CompanyName: "Losers Inc", Sales: "-6000"}')),xdmp:default-permissions(),(xdmp:default-collections(),"testjson"))
+;</query><query name="Modify Collections" focus="false" active="true" content-source="6070659203764869395:0:Apps" mode="xquery">xquery version "1.0-ml";
+xdmp:document-set-collections("/orbeon/ScottishGovernment/GlobalConnectionsSurvey2015/data/df36c5fe00209ee341ad04b36b04971989fd90f7/data.xml",
+("latest","searchable","gcsdata"))</query><query name="modify software" focus="false" active="true" content-source="as:5133796097072465620:" mode="xquery">xquery version "1.0-ml";
+declare namespace o = "http://marklogic.com/orbeon-ml-api/ns";
+let $doc := fn:doc("/orbeon/ScottishGovernment/GlobalConnectionsSurvey2015/form/form.xhtml")/o:GlobalConnectionsSurvey2015
+return xdmp:node-replace($doc/o:CompanyDetails/o:MainBusinessActivities,&lt;o:MainBusinessActivities&gt;Software Sales&lt;/o:MainBusinessActivities&gt;)</query></workspace></export>

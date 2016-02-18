@@ -1,5 +1,3 @@
-
-
 <search:options xmlns:search="http://marklogic.com/appservices/search">
   <search:search-option>unfiltered</search:search-option>
   <search:page-length>10</search:page-length>
@@ -29,18 +27,18 @@
   <search:additional-query>
     <cts:not-query xmlns:cts="http://marklogic.com/cts">
       <cts:or-query>
-        <cts:collection-query>
-          <cts:uri>mljsInternalData</cts:uri>
-          <cts:uri>senders</cts:uri>
-          <cts:uri>http://marklogic.com/semantics#default-graph</cts:uri>
-          <cts:uri>/my/named/graph</cts:uri>
-          <cts:uri>sourceimage</cts:uri>
-          <cts:uri>ontology</cts:uri>
-        </cts:collection-query>
-        <cts:element-query>
-          <cts:element xmlns:sem="http://marklogic.com/semantics">sem:triples</cts:element>
-          <cts:or-query/>
-        </cts:element-query>
+	<cts:collection-query>
+	  <cts:uri>mljsInternalData</cts:uri>
+	  <cts:uri>senders</cts:uri>
+	  <cts:uri>http://marklogic.com/semantics#default-graph</cts:uri>
+	  <cts:uri>/my/named/graph</cts:uri>
+	  <cts:uri>sourceimage</cts:uri>
+	  <cts:uri>ontology</cts:uri>
+	</cts:collection-query>
+	<cts:element-query>
+	  <cts:element xmlns:sem="http://marklogic.com/semantics">sem:triples</cts:element>
+	  <cts:or-query/>
+	</cts:element-query>
       </cts:or-query>
     </cts:not-query>
   </search:additional-query>

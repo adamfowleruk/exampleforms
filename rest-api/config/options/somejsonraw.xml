@@ -25,16 +25,15 @@
     <search:joiner strength="50" apply="constraint" compare="NE" tokenize="word">NE</search:joiner>
   </search:grammar>
   <search:additional-query>
-	<cts:collection-query xmlns:cts="http://marklogic.com/cts">
-	  <cts:uri>testjson</cts:uri>
-	</cts:collection-query>
+    <cts:collection-query xmlns:cts="http://marklogic.com/cts">
+      <cts:uri>testjson</cts:uri>
+    </cts:collection-query>
   </search:additional-query>
   <search:debug>true</search:debug>
   <search:transform-results apply="raw"/>
   <search:constraint name="collection">
     <search:collection prefix="" facet="true"/>
   </search:constraint>
-
   <search:return-metrics>true</search:return-metrics>
   <search:return-qtext>true</search:return-qtext>
   <search:return-query>true</search:return-query>

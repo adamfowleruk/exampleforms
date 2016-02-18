@@ -1,6 +1,7 @@
 {
   "extensions": [
     {"name": "version", "methods": ["GET"]},
+    {"name": "whoami", "methods": ["GET"]},
     {"name": "workplace", "methods": ["GET","POST"]}
   ],
   "transforms": [],
